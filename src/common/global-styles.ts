@@ -9,5 +9,6 @@ export const globalStyles = css`
     line-height: 1.5;
     font-family: ${FONT_FAMILY};
     font-size: ${FONT_SIZE.REGULAR};
+    color: ${COLORS.NIGHT_SKY};
   }
 `;

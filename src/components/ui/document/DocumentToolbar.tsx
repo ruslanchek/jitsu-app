@@ -22,7 +22,7 @@ const styles = {
   root: css`
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     line-height: ${FONT_SIZE.REGULAR};
   `,
 

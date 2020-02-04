@@ -11,4 +11,8 @@ export const globalStyles = css`
     font-size: ${FONT_SIZE.REGULAR};
     color: ${COLORS.PLATINUM};
   }
+
+  a {
+    text-decoration: none;
+  }
 `;

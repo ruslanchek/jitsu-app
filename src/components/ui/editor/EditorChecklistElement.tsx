@@ -1,20 +1,58 @@
 import React, { FC, useState } from 'react';
 import { css } from '@emotion/core';
+import { Editor, Node, NodeEntry, Point, Range, Transforms } from 'slate';
+import { useEditor, useReadOnly, ReactEditor } from 'slate-react';
 import classnames from 'classnames';
+import { EEditorElementType, IEditorLeafProps } from './EditorElement';
 import { COLORS } from '../../../common/colors';
 import { FiCheck } from 'react-icons/fi';
 import { darken, rgba } from 'polished';
 
-interface IProps {
-  checked: boolean;
-}
+export const editorCheckListOnDeleteBackward = (editor: Editor, selection: Range, match: NodeEntry) => {};
 
-export const EditorCheckListElement: FC<IProps> = ({ checked, children }) => {
+export const editorCheckListOnInsertBreak = (editor: Editor, selection: Range, match: NodeEntry) => {
+  const start = Editor.start(editor, match[1]);
+  const end = Editor.end(editor, match[1]);
+
+  if (Point.equals(selection.anchor, start) || Point.equals(selection.anchor, end)) {
+    Transforms.setNodes(
+      editor,
+      { type: EEditorElementType.Default },
+      {
+        match: ({ type, children }) => {
+          return type === EEditorElementType.CheckList && (!children || children.length === 0 || !children[0].text);
+        },
+      },
+    );
+  }
+};
+
+export const editorCheckListOnInsertNode = (editor: Editor, selection: Range, match: NodeEntry) => {
+  const end = Editor.end(editor, match[1]);
+
+  if (Point.equals(selection.anchor, end)) {
+    Transforms.setNodes(
+      editor,
+      { type: EEditorElementType.CheckList, checked: false },
+      {
+        match: ({ type, children }) => {
+          return type === EEditorElementType.CheckList;
+        },
+      },
+    );
+  }
+};
+
+// TODO:  Cannot resolve a Slate point from DOM point: [object HTMLSpanElement],1 by click outside checkbox
+export const EditorCheckListElement: FC<IEditorLeafProps> = ({ attributes, children, element }) => {
   const [focus, setFocus] = useState(false);
+  const editor = useEditor();
+  const readOnly = useReadOnly();
+  const { checked } = element;
 
   return (
-    <div css={styles.root}>
-      <label css={styles.checkBox} className={classnames({ checked, focus })}>
+    <div {...attributes} css={styles.root}>
+      <label contentEditable={readOnly} css={styles.checkBox} className={classnames({ checked, focus })}>
         <FiCheck className='check' color={COLORS.WHITE} />
         <input
           type='checkbox'
@@ -22,10 +60,17 @@ export const EditorCheckListElement: FC<IProps> = ({ checked, children }) => {
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
           className={classnames({ checked })}
-          onChange={event => {}}
+          onChange={event => {
+            const path = ReactEditor.findPath(editor, element);
+            Transforms.setNodes(editor, { checked: event.target.checked }, { at: path });
+          }}
         />
       </label>
-      <span css={styles.label} className={classnames({ checked })} suppressContentEditableWarning>
+      <span
+        css={styles.label}
+        className={classnames({ checked })}
+        contentEditable={!readOnly}
+        suppressContentEditableWarning>
         {children}
       </span>
     </div>

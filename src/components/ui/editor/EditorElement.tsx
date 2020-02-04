@@ -3,17 +3,23 @@ import { EditorCheckListElement } from './EditorChecklistElement';
 import { EditorDefaultElement } from './EditorDefaultElement';
 import { EditorParagraphElement } from './EditorParagraphElement';
 
-export interface IEditorLeafProps {
+export interface IEditorLeafProps<T = any> {
   attributes: any;
   leaf: any;
-  element: any;
+  element: T;
 }
 
 export enum EEditorElementType {
-  Default,
-  Paragraph,
-  CheckList,
+  Default = 'Default',
+  Paragraph = 'Paragraph',
+  CheckList = 'Checklist',
 }
+
+export const editorElementTypes = [
+  EEditorElementType.Default,
+  EEditorElementType.Paragraph,
+  EEditorElementType.CheckList,
+];
 
 export const EditorElement: FC<IEditorLeafProps> = props => {
   switch (props.element.type) {
@@ -25,6 +31,7 @@ export const EditorElement: FC<IEditorLeafProps> = props => {
       return <EditorParagraphElement {...props} />;
     }
 
+    case EEditorElementType.Default:
     default: {
       return <EditorDefaultElement {...props} />;
     }

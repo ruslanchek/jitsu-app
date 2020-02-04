@@ -1,24 +1,28 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { css } from '@emotion/core';
 import { Transforms } from 'slate';
 import { useEditor, useReadOnly, ReactEditor } from 'slate-react';
 import classnames from 'classnames';
 import { IEditorLeafProps } from './EditorElement';
 import { COLORS } from '../../../common/colors';
-import { FiCheck } from 'react-icons/all';
+import { FiCheck } from 'react-icons/fi';
+import { darken, rgba } from 'polished';
 
 // TODO:  Cannot resolve a Slate point from DOM point: [object HTMLSpanElement],1 by click outside checkbox
 export const EditorCheckListElement: FC<IEditorLeafProps> = ({ attributes, children, element }) => {
+  const [focus, setFocus] = useState(false);
   const editor = useEditor();
   const readOnly = useReadOnly();
   const { checked } = element;
   return (
     <div {...attributes} css={styles.root}>
-      <label contentEditable={false} css={styles.checkBox} className={classnames({ checked })}>
-        <FiCheck />
+      <label contentEditable={readOnly} css={styles.checkBox} className={classnames({ checked, focus })}>
+        <FiCheck className='check' color={COLORS.WHITE} />
         <input
           type='checkbox'
           checked={checked}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
           className={classnames({ checked })}
           onChange={event => {
             const path = ReactEditor.findPath(editor, element);
@@ -40,22 +44,50 @@ export const EditorCheckListElement: FC<IEditorLeafProps> = ({ attributes, child
 const styles = {
   root: css`
     display: flex;
-    flex-direction: row;
     align-items: center;
   `,
 
   checkBox: css`
-    margin-right: 0.5em;
+    margin-right: 0.75em;
     width: 18px;
     height: 18px;
-    background-color: ${COLORS.GREEN};
     border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    background-color: ${COLORS.DIRTY_SNOW};
+    box-shadow: inset 0 1px 2px ${rgba(COLORS.BLACK, .2)};
+
+    .check {
+      transition: opacity 0.2s, transform 0.2s;
+      opacity: 0;
+      transform: scale(0);
+    }
 
     > input {
       visibility: hidden;
       position: absolute;
       opacity: 0;
       z-index: -1;
+    }
+
+    &:hover {
+      background-color: ${darken(0.05, COLORS.DIRTY_SNOW)};
+    }
+
+    &.checked {
+      background-color: ${COLORS.GREEN};
+
+      .check {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      &:hover {
+        background-color: ${darken(0.05, COLORS.GREEN)};
+      }
     }
   `,
 

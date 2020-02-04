@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useMemo, useState } from 'react';
-import { createEditor, Editor, Node, Point, Range, Transforms } from 'slate';
+import { createEditor, Editor } from 'slate';
 import { withHistory } from 'slate-history';
 import { Editable, Slate, withReact } from 'slate-react';
 import { EditorElement, editorElementTypes, EEditorElementType } from './EditorElement';
@@ -30,9 +30,11 @@ export const EditorView: FC = () => {
   ]);
 
   return (
-    <Slate editor={editor} value={value} onChange={value => setValue(value)}>
-      <Editable data-gramm={true} renderElement={renderElement} />
-    </Slate>
+    <div data-dragndrop={true}>
+      <Slate editor={editor} value={value} onChange={value => setValue(value)}>
+        <Editable data-gramm={true} renderElement={renderElement} />
+      </Slate>
+    </div>
   );
 };
 

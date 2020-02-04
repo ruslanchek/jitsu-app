@@ -1,18 +1,16 @@
-import React, { FC, useEffect, Fragment, EventHandler } from 'react';
+import React, { FC, useEffect, Fragment } from 'react';
 
 export const GlobalHandlersProvider: FC = ({ children }) => {
-  const onDrop = (event: DragEvent) => {
+  const onDrop = (event: any) => {
     try {
-      // @ts-ignore
       if(!event.target.closest('[data-dragndrop]')) {
         event.preventDefault();
       }
     } catch (e) {}
   };
 
-  const onDragover = (event: DragEvent) => {
+  const onDragover = (event: any) => {
     try {
-      // @ts-ignore
       if(!event.target.closest('[data-dragndrop]')) {
         event.preventDefault();
       }

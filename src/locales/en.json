@@ -1,4 +1,3 @@
 {
-  "TEST": "Test",
-  "TEST::TEST::TESTTTT": "Test Test Test"
+  "ACTIONS::CREATE": "Create"
 }

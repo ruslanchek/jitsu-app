@@ -1,4 +1,3 @@
 export enum EPhrase {
-	Test = 'TEST',
-	Test_Test_Testttt = 'TEST::TEST::TESTTTT',
+	Actions_Create = 'ACTIONS::CREATE',
 }

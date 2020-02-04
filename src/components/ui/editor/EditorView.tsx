@@ -2,12 +2,7 @@ import React, { FC, useCallback, useMemo, useState } from 'react';
 import { createEditor, Editor } from 'slate';
 import { withHistory } from 'slate-history';
 import { Editable, Slate, withReact } from 'slate-react';
-import { EditorElement, editorElementTypes, EEditorElementType } from './EditorElement';
-import {
-  editorCheckListOnDeleteBackward,
-  editorCheckListOnInsertBreak,
-  editorCheckListOnInsertNode,
-} from './EditorChecklistElement';
+import { EditorElement, EEditorElementType } from './EditorElement';
 
 export const EditorView: FC = () => {
   const editor = useMemo(() => withCustomElements(withHistory(withReact(createEditor()))), []);
@@ -15,17 +10,36 @@ export const EditorView: FC = () => {
   const [value, setValue] = useState<any>([
     {
       type: EEditorElementType.Paragraph,
-      children: [{ text: 'A line of text in a paragraph.' }],
+      children: [
+        {
+          text: `The first thing I started to use daily were to-do lists, very detailed ones. I tried to note everything
+I have to do, each smallest task. I always have a note and pen on my desk, and I use Asana for more 
+significant projects to order everything that needs to be done and really feel the progress. 
+Small wins and success are crucial in the human mind. That’s why every time I see how many tasks I fulfilled 
+every day, I feel very satisfied and motivated. It also helps me to stay focused, because I see the real 
+progress, every time I mark the task as done or scratch it off.`,
+        },
+      ],
     },
     {
       type: EEditorElementType.CheckList,
       checked: true,
-      children: [{ text: 'Slide to the left.' }],
+      children: [{ text: 'Check up database connections' }],
     },
     {
       type: EEditorElementType.CheckList,
       checked: false,
-      children: [{ text: 'Slide to the left.' }],
+      children: [{ text: 'Fill up the fixtures' }],
+    },
+    {
+      type: EEditorElementType.CheckList,
+      checked: false,
+      children: [{ text: 'Swap Linaria CSS with Emotion' }],
+    },
+    {
+      type: EEditorElementType.CheckList,
+      checked: false,
+      children: [{ text: 'Check connectivity during poor 3G connection' }],
     },
   ]);
 
@@ -39,75 +53,21 @@ export const EditorView: FC = () => {
 };
 
 const withCustomElements = (editor: Editor): any => {
-  const { deleteBackward, insertBreak } = editor;
+  const { deleteBackward, insertBreak, insertNode, insertText } = editor;
+
+  editor.insertText = (...args) => {
+    insertText(...args);
+  };
 
   editor.deleteBackward = (...args) => {
-    const { selection } = editor;
-
-    if (selection) {
-      const [match] = Editor.nodes(editor, {
-        match: n => editorElementTypes.includes(n.type),
-      });
-
-      if (match && match[0]) {
-        switch (match[0].type) {
-          case EEditorElementType.CheckList: {
-            editorCheckListOnDeleteBackward(editor, selection, match);
-          }
-
-          case EEditorElementType.Paragraph: {
-            // return editorCheckListOnDeleteBackward(editor, selection, match)
-          }
-        }
-      }
-    }
-
     deleteBackward(...args);
   };
 
   editor.insertNode = (...args) => {
-    const { selection } = editor;
-
-    if (selection) {
-      const [match] = Editor.nodes(editor, {
-        match: n => editorElementTypes.includes(n.type),
-      });
-
-      if (match && match[0]) {
-        switch (match[0].type) {
-          case EEditorElementType.CheckList: {
-            editorCheckListOnInsertNode(editor, selection, match);
-          }
-
-          case EEditorElementType.Paragraph: {
-            // return editorCheckListOnDeleteBackward(editor, selection, match)
-          }
-        }
-      }
-    }
+    insertNode(...args);
   };
 
   editor.insertBreak = (...args) => {
-    const { selection } = editor;
-
-    if (selection) {
-      const [match] = Editor.nodes(editor, {
-        match: n => editorElementTypes.includes(n.type),
-      });
-
-      if (match && match[0]) {
-        switch (match[0].type) {
-          case EEditorElementType.CheckList: {
-            editorCheckListOnInsertBreak(editor, selection, match);
-          }
-
-          case EEditorElementType.Paragraph: {
-            // return editorCheckListOnDeleteBackward(editor, selection, match)
-          }
-        }
-      }
-    }
-
     insertBreak(...args);
   };
 

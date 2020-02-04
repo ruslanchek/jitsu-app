@@ -15,12 +15,6 @@ export enum EEditorElementType {
   CheckList = 'Checklist',
 }
 
-export const editorElementTypes = [
-  EEditorElementType.Default,
-  EEditorElementType.Paragraph,
-  EEditorElementType.CheckList,
-];
-
 export const EditorElement: FC<IEditorLeafProps> = props => {
   switch (props.element.type) {
     case EEditorElementType.CheckList: {

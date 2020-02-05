@@ -25,7 +25,7 @@ export const MainScreen: FC = () => {
             ]}
           />
 
-          <TitleEditable text='Editorial facts still kept unchanged' editable />
+          <TitleEditable text='Editable artifacts still kept unchanged after saving' editable />
           <EditorView />
         </main>
       </Limiter>

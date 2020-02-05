@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import { css } from '@emotion/core';
 import { COLORS } from '../../../common/colors';
-import { darken, lighten, rgba } from 'polished';
+import { darken, lighten } from 'polished';
 import { DocumentToolBarItem } from './DocumentToolBarItem';
 import classNames from 'classnames';
 import { FaRegStar, FaStar } from 'react-icons/fa';

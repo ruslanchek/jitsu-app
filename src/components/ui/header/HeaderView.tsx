@@ -34,7 +34,9 @@ export const HeaderView: FC<IProps> = () => {
 
 const styles = {
   root: css`
+    height: 60px;
     background-color: ${COLORS.SNOW};
+    position: sticky;
 
     &:before {
       content: '';

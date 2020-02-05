@@ -3,7 +3,6 @@ import { COLORS } from '../../../common/colors';
 import { DateFormatter } from '../formatters/DateFormatter';
 import { EPhrase } from '../../../locales/EPhrase';
 import { DocumentToolBarItem } from './DocumentToolBarItem';
-import { DocumentToolBarButton } from './DocumentToolBarButton';
 import { css } from '@emotion/core';
 
 interface IProps {

@@ -1,4 +1,4 @@
-import React, { FC, ReactNodeArray, Fragment } from 'react';
+import React, { FC, ReactNodeArray } from 'react';
 import { css } from '@emotion/core';
 import { FONT_SIZE } from '../../../common/ui';
 

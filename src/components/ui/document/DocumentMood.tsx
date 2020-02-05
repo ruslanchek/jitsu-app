@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { EPhrase } from '../../../locales/EPhrase';
 import { DocumentToolBarItem } from './DocumentToolBarItem';
-import { BORDER_RADIUS, DOCUMENT_BUTTON_HEIGHT } from '../../../common/ui';
+import { BORDER_RADIUS } from '../../../common/ui';
 import { COLORS } from '../../../common/colors';
 
 interface IProps {}
@@ -45,7 +45,7 @@ const styles = {
     outline: none;
     cursor: pointer;
     border-radius: ${BORDER_RADIUS.SMALL};
-    transition: background-color .2s;
+    transition: background-color .2s, transform .2s;
     
     >span {
       display: block;
@@ -53,6 +53,10 @@ const styles = {
     
     &:hover {
       background-color: ${COLORS.DIRTY_SNOW};
+    }
+    
+    &:active {
+      transform: translate(-50%, -50%) scale(.98);
     }
   `,
 };

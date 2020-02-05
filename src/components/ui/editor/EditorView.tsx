@@ -4,7 +4,6 @@ import { withHistory } from 'slate-history';
 import { Editable, Slate, withReact } from 'slate-react';
 import { EditorElement, EEditorElementType } from './EditorElement';
 import { css } from '@emotion/core';
-import { COLORS } from '../../../common/colors';
 
 export const EditorView: FC = () => {
   const editor = useMemo(() => withCustomElements(withHistory(withReact(createEditor()))), []);

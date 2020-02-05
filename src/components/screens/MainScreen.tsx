@@ -21,25 +21,26 @@ export const MainScreen: FC = () => {
       <HeaderView />
       <Limiter>
         <main css={styles.main}>
-          <DocumentToolbar
-            items={[
-              <DocumentId id='254' />,
-              <DocumentBookmark mark />,
-              <DocumentStatus />,
-              <DocumentDueDate date={new Date()} />,
-              <DocumentAssignedTo user='m_brtn' />,
-            ]}
-          />
+          <div css={styles.toolBars}>
+            <DocumentToolbar
+              items={[
+                <DocumentId id='254' />,
+                <DocumentBookmark mark />,
+                <DocumentStatus />,
+                <DocumentDueDate date={new Date()} />,
+                <DocumentAssignedTo user='m_brtn' />,
+              ]}
+            />
+            <DocumentToolbar items={[<DocumentMood />]} />
+          </div>
           <TitleEditable text='Editable artifacts still kept unchanged after saving' editable />
           <EditorView />
-          <DocumentToolbar
-            items={[
-              <DocumentUpdatedDate date={new Date()} />,
-              <DocumentCreatedBy user='superior_monk' />,
-              <DocumentTags tags={['Asana', 'Connectivity', 'CSS']} />,
-              <DocumentMood />,
-            ]}
-          />
+          <div css={styles.toolBars}>
+            <DocumentToolbar items={[<DocumentTags tags={['Asana', 'Connectivity', 'CSS']} />]} />
+            <DocumentToolbar
+              items={[<DocumentCreatedBy user='superior_monk' />, <DocumentUpdatedDate date={new Date()} />]}
+            />
+          </div>
         </main>
       </Limiter>
     </Fragment>
@@ -51,5 +52,10 @@ const styles = {
 
   main: css`
     padding: 40px 0;
+  `,
+
+  toolBars: css`
+    display: flex;
+    justify-content: space-between;
   `,
 };

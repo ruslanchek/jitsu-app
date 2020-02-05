@@ -25,7 +25,7 @@ const styles = {
     border: none;
     padding: 0 15px 0 10px;
     text-transform: uppercase;
-    border-radius: 4px;
+    border-radius: 6px;
     color: ${COLORS.WHITE};
     display: flex;
     justify-content: center;

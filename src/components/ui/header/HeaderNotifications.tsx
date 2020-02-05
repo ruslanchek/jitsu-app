@@ -19,7 +19,7 @@ const styles = {
     border: 1px solid ${COLORS.CARBON};
     height: ${HEADER_ELEMENT_HEIGHT}px;
     width: ${HEADER_ELEMENT_HEIGHT}px;
-    border-radius: 100%;
+    border-radius: 6px;
     margin-left: 20px;
     display: flex;
     justify-content: center;
@@ -40,12 +40,12 @@ const styles = {
   `,
 
   dot: css`
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-radius: 100%;
     background-color: ${COLORS.FIRE_ROSE};
     position: absolute;
-    top: 0;
-    right: 0;
+    top: -4px;
+    right: -4px;
   `
 };

@@ -2,19 +2,20 @@ import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { AvatarUser } from '../avatars/AvatarUser';
 import { HEADER_ELEMENT_HEIGHT } from '../../../common/ui';
+import { COLORS } from '../../../common/colors';
 
 interface IProps {}
 
 export const HeaderUser: FC<IProps> = () => {
   return (
-    <div css={styles.root}>
+    <a href="/" css={styles.root}>
       <span css={styles.userName}>@m_brtn</span>
       <AvatarUser
         src={`https://i.pravatar.cc/${HEADER_ELEMENT_HEIGHT * window.devicePixelRatio}`}
         size={HEADER_ELEMENT_HEIGHT}
         title='Username'
       />
-    </div>
+    </a>
   );
 };
 
@@ -23,6 +24,14 @@ const styles = {
     display: flex;
     align-items: center;
     margin-left: 20px;
+    border-radius: 6px;
+    color: ${COLORS.SMOKE};
+    transition: color .2s;
+    
+    
+    &:hover {
+      color: ${COLORS.PLATINUM};
+    }
   `,
 
   userName: css`

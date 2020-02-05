@@ -14,6 +14,7 @@ import { DocumentBookmark } from '../ui/document/DocumentBookmark';
 import { DocumentTags } from '../ui/document/DocumentTags';
 import { DocumentCreatedBy } from '../ui/document/DocumentCreatedBy';
 import { DocumentUpdatedDate } from '../ui/document/DocumentUpdatedDate';
+import { CommentsView } from '../ui/comments/CommentsView';
 
 export const MainScreen: FC = () => {
   return (
@@ -43,6 +44,7 @@ export const MainScreen: FC = () => {
               items={[<DocumentCreatedBy user='superior_monk' />, <DocumentUpdatedDate date={new Date()} />]}
             />
           </div>
+          <CommentsView />
         </main>
       </Limiter>
     </Fragment>

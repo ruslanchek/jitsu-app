@@ -37,6 +37,8 @@ const styles = {
     height: 60px;
     background-color: ${COLORS.SNOW};
     position: sticky;
+    top: 0;
+    z-index: 100;
 
     &:before {
       content: '';

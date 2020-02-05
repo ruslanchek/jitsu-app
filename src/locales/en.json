@@ -8,5 +8,6 @@
   "DOCUMENT::MOOD": "Mood",
   "DOCUMENT::STATUS": "Status",
   "DOCUMENT::TAGS": "Tags",
-  "DOCUMENT_STATUS::IN_PROGRESS": "In progress"
+  "DOCUMENT_STATUS::IN_PROGRESS": "In progress",
+  "COMMENTS::TITLE": "Comments"
 }

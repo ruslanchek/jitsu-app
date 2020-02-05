@@ -23,9 +23,8 @@ const styles = {
   root: css`
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     line-height: ${FONT_SIZE.REGULAR};
-    margin-bottom: 10px;
+    margin-bottom: 1px;
   `,
 
   item: css`

@@ -9,4 +9,5 @@ export enum EPhrase {
 	Document_Status = 'DOCUMENT::STATUS',
 	Document_Tags = 'DOCUMENT::TAGS',
 	Document_status_In_progress = 'DOCUMENT_STATUS::IN_PROGRESS',
+	Comments_Title = 'COMMENTS::TITLE',
 }

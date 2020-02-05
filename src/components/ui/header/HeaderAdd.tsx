@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { FiLoader } from 'react-icons/fi';
 import { COLORS } from '../../../common/colors';
-import { lighten } from 'polished';
+import { lighten, rgba } from 'polished';
 import { EOLocale } from 'eo-locale';
 import { BORDER_RADIUS, FONT_FAMILY, FONT_SIZE, HEADER_ELEMENT_HEIGHT } from '../../../common/ui';
 import { EPhrase } from '../../../locales/EPhrase';
@@ -20,29 +20,29 @@ export const HeaderAdd: FC<IProps> = () => {
 
 const styles = {
   root: css`
-    background-color: ${COLORS.PURPLE};
+    background-color: ${rgba(COLORS.PURPLE, .1)};
     height: ${HEADER_ELEMENT_HEIGHT}px;
     border: none;
-    padding: 0 15px 0 10px;
-    text-transform: uppercase;
+    padding: 0 20px 0 18px;
     border-radius: ${BORDER_RADIUS.MEDIUM};
-    color: ${COLORS.WHITE};
+    color: ${COLORS.PURPLE};
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     transition: background-color 0.2s, transform 0.2s;
     outline: none;
+    //text-transform: uppercase;
+    //font-weight: 500;
     font-family: ${FONT_FAMILY};
     font-size: ${FONT_SIZE.REGULAR};
-    font-weight: 500;
 
     .icon {
-      margin-right: 10px;
+      margin-right: 8px;
     }
 
     &:hover {
-      background-color: ${lighten(0.1, COLORS.PURPLE)};
+      background-color: ${rgba(COLORS.PURPLE, .2)};
     }
 
     &:active {

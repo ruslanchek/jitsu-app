@@ -9,24 +9,23 @@ export const HeaderNotifications: FC = () => {
   return (
     <a href='/' css={styles.root}>
       <FiActivity className='icon' />
-      <i css={styles.dot}/>
+      <i css={styles.dot} />
     </a>
   );
 };
 
 const styles = {
   root: css`
-    border: 1px solid ${COLORS.CARBON};
     height: ${HEADER_ELEMENT_HEIGHT}px;
     width: ${HEADER_ELEMENT_HEIGHT}px;
     border-radius: ${BORDER_RADIUS.MEDIUM};
-    margin-left: 20px;
+    margin-left: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
     color: ${COLORS.SMOKE};
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, color .2s;
     position: relative;
 
     .icon {
@@ -35,17 +34,18 @@ const styles = {
     }
 
     &:hover {
+      color: ${COLORS.PLATINUM};
       background-color: ${rgba(COLORS.CARBON, 0.5)};
     }
   `,
 
   dot: css`
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     border-radius: 100%;
     background-color: ${COLORS.FIRE_ROSE};
     position: absolute;
-    top: -4px;
-    right: -4px;
-  `
+    top: 2px;
+    right: 2px;
+  `,
 };

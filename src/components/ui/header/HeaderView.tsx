@@ -4,6 +4,8 @@ import { COLORS } from '../../../common/colors';
 import { HeaderLogo } from './HeaderLogo';
 import { HeaderAdd } from './HeaderAdd';
 import { Limiter } from '../common/Limiter';
+import { HeaderUser } from './HeaderUser';
+import { HeaderNotifications } from './HeaderNotifications';
 
 interface IProps {}
 
@@ -12,8 +14,19 @@ export const HeaderView: FC<IProps> = () => {
     <header css={styles.root}>
       <Limiter>
         <div css={styles.inner}>
-          <HeaderLogo />
-          <HeaderAdd />
+          <div css={styles.left}>
+            <HeaderLogo />
+
+            <div css={styles.project}>
+
+            </div>
+          </div>
+
+          <div css={styles.right}>
+            <HeaderAdd />
+            <HeaderNotifications />
+            <HeaderUser />
+          </div>
         </div>
       </Limiter>
     </header>
@@ -42,4 +55,22 @@ const styles = {
     justify-content: space-between;
     align-items: center;
   `,
+
+  left: css`
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-grow: 1;
+  `,
+
+  right: css`
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  `,
+
+  project: css`
+
+`
 };

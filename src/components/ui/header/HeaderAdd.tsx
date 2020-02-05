@@ -4,7 +4,7 @@ import { FiLoader } from 'react-icons/fi';
 import { COLORS } from '../../../common/colors';
 import { lighten } from 'polished';
 import { EOLocale } from 'eo-locale';
-import { FONT_FAMILY, FONT_SIZE } from '../../../common/ui';
+import { FONT_FAMILY, FONT_SIZE, HEADER_ELEMENT_HEIGHT } from '../../../common/ui';
 import { EPhrase } from '../../../locales/EPhrase';
 
 interface IProps {}
@@ -21,7 +21,7 @@ export const HeaderAdd: FC<IProps> = () => {
 const styles = {
   root: css`
     background-color: ${COLORS.PURPLE};
-    height: 36px;
+    height: ${HEADER_ELEMENT_HEIGHT}px;
     border: none;
     padding: 0 15px 0 10px;
     text-transform: uppercase;

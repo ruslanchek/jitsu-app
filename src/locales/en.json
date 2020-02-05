@@ -1,4 +1,5 @@
 {
   "ACTIONS::CREATE": "Create",
-  "DOCUMENT::ASSIGNED_TO": "Assigned to"
+  "DOCUMENT::ASSIGNED_TO": "Assigned to",
+  "DOCUMENT::DUE_TO": "Due to"
 }

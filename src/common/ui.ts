@@ -10,3 +10,5 @@ export const FONT_SIZE = {
 };
 
 export const MAX_WIDTH = '1400px';
+
+export const HEADER_ELEMENT_HEIGHT = 36;

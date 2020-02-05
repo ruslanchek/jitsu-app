@@ -17,14 +17,13 @@ export const HeaderView: FC<IProps> = () => {
         <div css={styles.inner}>
           <div css={styles.left}>
             <HeaderLogo />
-
             <div css={styles.project}></div>
           </div>
 
           <div css={styles.right}>
             <HeaderAdd />
-            <HeaderNotifications />
             <HeaderUser />
+            <HeaderNotifications />
             <HeaderMenu />
           </div>
         </div>

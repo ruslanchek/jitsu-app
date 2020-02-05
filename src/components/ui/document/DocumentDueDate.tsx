@@ -29,7 +29,7 @@ const styles = {
   `,
 
   date: css`
-    background-color: ${rgba(COLORS.FIRE_ROSE, 0.1)};
+    background-color: ${rgba(COLORS.FIRE_ROSE, 0.08)};
     padding: 2px 5px;
     border-radius: ${BORDER_RADIUS.SMALL};
     transition: background-color 0.2s;

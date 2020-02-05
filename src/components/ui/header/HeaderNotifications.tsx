@@ -1,51 +1,12 @@
 import React, { FC } from 'react';
-import { css } from '@emotion/core';
 import { FiActivity } from 'react-icons/all';
-import { BORDER_RADIUS, HEADER_ELEMENT_HEIGHT } from '../../../common/ui';
-import { COLORS } from '../../../common/colors';
-import { rgba } from 'polished';
+import { HeaderButton } from './HeaderButton';
 
 export const HeaderNotifications: FC = () => {
   return (
-    <a href='/' css={styles.root}>
-      <FiActivity className='icon' />
-      <i css={styles.dot} />
-    </a>
+    <HeaderButton alert squared>
+      <FiActivity size={20} />
+    </HeaderButton>
   );
 };
 
-const styles = {
-  root: css`
-    height: ${HEADER_ELEMENT_HEIGHT}px;
-    width: ${HEADER_ELEMENT_HEIGHT}px;
-    border-radius: ${BORDER_RADIUS.MEDIUM};
-    margin-left: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    color: ${COLORS.SMOKE};
-    transition: background-color 0.2s, color .2s;
-    position: relative;
-
-    .icon {
-      width: 20px;
-      height: 20px;
-    }
-
-    &:hover {
-      color: ${COLORS.PLATINUM};
-      background-color: ${rgba(COLORS.CARBON, 0.5)};
-    }
-  `,
-
-  dot: css`
-    width: 8px;
-    height: 8px;
-    border-radius: 100%;
-    background-color: ${COLORS.FIRE_ROSE};
-    position: absolute;
-    top: 2px;
-    right: 2px;
-  `,
-};

@@ -18,4 +18,4 @@ export const BORDER_RADIUS = {
   MEDIUM: '6px',
 };
 
-export const DOCUMENT_BUTTON_HEIGHT = '23px';
+export const DOCUMENT_BUTTON_HEIGHT = '25px';

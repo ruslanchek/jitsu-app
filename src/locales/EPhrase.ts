@@ -8,6 +8,8 @@ export enum EPhrase {
 	Document_Mood = 'DOCUMENT::MOOD',
 	Document_Status = 'DOCUMENT::STATUS',
 	Document_Tags = 'DOCUMENT::TAGS',
+	Document_Priority = 'DOCUMENT::PRIORITY',
+	Document_priority_Moderate = 'DOCUMENT_PRIORITY::MODERATE',
 	Document_status_In_progress = 'DOCUMENT_STATUS::IN_PROGRESS',
-	Comments_Title = 'COMMENTS::TITLE',
+	Document_Timeline = 'DOCUMENT::TIMELINE',
 }

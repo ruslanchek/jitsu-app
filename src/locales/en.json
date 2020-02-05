@@ -8,6 +8,8 @@
   "DOCUMENT::MOOD": "Mood",
   "DOCUMENT::STATUS": "Status",
   "DOCUMENT::TAGS": "Tags",
+  "DOCUMENT::PRIORITY": "Priority",
+  "DOCUMENT_PRIORITY::MODERATE": "Moderate",
   "DOCUMENT_STATUS::IN_PROGRESS": "In progress",
-  "COMMENTS::TITLE": "Comments"
+  "DOCUMENT::TIMELINE": "Timeline"
 }

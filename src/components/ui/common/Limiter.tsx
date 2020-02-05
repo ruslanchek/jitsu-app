@@ -14,15 +14,12 @@ export const Limiter: FC<IProps> = ({ children }) => {
 
 const styles = {
   root: css`
-    display: flex;
-    justify-content: center;
     max-width: ${MAX_WIDTH};
     min-width: ${MIN_WIDTH};
+    margin: 0 auto;
   `,
 
   inner: css`
     padding: 0 40px;
-    flex-grow: 1;
-    box-sizing: border-box;
   `,
 };

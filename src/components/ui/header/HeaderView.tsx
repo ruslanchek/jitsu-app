@@ -7,6 +7,7 @@ import { Limiter } from '../common/Limiter';
 import { HeaderUser } from './HeaderUser';
 import { HeaderNotifications } from './HeaderNotifications';
 import { HeaderMenu } from './HeaderMenu';
+import { MIN_WIDTH } from '../../../common/ui';
 
 interface IProps {}
 
@@ -36,6 +37,7 @@ const styles = {
   root: css`
     height: 60px;
     background-color: ${COLORS.SNOW};
+    min-width: ${MIN_WIDTH};
     position: sticky;
     top: 0;
     z-index: 100;

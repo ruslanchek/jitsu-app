@@ -6,6 +6,7 @@ import { HeaderAdd } from './HeaderAdd';
 import { Limiter } from '../common/Limiter';
 import { HeaderUser } from './HeaderUser';
 import { HeaderNotifications } from './HeaderNotifications';
+import { HeaderMenu } from './HeaderMenu';
 
 interface IProps {}
 
@@ -17,15 +18,14 @@ export const HeaderView: FC<IProps> = () => {
           <div css={styles.left}>
             <HeaderLogo />
 
-            <div css={styles.project}>
-
-            </div>
+            <div css={styles.project}></div>
           </div>
 
           <div css={styles.right}>
             <HeaderAdd />
             <HeaderNotifications />
             <HeaderUser />
+            <HeaderMenu />
           </div>
         </div>
       </Limiter>
@@ -70,7 +70,5 @@ const styles = {
     justify-content: flex-end;
   `,
 
-  project: css`
-
-`
+  project: css``,
 };

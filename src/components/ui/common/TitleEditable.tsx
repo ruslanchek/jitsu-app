@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/core';
-import { FONT_SIZE } from '../../../common/ui';
+import { BORDER_RADIUS, FONT_SIZE } from '../../../common/ui';
 import { COLORS } from '../../../common/colors';
 import classNames from 'classnames';
 
@@ -27,7 +27,7 @@ const styles = {
     outline: none;
     padding: 5px 12px 4px;
     margin: 0 0 20px -12px;
-    border-radius: 6px;
+    border-radius: ${BORDER_RADIUS.MEDIUM};
     border: 1px solid transparent;
     transition: border-color 0.2s;
 

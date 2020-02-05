@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { FiActivity } from 'react-icons/all';
-import { HEADER_ELEMENT_HEIGHT } from '../../../common/ui';
+import { BORDER_RADIUS, HEADER_ELEMENT_HEIGHT } from '../../../common/ui';
 import { COLORS } from '../../../common/colors';
 import { rgba } from 'polished';
 
@@ -19,7 +19,7 @@ const styles = {
     border: 1px solid ${COLORS.CARBON};
     height: ${HEADER_ELEMENT_HEIGHT}px;
     width: ${HEADER_ELEMENT_HEIGHT}px;
-    border-radius: 6px;
+    border-radius: ${BORDER_RADIUS.MEDIUM};
     margin-left: 20px;
     display: flex;
     justify-content: center;

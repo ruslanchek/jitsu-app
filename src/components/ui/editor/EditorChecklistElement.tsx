@@ -7,6 +7,7 @@ import { IEditorLeafProps } from './EditorElement';
 import { COLORS } from '../../../common/colors';
 import { FiCheck } from 'react-icons/fi';
 import { darken, rgba } from 'polished';
+import { BORDER_RADIUS } from '../../../common/ui';
 
 export const EditorCheckListElement: FC<IEditorLeafProps> = ({ attributes, children, element }) => {
   const [focus, setFocus] = useState(false);
@@ -51,7 +52,7 @@ const styles = {
     margin-right: 0.75em;
     width: 18px;
     height: 18px;
-    border-radius: 3px;
+    border-radius: ${BORDER_RADIUS.SMALL};
     display: flex;
     justify-content: center;
     align-items: center;

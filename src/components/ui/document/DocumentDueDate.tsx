@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { COLORS } from '../../../common/colors';
 import { rgba } from 'polished';
-import { FONT_FAMILY, FONT_SIZE } from '../../../common/ui';
+import { BORDER_RADIUS, FONT_FAMILY, FONT_SIZE } from '../../../common/ui';
 import { DateFormatter } from '../formatters/DateFormatter';
 
 interface IProps {
@@ -31,7 +31,7 @@ const styles = {
   date: css`
     background-color: ${rgba(COLORS.FIRE_ROSE, 0.1)};
     padding: 2px 5px;
-    border-radius: 4px;
+    border-radius: ${BORDER_RADIUS.SMALL};
     transition: background-color 0.2s;
     color: ${COLORS.FIRE_ROSE};
     border: none;

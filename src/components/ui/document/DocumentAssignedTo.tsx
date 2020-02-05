@@ -4,6 +4,7 @@ import { rgba } from 'polished';
 import { COLORS } from '../../../common/colors';
 import { EOLocale } from 'eo-locale';
 import { EPhrase } from '../../../locales/EPhrase';
+import { BORDER_RADIUS } from '../../../common/ui';
 
 interface IProps {
   user: string;
@@ -34,7 +35,7 @@ const styles = {
     background-color: ${rgba(COLORS.SMOKE, 0.15)};
     color: ${COLORS.SMOKE};
     padding: 2px 5px;
-    border-radius: 4px;
+    border-radius: ${BORDER_RADIUS.SMALL};
     transition: background-color .2s;
     
     &:hover {

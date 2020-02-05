@@ -3,15 +3,19 @@ import { css } from '@emotion/core';
 import { COLORS } from '../../../common/colors';
 import { FiLink } from 'react-icons/fi';
 import { DocumentToolBarItem } from './DocumentToolBarItem';
+import { useTranslator } from 'eo-locale';
+import { EPhrase } from '../../../locales/EPhrase';
 
 interface IProps {
   id: string;
 }
 
 export const DocumentId: FC<IProps> = ({ id }) => {
+  const translator = useTranslator();
+
   return (
     <DocumentToolBarItem>
-      <a href='/' css={styles.root}>
+      <a href='/' css={styles.root} title={translator.translate(EPhrase.Document_Document_id)}>
         <FiLink className='anchor' size='16px' />#{id}
       </a>
     </DocumentToolBarItem>

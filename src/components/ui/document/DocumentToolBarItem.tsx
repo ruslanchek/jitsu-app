@@ -23,7 +23,6 @@ export const DocumentToolBarItem: FC<IProps> = ({ label, children }) => {
 
 const styles = {
   root: css`
-    margin: 0 20px 10px 0;
     white-space: nowrap;
     display: flex;
     height: ${DOCUMENT_BUTTON_HEIGHT};

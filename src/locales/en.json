@@ -1,8 +1,12 @@
 {
   "ACTIONS::CREATE": "Create",
+  "DOCUMENT::DOCUMENT_ID": "Document ID",
   "DOCUMENT::ASSIGNED_TO": "Assigned to",
+  "DOCUMENT::CREATED_BY": "Created by",
+  "DOCUMENT::UPDATED": "Updated",
   "DOCUMENT::DUE_TO": "Due to",
   "DOCUMENT::MOOD": "Mood",
   "DOCUMENT::STATUS": "Status",
+  "DOCUMENT::TAGS": "Tags",
   "DOCUMENT_STATUS::IN_PROGRESS": "In progress"
 }

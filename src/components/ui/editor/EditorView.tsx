@@ -3,6 +3,8 @@ import { createEditor, Editor } from 'slate';
 import { withHistory } from 'slate-history';
 import { Editable, Slate, withReact } from 'slate-react';
 import { EditorElement, EEditorElementType } from './EditorElement';
+import { css } from '@emotion/core';
+import { COLORS } from '../../../common/colors';
 
 export const EditorView: FC = () => {
   const editor = useMemo(() => withCustomElements(withHistory(withReact(createEditor()))), []);
@@ -39,7 +41,7 @@ export const EditorView: FC = () => {
   ]);
 
   return (
-    <div data-dragndrop={true}>
+    <div css={styles.root} data-dragndrop={true}>
       <Slate editor={editor} value={value} onChange={value => setValue(value)}>
         <Editable data-gramm={true} renderElement={renderElement} />
       </Slate>
@@ -67,4 +69,11 @@ const withCustomElements = (editor: Editor): any => {
   };
 
   return editor;
+};
+
+const styles = {
+  root: css`
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  `,
 };

@@ -11,6 +11,9 @@ import { DocumentAssignedTo } from '../ui/document/DocumentAssignedTo';
 import { DocumentMood } from '../ui/document/DocumentMood';
 import { DocumentStatus } from '../ui/document/DocumentStatus';
 import { DocumentBookmark } from '../ui/document/DocumentBookmark';
+import { DocumentTags } from '../ui/document/DocumentTags';
+import { DocumentCreatedBy } from '../ui/document/DocumentCreatedBy';
+import { DocumentUpdatedDate } from '../ui/document/DocumentUpdatedDate';
 
 export const MainScreen: FC = () => {
   return (
@@ -25,11 +28,18 @@ export const MainScreen: FC = () => {
               <DocumentStatus />,
               <DocumentDueDate date={new Date()} />,
               <DocumentAssignedTo user='m_brtn' />,
-              <DocumentMood />,
             ]}
           />
           <TitleEditable text='Editable artifacts still kept unchanged after saving' editable />
           <EditorView />
+          <DocumentToolbar
+            items={[
+              <DocumentUpdatedDate date={new Date()} />,
+              <DocumentCreatedBy user='superior_monk' />,
+              <DocumentTags tags={['Asana', 'Connectivity', 'CSS']} />,
+              <DocumentMood />,
+            ]}
+          />
         </main>
       </Limiter>
     </Fragment>

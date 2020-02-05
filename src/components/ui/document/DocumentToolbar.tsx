@@ -10,7 +10,7 @@ export const DocumentToolbar: FC<IProps> = ({ items }) => {
   return (
     <div css={styles.root}>
       {items.map((item, index) => (
-        <Fragment key={index}>{item}</Fragment>
+        <div css={styles.item} key={index}>{item}</div>
       ))}
     </div>
   );
@@ -23,5 +23,9 @@ const styles = {
     align-items: center;
     line-height: ${FONT_SIZE.REGULAR};
     margin-bottom: 10px;
+  `,
+
+  item: css`
+    margin: 0 22px 10px 0;
   `,
 };

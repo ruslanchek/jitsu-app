@@ -8,9 +8,9 @@ interface IProps {
   user: string;
 }
 
-export const DocumentAssignedTo: FC<IProps> = ({ user }) => {
+export const DocumentCreatedBy: FC<IProps> = ({ user }) => {
   return (
-    <DocumentToolBarItem label={EPhrase.Document_Assigned_to}>
+    <DocumentToolBarItem label={EPhrase.Document_Created_by}>
       <DocumentToolBarButton color={COLORS.HIGH_SMOKE}>
         @{user}
       </DocumentToolBarButton>

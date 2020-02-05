@@ -8,6 +8,7 @@ import { DocumentId } from '../ui/document/DocumentId';
 import { DocumentDueDate } from '../ui/document/DocumentDueDate';
 import { DocumentToolbar } from '../ui/document/DocumentToolbar';
 import { DocumentAssignedTo } from '../ui/document/DocumentAssignedTo';
+import { DocumentMood } from '../ui/document/DocumentMood';
 
 export const MainScreen: FC = () => {
   return (
@@ -20,12 +21,12 @@ export const MainScreen: FC = () => {
               <DocumentId id='254' />,
               <DocumentDueDate date={new Date()} />,
               <DocumentAssignedTo user='m_brtn' />,
+              <DocumentMood/>,
             ]}
           />
 
           <TitleEditable text='Editorial facts still kept unchanged' editable />
           <EditorView />
-
         </main>
       </Limiter>
     </Fragment>

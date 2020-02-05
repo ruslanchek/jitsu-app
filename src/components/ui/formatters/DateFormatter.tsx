@@ -1,5 +1,4 @@
 import React, { FC, Fragment } from 'react';
-import { css } from '@emotion/core';
 
 interface IProps {
   date: Date;
@@ -15,8 +14,4 @@ export const DateFormatter: FC<IProps> = ({ date }) => {
       })}
     </Fragment>
   );
-};
-
-const styles = {
-  root: css``,
 };

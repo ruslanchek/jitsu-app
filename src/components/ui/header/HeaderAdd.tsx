@@ -36,9 +36,10 @@ const styles = {
     font-family: ${FONT_FAMILY};
     font-size: ${FONT_SIZE.REGULAR};
 
+    &:focus,
     &:hover {
       background-color: ${rgba(COLORS.PURPLE, 0.2)};
-      color: ${darken(.1, COLORS.PURPLE)};
+      color: ${darken(0.1, COLORS.PURPLE)};
     }
 
     &:active {

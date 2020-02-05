@@ -22,12 +22,6 @@ export const DocumentDueDate: FC<IProps> = ({ date }) => {
 };
 
 const styles = {
-  root: css``,
-
-  label: css`
-    color: ${COLORS.SMOKE};
-  `,
-
   date: css`
     background-color: ${rgba(COLORS.FIRE_ROSE, 0.08)};
     padding: 2px 5px;

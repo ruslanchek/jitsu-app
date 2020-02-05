@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { COLORS } from '../../../common/colors';
 import { FiLink } from 'react-icons/fi';
-import { EPhrase } from '../../../locales/EPhrase';
 import { DocumentToolBarItem } from './DocumentToolBarItem';
 
 interface IProps {
@@ -12,9 +11,9 @@ interface IProps {
 export const DocumentId: FC<IProps> = ({ id }) => {
   return (
     <DocumentToolBarItem>
-    <a href='/' css={styles.root}>
-      <FiLink className='anchor' size="16px" />#{id}
-    </a>
+      <a href='/' css={styles.root}>
+        <FiLink className='anchor' size='16px' />#{id}
+      </a>
     </DocumentToolBarItem>
   );
 };
@@ -25,7 +24,7 @@ const styles = {
     text-decoration: none;
     display: flex;
     align-items: center;
-    transition: color .2s;
+    transition: color 0.2s;
     position: relative;
 
     .anchor {
@@ -41,7 +40,7 @@ const styles = {
 
     &:hover {
       color: ${COLORS.PLATINUM};
-    
+
       .anchor {
         opacity: 1;
       }

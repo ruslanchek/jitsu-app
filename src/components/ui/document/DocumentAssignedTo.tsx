@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { rgba } from 'polished';
 import { COLORS } from '../../../common/colors';
-import { EOLocale } from 'eo-locale';
 import { EPhrase } from '../../../locales/EPhrase';
 import { BORDER_RADIUS } from '../../../common/ui';
 import { DocumentToolBarItem } from './DocumentToolBarItem';

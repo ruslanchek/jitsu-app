@@ -39,7 +39,8 @@ const styles = {
     outline: none;
     padding: 0 10px;
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: ${COLORS.PLATINUM};
       background-color: ${rgba(COLORS.CARBON, 0.5)};
     }
@@ -60,7 +61,7 @@ const styles = {
     border-radius: 100%;
     background-color: ${COLORS.FIRE_ROSE};
     position: absolute;
-    top: 2px;
-    right: 2px;
+    top: 4px;
+    right: 4px;
   `,
 };

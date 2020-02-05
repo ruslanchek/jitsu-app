@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { EPhrase } from '../../../locales/EPhrase';
 import { DocumentToolBarItem } from './DocumentToolBarItem';
+import { DOCUMENT_BUTTON_HEIGHT } from '../../../common/ui';
 
 interface IProps {
 
@@ -34,7 +35,7 @@ const styles = {
     transform: translate(-50%, -50%);
     height: 22px;
     width: 22px;
-    line-height: 26px;
+    line-height: ${DOCUMENT_BUTTON_HEIGHT};
     font-size: 22px;
     display: block;
   `

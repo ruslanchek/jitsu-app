@@ -11,9 +11,11 @@ export const FONT_SIZE = {
 
 export const MAX_WIDTH = '1400px';
 
-export const HEADER_ELEMENT_HEIGHT = 36;
+export const HEADER_ELEMENT_HEIGHT = '36px';
 
 export const BORDER_RADIUS = {
   SMALL: '3px',
   MEDIUM: '6px',
 };
+
+export const DOCUMENT_BUTTON_HEIGHT = '23px';

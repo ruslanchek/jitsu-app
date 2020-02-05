@@ -21,7 +21,7 @@ export const HeaderButton: FC<IProps> = ({ alert, squared, children }) => {
 
 const styles = {
   root: css`
-    height: ${HEADER_ELEMENT_HEIGHT}px;
+    height: ${HEADER_ELEMENT_HEIGHT};
     border-radius: ${BORDER_RADIUS.MEDIUM};
     margin-left: 10px;
     display: flex;
@@ -51,7 +51,7 @@ const styles = {
 
     &.squared {
       padding: 0;
-      width: ${HEADER_ELEMENT_HEIGHT}px;
+      width: ${HEADER_ELEMENT_HEIGHT};
     }
   `,
 

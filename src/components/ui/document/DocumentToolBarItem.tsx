@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { EOLocale } from 'eo-locale';
 import { COLORS } from '../../../common/colors';
+import { DOCUMENT_BUTTON_HEIGHT } from '../../../common/ui';
 
 interface IProps {
   label?: string;
@@ -22,12 +23,19 @@ export const DocumentToolBarItem: FC<IProps> = ({ label, children }) => {
 
 const styles = {
   root: css`
-    margin-right: 20px;
+    margin: 0 20px 10px 0;
     white-space: nowrap;
+    display: flex;
+    height: ${DOCUMENT_BUTTON_HEIGHT};
+    align-items: center;
   `,
 
   label: css`
     color: ${COLORS.SMOKE};
     margin-right: 1ex;
+    height: ${DOCUMENT_BUTTON_HEIGHT};
+    line-height: ${DOCUMENT_BUTTON_HEIGHT};
+    display: flex;
+    align-items: center;
   `,
 };

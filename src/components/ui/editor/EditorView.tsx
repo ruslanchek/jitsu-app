@@ -12,12 +12,7 @@ export const EditorView: FC = () => {
       type: EEditorElementType.Paragraph,
       children: [
         {
-          text: `The first thing I started to use daily were to-do lists, very detailed ones. I tried to note everything
-I have to do, each smallest task. I always have a note and pen on my desk, and I use Asana for more 
-significant projects to order everything that needs to be done and really feel the progress. 
-Small wins and success are crucial in the human mind. That’s why every time I see how many tasks I fulfilled 
-every day, I feel very satisfied and motivated. It also helps me to stay focused, because I see the real 
-progress, every time I mark the task as done or scratch it off.`,
+          text: `The first thing I started to use daily were to-do lists, very detailed ones. I tried to note everything I have to do, each smallest task. I always have a note and pen on my desk, and I use Asana for more significant projects to order everything that needs to be done and really feel the progress. Small wins and success are crucial in the human mind. That’s why every time I see how many tasks I fulfilled every day, I feel very satisfied and motivated. It also helps me to stay focused, because I see the real progress, every time I mark the task as done or scratch it off.`,
         },
       ],
     },

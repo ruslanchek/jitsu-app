@@ -21,7 +21,7 @@ export const HeaderAdd: FC<IProps> = () => {
 const styles = {
   root: css`
     background-color: ${rgba(COLORS.PURPLE, 0.1)};
-    height: ${HEADER_ELEMENT_HEIGHT}px;
+    height: ${HEADER_ELEMENT_HEIGHT};
     border: none;
     padding: 0 10px;
     border-radius: ${BORDER_RADIUS.MEDIUM};

@@ -1,3 +1,4 @@
 {
-  "ACTIONS::CREATE": "Create"
+  "ACTIONS::CREATE": "Create",
+  "DOCUMENT::ASSIGNED_TO": "Assigned to"
 }

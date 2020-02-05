@@ -2,6 +2,8 @@ import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { rgba } from 'polished';
 import { COLORS } from '../../../common/colors';
+import { EOLocale } from 'eo-locale';
+import { EPhrase } from '../../../locales/EPhrase';
 
 interface IProps {
   user: string;
@@ -10,7 +12,10 @@ interface IProps {
 export const DocumentAssignedTo: FC<IProps> = ({ user }) => {
   return (
     <div css={styles.root}>
-      Assigned to{' '}
+      <span css={styles.label}>
+        <EOLocale.Text id={EPhrase.Document_Assigned_to} />
+      </span>
+      &nbsp;
       <a css={styles.user} href='#'>
         @{user}
       </a>
@@ -20,6 +25,10 @@ export const DocumentAssignedTo: FC<IProps> = ({ user }) => {
 
 const styles = {
   root: css``,
+
+  label: css`
+    color: ${COLORS.SMOKE};
+  `,
 
   user: css`
     background-color: ${rgba(COLORS.PURPLE, 0.15)};

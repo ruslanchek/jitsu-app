@@ -5,6 +5,7 @@ import { COLORS } from '../../../common/colors';
 import { EOLocale } from 'eo-locale';
 import { EPhrase } from '../../../locales/EPhrase';
 import { BORDER_RADIUS } from '../../../common/ui';
+import { DocumentToolBarItem } from './DocumentToolBarItem';
 
 interface IProps {
   user: string;
@@ -12,32 +13,22 @@ interface IProps {
 
 export const DocumentAssignedTo: FC<IProps> = ({ user }) => {
   return (
-    <div css={styles.root}>
-      <span css={styles.label}>
-        <EOLocale.Text id={EPhrase.Document_Assigned_to} />
-      </span>
-      &nbsp;
+    <DocumentToolBarItem label={EPhrase.Document_Assigned_to}>
       <a css={styles.user} href='/'>
         @{user}
       </a>
-    </div>
+    </DocumentToolBarItem>
   );
 };
 
 const styles = {
-  root: css``,
-
-  label: css`
-    color: ${COLORS.SMOKE};
-  `,
-
   user: css`
     background-color: ${rgba(COLORS.SMOKE, 0.15)};
     color: ${COLORS.SMOKE};
     padding: 2px 5px;
     border-radius: ${BORDER_RADIUS.SMALL};
-    transition: background-color .2s;
-    
+    transition: background-color 0.2s;
+
     &:hover {
       background-color: ${rgba(COLORS.SMOKE, 0.25)};
     }

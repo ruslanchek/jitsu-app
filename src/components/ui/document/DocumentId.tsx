@@ -2,6 +2,8 @@ import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { COLORS } from '../../../common/colors';
 import { FiLink } from 'react-icons/fi';
+import { EPhrase } from '../../../locales/EPhrase';
+import { DocumentToolBarItem } from './DocumentToolBarItem';
 
 interface IProps {
   id: string;
@@ -9,9 +11,11 @@ interface IProps {
 
 export const DocumentId: FC<IProps> = ({ id }) => {
   return (
+    <DocumentToolBarItem>
     <a href='/' css={styles.root}>
       <FiLink className='anchor' size="16px" />#{id}
     </a>
+    </DocumentToolBarItem>
   );
 };
 

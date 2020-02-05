@@ -4,6 +4,8 @@ import { COLORS } from '../../../common/colors';
 import { rgba } from 'polished';
 import { BORDER_RADIUS, FONT_FAMILY, FONT_SIZE } from '../../../common/ui';
 import { DateFormatter } from '../formatters/DateFormatter';
+import { EPhrase } from '../../../locales/EPhrase';
+import { DocumentToolBarItem } from './DocumentToolBarItem';
 
 interface IProps {
   date: Date;
@@ -11,13 +13,11 @@ interface IProps {
 
 export const DocumentDueDate: FC<IProps> = ({ date }) => {
   return (
-    <div css={styles.root}>
-      <span css={styles.label}>Due to</span>
-      &nbsp;
+    <DocumentToolBarItem label={EPhrase.Document_Due_to}>
       <button css={styles.date}>
         <DateFormatter date={date} />
       </button>
-    </div>
+    </DocumentToolBarItem>
   );
 };
 

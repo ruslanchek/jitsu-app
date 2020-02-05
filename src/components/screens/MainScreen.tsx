@@ -25,6 +25,7 @@ export const MainScreen: FC = () => {
 
           <TitleEditable text='Editorial facts still kept unchanged' editable />
           <EditorView />
+
         </main>
       </Limiter>
     </Fragment>

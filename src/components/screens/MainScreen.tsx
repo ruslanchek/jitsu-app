@@ -23,6 +23,7 @@ export const MainScreen: FC = () => {
         <main css={styles.main}>
           <div css={styles.toolBars}>
             <DocumentToolbar
+              align='left'
               items={[
                 <DocumentId id='254' />,
                 <DocumentBookmark mark />,
@@ -31,13 +32,14 @@ export const MainScreen: FC = () => {
                 <DocumentAssignedTo user='m_brtn' />,
               ]}
             />
-            <DocumentToolbar items={[<DocumentMood />]} />
+            <DocumentToolbar align='right' items={[<DocumentMood />]} />
           </div>
           <TitleEditable text='Editable artifacts still kept unchanged after saving' editable />
           <EditorView />
           <div css={styles.toolBars}>
-            <DocumentToolbar items={[<DocumentTags tags={['Asana', 'Connectivity', 'CSS']} />]} />
+            <DocumentToolbar align='left' items={[<DocumentTags tags={['Asana', 'Connectivity', 'CSS']} />]} />
             <DocumentToolbar
+              align='right'
               items={[<DocumentCreatedBy user='superior_monk' />, <DocumentUpdatedDate date={new Date()} />]}
             />
           </div>

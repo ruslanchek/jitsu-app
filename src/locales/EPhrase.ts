@@ -3,4 +3,5 @@ export enum EPhrase {
 	Document_Assigned_to = 'DOCUMENT::ASSIGNED_TO',
 	Document_Due_to = 'DOCUMENT::DUE_TO',
 	Document_Mood = 'DOCUMENT::MOOD',
+	Document_Status = 'DOCUMENT::STATUS',
 }

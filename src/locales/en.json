@@ -2,5 +2,6 @@
   "ACTIONS::CREATE": "Create",
   "DOCUMENT::ASSIGNED_TO": "Assigned to",
   "DOCUMENT::DUE_TO": "Due to",
-  "DOCUMENT::MOOD": "Mood"
+  "DOCUMENT::MOOD": "Mood",
+  "DOCUMENT::STATUS": "Status"
 }

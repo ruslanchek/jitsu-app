@@ -9,6 +9,7 @@ import { DocumentDueDate } from '../ui/document/DocumentDueDate';
 import { DocumentToolbar } from '../ui/document/DocumentToolbar';
 import { DocumentAssignedTo } from '../ui/document/DocumentAssignedTo';
 import { DocumentMood } from '../ui/document/DocumentMood';
+import { DocumentStatus } from '../ui/document/DocumentStatus';
 
 export const MainScreen: FC = () => {
   return (
@@ -19,12 +20,12 @@ export const MainScreen: FC = () => {
           <DocumentToolbar
             items={[
               <DocumentId id='254' />,
+              <DocumentStatus />,
               <DocumentDueDate date={new Date()} />,
               <DocumentAssignedTo user='m_brtn' />,
               <DocumentMood/>,
             ]}
           />
-
           <TitleEditable text='Editable artifacts still kept unchanged after saving' editable />
           <EditorView />
         </main>

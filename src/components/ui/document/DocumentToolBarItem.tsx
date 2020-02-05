@@ -23,6 +23,7 @@ export const DocumentToolBarItem: FC<IProps> = ({ label, children }) => {
 const styles = {
   root: css`
     margin-right: 20px;
+    white-space: nowrap;
   `,
 
   label: css`

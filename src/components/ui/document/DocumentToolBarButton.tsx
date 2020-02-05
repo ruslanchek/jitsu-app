@@ -33,7 +33,7 @@ const styles = {
     height: ${DOCUMENT_BUTTON_HEIGHT};
     line-height: ${DOCUMENT_BUTTON_HEIGHT};
     border-radius: ${BORDER_RADIUS.SMALL};
-    transition: background-color 0.2s, color 0.2s;
+    transition: background-color 0.2s, color 0.2s, transform 0.2s;
     border: none;
     font-family: ${FONT_FAMILY};
     font-size: ${FONT_SIZE.REGULAR};
@@ -42,5 +42,9 @@ const styles = {
     outline: none;
     display: flex;
     align-items: center;
+
+    &:active {
+      transform: scale(0.98);
+    }
   `,
 };

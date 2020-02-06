@@ -7,7 +7,6 @@ import { COLORS } from '../../../common/colors';
 
 export const EditorImageElement: FC<IEditorLeafProps> = ({ attributes, children, element }) => {
   const { src } = element;
-  // const editor = useEditor();
   const readOnly = useReadOnly();
 
   return (
@@ -35,9 +34,9 @@ const styles = {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    transition: background-color .2s;
+    transition: background-color 0.2s;
     cursor: pointer;
-    
+
     &:hover {
       background-color: ${COLORS.SNOW};
     }

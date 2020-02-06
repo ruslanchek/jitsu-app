@@ -12,7 +12,6 @@ export const withPasteLink = (editor: ReactEditor) => {
     deleteFragment,
     addMark,
     removeMark,
-    selection,
   } = editor;
 
   editor.insertNode = node => {

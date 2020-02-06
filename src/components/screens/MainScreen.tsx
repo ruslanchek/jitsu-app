@@ -32,7 +32,7 @@ export const MainScreen: FC = () => {
         />
         <DocumentToolBar align='right' items={[<DocumentToolBarMood />]} />
       </DocumentToolBarGroup>
-      <DocumentTitleEditable text='Editable artifacts still kept unchanged after saving' editable />
+      <DocumentTitleEditable value='Editable artifacts still kept unchanged after saving' editable />
       <EditorView />
       <DocumentToolBarGroup>
         <DocumentToolBar align='left' items={[<DocumentToolBarTags tags={['Asana', 'Connectivity', 'CSS']} />]} />

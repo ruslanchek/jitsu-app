@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { css } from '@emotion/core';
 import { EOLocale } from 'eo-locale';
 import { EPhrase } from '../../../locales/EPhrase';
 import { DocumentToolBarButton } from './DocumentToolBarButton';
@@ -16,8 +15,4 @@ export const DocumentPriority: FC<IProps> = () => {
       </DocumentToolBarButton>
     </DocumentToolBarItem>
   );
-};
-
-const styles = {
-  root: css``,
 };

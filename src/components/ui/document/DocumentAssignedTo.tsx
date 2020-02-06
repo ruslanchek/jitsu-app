@@ -11,7 +11,7 @@ interface IProps {
 export const DocumentAssignedTo: FC<IProps> = ({ user }) => {
   return (
     <DocumentToolBarItem label={EPhrase.Document_Assigned_to}>
-      <DocumentToolBarButton color={COLORS.HIGH_SMOKE}>
+      <DocumentToolBarButton background color={COLORS.HIGH_SMOKE}>
         @{user}
       </DocumentToolBarButton>
     </DocumentToolBarItem>

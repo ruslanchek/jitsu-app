@@ -11,7 +11,7 @@ interface IProps {
 export const DocumentCreatedBy: FC<IProps> = ({ user }) => {
   return (
     <DocumentToolBarItem label={EPhrase.Document_Created_by}>
-      <DocumentToolBarButton color={COLORS.HIGH_SMOKE}>
+      <DocumentToolBarButton background color={COLORS.HIGH_SMOKE}>
         @{user}
       </DocumentToolBarButton>
     </DocumentToolBarItem>

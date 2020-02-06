@@ -1,18 +1,59 @@
-import React, { FC, useState } from 'react';
+import React, { FC, ReactNode, useMemo, useState } from 'react';
 import { css } from '@emotion/core';
 import { darken, rgba } from 'polished';
 import { BORDER_RADIUS, DOCUMENT_BUTTON_HEIGHT, FONT_FAMILY, FONT_SIZE } from '../../../common/ui';
 
 interface IProps {
   color: string;
+  icon?: ReactNode;
+  background?: boolean;
+  colorMode?: 'icon' | 'content' | 'all';
 }
 
-export const DocumentToolBarButton: FC<IProps> = ({ children, color }) => {
+export const DocumentToolBarButton: FC<IProps> = ({ children, color, icon, background, colorMode = 'all' }) => {
   const [hover, setHover] = useState();
-  const style = {
-    backgroundColor: rgba(color, hover ? 0.16 : 0.08),
-    color: hover ? darken(0.1, color) : color,
-  };
+
+  const contentColor = useMemo(() => (background ? (hover ? darken(0.1, color) : color) : color), [
+    background,
+    hover,
+    color,
+  ]);
+
+  const style = useMemo(() => {
+    return {
+      backgroundColor: rgba(color, background ? (hover ? 0.16 : 0.08) : hover ? 0.08 : 0),
+    };
+  }, [color, background, hover]);
+
+  const iconStyle = useMemo(() => {
+    console.log(colorMode);
+
+    switch (colorMode) {
+      case 'all':
+      case 'icon': {
+        return {
+          color: contentColor,
+        };
+      }
+      default: {
+        return {};
+      }
+    }
+  }, [contentColor, colorMode]);
+
+  const contentStyle = useMemo(() => {
+    switch (colorMode) {
+      case 'all':
+      case 'content': {
+        return {
+          color: contentColor,
+        };
+      }
+      default: {
+        return {};
+      }
+    }
+  }, [colorMode, contentColor]);
 
   return (
     <button
@@ -22,7 +63,12 @@ export const DocumentToolBarButton: FC<IProps> = ({ children, color }) => {
       onMouseLeave={() => setHover(false)}
       onFocus={() => setHover(true)}
       onBlur={() => setHover(false)}>
-      {children}
+      {icon && (
+        <span css={styles.icon} style={iconStyle}>
+          {icon}
+        </span>
+      )}
+      <span style={contentStyle}>{children}</span>
     </button>
   );
 };
@@ -45,6 +91,14 @@ const styles = {
 
     &:active {
       transform: scale(0.98);
+    }
+  `,
+
+  icon: css`
+    > svg {
+      margin-right: 0.5ex;
+      width: 12px;
+      height: 12px;
     }
   `,
 };

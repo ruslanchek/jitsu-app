@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { EditorView } from '../ui/editor/EditorView';
-import { TitleEditable } from '../ui/common/TitleEditable';
+import { DocumentTitleEditable } from '../ui/document/DocumentTitleEditable';
 import { DocumentToolBarId } from '../ui/document/tool-bar/DocumentToolBarId';
 import { DocumentToolBarDueDate } from '../ui/document/tool-bar/DocumentToolBarDueDate';
 import { DocumentToolBar } from '../ui/document/tool-bar/DocumentToolBar';
@@ -32,7 +32,7 @@ export const MainScreen: FC = () => {
         />
         <DocumentToolBar align='right' items={[<DocumentToolBarMood />]} />
       </DocumentToolBarGroup>
-      <TitleEditable text='Editable artifacts still kept unchanged after saving' editable />
+      <DocumentTitleEditable text='Editable artifacts still kept unchanged after saving' editable />
       <EditorView />
       <DocumentToolBarGroup>
         <DocumentToolBar align='left' items={[<DocumentToolBarTags tags={['Asana', 'Connectivity', 'CSS']} />]} />

@@ -13,7 +13,6 @@ export const EditorImageElement: FC<IEditorLeafProps> = ({ attributes, children,
   return (
     <div {...attributes} css={styles.root} contentEditable={!readOnly} suppressContentEditableWarning>
       <div css={styles.inner}>
-
         <span css={styles.label} contentEditable={!readOnly} suppressContentEditableWarning>
           <img css={styles.image} src={src} alt={''} contentEditable={!readOnly} />
           {children}
@@ -30,12 +29,18 @@ const styles = {
   `,
 
   inner: css`
-    padding: 6px;
     border-radius: ${BORDER_RADIUS.MEDIUM};
-    background-color: ${COLORS.DIRTY_SNOW};
+    border: 1px solid ${COLORS.DIRTY_SNOW};
+    padding: 6px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    transition: background-color .2s;
+    cursor: pointer;
+    
+    &:hover {
+      background-color: ${COLORS.SNOW};
+    }
   `,
 
   image: css`

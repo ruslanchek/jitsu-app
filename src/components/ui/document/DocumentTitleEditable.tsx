@@ -9,7 +9,7 @@ interface IProps {
   editable?: boolean;
 }
 
-export const TitleEditable: FC<IProps> = ({ text, editable }) => {
+export const DocumentTitleEditable: FC<IProps> = ({ text, editable }) => {
   return (
     <div css={styles.root}>
       <h1 contentEditable={editable} css={styles.h1} className={classNames({ editable })}>
@@ -25,7 +25,7 @@ const styles = {
   h1: css`
     font-size: ${FONT_SIZE.H1};
     outline: none;
-    padding: 5px 12px 4px;
+    padding: 5px 12px 3px;
     margin: 0 0 20px -12px;
     border-radius: ${BORDER_RADIUS.MEDIUM};
     border: 1px solid transparent;

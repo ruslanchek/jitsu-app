@@ -14,6 +14,9 @@ import { DocumentTimeline } from '../ui/document/DocumentTimeline';
 import { DocumentToolBarPriority } from '../ui/document/tool-bar/DocumentToolBarPriority';
 import { PageWrapper } from '../common/PageWrapper';
 import { DocumentToolBarGroup } from '../ui/document/tool-bar/DocumentToolBarGroup';
+import { css } from '@emotion/core';
+import { COLORS } from '../../common/colors';
+import { BORDER_RADIUS } from '../../common/ui';
 
 export const MainScreen: FC = () => {
   return (
@@ -33,7 +36,10 @@ export const MainScreen: FC = () => {
         <DocumentToolBar align='right' items={[<DocumentToolBarMood />]} />
       </DocumentToolBarGroup>
       <DocumentTitleEditable value='Frontend Collective: Week #1' />
-      <EditorView />
+      <div css={styles.root}>
+        <EditorView />
+        <div css={styles.side}>xxx</div>
+      </div>
       <DocumentToolBarGroup>
         <DocumentToolBar align='left' items={[<DocumentToolBarTags tags={['Asana', 'Connectivity', 'CSS']} />]} />
         <DocumentToolBar align='right' items={[<DocumentToolBarUpdatedDate user='m_brtn' date={new Date()} />]} />
@@ -41,4 +47,22 @@ export const MainScreen: FC = () => {
       <DocumentTimeline />
     </PageWrapper>
   );
+};
+
+const styles = {
+  root: css`
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  `,
+
+  side: css`
+    width: 350px;
+    position: sticky;
+    margin-left: 40px;
+    top: 100px;
+    height: 400px;
+    background-color: ${COLORS.SNOW};
+    border-radius: ${BORDER_RADIUS.MEDIUM};
+  `,
 };

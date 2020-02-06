@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useMemo, useState } from 'react';
+import React, { FC, useMemo, useState } from 'react';
 import { createEditor, Node } from 'slate';
 import { withHistory } from 'slate-history';
 import { Editable, Slate, withReact } from 'slate-react';

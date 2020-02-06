@@ -4,6 +4,7 @@ import { DateFormatter } from '../../formatters/DateFormatter';
 import { EPhrase } from '../../../../locales/EPhrase';
 import { DocumentToolBarItem } from './DocumentToolBarItem';
 import { DocumentToolBarButton } from './DocumentToolBarButton';
+import { css } from '@emotion/core';
 
 interface IProps {
   date: Date;
@@ -13,12 +14,19 @@ interface IProps {
 export const DocumentToolBarUpdatedDate: FC<IProps> = ({ date, user }) => {
   return (
     <DocumentToolBarItem label={EPhrase.Document_Updated}>
-      <DocumentToolBarButton color={COLORS.HIGH_SMOKE}>
+      <span css={styles.date}>
         <DateFormatter date={date} />
-      </DocumentToolBarButton>
+      </span>
       <DocumentToolBarButton background color={COLORS.HIGH_SMOKE}>
         @{user}
       </DocumentToolBarButton>
     </DocumentToolBarItem>
   );
+};
+
+const styles = {
+  date: css`
+    color: ${COLORS.HIGH_SMOKE};
+    margin-right: 1ex;
+  `,
 };

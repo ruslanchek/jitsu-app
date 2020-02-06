@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/core';
 
-interface IProps {
-}
-
-export const DocumentToolBarGroup: FC<IProps> = () => {
-  return (<div css={styles.root}></div>);
+export const DocumentToolBarGroup: FC = ({ children }) => {
+  return <div css={styles.root}>{children}</div>;
 };
 
 const styles = {
-  root: css``,
+  root: css`
+    display: flex;
+    justify-content: space-between;
+  `,
 };

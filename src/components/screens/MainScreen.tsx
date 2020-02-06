@@ -38,7 +38,7 @@ export const MainScreen: FC = () => {
       <DocumentTitleEditable value='Frontend Collective: Week #1' />
       <div css={styles.root}>
         <EditorView />
-        <div css={styles.side}>xxx</div>
+        <div css={styles.side}></div>
       </div>
       <DocumentToolBarGroup>
         <DocumentToolBar align='left' items={[<DocumentToolBarTags tags={['Asana', 'Connectivity', 'CSS']} />]} />
@@ -57,9 +57,11 @@ const styles = {
   `,
 
   side: css`
-    width: 350px;
+    width: 420px;
     position: sticky;
     margin-left: 40px;
+    box-sizing: border-box;
+    padding: 20px 30px;
     top: 100px;
     height: 400px;
     background-color: ${COLORS.SNOW};

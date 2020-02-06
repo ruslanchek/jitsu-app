@@ -1,6 +1,6 @@
 import { css } from '@emotion/core';
 import { COLORS } from './colors';
-import { FONT_FAMILY, FONT_SIZE } from './ui';
+import { FONT_FAMILY, FONT_SIZE, BORDER_RADIUS, FONT_FAMILY_MONO } from './ui';
 import { lighten } from 'polished';
 
 export const globalStyles = css`
@@ -67,5 +67,18 @@ export const globalStyles = css`
     &:active {
       color: ${lighten(0.15, COLORS.BLUE)};
     }
+  }
+
+  pre {
+    padding: 0;
+    margin: 0;
+  }
+
+  code {
+    background-color: ${COLORS.SNOW};
+    display: block;
+    padding: 0;
+    border-radius: ${BORDER_RADIUS.MEDIUM};
+    font-family: ${FONT_FAMILY_MONO};
   }
 `;

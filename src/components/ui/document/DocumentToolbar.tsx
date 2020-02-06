@@ -9,7 +9,7 @@ interface IProps {
 
 export const DocumentToolbar: FC<IProps> = ({ items, align }) => {
   return (
-    <div css={styles.root}>
+    <div css={styles.root} className={align}>
       {items.map((item, index) => (
         <div css={styles.item} className={align} key={index}>
           {item}
@@ -25,6 +25,10 @@ const styles = {
     flex-wrap: wrap;
     line-height: ${FONT_SIZE.REGULAR};
     margin-bottom: 1px;
+
+    &.right {
+      justify-content: flex-end;
+    }
   `,
 
   item: css`

@@ -17,7 +17,7 @@ export const EditorCheckListElement: FC<IEditorLeafProps> = ({ attributes, child
 
   return (
     <div {...attributes} css={styles.root}>
-      <label contentEditable={readOnly} css={styles.checkBox} className={classnames({ checked, focus })}>
+      <label contentEditable={!readOnly} css={styles.checkBox} className={classnames({ checked, focus })}>
         <FiCheck className='check' color={COLORS.WHITE} />
         <input
           type='checkbox'
@@ -45,7 +45,7 @@ export const EditorCheckListElement: FC<IEditorLeafProps> = ({ attributes, child
 const styles = {
   root: css`
     display: flex;
-    margin-bottom: .3em;
+    margin-bottom: 0.3em;
   `,
 
   checkBox: css`

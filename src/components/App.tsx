@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
-import { Wrapper } from './common/Wrapper';
+import { GlobalWrapper } from './common/GlobalWrapper';
 import { MainScreen } from './screens/MainScreen';
 
 export const App: FC = () => {
   return (
-    <Wrapper>
+    <GlobalWrapper>
       <MainScreen />
-    </Wrapper>
+    </GlobalWrapper>
   );
 };

@@ -10,6 +10,7 @@ export const globalStyles = css`
     font-family: ${FONT_FAMILY};
     font-size: ${FONT_SIZE.REGULAR};
     color: ${COLORS.PLATINUM};
+    overflow: hidden;
   }
 
   a {

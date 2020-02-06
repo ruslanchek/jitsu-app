@@ -3,7 +3,7 @@ import { Global } from '@emotion/core';
 import { globalStyles } from '../../common/global-styles';
 import { Providers } from './Providers';
 
-export const Wrapper: FC = ({ children }) => {
+export const GlobalWrapper: FC = ({ children }) => {
   return (
     <Fragment>
       <Global styles={globalStyles} />

@@ -18,6 +18,11 @@ export const EditorView: FC = () => {
       ],
     },
     {
+      type: EEditorElementType.Image,
+      src: 'https://picsum.photos/id/33/200/200',
+      children: [{ text: '' }],
+    },
+    {
       type: EEditorElementType.CheckList,
       checked: true,
       children: [{ text: 'Check up database connections' }],
@@ -28,6 +33,14 @@ export const EditorView: FC = () => {
       children: [{ text: 'Fill up the fixtures' }],
     },
     {
+      type: EEditorElementType.Paragraph,
+      children: [
+        {
+          text: `The first thing I started to use daily were to-do lists, very detailed ones.`,
+        },
+      ],
+    },
+    {
       type: EEditorElementType.CheckList,
       checked: false,
       children: [{ text: 'Swap Linaria CSS with Emotion' }],
@@ -36,6 +49,19 @@ export const EditorView: FC = () => {
       type: EEditorElementType.CheckList,
       checked: false,
       children: [{ text: 'Check connectivity during poor 3G connection' }],
+    },
+    {
+      type: EEditorElementType.Image,
+      src: 'https://picsum.photos/id/33/200/200',
+      children: [{ text: '' }],
+    },
+    {
+      type: EEditorElementType.Paragraph,
+      children: [
+        {
+          text: `The first thing I started to use daily were to-do lists, very detailed ones.`,
+        },
+      ],
     },
   ]);
 

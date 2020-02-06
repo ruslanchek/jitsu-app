@@ -26,8 +26,6 @@ export const DocumentToolBarButton: FC<IProps> = ({ children, color, icon, backg
   }, [color, background, hover]);
 
   const iconStyle = useMemo(() => {
-    console.log(colorMode);
-
     switch (colorMode) {
       case 'all':
       case 'icon': {

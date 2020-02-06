@@ -3,24 +3,22 @@ import { COLORS } from '../../../common/colors';
 import { DateFormatter } from '../formatters/DateFormatter';
 import { EPhrase } from '../../../locales/EPhrase';
 import { DocumentToolBarItem } from './DocumentToolBarItem';
-import { css } from '@emotion/core';
+import { DocumentToolBarButton } from './DocumentToolBarButton';
 
 interface IProps {
   date: Date;
+  user: string;
 }
 
-export const DocumentUpdatedDate: FC<IProps> = ({ date }) => {
+export const DocumentUpdatedDate: FC<IProps> = ({ date, user }) => {
   return (
     <DocumentToolBarItem label={EPhrase.Document_Updated}>
-      <span css={style.root}>
+      <DocumentToolBarButton color={COLORS.HIGH_SMOKE}>
         <DateFormatter date={date} />
-      </span>
+      </DocumentToolBarButton>
+      <DocumentToolBarButton background color={COLORS.HIGH_SMOKE}>
+        @{user}
+      </DocumentToolBarButton>
     </DocumentToolBarItem>
   );
-};
-
-const style = {
-  root: css`
-    color: ${COLORS.HIGH_SMOKE};
-  `,
 };

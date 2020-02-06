@@ -40,7 +40,12 @@ const styles = {
       opacity: 0;
       transform: translate(-20px, -1px);
       transition: opacity 0.2s;
-       color: ${COLORS.SMOKE};
+      color: ${COLORS.SMOKE};
+    }
+
+    &:link,
+    &:visited {
+      color: ${COLORS.SMOKE};
     }
 
     &:hover {

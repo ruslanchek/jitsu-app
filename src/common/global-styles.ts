@@ -1,6 +1,7 @@
 import { css } from '@emotion/core';
 import { COLORS } from './colors';
 import { FONT_FAMILY, FONT_SIZE } from './ui';
+import { lighten } from 'polished';
 
 export const globalStyles = css`
   body {
@@ -16,9 +17,55 @@ export const globalStyles = css`
   a {
     text-decoration: none;
   }
-  
+
   button {
     padding: 0;
     outline: none;
+  }
+
+  p {
+    margin: 1em 0 0 0;
+  }
+
+  h1 {
+    font-size: ${FONT_SIZE.H1};
+    font-weight: 500;
+    margin: 1em 0 0 0;
+  }
+
+  h2 {
+    font-size: ${FONT_SIZE.H2};
+    font-weight: 500;
+    margin: 1em 0 0 0;
+  }
+
+  h3 {
+    font-size: ${FONT_SIZE.H3};
+    font-weight: 500;
+    margin: 1em 0 0 0;
+  }
+
+  h4 {
+    font-size: ${FONT_SIZE.H4};
+    font-weight: 500;
+    margin: 1em 0 0 0;
+  }
+
+  hr {
+    border: 1px solid ${COLORS.DIRTY_SNOW};
+  }
+
+  a {
+    transition: color 0.2s;
+
+    &:link,
+    &:visited {
+      color: ${COLORS.BLUE};
+    }
+
+    &:hover,
+    &:active {
+      color: ${lighten(0.15, COLORS.BLUE)};
+    }
   }
 `;

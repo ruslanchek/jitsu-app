@@ -51,8 +51,23 @@ export const globalStyles = css`
     margin: 1em 0 0 0;
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  p {
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+
   hr {
-    border: 1px solid ${COLORS.DIRTY_SNOW};
+    border: none;
+    background: ${COLORS.DIRTY_SNOW};
+    margin: 1em 0;
+    height: 2px;
+    display: block;
+    border-radius: 2px;
   }
 
   a {

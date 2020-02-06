@@ -1,13 +1,13 @@
 import React, { FC, ReactNodeArray } from 'react';
 import { css } from '@emotion/core';
-import { FONT_SIZE } from '../../../common/ui';
+import { FONT_SIZE } from '../../../../common/ui';
 
 interface IProps {
   items: ReactNodeArray;
   align: 'left' | 'right';
 }
 
-export const DocumentToolbar: FC<IProps> = ({ items, align }) => {
+export const DocumentToolBar: FC<IProps> = ({ items, align }) => {
   return (
     <div css={styles.root} className={align}>
       {items.map((item, index) => (

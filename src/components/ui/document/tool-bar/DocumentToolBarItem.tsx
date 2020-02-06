@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { EOLocale } from 'eo-locale';
-import { COLORS } from '../../../common/colors';
-import { DOCUMENT_BUTTON_HEIGHT } from '../../../common/ui';
+import { COLORS } from '../../../../common/colors';
+import { DOCUMENT_BUTTON_HEIGHT } from '../../../../common/ui';
 
 interface IProps {
   label?: string;

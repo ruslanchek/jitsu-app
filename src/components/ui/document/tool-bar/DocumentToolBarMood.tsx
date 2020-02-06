@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/core';
-import { EPhrase } from '../../../locales/EPhrase';
+import { EPhrase } from '../../../../locales/EPhrase';
 import { DocumentToolBarItem } from './DocumentToolBarItem';
-import { BORDER_RADIUS } from '../../../common/ui';
-import { COLORS } from '../../../common/colors';
+import { BORDER_RADIUS } from '../../../../common/ui';
+import { COLORS } from '../../../../common/colors';
 
 interface IProps {}
 
-export const DocumentMood: FC<IProps> = () => {
+export const DocumentToolBarMood: FC<IProps> = () => {
   return (
     <DocumentToolBarItem label={EPhrase.Document_Mood}>
       <div css={styles.root}>

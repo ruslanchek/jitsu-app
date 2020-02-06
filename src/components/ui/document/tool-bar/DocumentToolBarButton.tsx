@@ -1,7 +1,7 @@
 import React, { FC, ReactNode, useMemo, useState } from 'react';
 import { css } from '@emotion/core';
 import { darken, rgba } from 'polished';
-import { BORDER_RADIUS, DOCUMENT_BUTTON_HEIGHT, FONT_FAMILY, FONT_SIZE } from '../../../common/ui';
+import { BORDER_RADIUS, DOCUMENT_BUTTON_HEIGHT, FONT_FAMILY, FONT_SIZE } from '../../../../common/ui';
 
 interface IProps {
   color: string;

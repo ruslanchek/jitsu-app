@@ -3,9 +3,7 @@ import { css } from '@emotion/core';
 import { HeaderView } from '../ui/header/HeaderView';
 import { Limiter } from '../ui/common/Limiter';
 
-interface IProps {}
-
-export const PageWrapper: FC<IProps> = ({ children }) => {
+export const PageWrapper: FC = ({ children }) => {
   return (
     <div css={styles.root}>
       <HeaderView />

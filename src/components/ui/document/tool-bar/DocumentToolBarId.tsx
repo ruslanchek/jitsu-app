@@ -1,16 +1,16 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/core';
-import { COLORS } from '../../../common/colors';
+import { COLORS } from '../../../../common/colors';
 import { FiLink } from 'react-icons/fi';
 import { DocumentToolBarItem } from './DocumentToolBarItem';
 import { useTranslator } from 'eo-locale';
-import { EPhrase } from '../../../locales/EPhrase';
+import { EPhrase } from '../../../../locales/EPhrase';
 
 interface IProps {
   id: string;
 }
 
-export const DocumentId: FC<IProps> = ({ id }) => {
+export const DocumentToolBarId: FC<IProps> = ({ id }) => {
   const translator = useTranslator();
 
   return (

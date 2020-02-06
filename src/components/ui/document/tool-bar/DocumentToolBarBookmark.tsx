@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { css } from '@emotion/core';
-import { COLORS } from '../../../common/colors';
+import { COLORS } from '../../../../common/colors';
 import { darken, lighten } from 'polished';
 import { DocumentToolBarItem } from './DocumentToolBarItem';
 import classNames from 'classnames';
@@ -10,7 +10,7 @@ interface IProps {
   mark?: boolean;
 }
 
-export const DocumentBookmark: FC<IProps> = ({ mark }) => {
+export const DocumentToolBarBookmark: FC<IProps> = ({ mark }) => {
   const [localMark, setLocalMark] = useState(mark);
 
   return (

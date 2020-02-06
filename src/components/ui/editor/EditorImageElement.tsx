@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { IEditorLeafProps } from './EditorElement';
-import { useEditor, useReadOnly } from 'slate-react';
+import { useReadOnly } from 'slate-react';
 import { BORDER_RADIUS } from '../../../common/ui';
 import { COLORS } from '../../../common/colors';
 
 export const EditorImageElement: FC<IEditorLeafProps> = ({ attributes, children, element }) => {
   const { src } = element;
-  const editor = useEditor();
+  // const editor = useEditor();
   const readOnly = useReadOnly();
 
   return (

@@ -1,36 +1,68 @@
 import { ReactEditor } from 'slate-react';
 
 export const withPasteLink = (editor: ReactEditor) => {
-  const { insertNode, insertText, insertFragment, insertData, deleteBackward, deleteForward } = editor;
+  const {
+    insertNode,
+    insertText,
+    insertFragment,
+    insertData,
+    insertBreak,
+    deleteBackward,
+    deleteForward,
+    deleteFragment,
+    addMark,
+    removeMark,
+    selection,
+  } = editor;
 
-  editor.insertNode = (...args) => {
-    console.log('insertNode');
-    insertNode(...args);
+  editor.insertNode = node => {
+    console.log('insertNode', node);
+    insertNode(node);
   };
 
-  editor.insertText = (...args) => {
-    console.log('insertText');
-    insertText(...args);
+  editor.insertText = text => {
+    console.log('insertText', text);
+    insertText(text);
   };
 
-  editor.insertFragment = (...args) => {
-    console.log('insertFragment');
-    insertFragment(...args);
+  editor.insertFragment = fragment => {
+    console.log('insertFragment', fragment);
+    insertFragment(fragment);
   };
 
-  editor.insertData = (...args) => {
-    console.log('insertData');
-    insertData(...args);
+  editor.insertData = data => {
+    console.log('insertData', data);
+    insertData(data);
   };
 
-  editor.deleteBackward = (...args) => {
-    console.log('deleteBackward');
-    deleteBackward(...args);
+  editor.deleteBackward = unit => {
+    console.log('deleteBackward', unit);
+    deleteBackward(unit);
   };
 
-  editor.deleteForward = (...args) => {
-    console.log('deleteForward');
-    deleteForward(...args);
+  editor.deleteForward = unit => {
+    console.log('deleteForward', unit);
+    deleteForward(unit);
+  };
+
+  editor.deleteFragment = () => {
+    console.log('deleteFragment');
+    deleteFragment();
+  };
+
+  editor.insertBreak = () => {
+    console.log('insertBreak');
+    insertBreak();
+  };
+
+  editor.addMark = (key, value) => {
+    console.log('addMark');
+    addMark(key, value);
+  };
+
+  editor.removeMark = key => {
+    console.log('removeMark', key);
+    removeMark(key);
   };
 
   return editor;

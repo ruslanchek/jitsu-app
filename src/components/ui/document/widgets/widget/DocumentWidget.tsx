@@ -2,10 +2,10 @@ import React, { FC, ReactNode } from 'react';
 import { css } from '@emotion/core';
 import { COLORS } from '../../../../../common/colors';
 import { BORDER_RADIUS, FONT_SIZE, DOCUMENT_BUTTON_HEIGHT, FONT_FAMILY } from '../../../../../common/ui';
-import { darken } from 'polished';
+import { rgba } from 'polished';
 
 interface IAction {
-  title: ReactNode;
+  content: ReactNode;
   onClick: () => void;
 }
 
@@ -23,7 +23,7 @@ export const DocumentWidget: FC<IProps> = ({ children, actions = [], title }) =>
           <div css={styles.actions}>
             {actions.map((action, index) => (
               <button css={styles.actionButton} key={index} onClick={() => action.onClick()}>
-                {action.title}
+                {action.content}
               </button>
             ))}
           </div>
@@ -67,13 +67,13 @@ const styles = {
   actionButton: css`
     height: ${DOCUMENT_BUTTON_HEIGHT};
     display: flex;
-    padding: 0 10px;
+    padding: 0 6px;
     align-items: center;
-    border: none;
     box-sizing: border-box;
     border-radius: ${BORDER_RADIUS.SMALL};
-    background-color: ${COLORS.WHITE};
-    color: ${COLORS.SMOKE};
+    background-color: ${rgba(COLORS.SMOKE, 0.2)};
+    color: ${COLORS.HIGH_SMOKE};
+    border: none;
     margin-right: 1ex;
     cursor: pointer;
     font-family: ${FONT_FAMILY};
@@ -85,8 +85,8 @@ const styles = {
     }
 
     &:hover {
-      background-color: ${COLORS.SNOW};
-      color: ${darken(0.1, COLORS.HIGH_SMOKE)};
+      background-color: ${rgba(COLORS.SMOKE, 0.4)};
+      color: ${COLORS.PLATINUM};
     }
   `,
 

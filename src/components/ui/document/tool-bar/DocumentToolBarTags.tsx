@@ -34,15 +34,16 @@ const styles = {
     color: ${COLORS.SMOKE};
     margin-right: 1ex;
     cursor: pointer;
-    transition: background-color .2s, color .2s;
+    transition: background-color 0.2s, color 0.2s;
+    background-color: ${COLORS.WHITE};
 
     &:last-of-type {
       margin-right: 0;
     }
-    
+
     &:hover {
       background-color: ${COLORS.DIRTY_SNOW};
-      color: ${darken(.1, COLORS.SMOKE)};
+      color: ${darken(0.1, COLORS.SMOKE)};
     }
   `,
 };

@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import {
   FaTasks,
-  FaListUl,
   FaRegClone,
   FaRegClock,
   FaRegTimesCircle,
@@ -13,6 +12,8 @@ import {
 import { COLORS } from '../../../common/colors';
 import { BORDER_RADIUS } from '../../../common/ui';
 import { rgba } from 'polished';
+import { EOLocale } from 'eo-locale';
+import { EPhrase } from '../../../locales/EPhrase';
 
 interface IProps {}
 
@@ -25,7 +26,7 @@ export const DocumentSideNav: FC<IProps> = () => {
       </a>
       <a css={styles.item} href='/'>
         <FaTasks css={styles.itemIcon} />
-
+        <EOLocale.Text id={EPhrase.Document_Subtasks} />
       </a>
       <a css={styles.item} href='/'>
         <FaTextHeight css={styles.itemIcon} />

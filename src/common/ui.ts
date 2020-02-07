@@ -7,7 +7,7 @@ export const FONT_SIZE = {
   H2: '22px',
   H3: '18px',
   H4: '16px',
-  SMALL: '12px',
+  SMALL: '14px',
 };
 
 export const MAX_WIDTH = '1400px';

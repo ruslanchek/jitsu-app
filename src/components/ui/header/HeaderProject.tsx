@@ -29,6 +29,7 @@ const styles = {
     border: 1px solid ${COLORS.DIRTY_SNOW};
     border-radius: ${BORDER_RADIUS.MEDIUM};
     box-sizing: border-box;
+    white-space: nowrap;
     background: none;
     padding: 0 8px 0 6px;
     margin-left: 20px;

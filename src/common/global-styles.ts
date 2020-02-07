@@ -62,11 +62,12 @@ export const globalStyles = css`
   }
 
   hr {
-    border: 1px solid ${COLORS.DIRTY_SNOW};
-    background: none;
+    border: none;
+    background-color: ${COLORS.DIRTY_SNOW};
+    height: 2px;
     margin: 1em 0;
-    height: 0;
     display: block;
+    border-radius: 2px;
   }
 
   a {

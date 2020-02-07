@@ -21,7 +21,6 @@ import { BORDER_RADIUS } from '../../common/ui';
 export const MainScreen: FC = () => {
   return (
     <PageWrapper>
-
       <DocumentToolBarGroup>
         <DocumentToolBar
           align='left'
@@ -42,7 +41,7 @@ export const MainScreen: FC = () => {
           items={[<DocumentToolBarUpdatedDate user='m_brtn' date={new Date()} />, <DocumentToolBarTags tags={['Asana', 'Connectivity', 'CSS']} />]}
         />
       </DocumentToolBarGroup>
-      <DocumentTitleEditable value='Frontend Collective: Week #1' />
+      <DocumentTitleEditable editable value='Frontend Collective: Week #1' />
       <hr/>
       <div css={styles.root}>
         <EditorView />

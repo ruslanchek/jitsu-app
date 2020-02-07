@@ -31,7 +31,7 @@ const styles = {
     box-sizing: border-box;
     white-space: nowrap;
     background: none;
-    padding: 0 8px 0 6px;
+    padding: 0 8px 0 10px;
     margin-left: 20px;
     font-family: ${FONT_FAMILY};
     font-size: ${FONT_SIZE.REGULAR};

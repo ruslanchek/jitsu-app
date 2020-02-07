@@ -30,42 +30,28 @@ export const globalStyles = css`
   h1 {
     font-size: ${FONT_SIZE.H1};
     font-weight: 500;
-    margin: 1em 0 0 0;
   }
 
   h2 {
     font-size: ${FONT_SIZE.H2};
     font-weight: 500;
-    margin: 1em 0 0 0;
   }
 
   h3 {
     font-size: ${FONT_SIZE.H3};
     font-weight: 500;
-    margin: 1em 0 0 0;
   }
 
   h4 {
     font-size: ${FONT_SIZE.H4};
     font-weight: 500;
-    margin: 1em 0 0 0;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  p {
-    &:first-of-type {
-      margin-top: 0;
-    }
   }
 
   hr {
     border: none;
     background-color: ${COLORS.DIRTY_SNOW};
     height: 2px;
-    margin: 1em 0;
+    margin: 1em 0 0;
     display: block;
     border-radius: 2px;
   }

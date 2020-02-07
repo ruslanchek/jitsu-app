@@ -58,8 +58,10 @@ Written by <a href="#">Tyler Sticka</a>
 
 <h2>Daily Developer Jokes</h2>
 
+<p>
 Collection of awesome jokes. The Daily Developer Jokes bot will post programmer humour and jokes every day, both on the
 Daily Developer Jokes Website, and on the Daily Developer Jokes DEV Profile.
+</p>
 `;
 
 export default html;

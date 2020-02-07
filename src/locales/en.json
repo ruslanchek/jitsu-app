@@ -5,7 +5,7 @@
   "DOCUMENT::CREATED_BY": "Created by",
   "DOCUMENT::UPDATED": "Updated",
   "DOCUMENT::DUE_TO": "Due to",
-  "DOCUMENT::MOOD": "Mood",
+  "DOCUMENT::LABEL": "Label",
   "DOCUMENT::STATUS": "Status",
   "DOCUMENT::TAGS": "Tags",
   "DOCUMENT::PRIORITY": "Priority",

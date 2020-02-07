@@ -5,7 +5,7 @@ import { DocumentToolBarId } from '../ui/document/tool-bar/DocumentToolBarId';
 import { DocumentToolBarDueDate } from '../ui/document/tool-bar/DocumentToolBarDueDate';
 import { DocumentToolBar } from '../ui/document/tool-bar/DocumentToolBar';
 import { DocumentToolBarAssignedTo } from '../ui/document/tool-bar/DocumentToolBarAssignedTo';
-import { DocumentToolBarMood } from '../ui/document/tool-bar/DocumentToolBarMood';
+import { DocumentToolBarLabel } from '../ui/document/tool-bar/DocumentToolBarLabel';
 import { DocumentToolBarStatus } from '../ui/document/tool-bar/DocumentToolBarStatus';
 import { DocumentToolBarBookmark } from '../ui/document/tool-bar/DocumentToolBarBookmark';
 import { DocumentToolBarTags } from '../ui/document/tool-bar/DocumentToolBarTags';
@@ -33,7 +33,7 @@ export const MainScreen: FC = () => {
             <DocumentToolBarAssignedTo user='m_brtn' />,
           ]}
         />
-        <DocumentToolBar align='right' items={[<DocumentToolBarMood />]} />
+        <DocumentToolBar align='right' items={[<DocumentToolBarLabel />]} />
       </DocumentToolBarGroup>
       <DocumentTitleEditable value='Frontend Collective: Week #1' />
       <div css={styles.root}>

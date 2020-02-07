@@ -62,12 +62,11 @@ export const globalStyles = css`
   }
 
   hr {
-    border: none;
-    background: ${COLORS.DIRTY_SNOW};
+    border: 1px dashed ${COLORS.DIRTY_SNOW};
+    background: none;
     margin: 1em 0;
-    height: 2px;
+    height: 0px;
     display: block;
-    border-radius: 2px;
   }
 
   a {
@@ -93,6 +92,7 @@ export const globalStyles = css`
     background-color: ${COLORS.SNOW};
     display: block;
     padding: 0;
+    margin: 0;
     border-radius: ${BORDER_RADIUS.MEDIUM};
     font-family: ${FONT_FAMILY_MONO};
   }

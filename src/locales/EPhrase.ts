@@ -5,7 +5,7 @@ export enum EPhrase {
 	Document_Created_by = 'DOCUMENT::CREATED_BY',
 	Document_Updated = 'DOCUMENT::UPDATED',
 	Document_Due_to = 'DOCUMENT::DUE_TO',
-	Document_Mood = 'DOCUMENT::MOOD',
+	Document_Label = 'DOCUMENT::LABEL',
 	Document_Status = 'DOCUMENT::STATUS',
 	Document_Tags = 'DOCUMENT::TAGS',
 	Document_Priority = 'DOCUMENT::PRIORITY',

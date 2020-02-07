@@ -2,6 +2,7 @@ import React, { FC, ReactNode, useMemo, useState } from 'react';
 import { css } from '@emotion/core';
 import { darken, rgba } from 'polished';
 import { BORDER_RADIUS, DOCUMENT_BUTTON_HEIGHT, FONT_FAMILY, FONT_SIZE } from '../../../../common/ui';
+import { COLORS } from '../../../../common/colors';
 
 interface IProps {
   color: string;
@@ -66,7 +67,9 @@ export const DocumentToolBarButton: FC<IProps> = ({ children, color, icon, backg
           {icon}
         </span>
       )}
-      <span style={contentStyle}>{children}</span>
+      <span css={styles.content} style={contentStyle}>
+        {children}
+      </span>
     </button>
   );
 };
@@ -98,5 +101,9 @@ const styles = {
       width: 12px;
       height: 12px;
     }
+  `,
+
+  content: css`
+    color: ${COLORS.HIGH_SMOKE};
   `,
 };

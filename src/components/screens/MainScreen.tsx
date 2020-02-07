@@ -15,6 +15,8 @@ import { PageWrapper } from '../common/PageWrapper';
 import { DocumentToolBarGroup } from '../ui/document/tool-bar/DocumentToolBarGroup';
 import { DocumentSideNav } from '../ui/document/DocumentSideNav';
 import { css } from '@emotion/core';
+import { DocumentWidgetSubTasks } from '../ui/document/widgets/sub-tasks/DocumentWidgetSubTasks';
+import { DocumentHeader } from '../ui/document/DocumentHeader';
 
 export const MainScreen: FC = () => {
   return (
@@ -26,30 +28,39 @@ export const MainScreen: FC = () => {
           </div>
         </div>
         <div css={styles.main}>
-          <DocumentToolBarGroup>
-            <DocumentToolBar
-              align='left'
-              items={[
-                <DocumentToolBarId id='254' />,
-                <DocumentToolBarBookmark mark />,
-                <DocumentToolBarStatus />,
-                <DocumentToolBarPriority />,
-                <DocumentToolBarDueDate date={new Date()} />,
-                <DocumentToolBarAssignedTo user='m_brtn' />,
-                <DocumentToolBarLabel />,
-              ]}
-            />
-          </DocumentToolBarGroup>
-          <DocumentTitleEditable editable value='Frontend Collective: Week #1' />
-          <DocumentToolBarGroup>
-            <DocumentToolBar
-              align='left'
-              items={[
-                <DocumentToolBarUpdatedDate user='m_brtn' date={new Date()} />,
-                <DocumentToolBarTags tags={['Asana', 'Connectivity', 'CSS']} />,
-              ]}
-            />
-          </DocumentToolBarGroup>
+          <DocumentHeader>
+            <DocumentToolBarGroup>
+              <DocumentToolBar
+                align='left'
+                items={[
+                  <DocumentToolBarId id='254' />,
+                  <DocumentToolBarBookmark mark />,
+                  <DocumentToolBarStatus />,
+                  <DocumentToolBarPriority />,
+                  <DocumentToolBarDueDate date={new Date()} />,
+                  <DocumentToolBarAssignedTo user='m_brtn' />,
+                  <DocumentToolBarLabel />,
+                ]}
+              />
+            </DocumentToolBarGroup>
+            <DocumentTitleEditable editable value='Frontend Collective: Week #1' />
+            <DocumentToolBarGroup>
+              <DocumentToolBar
+                align='left'
+                items={[
+                  <DocumentToolBarUpdatedDate user='m_brtn' date={new Date()} />,
+                  <DocumentToolBarTags tags={['Asana', 'Connectivity', 'CSS']} />,
+                ]}
+              />
+            </DocumentToolBarGroup>
+          </DocumentHeader>
+          <DocumentWidgetSubTasks
+            items={[
+              { id: '1', checked: true, label: 'Check connectivity' },
+              { id: '2', checked: false, label: 'Finish API' },
+              { id: '3', checked: false, label: 'Upload images to Amazon S3' },
+            ]}
+          />
           <EditorView />
         </div>
       </div>

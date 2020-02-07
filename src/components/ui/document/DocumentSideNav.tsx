@@ -25,7 +25,7 @@ export const DocumentSideNav: FC<IProps> = () => {
       </a>
       <a css={styles.item} href='/'>
         <FaTasks css={styles.itemIcon} />
-        Sub tasks
+
       </a>
       <a css={styles.item} href='/'>
         <FaTextHeight css={styles.itemIcon} />

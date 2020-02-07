@@ -33,11 +33,11 @@ const styles = {
 
   item: css`
     &.left {
-      margin: 0 22px 10px 0;
+      margin: 0 18px 10px 0;
     }
 
     &.right {
-      margin: 0 0 10px 22px;
+      margin: 0 0 10px 18px;
     }
   `,
 };

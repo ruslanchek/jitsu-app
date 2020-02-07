@@ -39,8 +39,8 @@ const styles = {
   h1: css`
     font-size: ${FONT_SIZE.H1};
     outline: none;
-    padding: 5px 12px 3px;
-    margin: 0 0 20px -12px;
+    padding: 5px 15px 3px;
+    margin: 0 -15px 12px -15px;
     border-radius: ${BORDER_RADIUS.MEDIUM};
     border: 1px solid transparent;
     transition: border-color 0.2s;

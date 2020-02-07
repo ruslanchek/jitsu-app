@@ -5,6 +5,8 @@ import CKEditor from '@ckeditor/ckeditor5-react';
 // @ts-ignore
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import example from '../../../assets/demo/example-html';
+import { COLORS } from '../../../common/colors';
+import { BORDER_RADIUS } from '../../../common/ui';
 
 export const EditorView: FC = () => {
   const [content, setContent] = useState(example);
@@ -12,7 +14,7 @@ export const EditorView: FC = () => {
   return (
     <div data-dragndrop={true}>
       <Global styles={editorContentStyles} />
-      <div dangerouslySetInnerHTML={{ __html: example }} />
+      <div style={{marginTop: 10, fontSize: 16, borderRadius: BORDER_RADIUS.MEDIUM}} dangerouslySetInnerHTML={{ __html: example }} />
       {/* <CKEditor
         editor={ClassicEditor}
         data={content}

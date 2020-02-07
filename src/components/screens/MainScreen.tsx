@@ -10,45 +10,49 @@ import { DocumentToolBarStatus } from '../ui/document/tool-bar/DocumentToolBarSt
 import { DocumentToolBarBookmark } from '../ui/document/tool-bar/DocumentToolBarBookmark';
 import { DocumentToolBarTags } from '../ui/document/tool-bar/DocumentToolBarTags';
 import { DocumentToolBarUpdatedDate } from '../ui/document/tool-bar/DocumentToolBarUpdatedDate';
-import { DocumentTimeline } from '../ui/document/DocumentTimeline';
 import { DocumentToolBarPriority } from '../ui/document/tool-bar/DocumentToolBarPriority';
 import { PageWrapper } from '../common/PageWrapper';
 import { DocumentToolBarGroup } from '../ui/document/tool-bar/DocumentToolBarGroup';
+import { DocumentSideNav } from '../ui/document/DocumentSideNav';
 import { css } from '@emotion/core';
-import { COLORS } from '../../common/colors';
-import { BORDER_RADIUS } from '../../common/ui';
 
 export const MainScreen: FC = () => {
   return (
     <PageWrapper>
-      <DocumentToolBarGroup>
-        <DocumentToolBar
-          align='left'
-          items={[
-            <DocumentToolBarId id='254' />,
-            <DocumentToolBarBookmark mark />,
-            <DocumentToolBarStatus />,
-            <DocumentToolBarPriority />,
-            <DocumentToolBarDueDate date={new Date()} />,
-            <DocumentToolBarAssignedTo user='m_brtn' />,
-            <DocumentToolBarLabel />
-          ]}
-        />
-      </DocumentToolBarGroup>
-      <DocumentToolBarGroup>
-        <DocumentToolBar
-          align='left'
-          items={[<DocumentToolBarUpdatedDate user='m_brtn' date={new Date()} />, <DocumentToolBarTags tags={['Asana', 'Connectivity', 'CSS']} />]}
-        />
-      </DocumentToolBarGroup>
-      <DocumentTitleEditable editable value='Frontend Collective: Week #1' />
-      <hr/>
       <div css={styles.root}>
-        <EditorView />
-        {/*<div css={styles.side}></div>*/}
+        <div css={styles.side}>
+          <div css={styles.sticky}>
+            <DocumentSideNav />
+          </div>
+        </div>
+        <div css={styles.main}>
+          <DocumentToolBarGroup>
+            <DocumentToolBar
+              align='left'
+              items={[
+                <DocumentToolBarId id='254' />,
+                <DocumentToolBarBookmark mark />,
+                <DocumentToolBarStatus />,
+                <DocumentToolBarPriority />,
+                <DocumentToolBarDueDate date={new Date()} />,
+                <DocumentToolBarAssignedTo user='m_brtn' />,
+                <DocumentToolBarLabel />,
+              ]}
+            />
+          </DocumentToolBarGroup>
+          <DocumentTitleEditable editable value='Frontend Collective: Week #1' />
+          <DocumentToolBarGroup>
+            <DocumentToolBar
+              align='left'
+              items={[
+                <DocumentToolBarUpdatedDate user='m_brtn' date={new Date()} />,
+                <DocumentToolBarTags tags={['Asana', 'Connectivity', 'CSS']} />,
+              ]}
+            />
+          </DocumentToolBarGroup>
+          <EditorView />
+        </div>
       </div>
-      <hr/>
-      <DocumentTimeline />
     </PageWrapper>
   );
 };
@@ -61,14 +65,19 @@ const styles = {
   `,
 
   side: css`
-    width: 420px;
-    position: sticky;
-    margin-left: 40px;
+    width: 260px;
+    min-width: 260px;
     box-sizing: border-box;
-    padding: 20px 30px;
+    position: relative;
+  `,
+
+  sticky: css`
+    position: sticky;
     top: 100px;
-    height: 400px;
-    border: 2px solid ${COLORS.DIRTY_SNOW};
-    border-radius: ${BORDER_RADIUS.MEDIUM};
+  `,
+
+  main: css`
+    flex-grow: 1;
+    margin-left: 60px;
   `,
 };

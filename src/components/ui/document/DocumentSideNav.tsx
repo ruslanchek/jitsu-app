@@ -1,0 +1,96 @@
+import React, { FC } from 'react';
+import { css } from '@emotion/core';
+import {
+  FaTasks,
+  FaListUl,
+  FiMessageCircle,
+  IoMdPulse,
+  MdContentCopy,
+  TiDelete,
+  GoTrashcan,
+  FaTimes,
+  FaRegClone,
+  FaClock,
+  FaRegClock,
+  FaRegTimesCircle, FaRegCommentAlt, FaRegComments, FaRegComment, FaRegCommentDots,
+} from 'react-icons/all';
+import { COLORS } from '../../../common/colors';
+import { BORDER_RADIUS } from '../../../common/ui';
+import { rgba } from 'polished';
+
+interface IProps {}
+
+export const DocumentSideNav: FC<IProps> = () => {
+  return (
+    <div css={styles.root}>
+      <a css={styles.item} className='active' href='/'>
+        <FaListUl css={styles.itemIcon} />
+        Task
+      </a>
+      <a css={styles.item} href='/'>
+        <FaTasks css={styles.itemIcon} />
+        Sub tasks
+      </a>
+      <a css={styles.item} href='/'>
+        <FaRegCommentDots css={styles.itemIcon} />
+        Conversation
+      </a>
+      <a css={styles.item} href='/'>
+        <FaRegClock css={styles.itemIcon} />
+        Timeline
+      </a>
+      <a css={styles.item} href='/'>
+        <FaRegClone css={styles.itemIcon} />
+        Artifacts
+      </a>
+      <a css={styles.item} className='danger' href='/'>
+        <FaRegTimesCircle css={styles.itemIcon} />
+        Delete
+      </a>
+    </div>
+  );
+};
+
+const styles = {
+  root: css`
+    display: flex;
+    flex-direction: column;
+  `,
+
+  item: css`
+    padding: 10px 15px;
+    border-radius: ${BORDER_RADIUS.MEDIUM};
+    transition: color 0.2s, background-color 0.2s;
+    display: flex;
+    align-items: center;
+
+    &:hover,
+    &:active {
+      color: ${COLORS.HIGH_SMOKE};
+      background-color: ${COLORS.SNOW};
+    }
+
+    &:link,
+    &:visited {
+      color: ${COLORS.SMOKE};
+    }
+
+    &.active {
+      background-color: ${rgba(COLORS.PURPLE, 0.05)};
+      color: ${COLORS.PURPLE};
+    }
+
+    &.danger {
+      &:hover,
+      &:active {
+        color: ${COLORS.FIRE_ROSE};
+      }
+    }
+  `,
+
+  itemIcon: css`
+    margin-right: 1ex;
+    width: 16px;
+    height: 16px;
+  `,
+};

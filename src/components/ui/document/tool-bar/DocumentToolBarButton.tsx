@@ -100,6 +100,7 @@ const styles = {
       margin-right: 0.5ex;
       width: 12px;
       height: 12px;
+      transform: translateY(0.5px);
     }
   `,
 

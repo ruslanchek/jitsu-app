@@ -3,16 +3,12 @@ import { css } from '@emotion/core';
 import {
   FaTasks,
   FaListUl,
-  FiMessageCircle,
-  IoMdPulse,
-  MdContentCopy,
-  TiDelete,
-  GoTrashcan,
-  FaTimes,
   FaRegClone,
-  FaClock,
   FaRegClock,
-  FaRegTimesCircle, FaRegCommentAlt, FaRegComments, FaRegComment, FaRegCommentDots,
+  FaRegTimesCircle,
+  FaRegCommentDots,
+  FaInfo,
+  FaTextHeight,
 } from 'react-icons/all';
 import { COLORS } from '../../../common/colors';
 import { BORDER_RADIUS } from '../../../common/ui';
@@ -24,12 +20,16 @@ export const DocumentSideNav: FC<IProps> = () => {
   return (
     <div css={styles.root}>
       <a css={styles.item} className='active' href='/'>
-        <FaListUl css={styles.itemIcon} />
-        Task
+        <FaInfo css={styles.itemIcon} />
+        Info
       </a>
       <a css={styles.item} href='/'>
         <FaTasks css={styles.itemIcon} />
         Sub tasks
+      </a>
+      <a css={styles.item} href='/'>
+        <FaTextHeight css={styles.itemIcon} />
+        Description
       </a>
       <a css={styles.item} href='/'>
         <FaRegCommentDots css={styles.itemIcon} />
@@ -89,7 +89,7 @@ const styles = {
   `,
 
   itemIcon: css`
-    margin-right: 1ex;
+    margin-right: 2ex;
     width: 16px;
     height: 16px;
   `,

@@ -21,6 +21,7 @@ import { BORDER_RADIUS } from '../../common/ui';
 export const MainScreen: FC = () => {
   return (
     <PageWrapper>
+
       <DocumentToolBarGroup>
         <DocumentToolBar
           align='left'

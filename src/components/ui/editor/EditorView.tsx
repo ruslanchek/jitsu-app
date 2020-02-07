@@ -10,9 +10,9 @@ export const EditorView: FC = () => {
   const [content, setContent] = useState(example);
 
   return (
-    <div css={styles.root} data-dragndrop={true}>
+    <div data-dragndrop={true}>
       <Global styles={editorContentStyles} />
-      <div dangerouslySetInnerHTML={{ __html: example }}></div>
+      <div dangerouslySetInnerHTML={{ __html: example }} />
       {/* <CKEditor
         editor={ClassicEditor}
         data={content}
@@ -20,12 +20,6 @@ export const EditorView: FC = () => {
       /> */}
     </div>
   );
-};
-
-const styles = {
-  root: css`
-    margin-bottom: 30px;
-  `,
 };
 
 const editorContentStyles = css`

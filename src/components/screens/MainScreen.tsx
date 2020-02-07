@@ -41,8 +41,8 @@ export const MainScreen: FC = () => {
           items={[<DocumentToolBarUpdatedDate user='m_brtn' date={new Date()} />, <DocumentToolBarTags tags={['Asana', 'Connectivity', 'CSS']} />]}
         />
       </DocumentToolBarGroup>
-      <hr/>
       <DocumentTitleEditable value='Frontend Collective: Week #1' />
+      <hr/>
       <div css={styles.root}>
         <EditorView />
         {/*<div css={styles.side}></div>*/}

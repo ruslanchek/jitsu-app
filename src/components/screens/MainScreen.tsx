@@ -17,6 +17,19 @@ import { DocumentSideNav } from '../ui/document/DocumentSideNav';
 import { css } from '@emotion/core';
 import { DocumentWidgetSubTasks } from '../ui/document/widgets/sub-tasks/DocumentWidgetSubTasks';
 import { DocumentHeader } from '../ui/document/DocumentHeader';
+import { COLORS } from '../../common/colors';
+import { BORDER_RADIUS } from '../../common/ui';
+import {
+  FiCheckCircle,
+  FiCodepen,
+  FiCodesandbox,
+  FiFileText,
+  FiImage,
+  FiMap,
+  FiSmile,
+  FiYoutube,
+} from 'react-icons/all';
+import { DocumentWidgetsBar } from '../ui/document/widgets/widgets-bar/DocumentWidgetsBar';
 
 export const MainScreen: FC = () => {
   return (
@@ -27,6 +40,7 @@ export const MainScreen: FC = () => {
             <DocumentSideNav />
           </div>
         </div>
+
         <div css={styles.main}>
           <DocumentHeader>
             <DocumentToolBarGroup>
@@ -54,14 +68,23 @@ export const MainScreen: FC = () => {
               />
             </DocumentToolBarGroup>
           </DocumentHeader>
-          <DocumentWidgetSubTasks
-            items={[
-              { id: '1', checked: true, label: 'Check connectivity' },
-              { id: '2', checked: false, label: 'Finish API' },
-              { id: '3', checked: false, label: 'Upload images to Amazon S3' },
-            ]}
-          />
-          <EditorView />
+          <div css={styles.document}>
+            <div css={styles.documentBody}>
+              <DocumentWidgetSubTasks
+                items={[
+                  { id: '1', checked: true, label: 'Check connectivity' },
+                  { id: '2', checked: false, label: 'Finish API' },
+                  { id: '3', checked: false, label: 'Upload images to Amazon S3' },
+                ]}
+              />
+              <EditorView />
+            </div>
+            <div css={styles.tools}>
+              <div css={styles.sticky}>
+                <DocumentWidgetsBar />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </PageWrapper>
@@ -78,7 +101,6 @@ const styles = {
   side: css`
     width: 260px;
     min-width: 260px;
-    box-sizing: border-box;
     position: relative;
   `,
 
@@ -90,5 +112,20 @@ const styles = {
   main: css`
     flex-grow: 1;
     margin-left: 60px;
+  `,
+
+  document: css`
+    display: flex;
+  `,
+
+  documentBody: css`
+    flex-grow: 1;
+  `,
+
+  tools: css`
+    width: 60px;
+    min-width: 60px;
+    margin-left: 30px;
+    position: relative;
   `,
 };

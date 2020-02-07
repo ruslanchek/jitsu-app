@@ -12,4 +12,5 @@ export enum EPhrase {
 	Document_priority_Moderate = 'DOCUMENT_PRIORITY::MODERATE',
 	Document_status_In_progress = 'DOCUMENT_STATUS::IN_PROGRESS',
 	Document_Timeline = 'DOCUMENT::TIMELINE',
+	Placeholder_Search = 'PLACEHOLDER::SEARCH',
 }

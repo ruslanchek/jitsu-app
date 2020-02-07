@@ -1,7 +1,7 @@
 import { css } from '@emotion/core';
 import { COLORS } from './colors';
-import { FONT_FAMILY, FONT_SIZE, BORDER_RADIUS, FONT_FAMILY_MONO } from './ui';
-import { lighten } from 'polished';
+import { FONT_FAMILY, FONT_SIZE, BORDER_RADIUS, FONT_FAMILY_MONO, INPUT_HEIGHT } from './ui';
+import { darken, lighten } from 'polished';
 
 export const globalStyles = css`
   body {
@@ -62,10 +62,10 @@ export const globalStyles = css`
   }
 
   hr {
-    border: 1px dashed ${COLORS.DIRTY_SNOW};
+    border: 1px solid ${COLORS.DIRTY_SNOW};
     background: none;
     margin: 1em 0;
-    height: 0px;
+    height: 0;
     display: block;
   }
 
@@ -95,5 +95,42 @@ export const globalStyles = css`
     margin: 0;
     border-radius: ${BORDER_RADIUS.MEDIUM};
     font-family: ${FONT_FAMILY_MONO};
+  }
+
+  input.regular-input {
+    border: 1px solid ${COLORS.DIRTY_SNOW};
+    border-radius: ${BORDER_RADIUS.MEDIUM};
+    background: ${COLORS.WHITE};
+    height: ${INPUT_HEIGHT};
+    outline: none;
+    -webkit-appearance: none;
+    padding: 0 12px;
+    font-family: ${FONT_FAMILY};
+    color: ${COLORS.PLATINUM};
+    font-size: ${FONT_SIZE.REGULAR};
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+    &:hover,
+    &:focus {
+      border-color: ${darken(0.05, COLORS.DIRTY_SNOW)};
+    }
+
+    &:focus {
+      box-shadow: inset 0 1px 2px ${darken(0.05, COLORS.DIRTY_SNOW)};
+    }
+  }
+
+  ::placeholder {
+    color: ${COLORS.SMOKE};
+  }
+
+  ::selection {
+    background: ${COLORS.BLUE};
+    color: ${COLORS.WHITE};
+  }
+
+  ::-moz-selection {
+    background: ${COLORS.BLUE};
+    color: ${COLORS.WHITE};
   }
 `;

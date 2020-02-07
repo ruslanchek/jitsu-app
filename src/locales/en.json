@@ -11,5 +11,6 @@
   "DOCUMENT::PRIORITY": "Priority",
   "DOCUMENT_PRIORITY::MODERATE": "Moderate",
   "DOCUMENT_STATUS::IN_PROGRESS": "In progress",
-  "DOCUMENT::TIMELINE": "Timeline"
+  "DOCUMENT::TIMELINE": "Timeline",
+  "PLACEHOLDER::SEARCH": "Search"
 }

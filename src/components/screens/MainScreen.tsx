@@ -31,19 +31,23 @@ export const MainScreen: FC = () => {
             <DocumentToolBarPriority />,
             <DocumentToolBarDueDate date={new Date()} />,
             <DocumentToolBarAssignedTo user='m_brtn' />,
+            <DocumentToolBarLabel />
           ]}
         />
-        <DocumentToolBar align='right' items={[<DocumentToolBarLabel />]} />
       </DocumentToolBarGroup>
+      <DocumentToolBarGroup>
+        <DocumentToolBar
+          align='left'
+          items={[<DocumentToolBarUpdatedDate user='m_brtn' date={new Date()} />, <DocumentToolBarTags tags={['Asana', 'Connectivity', 'CSS']} />]}
+        />
+      </DocumentToolBarGroup>
+      <hr/>
       <DocumentTitleEditable value='Frontend Collective: Week #1' />
       <div css={styles.root}>
         <EditorView />
-        <div css={styles.side}></div>
+        {/*<div css={styles.side}></div>*/}
       </div>
-      <DocumentToolBarGroup>
-        <DocumentToolBar align='left' items={[<DocumentToolBarTags tags={['Asana', 'Connectivity', 'CSS']} />]} />
-        <DocumentToolBar align='right' items={[<DocumentToolBarUpdatedDate user='m_brtn' date={new Date()} />]} />
-      </DocumentToolBarGroup>
+      <hr/>
       <DocumentTimeline />
     </PageWrapper>
   );
@@ -64,7 +68,7 @@ const styles = {
     padding: 20px 30px;
     top: 100px;
     height: 400px;
-    background-color: ${COLORS.SNOW};
+    border: 2px solid ${COLORS.DIRTY_SNOW};
     border-radius: ${BORDER_RADIUS.MEDIUM};
   `,
 };

@@ -43,8 +43,6 @@ const html = `<p>
 
 Written by <a href="#">Tyler Sticka</a>
 
-<hr />
-
 <h2>Some hard to remember CSS Selectors</h2>
 
 <p>Below is the list of selectors that are suitable for our use case. Enjoy!</p>
@@ -57,8 +55,6 @@ Written by <a href="#">Tyler Sticka</a>
     article ~ p {}
   </code>
 </pre>
-
-<hr />
 
 <h2>Daily Developer Jokes</h2>
 

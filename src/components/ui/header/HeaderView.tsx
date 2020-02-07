@@ -8,6 +8,9 @@ import { HeaderUser } from './HeaderUser';
 import { HeaderNotifications } from './HeaderNotifications';
 import { HeaderMenu } from './HeaderMenu';
 import { MIN_WIDTH } from '../../../common/ui';
+import { HeaderProject } from './HeaderProject';
+import { rgba } from 'polished';
+import { HeaderSearch } from './HedaerSearch';
 
 interface IProps {}
 
@@ -18,10 +21,10 @@ export const HeaderView: FC<IProps> = () => {
         <div css={styles.inner}>
           <div css={styles.left}>
             <HeaderLogo />
-            <div css={styles.project}></div>
+            <HeaderProject />
           </div>
-
           <div css={styles.right}>
+            <HeaderSearch />
             <HeaderAdd />
             <HeaderUser />
             <HeaderNotifications />
@@ -41,16 +44,7 @@ const styles = {
     position: sticky;
     top: 0;
     z-index: 100;
-
-    &:before {
-      content: '';
-      display: block;
-      position: absolute;
-      height: 10px;
-      bottom: 0;
-      left: 0;
-      right: 0;
-    }
+    box-shadow: 0 1px 4px ${rgba(COLORS.HIGH_SMOKE, 0.15)};
   `,
 
   inner: css`
@@ -74,6 +68,4 @@ const styles = {
     align-items: center;
     justify-content: flex-end;
   `,
-
-  project: css``,
 };

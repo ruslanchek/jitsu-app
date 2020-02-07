@@ -28,7 +28,7 @@ const styles = {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    color: ${COLORS.SMOKE};
+    color: ${COLORS.HIGH_SMOKE};
     transition: background-color 0.2s, color 0.2s, transform 0.2s;
     position: relative;
     font-family: ${FONT_FAMILY};

@@ -35,6 +35,7 @@ const styles = {
     text-transform: uppercase;
     font-family: ${FONT_FAMILY};
     font-size: ${FONT_SIZE.REGULAR};
+    margin-left: 20px;
 
     &:focus,
     &:hover {

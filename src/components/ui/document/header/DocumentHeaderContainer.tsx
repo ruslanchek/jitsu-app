@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/core';
 
-export const DocumentHeader: FC = ({ children }) => {
+export const DocumentHeaderContainer: FC = ({ children }) => {
   return <div css={styles.root}>{children}</div>;
 };
 

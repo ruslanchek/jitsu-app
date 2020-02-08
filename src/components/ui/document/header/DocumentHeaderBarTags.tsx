@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { COLORS } from '../../../../common/colors';
 import { EPhrase } from '../../../../locales/EPhrase';
-import { DocumentToolBarItem } from './DocumentToolBarItem';
+import { DocumentHeaderBarItem } from './DocumentHeaderBarItem';
 import { css } from '@emotion/core';
 import { BORDER_RADIUS, DOCUMENT_BUTTON_HEIGHT } from '../../../../common/ui';
 import { darken } from 'polished';
@@ -10,15 +10,15 @@ interface IProps {
   tags: string[];
 }
 
-export const DocumentToolBarTags: FC<IProps> = ({ tags }) => {
+export const DocumentHeaderBarTags: FC<IProps> = ({ tags }) => {
   return (
-    <DocumentToolBarItem label={EPhrase.Document_Tags}>
+    <DocumentHeaderBarItem label={EPhrase.Document_Tags}>
       {tags.map(tag => (
         <span css={styles.tag} key={tag}>
           {tag}
         </span>
       ))}
-    </DocumentToolBarItem>
+    </DocumentHeaderBarItem>
   );
 };
 

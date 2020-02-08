@@ -1,8 +1,8 @@
 import React, { FC, ReactNode } from 'react';
 import { css } from '@emotion/core';
 import { darken } from 'polished';
-import { COLORS } from '../../../../../common/colors';
-import { BORDER_RADIUS } from '../../../../../common/ui';
+import { COLORS } from '../../../../common/colors';
+import { BORDER_RADIUS } from '../../../../common/ui';
 
 interface IProps {
   icon: ReactNode;

@@ -9,11 +9,11 @@ import {
   FaInfo,
   FaTextHeight,
 } from 'react-icons/all';
-import { COLORS } from '../../../common/colors';
-import { BORDER_RADIUS } from '../../../common/ui';
+import { COLORS } from '../../../../common/colors';
+import { BORDER_RADIUS } from '../../../../common/ui';
 import { rgba } from 'polished';
 import { EOLocale } from 'eo-locale';
-import { EPhrase } from '../../../locales/EPhrase';
+import { EPhrase } from '../../../../locales/EPhrase';
 
 interface IProps {}
 
@@ -59,7 +59,7 @@ const styles = {
   `,
 
   item: css`
-    padding: 10px 15px;
+    padding: 8px 12px;
     border-radius: ${BORDER_RADIUS.MEDIUM};
     transition: color 0.2s, background-color 0.2s;
     display: flex;
@@ -93,5 +93,6 @@ const styles = {
     margin-right: 2ex;
     width: 16px;
     height: 16px;
+    transform: translateY(-0.5px);
   `,
 };

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/core';
 
-export const DocumentToolBarGroup: FC = ({ children }) => {
+export const DocumentHeaderBarGroup: FC = ({ children }) => {
   return <div css={styles.root}>{children}</div>;
 };
 

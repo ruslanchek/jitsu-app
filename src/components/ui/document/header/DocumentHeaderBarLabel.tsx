@@ -1,15 +1,15 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { EPhrase } from '../../../../locales/EPhrase';
-import { DocumentToolBarItem } from './DocumentToolBarItem';
+import { DocumentHeaderBarItem } from './DocumentHeaderBarItem';
 import { BORDER_RADIUS } from '../../../../common/ui';
 import { COLORS } from '../../../../common/colors';
 
 interface IProps {}
 
-export const DocumentToolBarLabel: FC<IProps> = () => {
+export const DocumentHeaderBarLabel: FC<IProps> = () => {
   return (
-    <DocumentToolBarItem label={EPhrase.Document_Label}>
+    <DocumentHeaderBarItem label={EPhrase.Document_Label}>
       <div css={styles.root}>
         <button css={styles.emoji}>
           <span role='img' aria-label='intelligence'>
@@ -17,7 +17,7 @@ export const DocumentToolBarLabel: FC<IProps> = () => {
           </span>
         </button>
       </div>
-    </DocumentToolBarItem>
+    </DocumentHeaderBarItem>
   );
 };
 

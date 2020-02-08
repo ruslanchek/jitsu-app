@@ -1,22 +1,22 @@
 import React, { FC, useState } from 'react';
 import { css } from '@emotion/core';
-import { DocumentTitleEditable } from '../ui/document/DocumentTitleEditable';
-import { DocumentToolBarId } from '../ui/document/tool-bar/DocumentToolBarId';
-import { DocumentToolBarDueDate } from '../ui/document/tool-bar/DocumentToolBarDueDate';
-import { DocumentToolBar } from '../ui/document/tool-bar/DocumentToolBar';
-import { DocumentToolBarAssignedTo } from '../ui/document/tool-bar/DocumentToolBarAssignedTo';
-import { DocumentToolBarLabel } from '../ui/document/tool-bar/DocumentToolBarLabel';
-import { DocumentToolBarStatus } from '../ui/document/tool-bar/DocumentToolBarStatus';
-import { DocumentToolBarBookmark } from '../ui/document/tool-bar/DocumentToolBarBookmark';
-import { DocumentToolBarTags } from '../ui/document/tool-bar/DocumentToolBarTags';
-import { DocumentToolBarUpdatedDate } from '../ui/document/tool-bar/DocumentToolBarUpdatedDate';
-import { DocumentToolBarPriority } from '../ui/document/tool-bar/DocumentToolBarPriority';
+import { DocumentHeaderTitle } from '../ui/document/header/DocumentHeaderTitle';
+import { DocumentHeaderBarId } from '../ui/document/header/DocumentHeaderBarId';
+import { DocumentHeaderBarDueDate } from '../ui/document/header/DocumentHeaderBarDueDate';
+import { DocumentHeaderBar } from '../ui/document/header/DocumentHeaderBar';
+import { DocumentHeaderBarAssignedTo } from '../ui/document/header/DocumentHeaderBarAssignedTo';
+import { DocumentHeaderBarLabel } from '../ui/document/header/DocumentHeaderBarLabel';
+import { DocumentHeaderBarStatus } from '../ui/document/header/DocumentHeaderBarStatus';
+import { DocumentHeaderBarBookmark } from '../ui/document/header/DocumentHeaderBarBookmark';
+import { DocumentHeaderBarTags } from '../ui/document/header/DocumentHeaderBarTags';
+import { DocumentHeaderBarUpdatedDate } from '../ui/document/header/DocumentHeaderBarUpdatedDate';
+import { DocumentHeaderBarPriority } from '../ui/document/header/DocumentHeaderBarPriority';
 import { PageWrapper } from '../common/PageWrapper';
-import { DocumentToolBarGroup } from '../ui/document/tool-bar/DocumentToolBarGroup';
-import { DocumentSideNav } from '../ui/document/DocumentSideNav';
-import { DocumentHeader } from '../ui/document/DocumentHeader';
-import { DocumentWidgetsBar } from '../ui/document/widgets/widgets-bar/DocumentWidgetsBar';
-import { DocumentBody, IDocumentBodyElement } from '../ui/document/DocumentBody';
+import { DocumentHeaderBarGroup } from '../ui/document/header/DocumentHeaderBarGroup';
+import { DocumentSideNav } from '../ui/document/side-nav/DocumentSideNav';
+import { DocumentHeaderContainer } from '../ui/document/header/DocumentHeaderContainer';
+import { DocumentWidgetsBar } from '../ui/document/widgets-bar/DocumentWidgetsBar';
+import { DocumentBody, IDocumentBodyElement } from '../ui/document/body/DocumentBody';
 import { DocumentWidgetSubTasks } from '../ui/document/widgets/sub-tasks/DocumentWidgetSubTasks';
 import { EditorView } from '../ui/editor/EditorView';
 
@@ -88,32 +88,32 @@ export const MainScreen: FC = () => {
         </div>
 
         <div css={styles.main}>
-          <DocumentHeader>
-            <DocumentToolBarGroup>
-              <DocumentToolBar
+          <DocumentHeaderContainer>
+            <DocumentHeaderBarGroup>
+              <DocumentHeaderBar
                 align='left'
                 items={[
-                  <DocumentToolBarId id='254' />,
-                  <DocumentToolBarBookmark mark />,
-                  <DocumentToolBarStatus />,
-                  <DocumentToolBarPriority />,
-                  <DocumentToolBarDueDate date={new Date()} />,
-                  <DocumentToolBarAssignedTo user='m_brtn' />,
-                  <DocumentToolBarLabel />,
+                  <DocumentHeaderBarId id='254' />,
+                  <DocumentHeaderBarBookmark mark />,
+                  <DocumentHeaderBarStatus />,
+                  <DocumentHeaderBarPriority />,
+                  <DocumentHeaderBarDueDate date={new Date()} />,
+                  <DocumentHeaderBarAssignedTo user='m_brtn' />,
+                  <DocumentHeaderBarLabel />,
                 ]}
               />
-            </DocumentToolBarGroup>
-            <DocumentTitleEditable editable value='Frontend Collective: Week #1' />
-            <DocumentToolBarGroup>
-              <DocumentToolBar
+            </DocumentHeaderBarGroup>
+            <DocumentHeaderTitle editable value='Frontend Collective: Week #1' />
+            <DocumentHeaderBarGroup>
+              <DocumentHeaderBar
                 align='left'
                 items={[
-                  <DocumentToolBarUpdatedDate user='m_brtn' date={new Date()} />,
-                  <DocumentToolBarTags tags={['Asana', 'Connectivity', 'CSS']} />,
+                  <DocumentHeaderBarUpdatedDate user='m_brtn' date={new Date()} />,
+                  <DocumentHeaderBarTags tags={['Asana', 'Connectivity', 'CSS']} />,
                 ]}
               />
-            </DocumentToolBarGroup>
-          </DocumentHeader>
+            </DocumentHeaderBarGroup>
+          </DocumentHeaderContainer>
           <div css={styles.document}>
             <div css={styles.documentBody}>
               <DocumentBody

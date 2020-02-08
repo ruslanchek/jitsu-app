@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import { css } from '@emotion/core';
-import { BORDER_RADIUS, FONT_SIZE } from '../../../common/ui';
-import { COLORS } from '../../../common/colors';
+import { BORDER_RADIUS, FONT_SIZE } from '../../../../common/ui';
+import { COLORS } from '../../../../common/colors';
 import classNames from 'classnames';
 import ContentEditable from 'react-contenteditable';
 
@@ -10,7 +10,7 @@ interface IProps {
   editable?: boolean;
 }
 
-export const DocumentTitleEditable: FC<IProps> = ({ value, editable }) => {
+export const DocumentHeaderTitle: FC<IProps> = ({ value, editable }) => {
   const [localValue, setLocalValue] = useState(value);
   const [focus, setFocus] = useState(false);
 

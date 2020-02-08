@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { FiCheckCircle, FiCodesandbox, FiFileText, FiImage, FiMap, FiSmile, FiYoutube } from 'react-icons/all';
-import { COLORS } from '../../../../../common/colors';
-import { BORDER_RADIUS } from '../../../../../common/ui';
+import { COLORS } from '../../../../common/colors';
+import { BORDER_RADIUS } from '../../../../common/ui';
 import { DocumentWidgetsBarItem } from './DocumentWidgetsBarItem';
 
 interface IProps {}
@@ -28,9 +28,5 @@ const styles = {
     box-sizing: border-box;
     border: 1px solid ${COLORS.DIRTY_SNOW};
     border-radius: ${BORDER_RADIUS.MEDIUM};
-  `,
-
-  tool: css`
-   
   `,
 };

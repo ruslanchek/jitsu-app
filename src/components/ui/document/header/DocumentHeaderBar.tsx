@@ -7,7 +7,7 @@ interface IProps {
   align: 'left' | 'right';
 }
 
-export const DocumentToolBar: FC<IProps> = ({ items, align }) => {
+export const DocumentHeaderBar: FC<IProps> = ({ items, align }) => {
   return (
     <div css={styles.root} className={align}>
       {items.map((item, index) => (

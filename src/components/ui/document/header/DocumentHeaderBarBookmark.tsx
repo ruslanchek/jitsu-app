@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { css } from '@emotion/core';
 import { COLORS } from '../../../../common/colors';
 import { darken, lighten } from 'polished';
-import { DocumentToolBarItem } from './DocumentToolBarItem';
+import { DocumentHeaderBarItem } from './DocumentHeaderBarItem';
 import classNames from 'classnames';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 
@@ -10,15 +10,15 @@ interface IProps {
   mark?: boolean;
 }
 
-export const DocumentToolBarBookmark: FC<IProps> = ({ mark }) => {
+export const DocumentHeaderBarBookmark: FC<IProps> = ({ mark }) => {
   const [localMark, setLocalMark] = useState(mark);
 
   return (
-    <DocumentToolBarItem>
+    <DocumentHeaderBarItem>
       <button onClick={() => setLocalMark(!localMark)} css={styles.root} className={classNames({ mark: localMark })}>
         {localMark ? <FaStar className='icon' /> : <FaRegStar className='icon' />}
       </button>
-    </DocumentToolBarItem>
+    </DocumentHeaderBarItem>
   );
 };
 

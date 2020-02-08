@@ -15,5 +15,5 @@ export const COLORS = {
   SMOKE: '#8492A6',
   CARBON: '#C0CCDA',
   DIRTY_SNOW: '#E5E9F2',
-  SNOW: '#F9FAFC',
+  SNOW: '#f8f9fb',
 };

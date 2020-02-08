@@ -11,7 +11,7 @@ interface IProps {
   colorMode?: 'icon' | 'content' | 'all';
 }
 
-export const DocumentToolBarButton: FC<IProps> = ({ children, color, icon, background, colorMode = 'all' }) => {
+export const DocumentHeaderBarButton: FC<IProps> = ({ children, color, icon, background, colorMode = 'all' }) => {
   const [hover, setHover] = useState();
 
   const contentColor = useMemo(() => (background ? (hover ? darken(0.1, color) : color) : color), [

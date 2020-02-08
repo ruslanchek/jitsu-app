@@ -8,7 +8,7 @@ interface IProps {
   label?: string;
 }
 
-export const DocumentToolBarItem: FC<IProps> = ({ label, children }) => {
+export const DocumentHeaderBarItem: FC<IProps> = ({ label, children }) => {
   return (
     <div css={styles.root}>
       {label && (

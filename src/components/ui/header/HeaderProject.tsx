@@ -50,8 +50,8 @@ const styles = {
   `,
 
   icon: css`
-    width: 26px;
-    height: 26px;
+    width: 24px;
+    height: 24px;
     object-fit: contain;
     margin-right: 1ex;
     border-radius: 100%;

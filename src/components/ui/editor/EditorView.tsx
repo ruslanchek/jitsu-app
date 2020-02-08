@@ -1,20 +1,20 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { css, Global } from '@emotion/core';
-// @ts-ignore
-import CKEditor from '@ckeditor/ckeditor5-react';
-// @ts-ignore
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// // @ts-ignore
+// import CKEditor from '@ckeditor/ckeditor5-react';
+// // @ts-ignore
+// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import example from '../../../assets/demo/example-html';
-import { COLORS } from '../../../common/colors';
 import { BORDER_RADIUS } from '../../../common/ui';
+import { COLORS } from '../../../common/colors';
 
 export const EditorView: FC = () => {
-  const [content, setContent] = useState(example);
+  // const [content, setContent] = useState(example);
 
   return (
     <div data-dragndrop={true}>
-      <Global styles={editorContentStyles} />
-      <div style={{marginTop: 10, fontSize: 16, borderRadius: BORDER_RADIUS.MEDIUM}} dangerouslySetInnerHTML={{ __html: example }} />
+      {/*<Global styles={editorContentStyles} />*/}
+      <div style={{fontSize: 16, border: `1px solid ${COLORS.DIRTY_SNOW}`, padding: 20, marginBottom: 0, borderRadius: BORDER_RADIUS.MEDIUM}} dangerouslySetInnerHTML={{ __html: example }} />
       {/* <CKEditor
         editor={ClassicEditor}
         data={content}

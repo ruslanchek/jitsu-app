@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import { css } from '@emotion/core';
-import { COLORS } from '../../../../../common/colors';
-import { BORDER_RADIUS, FONT_SIZE, DOCUMENT_BUTTON_HEIGHT, FONT_FAMILY } from '../../../../../common/ui';
+import { COLORS } from '../../../../common/colors';
+import { BORDER_RADIUS, FONT_SIZE, DOCUMENT_BUTTON_HEIGHT, FONT_FAMILY } from '../../../../common/ui';
 import { rgba } from 'polished';
 
 interface IAction {
@@ -36,7 +36,6 @@ export const DocumentWidget: FC<IProps> = ({ children, actions = [], title }) =>
 
 const styles = {
   root: css`
-    margin-bottom: 30px;
     background-color: ${COLORS.SNOW};
     border-radius: ${BORDER_RADIUS.MEDIUM};
     border: 1px solid ${BORDER_RADIUS.MEDIUM};

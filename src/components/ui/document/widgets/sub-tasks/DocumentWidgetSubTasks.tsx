@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { DocumentWidgetSubTaskItem } from './DocumentWidgetSubTaskItem';
-import { DocumentWidget } from '../widget/DocumentWidget';
+import { DocumentWidget } from '../DocumentWidget';
 import { EOLocale } from 'eo-locale';
 import { EPhrase } from '../../../../../locales/EPhrase';
 import { FiEdit } from 'react-icons/all';

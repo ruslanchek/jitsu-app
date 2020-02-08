@@ -1,5 +1,5 @@
-import React, { FC } from 'react';
-import { EditorView } from '../ui/editor/EditorView';
+import React, { FC, useState } from 'react';
+import { css } from '@emotion/core';
 import { DocumentTitleEditable } from '../ui/document/DocumentTitleEditable';
 import { DocumentToolBarId } from '../ui/document/tool-bar/DocumentToolBarId';
 import { DocumentToolBarDueDate } from '../ui/document/tool-bar/DocumentToolBarDueDate';
@@ -14,24 +14,70 @@ import { DocumentToolBarPriority } from '../ui/document/tool-bar/DocumentToolBar
 import { PageWrapper } from '../common/PageWrapper';
 import { DocumentToolBarGroup } from '../ui/document/tool-bar/DocumentToolBarGroup';
 import { DocumentSideNav } from '../ui/document/DocumentSideNav';
-import { css } from '@emotion/core';
-import { DocumentWidgetSubTasks } from '../ui/document/widgets/sub-tasks/DocumentWidgetSubTasks';
 import { DocumentHeader } from '../ui/document/DocumentHeader';
-import { COLORS } from '../../common/colors';
-import { BORDER_RADIUS } from '../../common/ui';
-import {
-  FiCheckCircle,
-  FiCodepen,
-  FiCodesandbox,
-  FiFileText,
-  FiImage,
-  FiMap,
-  FiSmile,
-  FiYoutube,
-} from 'react-icons/all';
 import { DocumentWidgetsBar } from '../ui/document/widgets/widgets-bar/DocumentWidgetsBar';
+import { DocumentBody, IDocumentBodyElement } from '../ui/document/DocumentBody';
+import { DocumentWidgetSubTasks } from '../ui/document/widgets/sub-tasks/DocumentWidgetSubTasks';
+import { EditorView } from '../ui/editor/EditorView';
 
 export const MainScreen: FC = () => {
+  const [bodyElements, setBodyElements] = useState<IDocumentBodyElement[]>([
+    {
+      id: '1',
+      component: (
+        <DocumentWidgetSubTasks
+          items={[
+            { id: '1', checked: true, label: 'Check connectivity' },
+            { id: '2', checked: false, label: 'Finish API' },
+            { id: '3', checked: false, label: 'Upload images to Amazon S3' },
+          ]}
+        />
+      ),
+    },
+    {
+      id: '2',
+      component: (
+        <DocumentWidgetSubTasks
+          items={[
+            { id: '1', checked: true, label: 'Check connectivity' },
+            { id: '2', checked: false, label: 'Finish API' },
+            { id: '3', checked: false, label: 'Upload images to Amazon S3' },
+          ]}
+        />
+      ),
+    },
+    {
+      id: '3',
+      component: (
+        <DocumentWidgetSubTasks
+          items={[
+            { id: '1', checked: true, label: 'Check connectivity' },
+            { id: '2', checked: false, label: 'Finish API' },
+            { id: '3', checked: false, label: 'Upload images to Amazon S3' },
+          ]}
+        />
+      ),
+    },
+    {
+      id: '4',
+      component: (
+        <EditorView />
+      ),
+    },
+    {
+      id: '5',
+      component: (
+        <DocumentWidgetSubTasks
+          items={[
+            { id: '1', checked: true, label: 'Check connectivity' },
+            { id: '2', checked: false, label: 'Finish API' },
+            { id: '3', checked: false, label: 'Upload images to Amazon S3' },
+          ]}
+        />
+      ),
+    },
+  ]);
+
   return (
     <PageWrapper>
       <div css={styles.root}>
@@ -70,14 +116,10 @@ export const MainScreen: FC = () => {
           </DocumentHeader>
           <div css={styles.document}>
             <div css={styles.documentBody}>
-              <DocumentWidgetSubTasks
-                items={[
-                  { id: '1', checked: true, label: 'Check connectivity' },
-                  { id: '2', checked: false, label: 'Finish API' },
-                  { id: '3', checked: false, label: 'Upload images to Amazon S3' },
-                ]}
+              <DocumentBody
+                elements={bodyElements}
+                onReorder={setBodyElements}
               />
-              <EditorView />
             </div>
             <div css={styles.tools}>
               <div css={styles.sticky}>

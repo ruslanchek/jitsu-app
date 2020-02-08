@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { DocumentHeaderTitle } from '../ui/document/header/DocumentHeaderTitle';
 import { DocumentHeaderBarId } from '../ui/document/header/DocumentHeaderBarId';
@@ -16,9 +16,7 @@ import { DocumentHeaderBarGroup } from '../ui/document/header/DocumentHeaderBarG
 import { DocumentSideNav } from '../ui/document/side-nav/DocumentSideNav';
 import { DocumentHeaderContainer } from '../ui/document/header/DocumentHeaderContainer';
 import { DocumentWidgetsBar } from '../ui/document/widgets-bar/DocumentWidgetsBar';
-import { DocumentBody, IDocumentBodyElement } from '../ui/document/body/DocumentBody';
-import { DocumentWidgetSubTasks } from '../ui/document/widgets/sub-tasks/DocumentWidgetSubTasks';
-import { DocumentWidgetTextEditor } from '../ui/document/widgets/text-editor/DocumentWidgetTextEditor';
+import { DocumentBody } from '../ui/document/body/DocumentBody';
 
 export const MainScreen: FC = () => {
   return (

@@ -3,6 +3,7 @@ import { DragDropContext, DragStart, Droppable, DropResult } from 'react-beautif
 import { DocumentBodyElement } from './DocumentBodyElement';
 import { DocumentWidgetSubTasks } from '../widgets/sub-tasks/DocumentWidgetSubTasks';
 import { DocumentWidgetTextEditor } from '../widgets/text-editor/DocumentWidgetTextEditor';
+import { DocumentWidgetCodeEditor } from '../widgets/code/DocumentWidgetCodeEditor';
 
 export interface IDocumentBodyElement {
   id: string;
@@ -28,15 +29,7 @@ const initial = [
   },
   {
     id: '3',
-    component: (
-      <DocumentWidgetSubTasks
-        items={[
-          { id: '1', checked: true, label: 'Check connectivity' },
-          { id: '2', checked: false, label: 'Finish API' },
-          { id: '3', checked: false, label: 'Upload images to Amazon S3' },
-        ]}
-      />
-    ),
+    component: <DocumentWidgetCodeEditor />,
   },
 ];
 

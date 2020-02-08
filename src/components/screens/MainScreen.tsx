@@ -18,66 +18,9 @@ import { DocumentHeaderContainer } from '../ui/document/header/DocumentHeaderCon
 import { DocumentWidgetsBar } from '../ui/document/widgets-bar/DocumentWidgetsBar';
 import { DocumentBody, IDocumentBodyElement } from '../ui/document/body/DocumentBody';
 import { DocumentWidgetSubTasks } from '../ui/document/widgets/sub-tasks/DocumentWidgetSubTasks';
-import { EditorView } from '../ui/editor/EditorView';
+import { DocumentWidgetTextEditor } from '../ui/document/widgets/text-editor/DocumentWidgetTextEditor';
 
 export const MainScreen: FC = () => {
-  const [bodyElements, setBodyElements] = useState<IDocumentBodyElement[]>([
-    {
-      id: '1',
-      component: (
-        <DocumentWidgetSubTasks
-          items={[
-            { id: '1', checked: true, label: 'Check connectivity' },
-            { id: '2', checked: false, label: 'Finish API' },
-            { id: '3', checked: false, label: 'Upload images to Amazon S3' },
-          ]}
-        />
-      ),
-    },
-    {
-      id: '2',
-      component: (
-        <DocumentWidgetSubTasks
-          items={[
-            { id: '1', checked: true, label: 'Check connectivity' },
-            { id: '2', checked: false, label: 'Finish API' },
-            { id: '3', checked: false, label: 'Upload images to Amazon S3' },
-          ]}
-        />
-      ),
-    },
-    {
-      id: '3',
-      component: (
-        <DocumentWidgetSubTasks
-          items={[
-            { id: '1', checked: true, label: 'Check connectivity' },
-            { id: '2', checked: false, label: 'Finish API' },
-            { id: '3', checked: false, label: 'Upload images to Amazon S3' },
-          ]}
-        />
-      ),
-    },
-    {
-      id: '4',
-      component: (
-        <EditorView />
-      ),
-    },
-    {
-      id: '5',
-      component: (
-        <DocumentWidgetSubTasks
-          items={[
-            { id: '1', checked: true, label: 'Check connectivity' },
-            { id: '2', checked: false, label: 'Finish API' },
-            { id: '3', checked: false, label: 'Upload images to Amazon S3' },
-          ]}
-        />
-      ),
-    },
-  ]);
-
   return (
     <PageWrapper>
       <div css={styles.root}>
@@ -116,10 +59,7 @@ export const MainScreen: FC = () => {
           </DocumentHeaderContainer>
           <div css={styles.document}>
             <div css={styles.documentBody}>
-              <DocumentBody
-                elements={bodyElements}
-                onReorder={setBodyElements}
-              />
+              <DocumentBody />
             </div>
             <div css={styles.tools}>
               <div css={styles.sticky}>

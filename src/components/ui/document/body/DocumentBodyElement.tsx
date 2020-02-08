@@ -1,22 +1,27 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { css } from '@emotion/core';
 import { Draggable } from 'react-beautiful-dnd';
 import { BORDER_RADIUS } from '../../../../common/ui';
 import classNames from 'classnames';
 import { rgba } from 'polished';
 import { COLORS } from '../../../../common/colors';
-import { FaExpandArrowsAlt, FaTrash, FaTrashAlt } from 'react-icons/all';
+import { FaExpandArrowsAlt, FaTrashAlt } from 'react-icons/all';
 import { CSSTransition } from 'react-transition-group';
 
 interface IProps {
   id: string;
   index: number;
+  isAnotherElementDragging: boolean;
 }
 
 const ANIMATION_TIME = 200;
 
-export const DocumentBodyElement: FC<IProps> = ({ id, index, children }) => {
+export const DocumentBodyElement: FC<IProps> = ({ id, index, isAnotherElementDragging, children }) => {
   const [hover, setHover] = useState(false);
+
+  useEffect(() => {
+    setHover(false);
+  }, [isAnotherElementDragging]);
 
   return (
     <Draggable draggableId={id} index={index}>
@@ -31,21 +36,17 @@ export const DocumentBodyElement: FC<IProps> = ({ id, index, children }) => {
           {children}
 
           <div css={styles.actionsHolder}>
-            <CSSTransition
-              unmountOnExit
-              appear
-              in={hover || snapshot.isDragging}
-              timeout={ANIMATION_TIME}
-              css={styles.actionsAnimations}>
-              <div>
-                <div css={styles.propertyAction} {...provided.dragHandleProps}>
-                  <FaExpandArrowsAlt />
-                </div>
-                <div className="danger clickable" css={styles.propertyAction}>
-                  <FaTrashAlt />
-                </div>
+            {((hover && !isAnotherElementDragging) || snapshot.isDragging) && (
+              <div css={styles.propertyAction} {...provided.dragHandleProps}>
+                <FaExpandArrowsAlt />
               </div>
-            </CSSTransition>
+            )}
+
+            {hover && !isAnotherElementDragging && !snapshot.isDragging && (
+              <div className='danger clickable' css={styles.propertyAction}>
+                <FaTrashAlt />
+              </div>
+            )}
           </div>
         </div>
       )}
@@ -75,22 +76,38 @@ const styles = {
   `,
 
   actionsAnimations: css`
+    display: none;
+
     &.enter {
       opacity: 0;
+      display: block;
     }
 
     &.enter-active {
       opacity: 1;
       transition: opacity 0.2s;
+      display: block;
+    }
+
+    &.enter-done {
+      opacity: 1;
+      display: block;
     }
 
     &.exit {
       opacity: 1;
+      display: block;
     }
 
     &.exit-active {
       opacity: 0;
       transition: opacity 0.2s;
+      display: block;
+    }
+
+    &.exit-done {
+      opacity: 0;
+      display: none;
     }
   `,
 
@@ -106,21 +123,19 @@ const styles = {
     transition: background-color 0.2s, color 0.2s;
 
     &:hover {
-      background-color: ${COLORS.SNOW};
       color: ${COLORS.SMOKE};
     }
 
     &:active {
       color: ${COLORS.HIGH_SMOKE};
     }
-    
+
     &.danger {
       &:hover {
-        background-color: ${rgba(COLORS.FIRE_ROSE, .05)};
         color: ${COLORS.FIRE_ROSE};
       }
     }
-    
+
     &.clickable {
       cursor: pointer;
     }

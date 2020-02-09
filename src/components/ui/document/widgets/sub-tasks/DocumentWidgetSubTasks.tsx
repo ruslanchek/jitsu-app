@@ -6,6 +6,7 @@ import { css } from '@emotion/core';
 import { COLORS } from '../../../../../common/colors';
 import { BORDER_RADIUS, DOCUMENT_BUTTON_HEIGHT, FONT_FAMILY, FONT_SIZE } from '../../../../../common/ui';
 import { rgba } from 'polished';
+import { DocumentWidgetHeader } from '../elements/DocumentWidgetHeader';
 
 interface IItem {
   id: string;
@@ -20,11 +21,11 @@ interface IProps {
 export const DocumentWidgetSubTasks: FC<IProps> = ({ items }) => {
   return (
     <div css={styles.root}>
-      <header css={styles.header}>
-        <h3 css={styles.title}>
+      <DocumentWidgetHeader>
+        <h3>
           <EOLocale.Text id={EPhrase.Document_Subtasks} />
         </h3>
-      </header>
+      </DocumentWidgetHeader>
       <section css={styles.content}>
         {items.map(item => (
           <DocumentWidgetSubTaskItem key={item.id} label={item.label} checked={item.checked} />
@@ -48,12 +49,6 @@ const styles = {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  `,
-
-  title: css`
-    margin: 0;
-    font-weight: 400;
-    font-size: ${FONT_SIZE.H3};
   `,
 
   actions: css`

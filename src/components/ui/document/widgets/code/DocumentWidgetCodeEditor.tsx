@@ -1,6 +1,9 @@
 import React, { FC, useState } from 'react';
 import Editor from '@monaco-editor/react';
 import { css } from '@emotion/core';
+import { DocumentWidgetHeader } from '../elements/DocumentWidgetHeader';
+import { COLORS } from '../../../../../common/colors';
+import { BORDER_RADIUS } from '../../../../../common/ui';
 
 interface ILanguage {
   name: string;
@@ -76,11 +79,24 @@ export const DocumentWidgetCodeEditor: FC = () => {
 
   return (
     <div css={styles.root}>
-      <Editor height='500px' language={LANGUAGES['typescript'].name} value={code} />
+      <DocumentWidgetHeader>
+        <h3>Code</h3>
+      </DocumentWidgetHeader>
+
+      <div css={styles.editor}>
+        <Editor height='500px' language={LANGUAGES['typescript'].name} value={code} />
+      </div>
     </div>
   );
 };
 
 const styles = {
   root: css``,
+
+  editor: css`
+    border: 1px solid ${COLORS.DIRTY_SNOW};
+    border-top: none;
+    border-radius: 0 0 ${BORDER_RADIUS.MEDIUM} ${BORDER_RADIUS.MEDIUM};
+    overflow: hidden;
+  `,
 };

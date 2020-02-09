@@ -79,8 +79,8 @@ const styles = {
   `,
 
   side: css`
-    width: 260px;
-    min-width: 260px;
+    width: 220px;
+    min-width: 220px;
     position: relative;
   `,
 

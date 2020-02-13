@@ -10,7 +10,7 @@ import {
   FaTextHeight,
 } from 'react-icons/all';
 import { COLORS } from '../../../../common/colors';
-import { BORDER_RADIUS } from '../../../../common/ui';
+import { BORDER_RADIUS, DOCUMENT_SIDE_TOOLS_STICKY_TOP_POSITION } from '../../../../common/ui';
 import { rgba } from 'polished';
 import { EOLocale } from 'eo-locale';
 import { EPhrase } from '../../../../locales/EPhrase';
@@ -56,6 +56,8 @@ const styles = {
   root: css`
     display: flex;
     flex-direction: column;
+    position: sticky;
+    top: ${DOCUMENT_SIDE_TOOLS_STICKY_TOP_POSITION};
   `,
 
   item: css`

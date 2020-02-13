@@ -1,6 +1,7 @@
 export interface IDocumentBodyWidget {
-  id: number;
+  id: string;
   type: EDocumentBodyWidget;
+  defaultData: any;
 }
 
 export enum EDocumentBodyWidget {
@@ -11,15 +12,22 @@ export enum EDocumentBodyWidget {
 
 export const DOCUMENT_BODY_WIDGETS: IDocumentBodyWidget[] = [
   {
-    id: 1,
+    id: '1222',
     type: EDocumentBodyWidget.Text,
+    defaultData: {},
   },
   {
-    id: 2,
+    id: '2222',
     type: EDocumentBodyWidget.Subtasks,
+    defaultData: {
+      items: [
+        { id: '1', checked: true, label: 'Todo...' },
+      ],
+    },
   },
   {
-    id: 3,
+    id: '3333',
     type: EDocumentBodyWidget.Code,
+    defaultData: {},
   },
 ];

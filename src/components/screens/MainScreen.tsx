@@ -15,7 +15,6 @@ import { PageWrapper } from '../common/PageWrapper';
 import { DocumentHeaderBarGroup } from '../ui/document/header/DocumentHeaderBarGroup';
 import { DocumentSideNav } from '../ui/document/side-nav/DocumentSideNav';
 import { DocumentHeaderContainer } from '../ui/document/header/DocumentHeaderContainer';
-import { DocumentBodyWidgetsBar } from '../ui/document/body/DocumentBodyWidgetsBar';
 import { DocumentBody } from '../ui/document/body/DocumentBody';
 
 export const MainScreen: FC = () => {
@@ -23,11 +22,8 @@ export const MainScreen: FC = () => {
     <PageWrapper>
       <div css={styles.root}>
         <div css={styles.side}>
-          <div css={styles.sticky}>
-            <DocumentSideNav />
-          </div>
+          <DocumentSideNav />
         </div>
-
         <div css={styles.main}>
           <DocumentHeaderContainer>
             <DocumentHeaderBarGroup>
@@ -55,16 +51,7 @@ export const MainScreen: FC = () => {
               />
             </DocumentHeaderBarGroup>
           </DocumentHeaderContainer>
-          <div css={styles.document}>
-            <div css={styles.documentBody}>
-              <DocumentBody />
-            </div>
-            <div css={styles.tools}>
-              <div css={styles.sticky}>
-                <DocumentBodyWidgetsBar />
-              </div>
-            </div>
-          </div>
+          <DocumentBody />
         </div>
       </div>
     </PageWrapper>
@@ -84,28 +71,8 @@ const styles = {
     position: relative;
   `,
 
-  sticky: css`
-    position: sticky;
-    top: 100px;
-  `,
-
   main: css`
     flex-grow: 1;
     margin-left: 60px;
-  `,
-
-  document: css`
-    display: flex;
-  `,
-
-  documentBody: css`
-    flex-grow: 1;
-  `,
-
-  tools: css`
-    width: 60px;
-    min-width: 60px;
-    margin-left: 30px;
-    position: relative;
   `,
 };

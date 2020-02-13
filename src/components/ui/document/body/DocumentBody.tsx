@@ -1,10 +1,16 @@
-import React, { FC, ReactNode, useState } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import { DragDropContext, DragStart, Droppable, DropResult } from 'react-beautiful-dnd';
 import { DocumentBodyElement } from './DocumentBodyElement';
 import { DocumentWidgetSubTasks } from '../widgets/sub-tasks/DocumentWidgetSubTasks';
 import { DocumentWidgetTextEditor } from '../widgets/text-editor/DocumentWidgetTextEditor';
 import { DocumentWidgetCodeEditor } from '../widgets/code/DocumentWidgetCodeEditor';
-import { EDocumentBodyWidget } from './document-body-widgets';
+import { DOCUMENT_BODY_WIDGETS, EDocumentBodyWidget } from './document-body-widgets';
+import { css } from '@emotion/core';
+import { DocumentBodyWidgetsBarItem } from './DocumentBodyWidgetsBarItem';
+import { DOCUMENT_SIDE_TOOLS_STICKY_TOP_POSITION, DOCUMENT_SIDE_TOOLS_WIDGET_SIZE } from '../../../../common/ui';
+
+const BODY_DROPPABLE_ID = 'bodyDroppableId';
+const WIDGETS_DROPPABLE_ID = 'widgetsDroppableId';
 
 export interface IDocumentBodyElement {
   id: string;
@@ -43,6 +49,26 @@ const reorder = (list: IDocumentBodyElement[], startIndex: number, endIndex: num
   return result;
 };
 
+const move = (list: IDocumentBodyElement[], sourceIndex: number, destinationIndex: number) => {
+  const widget = DOCUMENT_BODY_WIDGETS[sourceIndex];
+  const newItem: IDocumentBodyElement = {
+    id: '',
+    type: widget.type,
+    data: widget.defaultData,
+  };
+
+  const result = Array.from(list).map((item, index) => {
+    return {
+      ...item,
+      id: index.toString(),
+    };
+  });
+
+  result.splice(destinationIndex, 0, newItem);
+
+  return result;
+};
+
 export const DocumentBody: FC = () => {
   const [elements, setElements] = useState<IDocumentBodyElement[]>(initial);
   const [draggingId, setDraggingId] = useState<string | undefined>(undefined);
@@ -56,20 +82,31 @@ export const DocumentBody: FC = () => {
     }
   }
 
-  function onDragEnd(result: DropResult) {
-    setDragging(false);
-    setDraggingId(undefined);
+  const onDragEnd = useCallback(
+    (result: DropResult) => {
+      const { source, destination } = result;
 
-    if (!result.destination) {
-      return;
-    }
+      setDragging(false);
+      setDraggingId(undefined);
 
-    if (result.destination.index === result.source.index) {
-      return;
-    }
+      if (!destination) {
+        return;
+      }
 
-    setElements(reorder(elements, result.source.index, result.destination.index));
-  }
+      if (destination.index === source.index && source.droppableId === destination.droppableId) {
+        return;
+      }
+
+      if (source.droppableId === destination.droppableId) {
+        setElements(reorder(elements, source.index, destination.index));
+      }
+
+      if (source.droppableId === WIDGETS_DROPPABLE_ID) {
+        setElements(move(elements, source.index, destination.index));
+      }
+    },
+    [elements],
+  );
 
   function renderWidget(type: EDocumentBodyWidget, data: any) {
     switch (type) {
@@ -90,22 +127,64 @@ export const DocumentBody: FC = () => {
 
   return (
     <DragDropContext onDragEnd={onDragEnd} onDragStart={onDragStart}>
-      <Droppable droppableId='documentBody'>
-        {provided => (
-          <div ref={provided.innerRef} {...provided.droppableProps}>
-            {elements.map((element, index) => (
-              <DocumentBodyElement
-                key={element.id}
-                id={element.id}
-                index={index}
-                isAnotherElementDragging={element.id !== draggingId && dragging}>
-                {renderWidget(element.type, element.data)}
-              </DocumentBodyElement>
-            ))}
-            {provided.placeholder}
+      <div css={styles.document}>
+        <div css={styles.documentBody}>
+          <Droppable droppableId={BODY_DROPPABLE_ID}>
+            {provided => (
+              <div ref={provided.innerRef} {...provided.droppableProps}>
+                {elements.map((element, index) => (
+                  <DocumentBodyElement
+                    key={element.id}
+                    id={element.id}
+                    index={index}
+                    isAnotherElementDragging={element.id !== draggingId && dragging}>
+                    {renderWidget(element.type, element.data)}
+                  </DocumentBodyElement>
+                ))}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </div>
+        <div css={styles.widgetsBarContainer}>
+          <div css={styles.widgetsBar}>
+            <Droppable droppableId={WIDGETS_DROPPABLE_ID} isDropDisabled>
+              {provided => (
+                <div ref={provided.innerRef} {...provided.droppableProps}>
+                  {DOCUMENT_BODY_WIDGETS.map((widget, index) => (
+                    <DocumentBodyWidgetsBarItem key={widget.id} index={index} widget={widget} />
+                  ))}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
           </div>
-        )}
-      </Droppable>
+        </div>
+      </div>
     </DragDropContext>
   );
+};
+
+const styles = {
+  document: css`
+    display: flex;
+  `,
+
+  documentBody: css`
+    flex-grow: 1;
+  `,
+
+  widgetsBarContainer: css`
+    width: ${DOCUMENT_SIDE_TOOLS_WIDGET_SIZE};
+    min-width: ${DOCUMENT_SIDE_TOOLS_WIDGET_SIZE};
+    margin-left: 20px;
+    position: relative;
+  `,
+
+  widgetsBar: css`
+    width: ${DOCUMENT_SIDE_TOOLS_WIDGET_SIZE};
+    box-sizing: border-box;
+    position: sticky;
+    top: ${DOCUMENT_SIDE_TOOLS_STICKY_TOP_POSITION};
+  `,
 };

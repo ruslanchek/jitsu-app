@@ -17,6 +17,9 @@ export const HEADER_ELEMENT_HEIGHT = '36px';
 
 export const INPUT_HEIGHT = '36px';
 
+export const DOCUMENT_SIDE_TOOLS_STICKY_TOP_POSITION = '100px';
+export const DOCUMENT_SIDE_TOOLS_WIDGET_SIZE = '36px';
+
 export const BORDER_RADIUS = {
   SMALL: '3px',
   MEDIUM: '6px',

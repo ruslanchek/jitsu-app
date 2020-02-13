@@ -32,18 +32,13 @@ export const DocumentBodyElement: FC<IProps> = ({ id, index, isAnotherElementDra
           {...provided.draggableProps}>
           {children}
 
-          <div css={styles.actionsHolder}>
-            {((hover && !isAnotherElementDragging) || snapshot.isDragging) && (
-              <div css={styles.propertyAction} {...provided.dragHandleProps}>
-                <FaExpandArrowsAlt />
-              </div>
-            )}
-
-            {hover && !isAnotherElementDragging && !snapshot.isDragging && (
-              <div className='danger clickable' css={styles.propertyAction}>
-                <FaTrashAlt />
-              </div>
-            )}
+          <div css={styles.actionsHolder} className={classNames({ visible: (hover && !isAnotherElementDragging) || snapshot.isDragging })}>
+            <div css={styles.propertyAction} {...provided.dragHandleProps}>
+              <FaExpandArrowsAlt />
+            </div>
+            <div className='danger clickable visible' css={styles.propertyAction}>
+              <FaTrashAlt />
+            </div>
           </div>
         </div>
       )}
@@ -70,41 +65,11 @@ const styles = {
     left: -40px;
     padding: 6px 5px;
     top: 0;
-  `,
-
-  actionsAnimations: css`
-    display: none;
-
-    &.enter {
-      opacity: 0;
-      display: block;
-    }
-
-    &.enter-active {
+    opacity: 0;
+    transition: opacity 0.2s;
+    
+    &.visible {
       opacity: 1;
-      transition: opacity 0.2s;
-      display: block;
-    }
-
-    &.enter-done {
-      opacity: 1;
-      display: block;
-    }
-
-    &.exit {
-      opacity: 1;
-      display: block;
-    }
-
-    &.exit-active {
-      opacity: 0;
-      transition: opacity 0.2s;
-      display: block;
-    }
-
-    &.exit-done {
-      opacity: 0;
-      display: none;
     }
   `,
 
@@ -117,7 +82,7 @@ const styles = {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background-color 0.2s, color 0.2s;
+    transition: color 0.2s;
 
     &:hover {
       color: ${COLORS.SMOKE};

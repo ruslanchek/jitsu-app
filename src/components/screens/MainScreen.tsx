@@ -15,7 +15,7 @@ import { PageWrapper } from '../common/PageWrapper';
 import { DocumentHeaderBarGroup } from '../ui/document/header/DocumentHeaderBarGroup';
 import { DocumentSideNav } from '../ui/document/side-nav/DocumentSideNav';
 import { DocumentHeaderContainer } from '../ui/document/header/DocumentHeaderContainer';
-import { DocumentWidgetsBar } from '../ui/document/widgets-bar/DocumentWidgetsBar';
+import { DocumentBodyWidgetsBar } from '../ui/document/body/DocumentBodyWidgetsBar';
 import { DocumentBody } from '../ui/document/body/DocumentBody';
 
 export const MainScreen: FC = () => {
@@ -61,7 +61,7 @@ export const MainScreen: FC = () => {
             </div>
             <div css={styles.tools}>
               <div css={styles.sticky}>
-                <DocumentWidgetsBar />
+                <DocumentBodyWidgetsBar />
               </div>
             </div>
           </div>

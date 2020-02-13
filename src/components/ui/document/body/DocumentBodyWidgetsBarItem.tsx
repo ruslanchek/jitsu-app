@@ -1,15 +1,38 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { darken } from 'polished';
 import { COLORS } from '../../../../common/colors';
 import { BORDER_RADIUS } from '../../../../common/ui';
+import { EDocumentBodyWidget, IDocumentBodyWidget } from './document-body-widgets';
+import { FiCheckCircle, FiCode, FiEdit3 } from 'react-icons/fi';
 
 interface IProps {
-  icon: ReactNode;
+  widget: IDocumentBodyWidget;
 }
 
-export const DocumentWidgetsBarItem: FC<IProps> = ({ icon }) => {
-  return <div css={styles.root}>{icon}</div>;
+export const DocumentBodyWidgetsBarItem: FC<IProps> = ({ widget }) => {
+  function renderIcon() {
+    switch (widget.type) {
+      case EDocumentBodyWidget.Code: {
+        return <FiCode />;
+      }
+      case EDocumentBodyWidget.Subtasks: {
+        return <FiCheckCircle />;
+      }
+      case EDocumentBodyWidget.Text: {
+        return <FiEdit3 />;
+      }
+      default: {
+        return null;
+      }
+    }
+  }
+
+  return (
+    <div css={styles.root} title='Widget'>
+      {renderIcon()}
+    </div>
+  );
 };
 
 const styles = {

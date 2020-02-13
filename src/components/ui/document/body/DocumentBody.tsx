@@ -4,32 +4,35 @@ import { DocumentBodyElement } from './DocumentBodyElement';
 import { DocumentWidgetSubTasks } from '../widgets/sub-tasks/DocumentWidgetSubTasks';
 import { DocumentWidgetTextEditor } from '../widgets/text-editor/DocumentWidgetTextEditor';
 import { DocumentWidgetCodeEditor } from '../widgets/code/DocumentWidgetCodeEditor';
+import { EDocumentBodyWidget } from './document-body-widgets';
 
 export interface IDocumentBodyElement {
   id: string;
-  component: ReactNode;
+  type: EDocumentBodyWidget;
+  data: any;
 }
 
-const initial = [
+const initial: IDocumentBodyElement[] = [
   {
     id: '1',
-    component: (
-      <DocumentWidgetSubTasks
-        items={[
-          { id: '1', checked: true, label: 'Check connectivity' },
-          { id: '2', checked: false, label: 'Finish API' },
-          { id: '3', checked: false, label: 'Upload images to Amazon S3' },
-        ]}
-      />
-    ),
+    type: EDocumentBodyWidget.Subtasks,
+    data: {
+      items: [
+        { id: '1', checked: true, label: 'Check connectivity' },
+        { id: '2', checked: false, label: 'Finish API' },
+        { id: '3', checked: false, label: 'Upload images to Amazon S3' },
+      ],
+    },
   },
   {
     id: '2',
-    component: <DocumentWidgetTextEditor />,
+    type: EDocumentBodyWidget.Text,
+    data: {},
   },
   {
     id: '3',
-    component: <DocumentWidgetCodeEditor />,
+    type: EDocumentBodyWidget.Code,
+    data: {},
   },
 ];
 
@@ -68,9 +71,26 @@ export const DocumentBody: FC = () => {
     setElements(reorder(elements, result.source.index, result.destination.index));
   }
 
+  function renderWidget(type: EDocumentBodyWidget, data: any) {
+    switch (type) {
+      case EDocumentBodyWidget.Code: {
+        return <DocumentWidgetCodeEditor {...data} />;
+      }
+      case EDocumentBodyWidget.Subtasks: {
+        return <DocumentWidgetSubTasks {...data} />;
+      }
+      case EDocumentBodyWidget.Text: {
+        return <DocumentWidgetTextEditor {...data} />;
+      }
+      default: {
+        return null;
+      }
+    }
+  }
+
   return (
     <DragDropContext onDragEnd={onDragEnd} onDragStart={onDragStart}>
-      <Droppable droppableId='list'>
+      <Droppable droppableId='documentBody'>
         {provided => (
           <div ref={provided.innerRef} {...provided.droppableProps}>
             {elements.map((element, index) => (
@@ -79,7 +99,7 @@ export const DocumentBody: FC = () => {
                 id={element.id}
                 index={index}
                 isAnotherElementDragging={element.id !== draggingId && dragging}>
-                {element.component}
+                {renderWidget(element.type, element.data)}
               </DocumentBodyElement>
             ))}
             {provided.placeholder}

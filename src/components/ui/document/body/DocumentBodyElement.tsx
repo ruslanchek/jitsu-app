@@ -6,15 +6,12 @@ import classNames from 'classnames';
 import { rgba } from 'polished';
 import { COLORS } from '../../../../common/colors';
 import { FaExpandArrowsAlt, FaTrashAlt } from 'react-icons/all';
-import { CSSTransition } from 'react-transition-group';
 
 interface IProps {
   id: string;
   index: number;
   isAnotherElementDragging: boolean;
 }
-
-const ANIMATION_TIME = 200;
 
 export const DocumentBodyElement: FC<IProps> = ({ id, index, isAnotherElementDragging, children }) => {
   const [hover, setHover] = useState(false);

@@ -75,7 +75,7 @@ const LANGUAGES: Record<string, ILanguage> = {
 };
 
 export const DocumentWidgetCodeEditor: FC = () => {
-  const [code, setCode] = useState('');
+  const [code] = useState('');
 
   return (
     <div css={styles.root}>

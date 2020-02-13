@@ -42,14 +42,14 @@ const initial: IDocumentBodyElement[] = [
   },
 ];
 
-const reorder = (list: IDocumentBodyElement[], startIndex: number, endIndex: number) => {
+const reorderItems = (list: IDocumentBodyElement[], startIndex: number, endIndex: number) => {
   const result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
   result.splice(endIndex, 0, removed);
   return result;
 };
 
-const move = (list: IDocumentBodyElement[], sourceIndex: number, destinationIndex: number) => {
+const newItem = (list: IDocumentBodyElement[], sourceIndex: number, destinationIndex: number) => {
   const widget = DOCUMENT_BODY_WIDGETS[sourceIndex];
   const newItem: IDocumentBodyElement = {
     id: '',
@@ -69,6 +69,12 @@ const move = (list: IDocumentBodyElement[], sourceIndex: number, destinationInde
   return result;
 };
 
+const deleteItem = (list: IDocumentBodyElement[], index: number) => {
+  const result = Array.from(list);
+  result.splice(index, 1);
+  return result;
+};
+
 export const DocumentBody: FC = () => {
   const [elements, setElements] = useState<IDocumentBodyElement[]>(initial);
   const [draggingId, setDraggingId] = useState<string | undefined>(undefined);
@@ -81,6 +87,13 @@ export const DocumentBody: FC = () => {
       setDraggingId(initial.draggableId);
     }
   }
+
+  const onDeleteElement = useCallback(
+    (index: number) => {
+      setElements(deleteItem(elements, index));
+    },
+    [elements],
+  );
 
   const onDragEnd = useCallback(
     (result: DropResult) => {
@@ -98,11 +111,11 @@ export const DocumentBody: FC = () => {
       }
 
       if (source.droppableId === destination.droppableId) {
-        setElements(reorder(elements, source.index, destination.index));
+        setElements(reorderItems(elements, source.index, destination.index));
       }
 
       if (source.droppableId === WIDGETS_DROPPABLE_ID) {
-        setElements(move(elements, source.index, destination.index));
+        setElements(newItem(elements, source.index, destination.index));
       }
     },
     [elements],
@@ -137,6 +150,7 @@ export const DocumentBody: FC = () => {
                     key={element.id}
                     id={element.id}
                     index={index}
+                    onDelete={onDeleteElement}
                     isAnotherElementDragging={element.id !== draggingId && dragging}>
                     {renderWidget(element.type, element.data)}
                   </DocumentBodyElement>

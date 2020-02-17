@@ -3,10 +3,14 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.history" />
+      <excludeFolder url="file://$MODULE_DIR$/.netlify" />
       <excludeFolder url="file://$MODULE_DIR$/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="jitsu-server" />
+    <orderEntry type="module" module-name="jitsu-server" />
+    <orderEntry type="module" module-name="jitsu-server" />
     <orderEntry type="module" module-name="jitsu-server" />
   </component>
 </module>

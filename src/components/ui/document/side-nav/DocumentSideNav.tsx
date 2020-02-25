@@ -14,12 +14,36 @@ import { BORDER_RADIUS, DOCUMENT_SIDE_TOOLS_STICKY_TOP_POSITION } from '../../..
 import { rgba } from 'polished';
 import { EOLocale } from 'eo-locale';
 import { EPhrase } from '../../../../locales/EPhrase';
+import { useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
+
+const GET_MY_PROJECTS = gql`
+  query {
+    getMyProjects {
+      id
+      name
+      invitedUsers {
+        id
+        email
+      }
+      user {
+        id
+        email
+        isEmailConfirmed
+        registeredDate
+      }
+    }
+  }
+`;
 
 interface IProps {}
 
 export const DocumentSideNav: FC<IProps> = () => {
+  const { loading, error, data } = useQuery(GET_MY_PROJECTS);
+  
   return (
     <div css={styles.root}>
+      {/*{data?.getMyProjects.map((p: any) => <div key={p.id}>{p.id}</div>)}*/}
       <a css={styles.item} className='active' href='/'>
         <FaInfo css={styles.itemIcon} />
         Info

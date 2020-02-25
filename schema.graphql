@@ -1,0 +1,60 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Mutation {
+    createProject(input: ProjectCreateInput!): ProjectEntity!
+    register(input: UserInputRegister!): UserTokenResponse!
+}
+
+type ProjectEntity {
+    id: ID!
+    invitedUsers: [UserEntity!]!
+    name: String!
+    user: UserEntity!
+}
+
+type Query {
+    getMyProjects: [ProjectEntity!]!
+    getProject(input: ProjectGetByIdInput!): ProjectEntity!
+    login(input: UserInputLogin!): UserTokenResponse!
+    me: UserEntity!
+}
+
+type UserEntity {
+    email: String!
+    id: ID!
+    invitedToProjects: [ProjectEntity!]!
+    isEmailConfirmed: Boolean!
+    projects: [ProjectEntity!]!
+    registeredDate: Date!
+}
+
+type UserTokenResponse {
+    token: String!
+}
+
+input ProjectCreateInput {
+    name: String!
+}
+
+input ProjectGetByIdInput {
+    id: ID!
+}
+
+input UserInputLogin {
+    email: String!
+    password: String!
+}
+
+input UserInputRegister {
+    email: String!
+    password: String!
+}
+
+
+"Date custom scalar type"
+scalar Date

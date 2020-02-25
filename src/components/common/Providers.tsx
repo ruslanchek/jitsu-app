@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { EOLocale } from 'eo-locale';
 import { DEFAULT_LOCALE } from '../../common/defaults';
 import { GlobalHandlersProvider } from '../providers/GlobalHandlersProvider';
+import { ApolloClientProvider } from '../providers/ApolloClientProvider';
 
 const LOCALES = [
   {
@@ -13,7 +14,9 @@ const LOCALES = [
 export const Providers: FC = ({ children }) => {
   return (
     <EOLocale.Provider language={DEFAULT_LOCALE} locales={LOCALES}>
-      <GlobalHandlersProvider>{children}</GlobalHandlersProvider>
+      <GlobalHandlersProvider>
+        <ApolloClientProvider>{children}</ApolloClientProvider>
+      </GlobalHandlersProvider>
     </EOLocale.Provider>
   );
 };

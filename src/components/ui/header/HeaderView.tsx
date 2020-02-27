@@ -7,7 +7,7 @@ import { Limiter } from '../common/Limiter';
 import { HeaderUser } from './HeaderUser';
 import { HeaderNotifications } from './HeaderNotifications';
 import { HeaderMenu } from './HeaderMenu';
-import { MIN_WIDTH } from '../../../common/ui';
+import { BOX_SHADOW, MIN_WIDTH } from '../../../common/ui';
 import { HeaderProject } from './HeaderProject';
 import { rgba } from 'polished';
 import { HeaderSearch } from './HedaerSearch';
@@ -44,7 +44,7 @@ const styles = {
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 1px 4px ${rgba(COLORS.HIGH_SMOKE, 0.15)};
+    box-shadow: ${BOX_SHADOW.SMALL};
   `,
 
   inner: css`

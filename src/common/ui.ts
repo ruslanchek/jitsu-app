@@ -1,3 +1,6 @@
+import { rgba } from 'polished';
+import { COLORS } from './colors';
+
 export const FONT_FAMILY = "'Rubik', sans-serif";
 export const FONT_FAMILY_MONO = "'Ubuntu Mono', monospace;";
 
@@ -17,12 +20,19 @@ export const HEADER_ELEMENT_HEIGHT = '36px';
 
 export const INPUT_HEIGHT = '36px';
 
-export const DOCUMENT_SIDE_TOOLS_STICKY_TOP_POSITION = '100px';
-export const DOCUMENT_SIDE_TOOLS_WIDGET_SIZE = '36px';
+export const DOCUMENT_SIDE_TOOLS = {
+  STICKY_TOP_POSITION: '100px',
+  WIDGET_SIZE: '36px',
+};
+
+export const DOCUMENT_BUTTON_HEIGHT = '25px';
 
 export const BORDER_RADIUS = {
   SMALL: '3px',
   MEDIUM: '6px',
 };
 
-export const DOCUMENT_BUTTON_HEIGHT = '25px';
+export const BOX_SHADOW = {
+  SMALL: `0 1px 4px ${rgba(COLORS.HIGH_SMOKE, 0.15)}`,
+  MEDIUM: `0 2px 6px ${rgba(COLORS.HIGH_SMOKE, 0.15)}`,
+};

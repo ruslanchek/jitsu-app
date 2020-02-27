@@ -13,5 +13,10 @@
   "DOCUMENT_STATUS::IN_PROGRESS": "In progress",
   "DOCUMENT::TIMELINE": "Timeline",
   "DOCUMENT::SUBTASKS": "Subtasks",
-  "PLACEHOLDER::SEARCH": "Search"
+  "PLACEHOLDER::SEARCH": "Search",
+  "ADD::TASK": "Task",
+  "ADD::PROJECT": "Project",
+  "ADD::DOCUMENT": "Document",
+  "ADD::STORY": "Story",
+  "ADD::INVITE": "Invite"
 }

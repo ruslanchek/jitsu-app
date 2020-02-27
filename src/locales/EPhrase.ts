@@ -14,4 +14,9 @@ export enum EPhrase {
 	Document_Timeline = 'DOCUMENT::TIMELINE',
 	Document_Subtasks = 'DOCUMENT::SUBTASKS',
 	Placeholder_Search = 'PLACEHOLDER::SEARCH',
+	Add_Task = 'ADD::TASK',
+	Add_Project = 'ADD::PROJECT',
+	Add_Document = 'ADD::DOCUMENT',
+	Add_Story = 'ADD::STORY',
+	Add_Invite = 'ADD::INVITE',
 }

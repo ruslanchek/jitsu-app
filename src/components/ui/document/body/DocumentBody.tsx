@@ -7,7 +7,7 @@ import { DocumentWidgetCodeEditor } from '../widgets/code/DocumentWidgetCodeEdit
 import { DOCUMENT_BODY_WIDGETS, EDocumentBodyWidget } from './document-body-widgets';
 import { css } from '@emotion/core';
 import { DocumentBodyWidgetsBarItem } from './DocumentBodyWidgetsBarItem';
-import { DOCUMENT_SIDE_TOOLS_STICKY_TOP_POSITION, DOCUMENT_SIDE_TOOLS_WIDGET_SIZE } from '../../../../common/ui';
+import { DOCUMENT_SIDE_TOOLS } from '../../../../common/ui';
 
 const BODY_DROPPABLE_ID = 'bodyDroppableId';
 const WIDGETS_DROPPABLE_ID = 'widgetsDroppableId';
@@ -189,16 +189,16 @@ const styles = {
   `,
 
   widgetsBarContainer: css`
-    width: ${DOCUMENT_SIDE_TOOLS_WIDGET_SIZE};
-    min-width: ${DOCUMENT_SIDE_TOOLS_WIDGET_SIZE};
+    width: ${DOCUMENT_SIDE_TOOLS.WIDGET_SIZE};
+    min-width: ${DOCUMENT_SIDE_TOOLS.WIDGET_SIZE};
     margin-left: 20px;
     position: relative;
   `,
 
   widgetsBar: css`
-    width: ${DOCUMENT_SIDE_TOOLS_WIDGET_SIZE};
+    width: ${DOCUMENT_SIDE_TOOLS.WIDGET_SIZE};
     box-sizing: border-box;
     position: sticky;
-    top: ${DOCUMENT_SIDE_TOOLS_STICKY_TOP_POSITION};
+    top: ${DOCUMENT_SIDE_TOOLS.STICKY_TOP_POSITION};
   `,
 };

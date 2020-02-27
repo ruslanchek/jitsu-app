@@ -35,4 +35,5 @@ export const BORDER_RADIUS = {
 export const BOX_SHADOW = {
   SMALL: `0 1px 4px ${rgba(COLORS.HIGH_SMOKE, 0.15)}`,
   MEDIUM: `0 2px 6px ${rgba(COLORS.HIGH_SMOKE, 0.15)}`,
+  LARGE: `0 4px 10px ${rgba(COLORS.HIGH_SMOKE, 0.15)}`,
 };

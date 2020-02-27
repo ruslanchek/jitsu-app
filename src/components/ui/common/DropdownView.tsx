@@ -6,10 +6,9 @@ import { triangle } from 'polished';
 
 interface IProps {
   show: boolean;
-  onHide: () => void;
 }
 
-export const DropdownView: FC<IProps> = ({ show, onHide, children }) => {
+export const DropdownView: FC<IProps> = ({ show, children }) => {
   return show ? (
     <div css={styles.root}>
       <div css={styles.content}>{children}</div>

@@ -3,6 +3,7 @@ import { EOLocale } from 'eo-locale';
 import { DEFAULT_LOCALE } from '../../common/defaults';
 import { GlobalHandlersProvider } from '../providers/GlobalHandlersProvider';
 import { ApolloClientProvider } from '../providers/ApolloClientProvider';
+import { Modals } from '../ui/ modals/Modals';
 
 const LOCALES = [
   {
@@ -15,7 +16,9 @@ export const Providers: FC = ({ children }) => {
   return (
     <EOLocale.Provider language={DEFAULT_LOCALE} locales={LOCALES}>
       <GlobalHandlersProvider>
-        <ApolloClientProvider>{children}</ApolloClientProvider>
+        <ApolloClientProvider>
+          <Modals rootContainerSelector='#root-modals'>{children}</Modals>
+        </ApolloClientProvider>
       </GlobalHandlersProvider>
     </EOLocale.Provider>
   );

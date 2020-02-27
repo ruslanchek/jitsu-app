@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useRef, useState } from 'react';
+import React, { FC, ReactNode, useContext, useRef, useState } from 'react';
 import { css } from '@emotion/core';
 import { FiBookOpen, FiBox, FiCheckCircle, FiClipboard, FiLoader, FiUserPlus } from 'react-icons/fi';
 import { COLORS } from '../../../common/colors';
@@ -9,6 +9,8 @@ import { darken, rgba } from 'polished';
 import { DropdownView } from '../common/DropdownView';
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
 import { EOLocale } from 'eo-locale';
+import { ModalsContext } from '../ modals/Modals';
+import { Modal } from '../ modals/Modal';
 
 interface IAddMenu {
   title: string;
@@ -26,11 +28,26 @@ const ADD_MENU: IAddMenu[] = [
 ];
 
 export const HeaderAdd: FC<IProps> = () => {
+  const modalContext = useContext(ModalsContext);
   const translator = useTranslator();
   const rootRef = useRef(null);
   const [showDropdown, setShowDropdown] = useState(false);
   function handleButtonClick() {
     setShowDropdown(!showDropdown);
+  }
+  function openModal() {
+    modalContext.openModal({
+      renderModalComponent: id => (
+        <Modal handleClose={() => modalContext.closeModal(id)}>
+          <h1>Create task</h1>
+          <input />
+        </Modal>
+      ),
+      showOverlay: true,
+      closeByOutsideClick: true,
+      closeByEscapeKey: true,
+      closeByEnterKey: true,
+    });
   }
   useOnClickOutside(rootRef, () => setShowDropdown(false));
   return (
@@ -38,10 +55,10 @@ export const HeaderAdd: FC<IProps> = () => {
       <button css={styles.button} title={translator.translate(EPhrase.Actions_Create)} onClick={handleButtonClick}>
         <FiLoader className='icon' size='20px' />
       </button>
-      <DropdownView show={showDropdown} onHide={() => setShowDropdown(false)}>
+      <DropdownView show={showDropdown}>
         <div css={styles.addRoot}>
           {ADD_MENU.map(item => (
-            <div key={item.title} css={styles.addItem}>
+            <div key={item.title} css={styles.addItem} onClick={openModal}>
               <div css={styles.addIcon}>{item.icon}</div>
               <EOLocale.Text id={item.title} />
             </div>

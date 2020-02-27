@@ -19,9 +19,9 @@ interface IProps {}
 
 const ADD_MENU: IAddMenu[] = [
   { title: EPhrase.Add_Task, icon: <FiCheckCircle /> },
-  { title: EPhrase.Add_Document, icon: <FiBox /> },
+  { title: EPhrase.Add_Document, icon: <FiClipboard /> },
   { title: EPhrase.Add_Story, icon: <FiBookOpen /> },
-  { title: EPhrase.Add_Project, icon: <FiClipboard /> },
+  { title: EPhrase.Add_Project, icon: <FiBox /> },
   { title: EPhrase.Add_Invite, icon: <FiUserPlus /> },
 ];
 

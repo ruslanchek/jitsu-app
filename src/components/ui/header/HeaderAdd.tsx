@@ -11,6 +11,7 @@ import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
 import { EOLocale } from 'eo-locale';
 import { ModalsContext } from '../ modals/Modals';
 import { Modal } from '../ modals/Modal';
+import { DocumentHeader } from '../document/header/DocumentHeader';
 
 interface IAddMenu {
   title: string;
@@ -39,8 +40,8 @@ export const HeaderAdd: FC<IProps> = () => {
     modalContext.openModal({
       renderModalComponent: id => (
         <Modal handleClose={() => modalContext.closeModal(id)}>
-          <h1>Create task</h1>
-          <input />
+          <h1>New task</h1>
+          <DocumentHeader />
         </Modal>
       ),
       showOverlay: true,

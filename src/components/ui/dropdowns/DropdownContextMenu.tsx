@@ -43,7 +43,7 @@ const styles = {
     color: ${COLORS.SMOKE};
 
     &:hover {
-      background-color: ${COLORS.SNOW.toString()};
+      background-color: ${COLORS.SNOW};
       color: ${COLORS.HIGH_SMOKE};
     }
   `,

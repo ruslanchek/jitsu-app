@@ -21,7 +21,7 @@ export const Modal: FC<IProps> = ({ children, handleClose }) => {
 
 const styles = {
   root: css`
-    background-color: ${COLORS.WHITE.toString()};
+    background-color: ${COLORS.WHITE};
     border-radius: ${BORDER_RADIUS.MEDIUM};
     box-shadow: ${BOX_SHADOW.MEDIUM};
     padding: 30px;
@@ -32,12 +32,12 @@ const styles = {
     position: absolute;
     top: 10px;
     right: 10px;
-    color: ${COLORS.SMOKE.toString()};
+    color: ${COLORS.SMOKE};
     cursor: pointer;
     font-size: 20px;
     
     &:hover {
-      color: ${COLORS.HIGH_SMOKE.toString()};
+      color: ${COLORS.HIGH_SMOKE};
     }
   `,
 };

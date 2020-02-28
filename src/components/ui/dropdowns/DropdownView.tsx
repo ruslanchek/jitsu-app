@@ -25,7 +25,7 @@ const styles = {
   `,
 
   content: css`
-    background-color: ${COLORS.WHITE.toString()};
+    background-color: ${COLORS.WHITE};
     box-shadow: ${BOX_SHADOW.MEDIUM};
     border-radius: ${BORDER_RADIUS.MEDIUM};
 
@@ -40,7 +40,7 @@ const styles = {
         pointingDirection: 'top',
         width: '16px',
         height: '10px',
-        foregroundColor: COLORS.WHITE.toString(),
+        foregroundColor: COLORS.WHITE,
       })};
     }
   `,

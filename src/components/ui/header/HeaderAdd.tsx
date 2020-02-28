@@ -9,19 +9,28 @@ import { darken, rgba } from 'polished';
 import { DropdownView } from '../dropdowns/DropdownView';
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
 import { ModalsContext } from '../modals/Modals';
-import { Modal } from '../modals/Modal';
-import { DocumentHeader } from '../document/header/DocumentHeader';
 import { DropdownContextMenu, IDropdownContextMenuItem } from '../dropdowns/DropdownContextMenu';
+import { AddTaskModal } from '../../modals/AddTaskModal';
 
 interface IProps {}
 
 export const HeaderAdd: FC<IProps> = () => {
+  const modalContext = useContext(ModalsContext);
   const menuItems: IDropdownContextMenuItem[] = [
     {
       title: EPhrase.Add_Task,
       icon: <FiCheckCircle />,
       color: COLORS.SMOKE,
-      onSelect: () => {},
+      onSelect: () => {
+        console.log('xxx');
+        modalContext.openModal({
+          renderModalComponent: id => <AddTaskModal handleClose={() => modalContext.closeModal(id)} />,
+          showOverlay: true,
+          closeByOutsideClick: true,
+          closeByEscapeKey: true,
+          closeByEnterKey: true,
+        });
+      },
     },
     {
       title: EPhrase.Add_Document,
@@ -48,26 +57,11 @@ export const HeaderAdd: FC<IProps> = () => {
       onSelect: () => {},
     },
   ];
-  const modalContext = useContext(ModalsContext);
   const translator = useTranslator();
   const rootRef = useRef(null);
   const [showDropdown, setShowDropdown] = useState(false);
   function handleButtonClick() {
     setShowDropdown(!showDropdown);
-  }
-  function openModal() {
-    modalContext.openModal({
-      renderModalComponent: id => (
-        <Modal handleClose={() => modalContext.closeModal(id)}>
-          <h1>New task</h1>
-          <DocumentHeader />
-        </Modal>
-      ),
-      showOverlay: true,
-      closeByOutsideClick: true,
-      closeByEscapeKey: true,
-      closeByEnterKey: true,
-    });
   }
   useOnClickOutside(rootRef, () => setShowDropdown(false));
   return (

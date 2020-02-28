@@ -7,12 +7,21 @@ import ContentEditable from 'react-contenteditable';
 
 interface IProps {
   value: string;
+  onChange?: (value: string) => void;
   editable?: boolean;
+  placeholder?: string;
 }
 
-export const DocumentHeaderTitle: FC<IProps> = ({ value, editable }) => {
+export const DocumentHeaderTitle: FC<IProps> = ({ value, editable, onChange, placeholder }) => {
   const [localValue, setLocalValue] = useState(value);
   const [focus, setFocus] = useState(false);
+
+  function handleChange(value: string) {
+    setLocalValue(value);
+    if (onChange) {
+      onChange(value);
+    }
+  }
 
   return (
     <div css={styles.root}>
@@ -23,7 +32,8 @@ export const DocumentHeaderTitle: FC<IProps> = ({ value, editable }) => {
             html={localValue}
             onFocus={() => setFocus(true)}
             onBlur={() => setFocus(false)}
-            onChange={event => setLocalValue(event.target.value)}
+            placeholder={placeholder || ''}
+            onChange={event => handleChange(event.target.value)}
           />
         ) : (
           value
@@ -53,6 +63,12 @@ const styles = {
       &.focus {
         border-color: ${COLORS.CARBON};
       }
+    }
+
+    >div[contenteditable='true']:empty:before {
+      content: attr(placeholder);
+      display: block;
+      color: ${COLORS.SMOKE};
     }
   `,
 

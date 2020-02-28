@@ -3,7 +3,7 @@ import { css } from '@emotion/core';
 import { HeaderView } from '../ui/header/HeaderView';
 import { Limiter } from '../ui/common/Limiter';
 
-export const PageWrapper: FC = ({ children }) => {
+export const ScreenWrapper: FC = ({ children }) => {
   return (
     <div css={styles.root}>
       <HeaderView />

@@ -1,13 +1,14 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/core';
-import { PageWrapper } from '../common/PageWrapper';
+import { ScreenWrapper } from '../common/ScreenWrapper';
 import { DocumentSideNav } from '../ui/document/side-nav/DocumentSideNav';
 import { DocumentBody } from '../ui/document/body/DocumentBody';
 import { DocumentHeader } from '../ui/document/header/DocumentHeader';
+import { RouteComponentProps } from '@reach/router';
 
-export const MainScreen: FC = () => {
+export const MainScreen: FC<RouteComponentProps> = () => {
   return (
-    <PageWrapper>
+    <ScreenWrapper>
       <div css={styles.root}>
         <div css={styles.side}>
           <DocumentSideNav />
@@ -17,7 +18,7 @@ export const MainScreen: FC = () => {
           <DocumentBody />
         </div>
       </div>
-    </PageWrapper>
+    </ScreenWrapper>
   );
 };
 

@@ -11,11 +11,15 @@ export const AddTaskModal: FC<IProps> = ({ handleClose }) => {
   const [title, setTitle] = useState('');
   return (
     <Modal handleClose={handleClose}>
-      <DocumentHeaderTitle editable value={title} onChange={value => setTitle(value)} placeholder='Task name' />
+      <div css={styles.root}>
+        <DocumentHeaderTitle editable value={title} onChange={value => setTitle(value)} placeholder='Task name' />
+      </div>
     </Modal>
   );
 };
 
 const styles = {
-  root: css``,
+  root: css`
+    width: 400px;
+  `,
 };

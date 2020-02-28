@@ -24,7 +24,7 @@ const styles = {
     background-color: ${COLORS.WHITE};
     border-radius: ${BORDER_RADIUS.MEDIUM};
     box-shadow: ${BOX_SHADOW.MEDIUM};
-    padding: 30px;
+    padding: 50px;
     position: relative;
   `,
 

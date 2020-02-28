@@ -56,6 +56,8 @@ const styles = {
     transition: border-color 0.2s;
 
     &.editable {
+      cursor: text;
+
       &:hover {
         border-color: ${COLORS.DIRTY_SNOW};
       }
@@ -65,7 +67,7 @@ const styles = {
       }
     }
 
-    >div[contenteditable='true']:empty:before {
+    > div[contenteditable='true']:empty:before {
       content: attr(placeholder);
       display: block;
       color: ${COLORS.SMOKE};

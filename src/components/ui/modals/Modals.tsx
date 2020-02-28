@@ -37,7 +37,7 @@ interface IModalOptions {
   onWillOpen?: (modalId: number) => void;
 }
 
-const ANIMATION_TIME: number = 200;
+const ANIMATION_TIME: number = 125;
 const BASE_Z: number = 1000;
 
 export interface IModalContext {
@@ -332,21 +332,17 @@ const animationsOverlay = {
 const animationsModal = {
   enter: css`
     opacity: 0;
-    transform: translate(-50%, -46%) !important;
   `,
   enterActive: css`
     opacity: 1;
-    transform: translate(-50%, -50%) !important;
-    transition: transform ${ANIMATION_TIME}ms, opacity ${ANIMATION_TIME}ms;
+    transition: opacity ${ANIMATION_TIME}ms;
   `,
   exit: css`
     opacity: 1;
-    transform: translate(-50%, -50%) !important;
   `,
   exitActive: css`
     opacity: 0;
-    transform: translate(-50%, -46%) !important;
-    transition: transform ${ANIMATION_TIME}ms, opacity ${ANIMATION_TIME}ms;
+    transition: opacity ${ANIMATION_TIME}ms;
   `,
 };
 
@@ -357,9 +353,9 @@ const styles = {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50.15%, -50.15%);
+    transform: translate(-50%, -50%);
     transform-origin: 0;
-    will-change: transform, opacity;
+    will-change: opacity;
   `,
 
   overlay: css`

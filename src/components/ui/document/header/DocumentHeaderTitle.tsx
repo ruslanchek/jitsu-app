@@ -50,7 +50,7 @@ const styles = {
     font-size: ${FONT_SIZE.H1};
     outline: none;
     padding: 5px 15px 3px;
-    margin: 0 -15px 12px -15px;
+    margin: 0 -16px 12px -16px;
     border-radius: ${BORDER_RADIUS.MEDIUM};
     border: 1px solid transparent;
     transition: border-color 0.2s;

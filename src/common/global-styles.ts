@@ -88,7 +88,7 @@ export const globalStyles = css`
     border: 1px solid ${COLORS.DIRTY_SNOW};
     border-radius: ${BORDER_RADIUS.MEDIUM};
     background: ${COLORS.WHITE};
-    height: ${INPUT_HEIGHT};
+    height: ${INPUT_HEIGHT.SMALL};
     outline: none;
     -webkit-appearance: none;
     padding: 0 12px;

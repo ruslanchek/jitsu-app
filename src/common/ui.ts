@@ -18,7 +18,11 @@ export const MIN_WIDTH = '800px';
 
 export const HEADER_ELEMENT_HEIGHT = '36px';
 
-export const INPUT_HEIGHT = '36px';
+export const INPUT_HEIGHT = {
+  SMALL: '36px',
+  MEDIUM: '40px',
+  LARGE: '48px',
+};
 
 export const DOCUMENT_SIDE_TOOLS = {
   STICKY_TOP_POSITION: '100px',

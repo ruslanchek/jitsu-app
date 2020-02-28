@@ -2,9 +2,15 @@ import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { HEADER_ELEMENT_HEIGHT } from '../../../common/ui';
 import { hideText } from 'polished';
+import { Link } from '@reach/router';
+import { PATHS } from '../../../common/paths';
 
 export const HeaderLogo: FC = () => {
-  return <a href="/" css={styles.root}>Jitsu</a>;
+  return (
+    <Link to={PATHS.MAIN} css={styles.root}>
+      Jitsu
+    </Link>
+  );
 };
 
 const styles = {

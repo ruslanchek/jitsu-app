@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/core';
-import { Link, RouteComponentProps, useLocation } from '@reach/router';
+import { Link, RouteComponentProps } from '@reach/router';
 import { PATHS } from '../../common/paths';
 
 interface IProps extends RouteComponentProps {}

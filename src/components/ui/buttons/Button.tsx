@@ -76,7 +76,7 @@ const styles = {
     font-weight: 400;
     transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
     transform: scale(0.99999);
-    border-radius: ${BORDER_RADIUS.SMALL};
+    border-radius: ${BORDER_RADIUS.MEDIUM};
 
     &:active {
       transform: scale(0.99);

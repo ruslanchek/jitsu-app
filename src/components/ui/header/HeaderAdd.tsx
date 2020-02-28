@@ -22,13 +22,11 @@ export const HeaderAdd: FC<IProps> = () => {
       icon: <FiCheckCircle />,
       color: COLORS.SMOKE,
       onSelect: () => {
-        console.log('xxx');
         modalContext.openModal({
           renderModalComponent: id => <AddTaskModal handleClose={() => modalContext.closeModal(id)} />,
           showOverlay: true,
           closeByOutsideClick: true,
           closeByEscapeKey: true,
-          closeByEnterKey: true,
         });
       },
     },

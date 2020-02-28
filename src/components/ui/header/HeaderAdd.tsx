@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useContext, useRef, useState } from 'react';
+import React, { FC, useContext, useRef, useState } from 'react';
 import { css } from '@emotion/core';
 import { FiBookOpen, FiBox, FiCheckCircle, FiClipboard, FiLoader, FiUserPlus } from 'react-icons/fi';
 import { COLORS } from '../../../common/colors';
@@ -6,29 +6,48 @@ import { BORDER_RADIUS, FONT_FAMILY, FONT_SIZE, HEADER_ELEMENT_HEIGHT } from '..
 import { EPhrase } from '../../../locales/EPhrase';
 import { useTranslator } from 'eo-locale';
 import { darken, rgba } from 'polished';
-import { DropdownView } from '../common/DropdownView';
+import { DropdownView } from '../dropdowns/DropdownView';
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
-import { EOLocale } from 'eo-locale';
-import { ModalsContext } from '../ modals/Modals';
-import { Modal } from '../ modals/Modal';
+import { ModalsContext } from '../modals/Modals';
+import { Modal } from '../modals/Modal';
 import { DocumentHeader } from '../document/header/DocumentHeader';
-
-interface IAddMenu {
-  title: string;
-  icon: ReactNode;
-}
+import { DropdownContextMenu, IDropdownContextMenuItem } from '../dropdowns/DropdownContextMenu';
 
 interface IProps {}
 
-const ADD_MENU: IAddMenu[] = [
-  { title: EPhrase.Add_Task, icon: <FiCheckCircle /> },
-  { title: EPhrase.Add_Document, icon: <FiClipboard /> },
-  { title: EPhrase.Add_Story, icon: <FiBookOpen /> },
-  { title: EPhrase.Add_Project, icon: <FiBox /> },
-  { title: EPhrase.Add_Invite, icon: <FiUserPlus /> },
-];
-
 export const HeaderAdd: FC<IProps> = () => {
+  const menuItems: IDropdownContextMenuItem[] = [
+    {
+      title: EPhrase.Add_Task,
+      icon: <FiCheckCircle />,
+      color: COLORS.SMOKE,
+      onSelect: () => {},
+    },
+    {
+      title: EPhrase.Add_Document,
+      icon: <FiClipboard />,
+      color: COLORS.SMOKE,
+      onSelect: () => {},
+    },
+    {
+      title: EPhrase.Add_Story,
+      icon: <FiBookOpen />,
+      color: COLORS.SMOKE,
+      onSelect: () => {},
+    },
+    {
+      title: EPhrase.Add_Project,
+      icon: <FiBox />,
+      color: COLORS.SMOKE,
+      onSelect: () => {},
+    },
+    {
+      title: EPhrase.Add_Invite,
+      icon: <FiUserPlus />,
+      color: COLORS.SMOKE,
+      onSelect: () => {},
+    },
+  ];
   const modalContext = useContext(ModalsContext);
   const translator = useTranslator();
   const rootRef = useRef(null);
@@ -57,14 +76,7 @@ export const HeaderAdd: FC<IProps> = () => {
         <FiLoader className='icon' size='20px' />
       </button>
       <DropdownView show={showDropdown}>
-        <div css={styles.addRoot}>
-          {ADD_MENU.map(item => (
-            <div key={item.title} css={styles.addItem} onClick={openModal}>
-              <div css={styles.addIcon}>{item.icon}</div>
-              <EOLocale.Text id={item.title} />
-            </div>
-          ))}
-        </div>
+        <DropdownContextMenu items={menuItems} />
       </DropdownView>
     </div>
   );
@@ -102,30 +114,5 @@ const styles = {
     &:active {
       transform: scale(0.98);
     }
-  `,
-
-  addRoot: css`
-    padding: 5px 0;
-  `,
-
-  addItem: css`
-    padding: 0 15px;
-    height: ${HEADER_ELEMENT_HEIGHT};
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    color: ${COLORS.SMOKE};
-
-    &:hover {
-      background-color: ${COLORS.SNOW.toString()};
-      color: ${COLORS.HIGH_SMOKE};
-    }
-  `,
-
-  addIcon: css`
-    height: ${HEADER_ELEMENT_HEIGHT};
-    display: flex;
-    align-items: center;
-    margin-right: 15px;
   `,
 };

@@ -3,7 +3,7 @@ import { EOLocale } from 'eo-locale';
 import { DEFAULT_LOCALE } from '../../common/defaults';
 import { GlobalHandlersProvider } from '../providers/GlobalHandlersProvider';
 import { ApolloClientProvider } from '../providers/ApolloClientProvider';
-import { Modals } from '../ui/ modals/Modals';
+import { Modals } from '../ui/modals/Modals';
 
 const LOCALES = [
   {

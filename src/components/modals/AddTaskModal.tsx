@@ -26,6 +26,7 @@ export const AddTaskModal: FC<IProps> = ({ handleClose }) => {
     <Modal handleClose={handleClose}>
       <div css={styles.root}>
         <DocumentHeaderContainer>
+          <DocumentHeaderTitle editable value={title} onChange={value => setTitle(value)} placeholder='Task name' />
           <DocumentHeaderBarGroup>
             <DocumentHeaderBar
               align='left'
@@ -37,7 +38,6 @@ export const AddTaskModal: FC<IProps> = ({ handleClose }) => {
               ]}
             />
           </DocumentHeaderBarGroup>
-          <DocumentHeaderTitle editable value={title} onChange={value => setTitle(value)} placeholder='Task name' />
           <DocumentHeaderBarGroup>
             <DocumentHeaderBar
               align='left'

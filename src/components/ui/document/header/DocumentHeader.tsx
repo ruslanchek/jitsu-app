@@ -16,6 +16,7 @@ import { DocumentHeaderContainer } from './DocumentHeaderContainer';
 export const DocumentHeader: FC = () => {
   return (
     <DocumentHeaderContainer>
+      <DocumentHeaderTitle editable value='Frontend Collective: Week #1' />
       <DocumentHeaderBarGroup>
         <DocumentHeaderBar
           align='left'
@@ -30,7 +31,6 @@ export const DocumentHeader: FC = () => {
           ]}
         />
       </DocumentHeaderBarGroup>
-      <DocumentHeaderTitle editable value='Frontend Collective: Week #1' />
       <DocumentHeaderBarGroup>
         <DocumentHeaderBar
           align='left'

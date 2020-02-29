@@ -1,6 +1,7 @@
 import React, { FC, useState } from 'react';
 import { css } from '@emotion/core';
-import Calendar from 'react-calendar';
+import Calendar from 'react-calendar/dist/entry.nostyle';
+import { FiChevronRight, FiChevronLeft, FiChevronsLeft, FiChevronsRight } from 'react-icons/fi';
 
 interface IProps {}
 
@@ -11,11 +12,25 @@ export const DatePicker: FC<IProps> = () => {
   }
   return (
     <div css={styles.root}>
-      <Calendar onChange={onChange} value={localValue} />
+      <Calendar
+        prev2Label={<FiChevronsLeft />}
+        prevLabel={<FiChevronLeft />}
+        nextLabel={<FiChevronRight />}
+        next2Label={<FiChevronsRight />}
+        onChange={onChange}
+        value={localValue}
+      />
     </div>
   );
 };
 
 const styles = {
-  root: css``,
+  root: css`
+    .react-calendar {
+      width: 280px;
+
+      &__navigation {
+      }
+    }
+  `,
 };

@@ -34,13 +34,13 @@ export const CreateProjectModal: FC<IProps> = ({ handleClose }) => {
   const translator = useTranslator();
   const { handleSubmit, errors, control } = useForm<IModel>();
   const [createProject, { loading }] = useMutation(CREATE_PROJECT);
-  const onSubmit = async (model: IModel) => {
+  async function onSubmit(model: IModel) {
     const result = await createProject({ variables: model });
     if (result?.data?.createProject?.id) {
       await navigate(PATHS.PROJECT.replace(':id', result?.data?.createProject?.id));
       handleClose();
     }
-  };
+  }
   const [title, setTitle] = useState('');
   return (
     <Modal handleClose={handleClose}>

@@ -3,13 +3,12 @@ import { css } from '@emotion/core';
 import Calendar from 'react-calendar/dist/entry.nostyle';
 import { FiChevronRight, FiChevronLeft, FiChevronsLeft, FiChevronsRight } from 'react-icons/fi';
 
-interface IProps {}
+interface IProps {
+  value: Date;
+  onChange: (date: Date) => void;
+}
 
-export const DatePicker: FC<IProps> = () => {
-  const [localValue, setLocalValue] = useState(new Date());
-  function onChange(e: any) {
-    console.log(e);
-  }
+export const DatePicker: FC<IProps> = ({ value, onChange }) => {
   return (
     <div css={styles.root}>
       <Calendar
@@ -17,8 +16,14 @@ export const DatePicker: FC<IProps> = () => {
         prevLabel={<FiChevronLeft />}
         nextLabel={<FiChevronRight />}
         next2Label={<FiChevronsRight />}
-        onChange={onChange}
-        value={localValue}
+        onChange={value => {
+          if (value instanceof Date) {
+            onChange(value);
+          } else {
+            onChange(value[0]);
+          }
+        }}
+        value={value}
       />
     </div>
   );

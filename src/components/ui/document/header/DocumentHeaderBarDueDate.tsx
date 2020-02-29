@@ -7,12 +7,15 @@ import { DocumentHeaderBarButton } from './DocumentHeaderBarButton';
 import { DropdownView } from '../../dropdowns/DropdownView';
 import { css } from '@emotion/core';
 import { DatePicker } from '../../calendar/DatePicker';
+import { useDateColor } from '../../../../hooks/useDateColor';
 
 interface IProps {
   date: Date;
+  onChange: (date: Date) => void;
 }
 
-export const DocumentHeaderBarDueDate: FC<IProps> = ({ date }) => {
+export const DocumentHeaderBarDueDate: FC<IProps> = ({ date, onChange }) => {
+  const dateColor = useDateColor(date, COLORS.HIGH_SMOKE);
   const [showCalendar, setShowCalendar] = useState(false);
   const buttonRef = useRef<HTMLDivElement>(null);
   function toggleCalendar() {
@@ -21,11 +24,11 @@ export const DocumentHeaderBarDueDate: FC<IProps> = ({ date }) => {
   return (
     <DocumentHeaderBarItem label={EPhrase.Document_Due_to}>
       <div css={styles.root} ref={buttonRef}>
-        <DocumentHeaderBarButton color={COLORS.FIRE_ROSE} onClick={toggleCalendar}>
+        <DocumentHeaderBarButton color={dateColor} onClick={toggleCalendar}>
           <DateFormatter date={date} />
         </DocumentHeaderBarButton>
         <DropdownView onHide={() => setShowCalendar(false)} forwardRef={buttonRef} show={showCalendar}>
-          <DatePicker />
+          <DatePicker value={date} onChange={onChange} />
         </DropdownView>
       </div>
     </DocumentHeaderBarItem>

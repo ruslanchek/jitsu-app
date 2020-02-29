@@ -11,6 +11,7 @@
     "apollo-link-context": "^1.0.19",
     "apollo-link-ws": "^1.0.19",
     "classnames": "^2.2.6",
+    "date-fns": "^2.10.0",
     "eo-css-tools": "^0.6.1",
     "eo-locale": "^7.2.3",
     "graphql": "^14.6.0",

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { DocumentHeaderBarGroup } from './DocumentHeaderBarGroup';
 import { DocumentHeaderBar } from './DocumentHeaderBar';
 import { DocumentHeaderBarId } from './DocumentHeaderBarId';
@@ -14,6 +14,10 @@ import { DocumentHeaderBarTags } from './DocumentHeaderBarTags';
 import { DocumentHeaderContainer } from './DocumentHeaderContainer';
 
 export const DocumentHeader: FC = () => {
+  const [date, setDate] = useState(new Date());
+  function handleChangeDate(date: Date) {
+    setDate(date);
+  }
   return (
     <DocumentHeaderContainer>
       <DocumentHeaderTitle editable value='Frontend Collective: Week #1' />
@@ -25,7 +29,7 @@ export const DocumentHeader: FC = () => {
             <DocumentHeaderBarBookmark mark />,
             <DocumentHeaderBarStatus />,
             <DocumentHeaderBarPriority />,
-            <DocumentHeaderBarDueDate date={new Date()} />,
+            <DocumentHeaderBarDueDate date={date} onChange={handleChangeDate} />,
             <DocumentHeaderBarAssignedTo user='m_brtn' />,
             <DocumentHeaderBarLabel />,
           ]}

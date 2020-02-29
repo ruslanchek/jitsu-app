@@ -39,14 +39,19 @@ export const CreateTaskModal: FC<IProps> = ({ handleClose }) => {
   const translator = useTranslator();
   const { handleSubmit, errors, control, register } = useForm<IModel>();
   const [title, setTitle] = useState('');
+  const [date, setDate] = useState(new Date());
   const [createTask, { loading }] = useMutation(CREATE_TASK);
-  const onSubmit = async (model: IModel) => {
+  async function onSubmit(model: IModel) {
     const result = await createTask({ variables: model });
     if (result?.data?.createProject?.id) {
       // await navigate(PATHS.PROJECT.replace(':id', result?.data?.createProject?.id));
       handleClose();
     }
-  };
+  }
+  function handleChangeDate(date: Date) {
+    setDate(date);
+  }
+
   return (
     <Modal handleClose={handleClose}>
       <form css={styles.root} onSubmit={handleSubmit(onSubmit)}>
@@ -74,7 +79,7 @@ export const CreateTaskModal: FC<IProps> = ({ handleClose }) => {
               align='left'
               items={[
                 <DocumentHeaderBarPriority />,
-                <DocumentHeaderBarDueDate date={new Date()} />,
+                <DocumentHeaderBarDueDate date={date} onChange={handleChangeDate} />,
                 <DocumentHeaderBarAssignedTo user='m_brtn' />,
                 <DocumentHeaderBarLabel />,
               ]}

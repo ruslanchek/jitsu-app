@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { COLORS } from '../../../common/colors';
 import { HeaderLogo } from './HeaderLogo';
-import { HeaderAdd } from './HeaderAdd';
+import { HeaderCreate } from './HeaderCreate';
 import { Limiter } from '../common/Limiter';
 import { HeaderUser } from './HeaderUser';
 import { HeaderNotifications } from './HeaderNotifications';
@@ -25,7 +25,7 @@ export const HeaderView: FC<IProps> = () => {
           </div>
           <div css={styles.right}>
             <HeaderSearch />
-            <HeaderAdd />
+            <HeaderCreate />
             <HeaderUser />
             <HeaderNotifications />
             <HeaderMenu />

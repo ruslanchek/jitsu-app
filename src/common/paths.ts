@@ -1,5 +1,5 @@
 export const PATHS = {
   MAIN: '/',
   PROJECTS: '/projects',
-  PROJECT: '/project/:id',
+  PROJECT: '/projects/:id',
 };

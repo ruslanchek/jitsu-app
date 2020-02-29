@@ -41,3 +41,7 @@ export const BOX_SHADOW = {
   MEDIUM: `0 2px 6px ${rgba(COLORS.HIGH_SMOKE, 0.15)}`,
   LARGE: `0 4px 10px ${rgba(COLORS.HIGH_SMOKE, 0.15)}`,
 };
+
+export const MODAL_SIZE = {
+  LARGE: '720px',
+};

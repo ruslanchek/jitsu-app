@@ -14,9 +14,13 @@
   "DOCUMENT::TIMELINE": "Timeline",
   "DOCUMENT::SUBTASKS": "Subtasks",
   "PLACEHOLDER::SEARCH": "Search",
-  "ADD::TASK": "Task",
-  "ADD::PROJECT": "Project",
-  "ADD::DOCUMENT": "Document",
-  "ADD::STORY": "Story",
-  "ADD::INVITE": "Invite"
+  "CREATE::TASK": "Task",
+  "CREATE::PROJECT": "Project",
+  "CREATE::DOCUMENT": "Document",
+  "CREATE::STORY": "Story",
+  "CREATE::INVITE": "Invite",
+  "CREATE_TASK::SUBMIT": "Create Task",
+  "CREATE_TASK::TITLE_PLACEHOLDER": "Task name",
+  "CREATE_PROJECT::SUBMIT": "Create Project",
+  "CREATE_PROJECT::TITLE_PLACEHOLDER": "Project name"
 }

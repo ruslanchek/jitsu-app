@@ -10,20 +10,21 @@ import { DropdownView } from '../dropdowns/DropdownView';
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
 import { ModalsContext } from '../modals/Modals';
 import { DropdownContextMenu, IDropdownContextMenuItem } from '../dropdowns/DropdownContextMenu';
-import { AddTaskModal } from '../../modals/AddTaskModal';
+import { CreateTaskModal } from '../../modals/CreateTaskModal';
+import { CreateProjectModal } from '../../modals/CreateProjectModal';
 
 interface IProps {}
 
-export const HeaderAdd: FC<IProps> = () => {
+export const HeaderCreate: FC<IProps> = () => {
   const modalContext = useContext(ModalsContext);
   const menuItems: IDropdownContextMenuItem[] = [
     {
-      title: EPhrase.Add_Task,
+      title: EPhrase.Create_Task,
       icon: <FiCheckCircle />,
       color: COLORS.SMOKE,
       onSelect: () => {
         modalContext.openModal({
-          renderModalComponent: id => <AddTaskModal handleClose={() => modalContext.closeModal(id)} />,
+          renderModalComponent: id => <CreateTaskModal handleClose={() => modalContext.closeModal(id)} />,
           showOverlay: true,
           closeByOutsideClick: true,
           closeByEscapeKey: true,
@@ -31,25 +32,34 @@ export const HeaderAdd: FC<IProps> = () => {
       },
     },
     {
-      title: EPhrase.Add_Document,
+      title: EPhrase.Create_Document,
       icon: <FiClipboard />,
       color: COLORS.SMOKE,
-      onSelect: () => {},
+      onSelect: () => {
+
+      },
     },
     {
-      title: EPhrase.Add_Story,
+      title: EPhrase.Create_Story,
       icon: <FiBookOpen />,
       color: COLORS.SMOKE,
       onSelect: () => {},
     },
     {
-      title: EPhrase.Add_Project,
+      title: EPhrase.Create_Project,
       icon: <FiBox />,
       color: COLORS.SMOKE,
-      onSelect: () => {},
+      onSelect: () => {
+        modalContext.openModal({
+          renderModalComponent: id => <CreateProjectModal handleClose={() => modalContext.closeModal(id)} />,
+          showOverlay: true,
+          closeByOutsideClick: true,
+          closeByEscapeKey: true,
+        });
+      },
     },
     {
-      title: EPhrase.Add_Invite,
+      title: EPhrase.Create_Invite,
       icon: <FiUserPlus />,
       color: COLORS.SMOKE,
       onSelect: () => {},

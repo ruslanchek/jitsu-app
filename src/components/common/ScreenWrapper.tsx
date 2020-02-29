@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { HeaderView } from '../ui/header/HeaderView';
 import { Limiter } from '../ui/common/Limiter';
-
 export const ScreenWrapper: FC = ({ children }) => {
   return (
     <div css={styles.root}>

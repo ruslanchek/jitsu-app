@@ -3,14 +3,23 @@
 schema {
     query: Query
     mutation: Mutation
+    subscription: Subscription
+}
+
+type DocumentEntity {
+    id: ID!
+    name: String!
+    project: ProjectEntity!
 }
 
 type Mutation {
+    createDocument(input: DocumentCreateInput!): DocumentEntity!
     createProject(input: ProjectCreateInput!): ProjectEntity!
     register(input: UserInputRegister!): UserTokenResponse!
 }
 
 type ProjectEntity {
+    documents: [DocumentEntity!]!
     id: ID!
     invitedUsers: [UserEntity!]!
     name: String!
@@ -18,10 +27,17 @@ type ProjectEntity {
 }
 
 type Query {
+    getDocument(input: DocumentGetByIdInput!): DocumentEntity!
+    getDocuments: [DocumentEntity!]!
     getMyProjects: [ProjectEntity!]!
     getProject(input: ProjectGetByIdInput!): ProjectEntity!
     login(input: UserInputLogin!): UserTokenResponse!
     me: UserEntity!
+}
+
+type Subscription {
+    documentCreated: DocumentEntity!
+    projectCreated: ProjectEntity!
 }
 
 type UserEntity {
@@ -35,6 +51,15 @@ type UserEntity {
 
 type UserTokenResponse {
     token: String!
+}
+
+input DocumentCreateInput {
+    name: String!
+    projectId: ID!
+}
+
+input DocumentGetByIdInput {
+    id: ID!
 }
 
 input ProjectCreateInput {

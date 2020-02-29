@@ -7,6 +7,9 @@ const GET_MY_PROJECTS = gql`
     getMyProjects {
       id
       name
+      documents {
+        id
+      }
     }
   }
 `;
@@ -18,6 +21,5 @@ interface IResult {
 
 export const useMyProjects = (): IResult => {
   const { loading, error, data } = useQuery(GET_MY_PROJECTS);
-  console.log(error);
   return { loading, projects: data?.getMyProjects || [] };
 };

@@ -7,6 +7,10 @@ const GET_MY_PROJECTS = gql`
     getProject(input: { id: $id }) {
       id
       name
+      documents {
+        id
+        name
+      }
     }
   }
 `;

@@ -16,6 +16,7 @@ export const App: FC = () => {
         <MainScreen path={PATHS.MAIN} />
         <ProjectsScreen path={PATHS.PROJECTS} />
         <ProjectScreen path={PATHS.PROJECT} />
+        <MainScreen path={PATHS.TASK} />
       </Router>
     </Providers>
   );

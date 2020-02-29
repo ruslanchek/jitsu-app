@@ -14,24 +14,61 @@ import { Button } from '../ui/buttons/Button';
 import { EOLocale, useTranslator } from 'eo-locale';
 import { EPhrase } from '../../locales/EPhrase';
 import { MODAL_SIZE } from '../../common/ui';
+import { Controller, useForm } from 'react-hook-form';
+import { gql } from 'apollo-boost';
+import { useMutation } from '@apollo/react-hooks';
+
+const CREATE_TASK = gql`
+  mutation CreateDocument($name: String!, $projectId: ID!) {
+    createDocument(input: { name: $name, projectId: $projectId }) {
+      id
+    }
+  }
+`;
 
 interface IProps {
   handleClose: () => void;
 }
 
+interface IModel {
+  name: string;
+  projectId: string;
+}
+
 export const CreateTaskModal: FC<IProps> = ({ handleClose }) => {
   const translator = useTranslator();
+  const { handleSubmit, errors, control, register } = useForm<IModel>();
   const [title, setTitle] = useState('');
+  const [createTask, { loading }] = useMutation(CREATE_TASK);
+  const onSubmit = async (model: IModel) => {
+    const result = await createTask({ variables: model });
+    if (result?.data?.createProject?.id) {
+      // await navigate(PATHS.PROJECT.replace(':id', result?.data?.createProject?.id));
+      handleClose();
+    }
+  };
   return (
     <Modal handleClose={handleClose}>
-      <div css={styles.root}>
+      <form css={styles.root} onSubmit={handleSubmit(onSubmit)}>
         <DocumentHeaderContainer>
-          <DocumentHeaderTitle
-            editable
-            value={title}
-            onChange={value => setTitle(value)}
-            placeholder={translator.translate(EPhrase.Create_task_Title_placeholder)}
+          <Controller
+            as={
+              <DocumentHeaderTitle
+                editable
+                value={title}
+                onChange={value => setTitle(value)}
+                placeholder={translator.translate(EPhrase.Create_task_Title_placeholder)}
+              />
+            }
+            rules={{
+              required: true,
+              minLength: 3,
+            }}
+            name='name'
+            control={control}
+            defaultValue=''
           />
+          <input name='projectId' defaultValue='5e9339f4-1d86-48d2-9791-602591368e0e' ref={register} />
           <DocumentHeaderBarGroup>
             <DocumentHeaderBar
               align='left'
@@ -50,10 +87,10 @@ export const CreateTaskModal: FC<IProps> = ({ handleClose }) => {
             />
           </DocumentHeaderBarGroup>
         </DocumentHeaderContainer>
-        <Button size='large' type='button' color='default'>
+        <Button size='large' type='submit' color='default' loading={loading}>
           <EOLocale.Text id={EPhrase.Create_task_Submit} />
         </Button>
-      </div>
+      </form>
     </Modal>
   );
 };

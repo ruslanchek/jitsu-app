@@ -33,9 +33,9 @@ interface IProps {
 export const CreateProjectModal: FC<IProps> = ({ handleClose }) => {
   const translator = useTranslator();
   const { handleSubmit, errors, control } = useForm<IModel>();
-  const [addTodo, { loading }] = useMutation(CREATE_PROJECT);
+  const [createProject, { loading }] = useMutation(CREATE_PROJECT);
   const onSubmit = async (model: IModel) => {
-    const result = await addTodo({ variables: model });
+    const result = await createProject({ variables: model });
     if (result?.data?.createProject?.id) {
       await navigate(PATHS.PROJECT.replace(':id', result?.data?.createProject?.id));
       handleClose();

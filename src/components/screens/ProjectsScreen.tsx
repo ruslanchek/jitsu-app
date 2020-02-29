@@ -14,10 +14,11 @@ export const ProjectsScreen: FC<IProps> = () => {
       <div css={styles.root}>
         <div css={styles.side}></div>
         <div css={styles.main}>
-          {projects.map((project: any) => (
+          {projects.map(project => (
             <div key={project.id}>
               <Link to={PATHS.PROJECT.replace(':id', project.id)}>{project.id}</Link>
               {project.name}
+              ({project.documents?.length})
             </div>
           ))}
         </div>

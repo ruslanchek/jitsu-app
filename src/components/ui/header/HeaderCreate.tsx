@@ -2,7 +2,13 @@ import React, { FC, useContext, useRef, useState } from 'react';
 import { css } from '@emotion/core';
 import { FiBookOpen, FiBox, FiCheckCircle, FiClipboard, FiLoader, FiUserPlus } from 'react-icons/fi';
 import { COLORS } from '../../../common/colors';
-import { BORDER_RADIUS, FONT_FAMILY, FONT_SIZE, HEADER_ELEMENT_HEIGHT } from '../../../common/ui';
+import {
+  BORDER_RADIUS,
+  FONT_FAMILY,
+  FONT_SIZE,
+  HEADER_ELEMENT_HEIGHT,
+  PORTAL_ROOT_SELECTORS,
+} from '../../../common/ui';
 import { EPhrase } from '../../../locales/EPhrase';
 import { useTranslator } from 'eo-locale';
 import { darken, rgba } from 'polished';
@@ -23,6 +29,7 @@ export const HeaderCreate: FC<IProps> = () => {
       icon: <FiCheckCircle />,
       color: COLORS.SMOKE,
       onSelect: () => {
+        setShowDropdown(false);
         modalContext.openModal({
           renderModalComponent: id => <CreateTaskModal handleClose={() => modalContext.closeModal(id)} />,
           showOverlay: true,
@@ -36,20 +43,23 @@ export const HeaderCreate: FC<IProps> = () => {
       icon: <FiClipboard />,
       color: COLORS.SMOKE,
       onSelect: () => {
-
+        setShowDropdown(false);
       },
     },
     {
       title: EPhrase.Create_Story,
       icon: <FiBookOpen />,
       color: COLORS.SMOKE,
-      onSelect: () => {},
+      onSelect: () => {
+        setShowDropdown(false);
+      },
     },
     {
       title: EPhrase.Create_Project,
       icon: <FiBox />,
       color: COLORS.SMOKE,
       onSelect: () => {
+        setShowDropdown(false);
         modalContext.openModal({
           renderModalComponent: id => <CreateProjectModal handleClose={() => modalContext.closeModal(id)} />,
           showOverlay: true,
@@ -62,7 +72,9 @@ export const HeaderCreate: FC<IProps> = () => {
       title: EPhrase.Create_Invite,
       icon: <FiUserPlus />,
       color: COLORS.SMOKE,
-      onSelect: () => {},
+      onSelect: () => {
+        setShowDropdown(false);
+      },
     },
   ];
   const translator = useTranslator();
@@ -71,13 +83,12 @@ export const HeaderCreate: FC<IProps> = () => {
   function handleButtonClick() {
     setShowDropdown(!showDropdown);
   }
-  useOnClickOutside(rootRef, () => setShowDropdown(false));
   return (
     <div css={styles.root} ref={rootRef}>
       <button css={styles.button} title={translator.translate(EPhrase.Actions_Create)} onClick={handleButtonClick}>
         <FiLoader className='icon' size='20px' />
       </button>
-      <DropdownView show={showDropdown}>
+      <DropdownView onHide={() => setShowDropdown(false)} show={showDropdown} forwardRef={rootRef}>
         <DropdownContextMenu items={menuItems} />
       </DropdownView>
     </div>

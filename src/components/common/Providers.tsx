@@ -17,7 +17,7 @@ export const Providers: FC = ({ children }) => {
     <EOLocale.Provider language={DEFAULT_LOCALE} locales={LOCALES}>
       <GlobalHandlersProvider>
         <ApolloClientProvider>
-          <Modals rootContainerSelector='#root-modals'>{children}</Modals>
+          <Modals>{children}</Modals>
         </ApolloClientProvider>
       </GlobalHandlersProvider>
     </EOLocale.Provider>

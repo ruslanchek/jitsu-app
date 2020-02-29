@@ -6,10 +6,7 @@ import { usePortal } from '../../../hooks/usePortal';
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
 import { COLORS } from '../../../common/colors';
 import { rgba } from 'polished';
-
-interface IProps {
-  rootContainerSelector: string;
-}
+import { PORTAL_ROOT_SELECTORS, Z_INDEX } from '../../../common/ui';
 
 interface IModal {
   id: number;
@@ -37,7 +34,7 @@ interface IModalOptions {
   onWillOpen?: (modalId: number) => void;
 }
 
-const ANIMATION_TIME: number = 125;
+const ANIMATION_TIME: number = 300;
 const BASE_Z: number = 1000;
 
 export interface IModalContext {
@@ -54,11 +51,10 @@ export const ModalsContext = React.createContext<IModalContext>({
   isOpened: () => false,
 });
 
-export const Modals: React.FC<IProps> = props => {
-  const { rootContainerSelector, children } = props;
+export const Modals: React.FC = ({ children }) => {
   const modalsRef = useRef(new Map<number, IModal>());
   const topModalIdRef = useRef<number | null>(null);
-  const root = usePortal(rootContainerSelector);
+  const root = usePortal(PORTAL_ROOT_SELECTORS.MODALS);
   const currentModalRef = useRef<HTMLDivElement>(null);
 
   const handleOutsideClick = () => {
@@ -73,7 +69,7 @@ export const Modals: React.FC<IProps> = props => {
     }
   };
 
-  useOnClickOutside(currentModalRef, handleOutsideClick);
+  useOnClickOutside(handleOutsideClick, currentModalRef);
 
   /**
    * Utility timestamp to force re-renders due to update the notifications Map ref.
@@ -244,65 +240,44 @@ export const Modals: React.FC<IProps> = props => {
         }}>
         {children}
         {ReactDOM.createPortal(
-          <ClassNames>
-            {({ css }) => {
-              return (
-                <React.Fragment>
-                  <div ref={currentModalRef}>
-                    {Array.from(modalsRef.current.values()).map((modal, i) => {
-                      return (
-                        <CSSTransition
-                          key={modal.id}
-                          timeout={ANIMATION_TIME}
-                          in={modal.isOpened}
-                          unmountOnExit
-                          onExited={() => handleOnExitedAnimation(modal)}
-                          onEntered={() => {
-                            modal.onDidOpen();
-                          }}
-                          classNames={{
-                            enter: css(animationsModal.enter),
-                            enterActive: css(animationsModal.enterActive),
-                            exit: css(animationsModal.exit),
-                            exitActive: css(animationsModal.exitActive),
-                          }}>
-                          <div
-                            css={[
-                              styles.modal,
-                              {
-                                zIndex: BASE_Z + 1 + i,
-                              },
-                            ]}>
-                            {modal.renderModalComponent(modal.id)}
-                          </div>
-                        </CSSTransition>
-                      );
-                    })}
-                  </div>
-
+          <React.Fragment>
+            <div ref={currentModalRef}>
+              {Array.from(modalsRef.current.values()).map((modal, i) => {
+                return (
                   <CSSTransition
+                    key={modal.id}
                     timeout={ANIMATION_TIME}
-                    in={isShowOverlay}
+                    in={modal.isOpened}
                     unmountOnExit
-                    classNames={{
-                      enter: css(animationsOverlay.enter),
-                      enterActive: css(animationsOverlay.enterActive),
-                      exit: css(animationsOverlay.exit),
-                      exitActive: css(animationsOverlay.exitActive),
-                    }}>
+                    onExited={() => handleOnExitedAnimation(modal)}
+                    onEntered={() => {
+                      modal.onDidOpen();
+                    }}
+                    css={styles.modalAnimations}>
                     <div
                       css={[
-                        styles.overlay,
+                        styles.modal,
                         {
-                          zIndex: BASE_Z,
+                          zIndex: Z_INDEX.MODALS + 1 + i,
                         },
-                      ]}
-                    />
+                      ]}>
+                      {modal.renderModalComponent(modal.id)}
+                    </div>
                   </CSSTransition>
-                </React.Fragment>
-              );
-            }}
-          </ClassNames>,
+                );
+              })}
+            </div>
+            <CSSTransition timeout={ANIMATION_TIME} in={isShowOverlay} unmountOnExit css={styles.overlayAnimations}>
+              <div
+                css={[
+                  styles.overlay,
+                  {
+                    zIndex: Z_INDEX.MODALS,
+                  },
+                ]}
+              />
+            </CSSTransition>
+          </React.Fragment>,
           root,
         )}
       </ModalsContext.Provider>
@@ -310,40 +285,6 @@ export const Modals: React.FC<IProps> = props => {
   } else {
     return null;
   }
-};
-
-const animationsOverlay = {
-  enter: css`
-    opacity: 0;
-  `,
-  enterActive: css`
-    opacity: 1;
-    transition: opacity ${ANIMATION_TIME}ms;
-  `,
-  exit: css`
-    opacity: 1;
-  `,
-  exitActive: css`
-    opacity: 0;
-    transition: opacity ${ANIMATION_TIME}ms;
-  `,
-};
-
-const animationsModal = {
-  enter: css`
-    opacity: 0;
-  `,
-  enterActive: css`
-    opacity: 1;
-    transition: opacity ${ANIMATION_TIME}ms;
-  `,
-  exit: css`
-    opacity: 1;
-  `,
-  exitActive: css`
-    opacity: 0;
-    transition: opacity ${ANIMATION_TIME}ms;
-  `,
 };
 
 const styles = {
@@ -358,13 +299,53 @@ const styles = {
     will-change: opacity;
   `,
 
+  modalAnimations: css`
+    &.enter {
+      opacity: 0;
+    }
+
+    &.enter-active {
+      opacity: 1;
+      transition: opacity ${ANIMATION_TIME}ms;
+    }
+
+    &.exit {
+      opacity: 1;
+    }
+
+    &.exit-active {
+      opacity: 0;
+      transition: opacity ${ANIMATION_TIME}ms;
+    }
+  `,
+
   overlay: css`
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: ${rgba(COLORS.HIGH_SMOKE, .8)};
+    background-color: ${rgba(COLORS.HIGH_SMOKE, 0.8)};
     will-change: opacity;
+  `,
+
+  overlayAnimations: css`
+    &.enter {
+      opacity: 0;
+    }
+
+    &.enter-active {
+      opacity: 1;
+      transition: opacity ${ANIMATION_TIME}ms;
+    }
+
+    &.exit {
+      opacity: 1;
+    }
+
+    &.exit-active {
+      opacity: 0;
+      transition: opacity ${ANIMATION_TIME}ms;
+    }
   `,
 };

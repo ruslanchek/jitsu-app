@@ -1,12 +1,21 @@
 import React, { useCallback, useEffect } from 'react';
 
 export function useOnClickOutside(
-  ref: React.MutableRefObject<HTMLElement | null>,
   handler: (event: React.MouseEvent) => void,
+  ref?: React.MutableRefObject<HTMLElement | null>,
+  additionalSelector?: string,
 ) {
   const listener = useCallback(
     event => {
-      if (!ref.current || ref.current.contains(event.target)) {
+      let additionalSelectorElement = null;
+      if (additionalSelector) {
+        additionalSelectorElement = document.querySelector(additionalSelector || '');
+      }
+      if (
+        !ref?.current ||
+        ref.current.contains(event.target) ||
+        (additionalSelectorElement && additionalSelectorElement.contains(event.target))
+      ) {
         return;
       }
 

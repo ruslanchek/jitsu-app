@@ -1,6 +1,17 @@
 import { rgba } from 'polished';
 import { COLORS } from './colors';
 
+export const PORTAL_ROOT_SELECTORS = {
+  DROPDOWNS: '#root-dropdowns',
+  MODALS: '#root-modals',
+};
+
+export const Z_INDEX = {
+  HEADER: 200,
+  MODALS: 1000,
+  DROPDOWNS: 1200,
+};
+
 export const FONT_FAMILY = "'Rubik', sans-serif";
 export const FONT_FAMILY_MONO = "'Ubuntu Mono', monospace;";
 

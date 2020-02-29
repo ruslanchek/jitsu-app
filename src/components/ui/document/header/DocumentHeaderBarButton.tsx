@@ -6,20 +6,26 @@ import { COLORS } from '../../../../common/colors';
 
 interface IProps {
   color: string;
-  icon?: ReactNode;
   background?: boolean;
+  icon?: ReactNode;
   colorMode?: 'icon' | 'content' | 'all';
+  onClick?: () => void;
 }
 
-export const DocumentHeaderBarButton: FC<IProps> = ({ children, color, icon, background, colorMode = 'all' }) => {
+export const DocumentHeaderBarButton: FC<IProps> = ({
+  children,
+  color,
+  icon,
+  background,
+  colorMode = 'all',
+  onClick = () => {},
+}) => {
   const [hover, setHover] = useState();
-
   const contentColor = useMemo(() => (background ? (hover ? darken(0.1, color) : color) : color), [
     background,
     hover,
     color,
   ]);
-
   const style = useMemo(() => {
     return {
       backgroundColor: rgba(color, background ? (hover ? 0.16 : 0.08) : hover ? 0.08 : 0),
@@ -58,6 +64,7 @@ export const DocumentHeaderBarButton: FC<IProps> = ({ children, color, icon, bac
     <button
       css={styles.root}
       style={style}
+      onClick={onClick}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       onFocus={() => setHover(true)}

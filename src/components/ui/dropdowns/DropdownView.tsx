@@ -6,6 +6,7 @@ import { triangle } from 'polished';
 import { usePortal } from '../../../hooks/usePortal';
 import ReactDOM from 'react-dom';
 import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
+import { CSSTransition } from 'react-transition-group';
 
 interface IProps {
   show: boolean;
@@ -13,14 +14,16 @@ interface IProps {
   forwardRef?: RefObject<HTMLElement>;
 }
 
+const ANIMATION_TIME = 150;
+
 export const DropdownView: FC<IProps> = ({ show, children, onHide, forwardRef }) => {
   const portal = usePortal(PORTAL_ROOT_SELECTORS.DROPDOWNS);
   const [position, setPosition] = useState({ top: 0, left: 0 });
 
-  useOnClickOutside( onHide, forwardRef, PORTAL_ROOT_SELECTORS.DROPDOWNS);
+  useOnClickOutside(onHide, forwardRef, PORTAL_ROOT_SELECTORS.DROPDOWNS);
 
   function resize() {
-    if(forwardRef?.current) {
+    if (forwardRef?.current) {
       const box = forwardRef.current.getBoundingClientRect();
       setPosition({
         top: box.top + box.height,
@@ -36,19 +39,18 @@ export const DropdownView: FC<IProps> = ({ show, children, onHide, forwardRef })
     return () => {
       window.removeEventListener('resize', resize, false);
       window.removeEventListener('scroll', resize, false);
-
     };
   }, []);
 
   if (portal) {
-    return show
-      ? ReactDOM.createPortal(
-          <div css={styles.root} style={position}>
-            <div css={styles.content}>{children}</div>
-          </div>,
-          portal,
-        )
-      : null;
+    return ReactDOM.createPortal(
+      <CSSTransition timeout={ANIMATION_TIME} in={show} unmountOnExit css={styles.animations}>
+        <div css={styles.root} style={position}>
+          <div css={styles.content}>{children}</div>
+        </div>
+      </CSSTransition>,
+      portal,
+    );
   } else {
     return null;
   }
@@ -81,6 +83,30 @@ const styles = {
         height: '10px',
         foregroundColor: COLORS.WHITE,
       })};
+    }
+  `,
+
+  animations: css`
+    &.enter {
+      opacity: 0;
+      transform: translate(-50%, 13px);
+    }
+
+    &.enter-active {
+      opacity: 1;
+      transform: translate(-50%, 10px);
+      transition: transform ${ANIMATION_TIME}ms, opacity ${ANIMATION_TIME}ms;
+    }
+
+    &.exit {
+      transform: translate(-50%, 10px);
+      opacity: 1;
+    }
+
+    &.exit-active {
+      opacity: 0;
+      transform: translate(-50%, 13px);
+      transition: transform ${ANIMATION_TIME}ms, opacity ${ANIMATION_TIME}ms;
     }
   `,
 };

@@ -34,8 +34,7 @@ interface IModalOptions {
   onWillOpen?: (modalId: number) => void;
 }
 
-const ANIMATION_TIME: number = 300;
-const BASE_Z: number = 1000;
+const ANIMATION_TIME: number = 200;
 
 export interface IModalContext {
   openModal: (options: IModalOptions) => number;
@@ -302,20 +301,24 @@ const styles = {
   modalAnimations: css`
     &.enter {
       opacity: 0;
+      transform: translate(-50%, calc(-50% + 20px));
     }
 
     &.enter-active {
       opacity: 1;
-      transition: opacity ${ANIMATION_TIME}ms;
+      transform: translate(-50%, -50%);
+      transition: transform ${ANIMATION_TIME}ms, opacity ${ANIMATION_TIME}ms;
     }
 
     &.exit {
       opacity: 1;
+      transform: translate(-50%, -50%);
     }
 
     &.exit-active {
       opacity: 0;
-      transition: opacity ${ANIMATION_TIME}ms;
+      transform: translate(-50%, calc(-50% - 20px));
+      transition: transform ${ANIMATION_TIME}ms, opacity ${ANIMATION_TIME}ms;
     }
   `,
 

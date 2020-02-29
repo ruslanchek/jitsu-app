@@ -1,9 +1,10 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import { css } from '@emotion/core';
 import { BORDER_RADIUS, FONT_SIZE } from '../../../../common/ui';
 import { COLORS } from '../../../../common/colors';
 import classNames from 'classnames';
 import ContentEditable from 'react-contenteditable';
+import { useReadOnly } from 'slate-react';
 
 interface IProps {
   value: string;
@@ -15,6 +16,7 @@ interface IProps {
 export const DocumentHeaderTitle: FC<IProps> = ({ value, editable, onChange, placeholder }) => {
   const [localValue, setLocalValue] = useState(value);
   const [focus, setFocus] = useState(false);
+  const editableRef = useRef(null);
 
   function handleChange(value: string) {
     setLocalValue(value);
@@ -28,6 +30,7 @@ export const DocumentHeaderTitle: FC<IProps> = ({ value, editable, onChange, pla
       <h1 css={styles.h1} className={classNames({ editable, focus })}>
         {editable ? (
           <ContentEditable
+            ref={editableRef}
             css={styles.editable}
             html={localValue}
             onFocus={() => setFocus(true)}

@@ -1,6 +1,6 @@
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
-import { IProject } from '../interfaces/project';
+import { IProject } from '../models/project';
 
 const GET_MY_PROJECTS = gql`
   query ProjectEntity($id: ID!) {
@@ -10,6 +10,10 @@ const GET_MY_PROJECTS = gql`
       documents {
         id
         name
+        type
+        status
+        priority
+        dueDate
       }
     }
   }

@@ -1,85 +1,98 @@
 # This file was generated based on ".graphqlconfig". Do not edit manually.
 
 schema {
-    query: Query
-    mutation: Mutation
-    subscription: Subscription
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
 }
 
 type DocumentEntity {
-    id: ID!
-    name: String!
-    project: ProjectEntity!
+  dueDate: Date!
+  id: ID!
+  name: String!
+  priority: DocumentPriority!
+  project: ProjectEntity!
+  status: DocumentStatus!
+  type: DocumentType!
 }
 
 type Mutation {
-    createDocument(input: DocumentCreateInput!): DocumentEntity!
-    createProject(input: ProjectCreateInput!): ProjectEntity!
-    register(input: UserInputRegister!): UserTokenResponse!
+  createDocument(input: DocumentCreateInput!): DocumentEntity!
+  createProject(input: ProjectCreateInput!): ProjectEntity!
+  register(input: UserInputRegister!): UserTokenResponse!
 }
 
 type ProjectEntity {
-    documents: [DocumentEntity!]!
-    id: ID!
-    invitedUsers: [UserEntity!]!
-    name: String!
-    user: UserEntity!
+  documents: [DocumentEntity!]!
+  id: ID!
+  invitedUsers: [UserEntity!]!
+  name: String!
+  user: UserEntity!
 }
 
 type Query {
-    getDocument(input: DocumentGetByIdInput!): DocumentEntity!
-    getDocuments: [DocumentEntity!]!
-    getMyProjects: [ProjectEntity!]!
-    getProject(input: ProjectGetByIdInput!): ProjectEntity!
-    login(input: UserInputLogin!): UserTokenResponse!
-    me: UserEntity!
+  getDocument(input: DocumentGetByIdInput!): DocumentEntity!
+  getDocuments: [DocumentEntity!]!
+  getMyProjects: [ProjectEntity!]!
+  getProject(input: ProjectGetByIdInput!): ProjectEntity!
+  login(input: UserInputLogin!): UserTokenResponse!
+  me: UserEntity!
 }
 
 type Subscription {
-    documentCreated: DocumentEntity!
-    projectCreated: ProjectEntity!
+  documentCreated: DocumentEntity!
+  projectCreated: ProjectEntity!
 }
 
 type UserEntity {
-    email: String!
-    id: ID!
-    invitedToProjects: [ProjectEntity!]!
-    isEmailConfirmed: Boolean!
-    projects: [ProjectEntity!]!
-    registeredDate: Date!
+  email: String!
+  id: ID!
+  invitedToProjects: [ProjectEntity!]!
+  isEmailConfirmed: Boolean!
+  projects: [ProjectEntity!]!
+  registeredDate: Date!
 }
 
 type UserTokenResponse {
-    token: String!
+  token: String!
 }
 
 input DocumentCreateInput {
-    name: String!
-    projectId: ID!
+  name: String!
+  projectId: ID!
 }
 
 input DocumentGetByIdInput {
-    id: ID!
+  id: ID!
 }
 
 input ProjectCreateInput {
-    name: String!
+  name: String!
 }
 
 input ProjectGetByIdInput {
-    id: ID!
+  id: ID!
 }
 
 input UserInputLogin {
-    email: String!
-    password: String!
+  email: String!
+  password: String!
 }
 
 input UserInputRegister {
-    email: String!
-    password: String!
+  email: String!
+  password: String!
 }
 
 
 "Date custom scalar type"
 scalar Date
+
+"DocumentType custom scalar type"
+scalar DocumentType
+
+"DocumentPriority custom scalar type"
+scalar DocumentPriority
+
+"DocumentStatus custom scalar type"
+scalar DocumentStatus

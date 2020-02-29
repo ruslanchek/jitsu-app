@@ -26,8 +26,6 @@ export const ProjectScreen: FC<IProps> = ({ id }) => {
   const { loading, project } = useProject(id);
   const { data } = useSubscription(DOCUMENT_CREATED_SUBSCRIPTION);
   
-  console.log(data);
-  
   return (
     <ScreenWrapper>
       {project && (

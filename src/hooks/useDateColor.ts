@@ -2,7 +2,7 @@ import {differenceInDays} from 'date-fns';
 import { COLORS } from '../common/colors';
 
 export function useDateColor(date: Date, defaultColor: string): string {
-  const days = differenceInDays(new Date(), date);
+  const days = differenceInDays(date, new Date());
 
   switch (true) {
     case days === 1 : {

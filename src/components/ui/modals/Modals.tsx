@@ -68,7 +68,7 @@ export const Modals: React.FC = ({ children }) => {
     }
   };
 
-  useOnClickOutside(handleOutsideClick, currentModalRef);
+  useOnClickOutside(handleOutsideClick, currentModalRef, PORTAL_ROOT_SELECTORS.DROPDOWNS);
 
   /**
    * Utility timestamp to force re-renders due to update the notifications Map ref.

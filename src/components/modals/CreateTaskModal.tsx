@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { css } from '@emotion/core';
 import { Modal } from '../ui/modals/Modal';
 import { DocumentHeaderTitle } from '../ui/document/header/DocumentHeaderTitle';
@@ -33,23 +33,21 @@ interface IProps {
 interface IModel {
   name: string;
   projectId: string;
+  dueDate: Date;
 }
 
 export const CreateTaskModal: FC<IProps> = ({ handleClose }) => {
   const translator = useTranslator();
-  const { handleSubmit, errors, control, register } = useForm<IModel>();
-  const [title, setTitle] = useState('');
-  const [date, setDate] = useState(new Date());
+  const { handleSubmit, errors, control, register, setValue, getValues } = useForm<IModel>();
+  const model = getValues();
   const [createTask, { loading }] = useMutation(CREATE_TASK);
   async function onSubmit(model: IModel) {
+    console.log(model);
     const result = await createTask({ variables: model });
     if (result?.data?.createProject?.id) {
       // await navigate(PATHS.PROJECT.replace(':id', result?.data?.createProject?.id));
       handleClose();
     }
-  }
-  function handleChangeDate(date: Date) {
-    setDate(date);
   }
 
   return (
@@ -60,8 +58,8 @@ export const CreateTaskModal: FC<IProps> = ({ handleClose }) => {
             as={
               <DocumentHeaderTitle
                 editable
-                value={title}
-                onChange={value => setTitle(value)}
+                value={model.name}
+                onChange={value => setValue('name', value)}
                 placeholder={translator.translate(EPhrase.Create_task_Title_placeholder)}
               />
             }
@@ -79,7 +77,7 @@ export const CreateTaskModal: FC<IProps> = ({ handleClose }) => {
               align='left'
               items={[
                 <DocumentHeaderBarPriority />,
-                <DocumentHeaderBarDueDate date={date} onChange={handleChangeDate} />,
+                <DocumentHeaderBarDueDate date={model.dueDate} onChange={value => setValue('dueDate', value)} />,
                 <DocumentHeaderBarAssignedTo user='m_brtn' />,
                 <DocumentHeaderBarLabel />,
               ]}

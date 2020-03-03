@@ -5,7 +5,6 @@ import { DocumentHeaderTitle } from '../ui/document/header/DocumentHeaderTitle';
 import { DocumentHeaderBarGroup } from '../ui/document/header/DocumentHeaderBarGroup';
 import { DocumentHeaderBar } from '../ui/document/header/DocumentHeaderBar';
 import { DocumentHeaderBarPriority } from '../ui/document/header/DocumentHeaderBarPriority';
-import { DocumentHeaderBarDueDate } from '../ui/document/header/DocumentHeaderBarDueDate';
 import { DocumentHeaderBarAssignedTo } from '../ui/document/header/DocumentHeaderBarAssignedTo';
 import { DocumentHeaderBarLabel } from '../ui/document/header/DocumentHeaderBarLabel';
 import { DocumentHeaderBarTags } from '../ui/document/header/DocumentHeaderBarTags';
@@ -15,16 +14,7 @@ import { EOLocale, useTranslator } from 'eo-locale';
 import { EPhrase } from '../../locales/EPhrase';
 import { MODAL_SIZE } from '../../common/ui';
 import { Controller, useForm } from 'react-hook-form';
-import { gql } from 'apollo-boost';
-import { useMutation } from '@apollo/react-hooks';
-
-const CREATE_TASK = gql`
-  mutation CreateDocument($name: String!, $projectId: ID!) {
-    createDocument(input: { name: $name, projectId: $projectId }) {
-      id
-    }
-  }
-`;
+import { useCreateDocument } from '../../hooks/useCreateDocument';
 
 interface IProps {
   handleClose: () => void;
@@ -32,25 +22,22 @@ interface IProps {
 
 interface IModel {
   name: string;
-  projectId: string;
   dueDate: Date;
 }
 
 export const CreateTaskModal: FC<IProps> = ({ handleClose }) => {
   const translator = useTranslator();
+  const { createDocument, loading } = useCreateDocument();
   const { handleSubmit, errors, control, register, setValue, getValues } = useForm<IModel>({
     defaultValues: {
       name: '',
-      projectId: '5e9339f4-1d86-48d2-9791-602591368e0e',
-      dueDate: new Date()
-    }
+      dueDate: new Date(),
+    },
   });
   const model = getValues();
-  const [createTask, { loading }] = useMutation(CREATE_TASK);
   async function onSubmit(model: IModel) {
-    const result = await createTask({ variables: model });
-    if (result?.data?.createProject?.id) {
-      // await navigate(PATHS.PROJECT.replace(':id', result?.data?.createProject?.id));
+    const document = await createDocument('5e9339f4-1d86-48d2-9791-602591368e0e', model);
+    if (document?.id) {
       handleClose();
     }
   }
@@ -76,7 +63,6 @@ export const CreateTaskModal: FC<IProps> = ({ handleClose }) => {
             control={control}
             defaultValue=''
           />
-          <input name='projectId' defaultValue={model.projectId} ref={register} />
           <DocumentHeaderBarGroup>
             <DocumentHeaderBar
               align='left'

@@ -8,19 +8,10 @@ import { DocumentHeaderTitle } from '../ui/document/header/DocumentHeaderTitle';
 import { DocumentHeaderContainer } from '../ui/document/header/DocumentHeaderContainer';
 import { MODAL_SIZE } from '../../common/ui';
 import { useForm, Controller } from 'react-hook-form';
-import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
 import { navigate } from '@reach/router';
 import { PATHS } from '../../common/paths';
-
-const CREATE_PROJECT = gql`
-  mutation CreateProject($name: String!) {
-    createProject(input: { name: $name }) {
-      id
-      name
-    }
-  }
-`;
+import { useCreateProject } from '../../hooks/useCreateProject';
 
 interface IModel {
   name: string;
@@ -32,12 +23,12 @@ interface IProps {
 
 export const CreateProjectModal: FC<IProps> = ({ handleClose }) => {
   const translator = useTranslator();
+  const { loading, createProject } = useCreateProject();
   const { handleSubmit, errors, control } = useForm<IModel>();
-  const [createProject, { loading }] = useMutation(CREATE_PROJECT);
   async function onSubmit(model: IModel) {
-    const result = await createProject({ variables: model });
-    if (result?.data?.createProject?.id) {
-      await navigate(PATHS.PROJECT.replace(':id', result?.data?.createProject?.id));
+    const project = await createProject(model);
+    if (project?.id) {
+      await navigate(PATHS.PROJECT.replace(':id', project.id));
       handleClose();
     }
   }

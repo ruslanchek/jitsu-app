@@ -14,10 +14,12 @@ type DocumentEntity {
   project: ProjectEntity!
   status: DocumentStatus!
   type: DocumentType!
+  user: UserEntity!
 }
 
 type Mutation {
-  createDocument(input: DocumentCreateInput!): DocumentEntity!
+  changeDocument(getByIdInput: DocumentGetByIdInput!, input: DocumentChangeInput!): DocumentEntity!
+  createDocument(input: DocumentCreateInput!, projectIdInput: DocumentProjectIdInput!): DocumentEntity!
   createProject(input: ProjectCreateInput!): ProjectEntity!
   register(input: UserInputRegister!): UserTokenResponse!
 }
@@ -40,6 +42,7 @@ type Query {
 }
 
 type Subscription {
+  documentChanged: DocumentEntity!
   documentCreated: DocumentEntity!
   projectCreated: ProjectEntity!
 }
@@ -57,13 +60,20 @@ type UserTokenResponse {
   token: String!
 }
 
+input DocumentChangeInput {
+  name: String
+}
+
 input DocumentCreateInput {
   name: String!
-  projectId: ID!
 }
 
 input DocumentGetByIdInput {
   id: ID!
+}
+
+input DocumentProjectIdInput {
+  projectId: ID!
 }
 
 input ProjectCreateInput {

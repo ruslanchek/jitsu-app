@@ -21,8 +21,10 @@ interface IProps {
 
 export const DocumentHeader: FC<IProps> = ({document}) => {
   const [date, setDate] = useState(document.dueDate);
+  const { loading: changeLoading, changeDocument } = useChangeDocument();
   function handleChangeDate(date: Date) {
     setDate(date);
+    changeDocument(document.id, {dueDate: date});
   }
   return (
     <DocumentHeaderContainer>

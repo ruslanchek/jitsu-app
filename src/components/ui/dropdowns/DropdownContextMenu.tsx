@@ -22,7 +22,11 @@ export const DropdownContextMenu: FC<IProps> = ({ items }) => {
   return (
     <div css={styles.root}>
       {items.map(item => (
-        <div key={item.title} css={styles.item} className={classnames({ selected: item.selected })} onClick={item.onSelect}>
+        <div
+          key={item.title}
+          css={styles.item}
+          className={classnames({ selected: item.selected })}
+          onClick={item.onSelect}>
           <div css={styles.icon} style={{ color: item.color }}>
             {item.icon}
           </div>
@@ -61,6 +65,7 @@ const styles = {
     height: ${HEADER_ELEMENT_HEIGHT};
     display: flex;
     align-items: center;
-    margin-right: 15px;
+    margin-right: 10px;
+    font-size: 14px;
   `,
 };

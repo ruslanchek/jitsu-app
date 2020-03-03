@@ -1,7 +1,7 @@
 import { EDocumentPriority } from '../models/document';
 import { EPhrase } from '../locales/EPhrase';
 
-export function getPriorityText(priority: EDocumentPriority): string {
+export function getPriorityText(priority: EDocumentPriority): EPhrase {
   switch (priority) {
     case EDocumentPriority.High : {
       return EPhrase.Document_priority_High;

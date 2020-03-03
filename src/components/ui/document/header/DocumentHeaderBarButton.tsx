@@ -105,9 +105,9 @@ const styles = {
   icon: css`
     > svg {
       margin-right: 0.5ex;
-      width: 12px;
-      height: 12px;
-      transform: translateY(0.5px);
+      width: 14px;
+      height: 14px;
+      transform: translateY(1px);
     }
   `,
 

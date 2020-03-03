@@ -36,7 +36,7 @@ export const DocumentHeader: FC<IProps> = ({ document }) => {
           items={[
             <DocumentHeaderBarId id='254' />,
             <DocumentHeaderBarBookmark mark />,
-            <DocumentHeaderBarStatus />,
+            <DocumentHeaderBarStatus value={documentState.status} onChange={status => setDocumentState({ status })} />,
             <DocumentHeaderBarPriority
               onChange={priority => setDocumentState({ priority })}
               value={documentState.priority}

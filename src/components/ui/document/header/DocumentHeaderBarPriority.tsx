@@ -66,6 +66,4 @@ const styles = {
   root: css`
     position: relative;
   `,
-
-  dropdownRoot: css``,
 };

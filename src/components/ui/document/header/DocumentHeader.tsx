@@ -25,7 +25,7 @@ export const DocumentHeader: FC<IProps> = ({document}) => {
   }
   return (
     <DocumentHeaderContainer>
-      <DocumentHeaderTitle editable value='Frontend Collective: Week #1' />
+      <DocumentHeaderTitle editable value={document.name} />
       <DocumentHeaderBarGroup>
         <DocumentHeaderBar
           align='left'

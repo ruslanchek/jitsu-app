@@ -16,19 +16,23 @@ interface IProps {
 
 export const DocumentHeaderBarDueDate: FC<IProps> = ({ date, onChange }) => {
   const dateColor = useDateColor(date, COLORS.HIGH_SMOKE);
-  const [showCalendar, setShowCalendar] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
   const buttonRef = useRef<HTMLDivElement>(null);
-  function toggleCalendar() {
-    setShowCalendar(!showCalendar);
+  function toggleDropdown() {
+    setShowDropdown(!showDropdown);
+  }
+  function selectDate(date: Date) {
+    setShowDropdown(false);
+    onChange(date);
   }
   return (
     <DocumentHeaderBarItem label={EPhrase.Document_Due_to}>
       <div css={styles.root} ref={buttonRef}>
-        <DocumentHeaderBarButton color={dateColor} onClick={toggleCalendar}>
+        <DocumentHeaderBarButton color={dateColor} onClick={toggleDropdown}>
           <DateFormatter date={date} />
         </DocumentHeaderBarButton>
-        <DropdownView onHide={() => setShowCalendar(false)} forwardRef={buttonRef} show={showCalendar}>
-          <DatePicker value={date} onChange={onChange} />
+        <DropdownView onHide={() => setShowDropdown(false)} forwardRef={buttonRef} show={showDropdown}>
+          <DatePicker value={date} onChange={selectDate} />
         </DropdownView>
       </div>
     </DocumentHeaderBarItem>

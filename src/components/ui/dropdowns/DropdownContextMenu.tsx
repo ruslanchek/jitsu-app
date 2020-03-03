@@ -20,7 +20,9 @@ export const DropdownContextMenu: FC<IProps> = ({ items }) => {
     <div css={styles.root}>
       {items.map(item => (
         <div key={item.title} css={styles.item} onClick={item.onSelect}>
-          <div css={styles.icon}>{item.icon}</div>
+          <div css={styles.icon} style={{ color: item.color }}>
+            {item.icon}
+          </div>
           <EOLocale.Text id={item.title} />
         </div>
       ))}

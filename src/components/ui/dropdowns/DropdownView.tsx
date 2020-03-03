@@ -1,4 +1,4 @@
-import React, { FC, useEffect, RefObject, useState } from 'react';
+import React, { FC, useEffect, RefObject, useState, useRef } from 'react';
 import { css } from '@emotion/core';
 import { COLORS } from '../../../common/colors';
 import { BORDER_RADIUS, BOX_SHADOW, PORTAL_ROOT_SELECTORS, Z_INDEX } from '../../../common/ui';
@@ -17,17 +17,19 @@ interface IProps {
 const ANIMATION_TIME = 150;
 
 export const DropdownView: FC<IProps> = ({ show, children, onHide, forwardRef }) => {
+  const rootRef = useRef<HTMLDivElement>(null);
   const portal = usePortal(PORTAL_ROOT_SELECTORS.DROPDOWNS);
   const [position, setPosition] = useState({ top: 0, left: 0 });
 
   useOnClickOutside(onHide, forwardRef, PORTAL_ROOT_SELECTORS.DROPDOWNS);
 
   function resize() {
-    if (forwardRef?.current) {
+    if (forwardRef?.current && rootRef.current) {
       const box = forwardRef.current.getBoundingClientRect();
+      const width = rootRef.current.getBoundingClientRect().width;
       setPosition({
         top: box.top + box.height,
-        left: box.left + box.width / 2,
+        left: box.left + box.width / 2 - width / 2,
       });
     }
   }
@@ -44,8 +46,8 @@ export const DropdownView: FC<IProps> = ({ show, children, onHide, forwardRef })
 
   if (portal) {
     return ReactDOM.createPortal(
-      <CSSTransition timeout={ANIMATION_TIME} in={show} unmountOnExit css={styles.animations}>
-        <div css={styles.root} style={position}>
+      <CSSTransition timeout={ANIMATION_TIME} in={show} onEntering={resize} unmountOnExit css={styles.animations}>
+        <div css={styles.root} style={position} ref={rootRef}>
           <div css={styles.content}>{children}</div>
         </div>
       </CSSTransition>,
@@ -61,7 +63,7 @@ const styles = {
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translate(-50%, 10px);
+    transform: translateY(10px);
     z-index: ${Z_INDEX.DROPDOWNS};
   `,
 
@@ -89,23 +91,23 @@ const styles = {
   animations: css`
     &.enter {
       opacity: 0;
-      transform: translate(-50%, 13px);
+      transform: translateY(13px);
     }
 
     &.enter-active {
       opacity: 1;
-      transform: translate(-50%, 10px);
+      transform: translateY(10px);
       transition: transform ${ANIMATION_TIME}ms, opacity ${ANIMATION_TIME}ms;
     }
 
     &.exit {
-      transform: translate(-50%, 10px);
+      transform: translateY(10px);
       opacity: 1;
     }
 
     &.exit-active {
       opacity: 0;
-      transform: translate(-50%, 13px);
+      transform: translateY(13px);
       transition: transform ${ANIMATION_TIME}ms, opacity ${ANIMATION_TIME}ms;
     }
   `,

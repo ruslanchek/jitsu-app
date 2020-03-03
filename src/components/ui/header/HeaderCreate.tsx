@@ -13,7 +13,6 @@ import { EPhrase } from '../../../locales/EPhrase';
 import { useTranslator } from 'eo-locale';
 import { darken, rgba } from 'polished';
 import { DropdownView } from '../dropdowns/DropdownView';
-import { useOnClickOutside } from '../../../hooks/useOnClickOutside';
 import { ModalsContext } from '../modals/Modals';
 import { DropdownContextMenu, IDropdownContextMenuItem } from '../dropdowns/DropdownContextMenu';
 import { CreateTaskModal } from '../../modals/CreateTaskModal';

@@ -15,6 +15,7 @@ import { EPhrase } from '../../locales/EPhrase';
 import { MODAL_SIZE } from '../../common/ui';
 import { Controller, useForm } from 'react-hook-form';
 import { useCreateDocument } from '../../hooks/useCreateDocument';
+import { EDocumentPriority } from '../../models/document';
 
 interface IProps {
   handleClose: () => void;
@@ -67,7 +68,7 @@ export const CreateTaskModal: FC<IProps> = ({ handleClose }) => {
             <DocumentHeaderBar
               align='left'
               items={[
-                <DocumentHeaderBarPriority />,
+                <DocumentHeaderBarPriority onChange={() => {}} value={EDocumentPriority.Default} />,
                 // <DocumentHeaderBarDueDate date={model.dueDate} onChange={value => setValue('dueDate', value)} />,
                 <DocumentHeaderBarAssignedTo user='m_brtn' />,
                 <DocumentHeaderBarLabel />,

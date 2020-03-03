@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useReducer, useState } from 'react';
 import { DocumentHeaderBarGroup } from './DocumentHeaderBarGroup';
 import { DocumentHeaderBar } from './DocumentHeaderBar';
 import { DocumentHeaderBarId } from './DocumentHeaderBarId';
@@ -19,16 +19,17 @@ interface IProps {
   document: Document;
 }
 
-export const DocumentHeader: FC<IProps> = ({document}) => {
-  const [date, setDate] = useState(document.dueDate);
+export const DocumentHeader: FC<IProps> = ({ document }) => {
   const { loading: changeLoading, changeDocument } = useChangeDocument();
-  function handleChangeDate(date: Date) {
-    setDate(date);
-    changeDocument(document.id, {dueDate: date});
-  }
+  const [documentState, setDocumentState] = useReducer((_: any, value: Partial<Document>) => {
+    const updatedDocument = { ...document, ...value };
+    changeDocument(document.id, updatedDocument);
+    return updatedDocument;
+  }, document);
+
   return (
     <DocumentHeaderContainer>
-      <DocumentHeaderTitle editable value={document.name} />
+      <DocumentHeaderTitle editable value={documentState.name} onChange={name => setDocumentState({ name })} />
       <DocumentHeaderBarGroup>
         <DocumentHeaderBar
           align='left'
@@ -36,8 +37,14 @@ export const DocumentHeader: FC<IProps> = ({document}) => {
             <DocumentHeaderBarId id='254' />,
             <DocumentHeaderBarBookmark mark />,
             <DocumentHeaderBarStatus />,
-            <DocumentHeaderBarPriority />,
-            <DocumentHeaderBarDueDate date={date} onChange={handleChangeDate} />,
+            <DocumentHeaderBarPriority
+              onChange={priority => setDocumentState({ priority })}
+              value={documentState.priority}
+            />,
+            <DocumentHeaderBarDueDate
+              date={documentState.dueDate}
+              onChange={dueDate => setDocumentState({ dueDate })}
+            />,
             <DocumentHeaderBarAssignedTo user='m_brtn' />,
             <DocumentHeaderBarLabel />,
           ]}

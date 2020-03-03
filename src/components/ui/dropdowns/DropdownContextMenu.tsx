@@ -3,12 +3,15 @@ import { css } from '@emotion/core';
 import { EOLocale } from 'eo-locale';
 import { HEADER_ELEMENT_HEIGHT } from '../../../common/ui';
 import { COLORS } from '../../../common/colors';
+import classnames from 'classnames';
+import { rgba } from 'polished';
 
 export interface IDropdownContextMenuItem {
   title: string;
   icon: ReactNode;
   color: string;
   onSelect: () => void;
+  selected?: boolean;
 }
 
 interface IProps {
@@ -19,7 +22,7 @@ export const DropdownContextMenu: FC<IProps> = ({ items }) => {
   return (
     <div css={styles.root}>
       {items.map(item => (
-        <div key={item.title} css={styles.item} onClick={item.onSelect}>
+        <div key={item.title} css={styles.item} className={classnames({ selected: item.selected })} onClick={item.onSelect}>
           <div css={styles.icon} style={{ color: item.color }}>
             {item.icon}
           </div>
@@ -47,6 +50,10 @@ const styles = {
     &:hover {
       background-color: ${COLORS.SNOW};
       color: ${COLORS.HIGH_SMOKE};
+    }
+
+    &.selected {
+      background-color: ${COLORS.DIRTY_SNOW};
     }
   `,
 

@@ -1,6 +1,8 @@
 import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
 import { Document } from '../models/document';
+import { plainToClass } from 'class-transformer';
+import { CT_GROUPS } from '../common/class-transformer';
 
 const CREATE_DOCUMENT = gql`
   mutation CreateDocument($projectId: ID!, $input: DocumentCreateInput!) {
@@ -32,7 +34,7 @@ export const useCreateDocument = (): IResult => {
       const result = await createDocument({
         variables: {
           projectId,
-          input,
+          input: plainToClass(Document, input, { groups: CT_GROUPS.MUTATION }),
         },
       });
 

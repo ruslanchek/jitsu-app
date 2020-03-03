@@ -4,8 +4,8 @@ import { Document } from '../models/document';
 import { plainToClass } from 'class-transformer';
 
 const GET_DOCUMENT = gql`
-  query GetDocument($id:ID!) {
-    getDocument(input:{id:$id}) {
+  query GetDocument($id: ID!) {
+    getDocument(input: { id: $id }) {
       id
       name
       dueDate
@@ -27,5 +27,5 @@ interface IResult {
 
 export const useDocument = (id: string | undefined): IResult => {
   const { loading, error, data } = useQuery(GET_DOCUMENT, { variables: { id } });
-  return { loading, document: plainToClass(Document, data?.getDocument) };
+  return { loading, document: plainToClass(Document, data?.getDocument, { groups: ['query'] }) };
 };

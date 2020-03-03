@@ -7,7 +7,7 @@ import { DocumentHeaderBarButton } from './DocumentHeaderBarButton';
 import { DropdownView } from '../../dropdowns/DropdownView';
 import { css } from '@emotion/core';
 import { DatePicker } from '../../calendar/DatePicker';
-import { useDateColor } from '../../../../hooks/useDateColor';
+import { getDateColor } from '../../../../utils/getDateColor';
 
 interface IProps {
   date: Date;
@@ -15,7 +15,7 @@ interface IProps {
 }
 
 export const DocumentHeaderBarDueDate: FC<IProps> = ({ date, onChange }) => {
-  const dateColor = useDateColor(date, COLORS.HIGH_SMOKE);
+  const dateColor = getDateColor(date, COLORS.HIGH_SMOKE);
   const [showDropdown, setShowDropdown] = useState(false);
   const buttonRef = useRef<HTMLDivElement>(null);
   function toggleDropdown() {

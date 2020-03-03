@@ -27,5 +27,5 @@ interface IResult {
 
 export const useProject = (id: string | undefined): IResult => {
   const { loading, error, data } = useQuery(GET_PROJECT, { variables: { id } });
-  return { loading, project: plainToClass(Project, data?.getProject) };
+  return { loading, project: plainToClass(Project, data?.getProject, { groups: ['query'] }) };
 };

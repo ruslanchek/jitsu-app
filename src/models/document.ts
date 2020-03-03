@@ -1,5 +1,6 @@
 import { Project } from './project';
-import { plainToClass, Transform } from 'class-transformer';
+import { Exclude, Expose, plainToClass, Transform } from 'class-transformer';
+import { CT_GROUPS } from '../common/class-transformer';
 
 export enum EDocumentType {
   Task,
@@ -22,16 +23,28 @@ export enum EDocumentStatus {
   Archived,
 }
 
+@Exclude()
 export class Document {
+  @Expose({ groups: CT_GROUPS.QUERY })
   id!: string;
+
+  @Expose({ groups: CT_GROUPS.ALL })
   name!: string;
+
+  @Expose({ groups: CT_GROUPS.QUERY })
   type!: EDocumentType;
+
+  @Expose({ groups: CT_GROUPS.ALL })
   status!: EDocumentStatus;
+
+  @Expose({ groups: CT_GROUPS.ALL })
   priority!: EDocumentPriority;
 
+  @Expose({ groups: CT_GROUPS.ALL })
   @Transform(value => new Date(value))
   dueDate!: Date;
 
+  @Expose({ groups: CT_GROUPS.QUERY })
   project?: Project;
 }
 

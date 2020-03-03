@@ -2,35 +2,43 @@ import React, { FC, useRef, useState } from 'react';
 import { EOLocale } from 'eo-locale';
 import { EPhrase } from '../../../../locales/EPhrase';
 import { DocumentHeaderBarButton } from './DocumentHeaderBarButton';
-import { COLORS } from '../../../../common/colors';
 import { DocumentHeaderBarItem } from './DocumentHeaderBarItem';
 import { FaDotCircle } from 'react-icons/fa';
 import { DropdownView } from '../../dropdowns/DropdownView';
 import { css } from '@emotion/core';
 import { DropdownContextMenu, IDropdownContextMenuItem } from '../../dropdowns/DropdownContextMenu';
-import { FiBookOpen, FiBox, FiCheckCircle, FiClipboard, FiUserPlus } from 'react-icons/fi';
+import { EDocumentPriority } from '../../../../models/document';
+import { getPriorityColor } from '../../../../utils/getPriorityColor';
+import { getPriorityText } from '../../../../utils/getPriorityText';
 
-interface IProps {}
+interface IProps {
+  onChange: (priority: EDocumentPriority) => void;
+  value: EDocumentPriority;
+}
 
-export const DocumentHeaderBarPriority: FC<IProps> = () => {
-  const menuItems: IDropdownContextMenuItem[] = [
-    {
-      title: EPhrase.Create_Task,
+const PRIORITIES: EDocumentPriority[] = [
+  EDocumentPriority.Default,
+  EDocumentPriority.Low,
+  EDocumentPriority.Medium,
+  EDocumentPriority.High,
+];
+
+export const DocumentHeaderBarPriority: FC<IProps> = ({ onChange, value }) => {
+  const [localValue, setLocalValue] = useState(value);
+  const menuItems: IDropdownContextMenuItem[] = PRIORITIES.map(priority => {
+    return {
+      title: getPriorityText(priority),
       icon: <FaDotCircle />,
-      color: COLORS.SMOKE,
+      color: getPriorityColor(priority),
+      selected: priority === localValue,
       onSelect: () => {
         setShowDropdown(false);
+        setLocalValue(priority);
+        onChange(priority);
       },
-    },
-    {
-      title: EPhrase.Create_Invite,
-      icon: <FaDotCircle />,
-      color: COLORS.SMOKE,
-      onSelect: () => {
-        setShowDropdown(false);
-      },
-    },
-  ];
+    };
+  });
+
   const buttonRef = useRef<HTMLDivElement>(null);
   const [showDropdown, setShowDropdown] = useState(false);
   function toggleDropdown() {
@@ -39,8 +47,12 @@ export const DocumentHeaderBarPriority: FC<IProps> = () => {
   return (
     <DocumentHeaderBarItem label={EPhrase.Document_Priority}>
       <div css={styles.root} ref={buttonRef}>
-        <DocumentHeaderBarButton colorMode='icon' color={COLORS.ORANGE} icon={<FaDotCircle />} onClick={toggleDropdown}>
-          <EOLocale.Text id={EPhrase.Document_priority_Moderate} />
+        <DocumentHeaderBarButton
+          colorMode='icon'
+          color={getPriorityColor(localValue)}
+          icon={<FaDotCircle />}
+          onClick={toggleDropdown}>
+          <EOLocale.Text id={getPriorityText(localValue)} />
         </DocumentHeaderBarButton>
         <DropdownView onHide={() => setShowDropdown(false)} forwardRef={buttonRef} show={showDropdown}>
           <DropdownContextMenu items={menuItems} />
@@ -55,7 +67,5 @@ const styles = {
     position: relative;
   `,
 
-  dropdownRoot: css`
-    
-  `,
+  dropdownRoot: css``,
 };

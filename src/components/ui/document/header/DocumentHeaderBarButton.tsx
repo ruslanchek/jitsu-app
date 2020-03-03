@@ -103,11 +103,11 @@ const styles = {
   `,
 
   icon: css`
+    font-size: 16px;
+    line-height: 12px;
     > svg {
       margin-right: 0.5ex;
-      width: 14px;
-      height: 14px;
-      transform: translateY(1px);
+      width: 16px;
     }
   `,
 

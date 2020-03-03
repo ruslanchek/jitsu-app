@@ -3,7 +3,7 @@ import { EOLocale } from 'eo-locale';
 import { EPhrase } from '../../../../locales/EPhrase';
 import { DocumentHeaderBarButton } from './DocumentHeaderBarButton';
 import { DocumentHeaderBarItem } from './DocumentHeaderBarItem';
-import { FaDotCircle } from 'react-icons/fa';
+import { FiDisc } from 'react-icons/fi';
 import { DropdownView } from '../../dropdowns/DropdownView';
 import { css } from '@emotion/core';
 import { DropdownContextMenu, IDropdownContextMenuItem } from '../../dropdowns/DropdownContextMenu';
@@ -28,7 +28,7 @@ export const DocumentHeaderBarPriority: FC<IProps> = ({ onChange, value }) => {
   const menuItems: IDropdownContextMenuItem[] = PRIORITIES.map(priority => {
     return {
       title: getPriorityText(priority),
-      icon: <FaDotCircle />,
+      icon: <FiDisc />,
       color: getPriorityColor(priority),
       selected: priority === localValue,
       onSelect: () => {
@@ -50,7 +50,7 @@ export const DocumentHeaderBarPriority: FC<IProps> = ({ onChange, value }) => {
         <DocumentHeaderBarButton
           colorMode='icon'
           color={getPriorityColor(localValue)}
-          icon={<FaDotCircle />}
+          icon={<FiDisc />}
           onClick={toggleDropdown}>
           <EOLocale.Text id={getPriorityText(localValue)} />
         </DocumentHeaderBarButton>

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { EDocumentStatus } from '../../../../models/document';
-import { FaPlay, FaPause, FaCheck, FaArchive, FaClock } from 'react-icons/fa';
+import { FiPlay, FiPause, FiCheck, FiArchive, FiClock } from 'react-icons/fi';
 
 interface IProps {
   status: EDocumentStatus;
@@ -9,24 +9,24 @@ interface IProps {
 export const DocumentStatusIcon: FC<IProps> = ({ status }) => {
   switch (status) {
     case EDocumentStatus.InProgress: {
-      return <FaPlay />;
+      return <FiPlay />;
     }
 
     case EDocumentStatus.Paused: {
-      return <FaPause />;
+      return <FiPause />;
     }
 
     case EDocumentStatus.Completed: {
-      return <FaCheck />;
+      return <FiCheck />;
     }
 
     case EDocumentStatus.Archived: {
-      return <FaArchive />;
+      return <FiArchive />;
     }
 
     case EDocumentStatus.Idle:
     default: {
-      return <FaClock />;
+      return <FiClock />;
     }
   }
 };

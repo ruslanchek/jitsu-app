@@ -8,11 +8,11 @@ export function getPriorityColor(priority: EDocumentPriority): string {
     }
 
     case EDocumentPriority.Medium : {
-      return COLORS.YELLOW;
+      return COLORS.ORANGE;
     }
 
     case EDocumentPriority.Low : {
-      return COLORS.GRASS_GREEN;
+      return COLORS.SMOKE;
     }
 
     case EDocumentPriority.Default :

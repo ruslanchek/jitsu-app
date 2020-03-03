@@ -10,6 +10,7 @@ import { DropdownContextMenu, IDropdownContextMenuItem } from '../../dropdowns/D
 import { EDocumentPriority } from '../../../../models/document';
 import { getPriorityColor } from '../../../../utils/getPriorityColor';
 import { getPriorityText } from '../../../../utils/getPriorityText';
+import { DocumentPriorityIcon } from '../priority/DocumentPriorityIcon';
 
 interface IProps {
   onChange: (priority: EDocumentPriority) => void;
@@ -17,10 +18,10 @@ interface IProps {
 }
 
 const PRIORITIES: EDocumentPriority[] = [
-  EDocumentPriority.Default,
-  EDocumentPriority.Low,
-  EDocumentPriority.Medium,
   EDocumentPriority.High,
+  EDocumentPriority.Medium,
+  EDocumentPriority.Low,
+  EDocumentPriority.Default,
 ];
 
 export const DocumentHeaderBarPriority: FC<IProps> = ({ onChange, value }) => {
@@ -28,7 +29,7 @@ export const DocumentHeaderBarPriority: FC<IProps> = ({ onChange, value }) => {
   const menuItems: IDropdownContextMenuItem[] = PRIORITIES.map(priority => {
     return {
       title: getPriorityText(priority),
-      icon: <FiDisc />,
+      icon: <DocumentPriorityIcon priority={priority} />,
       color: getPriorityColor(priority),
       selected: priority === localValue,
       onSelect: () => {
@@ -50,7 +51,7 @@ export const DocumentHeaderBarPriority: FC<IProps> = ({ onChange, value }) => {
         <DocumentHeaderBarButton
           colorMode='icon'
           color={getPriorityColor(localValue)}
-          icon={<FiDisc />}
+          icon={<DocumentPriorityIcon priority={localValue} />}
           onClick={toggleDropdown}>
           <EOLocale.Text id={getPriorityText(localValue)} />
         </DocumentHeaderBarButton>

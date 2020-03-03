@@ -1,6 +1,7 @@
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
-import { IProject } from '../models/project';
+import { Project } from '../models/project';
+import { plainToClass } from 'class-transformer';
 
 const GET_MY_PROJECTS = gql`
   query {
@@ -16,10 +17,10 @@ const GET_MY_PROJECTS = gql`
 
 interface IResult {
   loading: boolean;
-  projects: IProject[];
+  projects: Project[];
 }
 
 export const useMyProjects = (): IResult => {
   const { loading, error, data } = useQuery(GET_MY_PROJECTS);
-  return { loading, projects: data?.getMyProjects || [] };
+  return { loading, projects: plainToClass<Project, Project[]>(Project, data?.getMyProjects) };
 };

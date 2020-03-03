@@ -1,10 +1,11 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/core';
-import { RouteComponentProps } from '@reach/router';
+import { Link, RouteComponentProps } from '@reach/router';
 import { ScreenWrapper } from '../common/ScreenWrapper';
 import { useProject } from '../../hooks/useProject';
 import { useSubscription } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
+import { PATHS } from '../../common/paths';
 
 interface IProps extends RouteComponentProps {
   id?: string;
@@ -25,7 +26,9 @@ const DOCUMENT_CREATED_SUBSCRIPTION = gql`
 export const ProjectScreen: FC<IProps> = ({ id }) => {
   const { loading, project } = useProject(id);
   const { data } = useSubscription(DOCUMENT_CREATED_SUBSCRIPTION);
-  
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   return (
     <ScreenWrapper>
       {project && (
@@ -34,9 +37,15 @@ export const ProjectScreen: FC<IProps> = ({ id }) => {
 
           <h2>Documents</h2>
           <div>
-            {project?.documents?.map(document => (
-              <div key={document.id}>{document.name}</div>
-            ))}
+            {project?.documents?.map(document => {
+              const documentPath = PATHS.TASK.replace(':projectId', project.id).replace(':id', document.id);
+              return (
+                <div key={document.id}>
+                  <Link to={documentPath}>{document.id}</Link>
+                  {document.name}
+                </div>
+              );
+            })}
           </div>
         </div>
       )}

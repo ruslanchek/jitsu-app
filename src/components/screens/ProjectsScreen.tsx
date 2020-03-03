@@ -9,6 +9,9 @@ interface IProps extends RouteComponentProps {}
 
 export const ProjectsScreen: FC<IProps> = () => {
   const { loading, projects } = useMyProjects();
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   return (
     <ScreenWrapper>
       <div css={styles.root}>
@@ -17,8 +20,7 @@ export const ProjectsScreen: FC<IProps> = () => {
           {projects.map(project => (
             <div key={project.id}>
               <Link to={PATHS.PROJECT.replace(':id', project.id)}>{project.id}</Link>
-              {project.name}
-              ({project.documents?.length})
+              {project.name}({project.documents?.length})
             </div>
           ))}
         </div>

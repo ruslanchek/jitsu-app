@@ -12,9 +12,14 @@ import { DocumentHeaderTitle } from './DocumentHeaderTitle';
 import { DocumentHeaderBarUpdatedDate } from './DocumentHeaderBarUpdatedDate';
 import { DocumentHeaderBarTags } from './DocumentHeaderBarTags';
 import { DocumentHeaderContainer } from './DocumentHeaderContainer';
+import { Document } from '../../../../models/document';
 
-export const DocumentHeader: FC = () => {
-  const [date, setDate] = useState(new Date());
+interface IProps {
+  document: Document;
+}
+
+export const DocumentHeader: FC<IProps> = ({document}) => {
+  const [date, setDate] = useState(document.dueDate);
   function handleChangeDate(date: Date) {
     setDate(date);
   }

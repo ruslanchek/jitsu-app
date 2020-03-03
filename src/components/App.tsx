@@ -7,6 +7,7 @@ import { ProjectScreen } from './screens/ProjectScreen';
 import { Providers } from './common/Providers';
 import { globalStyles } from '../common/global-styles';
 import { Global } from '@emotion/core';
+import { DocumentScreen } from './screens/DocumentScreen';
 
 export const App: FC = () => {
   return (
@@ -16,7 +17,7 @@ export const App: FC = () => {
         <MainScreen path={PATHS.MAIN} />
         <ProjectsScreen path={PATHS.PROJECTS} />
         <ProjectScreen path={PATHS.PROJECT} />
-        <MainScreen path={PATHS.TASK} />
+        <DocumentScreen path={PATHS.TASK} />
       </Router>
     </Providers>
   );

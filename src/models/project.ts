@@ -1,7 +1,7 @@
-import { IDocument } from './document';
+import { Document } from './document';
 
-export interface IProject {
-  id: string;
-  name: string;
-  documents?: IDocument[];
+export class Project {
+  id!: string;
+  name!: string;
+  documents?: Document[];
 }

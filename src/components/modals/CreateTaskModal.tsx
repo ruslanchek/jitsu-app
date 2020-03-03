@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { Modal } from '../ui/modals/Modal';
 import { DocumentHeaderTitle } from '../ui/document/header/DocumentHeaderTitle';
@@ -38,11 +38,16 @@ interface IModel {
 
 export const CreateTaskModal: FC<IProps> = ({ handleClose }) => {
   const translator = useTranslator();
-  const { handleSubmit, errors, control, register, setValue, getValues } = useForm<IModel>();
+  const { handleSubmit, errors, control, register, setValue, getValues } = useForm<IModel>({
+    defaultValues: {
+      name: '',
+      projectId: '5e9339f4-1d86-48d2-9791-602591368e0e',
+      dueDate: new Date()
+    }
+  });
   const model = getValues();
   const [createTask, { loading }] = useMutation(CREATE_TASK);
   async function onSubmit(model: IModel) {
-    console.log(model);
     const result = await createTask({ variables: model });
     if (result?.data?.createProject?.id) {
       // await navigate(PATHS.PROJECT.replace(':id', result?.data?.createProject?.id));
@@ -71,13 +76,13 @@ export const CreateTaskModal: FC<IProps> = ({ handleClose }) => {
             control={control}
             defaultValue=''
           />
-          <input name='projectId' defaultValue='5e9339f4-1d86-48d2-9791-602591368e0e' ref={register} />
+          <input name='projectId' defaultValue={model.projectId} ref={register} />
           <DocumentHeaderBarGroup>
             <DocumentHeaderBar
               align='left'
               items={[
                 <DocumentHeaderBarPriority />,
-                <DocumentHeaderBarDueDate date={model.dueDate} onChange={value => setValue('dueDate', value)} />,
+                // <DocumentHeaderBarDueDate date={model.dueDate} onChange={value => setValue('dueDate', value)} />,
                 <DocumentHeaderBarAssignedTo user='m_brtn' />,
                 <DocumentHeaderBarLabel />,
               ]}

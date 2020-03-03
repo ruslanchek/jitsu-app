@@ -3,8 +3,8 @@ import { useMutation } from '@apollo/react-hooks';
 import { Document } from '../models/document';
 
 const CHANGE_DOCUMENT = gql`
-  mutation ChangeDocument($id: ID!, $name: String) {
-    changeDocument(getByIdInput: { id: $id }, input: { name: $name }) {
+  mutation ChangeDocument($id: ID!, $input: DocumentChangeInput!) {
+    changeDocument(getByIdInput: { id: $id }, input: $input) {
       id
       name
     }
@@ -23,7 +23,7 @@ export const useChangeDocument = (): IResult => {
     changeDocument: async (id: string, input: Partial<Document>): Promise<Document> => {
       const result = await changeDocument({
         variables: {
-          getByIdInput: { id },
+          id,
           input,
         },
       });

@@ -13,6 +13,7 @@ import { DocumentHeaderBarUpdatedDate } from './DocumentHeaderBarUpdatedDate';
 import { DocumentHeaderBarTags } from './DocumentHeaderBarTags';
 import { DocumentHeaderContainer } from './DocumentHeaderContainer';
 import { Document } from '../../../../models/document';
+import { useChangeDocument } from '../../../../hooks/useChangeDocument';
 
 interface IProps {
   document: Document;

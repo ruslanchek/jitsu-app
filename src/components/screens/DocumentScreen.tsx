@@ -6,6 +6,7 @@ import { DocumentBody } from '../ui/document/body/DocumentBody';
 import { DocumentHeader } from '../ui/document/header/DocumentHeader';
 import { RouteComponentProps } from '@reach/router';
 import { useDocument } from '../../hooks/useDocument';
+import { useChangeDocument } from '../../hooks/useChangeDocument';
 
 interface IProps extends RouteComponentProps {
   projectId?: string;

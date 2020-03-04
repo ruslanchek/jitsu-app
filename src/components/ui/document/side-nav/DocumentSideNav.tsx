@@ -20,18 +20,9 @@ interface IProps {}
 export const DocumentSideNav: FC<IProps> = () => {
   return (
     <div css={styles.root}>
-      {/*{data?.getMyProjects.map((p: any) => <div key={p.id}>{p.id}</div>)}*/}
       <a css={styles.item} className='active' href='/'>
         <FaInfo css={styles.itemIcon} />
-        Info
-      </a>
-      <a css={styles.item} href='/'>
-        <FaTasks css={styles.itemIcon} />
-        <EOLocale.Text id={EPhrase.Document_Subtasks} />
-      </a>
-      <a css={styles.item} href='/'>
-        <FaTextHeight css={styles.itemIcon} />
-        Description
+        Storyboard
       </a>
       <a css={styles.item} href='/'>
         <FaRegCommentDots css={styles.itemIcon} />
@@ -40,10 +31,6 @@ export const DocumentSideNav: FC<IProps> = () => {
       <a css={styles.item} href='/'>
         <FaRegClock css={styles.itemIcon} />
         Timeline
-      </a>
-      <a css={styles.item} href='/'>
-        <FaRegClone css={styles.itemIcon} />
-        Artifacts
       </a>
       <a css={styles.item} className='danger' href='/'>
         <FaRegTimesCircle css={styles.itemIcon} />

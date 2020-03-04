@@ -21,7 +21,7 @@ interface IResult {
   createConversation: (documentId: string, input: Partial<Conversation>) => Promise<Conversation | undefined>;
 }
 
-export const useCreateDocument = (): IResult => {
+export const useCreateConversation = (): IResult => {
   const [createConversation, { loading, error }] = useMutation(CREATE_CONVERSATION);
   return {
     loading,

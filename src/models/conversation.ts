@@ -13,4 +13,8 @@ export class Conversation {
   @Type(() => User)
   @Expose({ groups: CT_GROUPS.QUERY })
   user!: User;
+
+  @Type(() => Date)
+  @Expose({ groups: CT_GROUPS.QUERY })
+  date!: Date;
 }

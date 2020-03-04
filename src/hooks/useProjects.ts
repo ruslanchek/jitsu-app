@@ -25,6 +25,6 @@ export const useProjects = (): IResult => {
   const { loading, error, data } = useQuery(GET_PROJECTS);
   return {
     loading,
-    projects: plainToClass<Project, Project[]>(Project, data?.getProjects, { groups: CT_GROUPS.QUERY }),
+    projects: plainToClass<Project, Project>(Project, data?.getProjects, { groups: CT_GROUPS.QUERY }),
   };
 };

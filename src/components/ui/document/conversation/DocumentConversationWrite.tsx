@@ -24,7 +24,7 @@ export const DocumentConversationWrite: FC<IProps> = ({ document }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <textarea name='text' ref={register} defaultValue='' />
+      <textarea name='text' ref={register({ required: true, minLength: 1 })} defaultValue='' />
       <Button size='large' type='submit' color='default'>
         Submit
       </Button>

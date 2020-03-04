@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { FC, useCallback, useReducer, useState } from 'react';
 import { DragDropContext, DragStart, Droppable, DropResult } from 'react-beautiful-dnd';
 import { DocumentBodyElement } from './DocumentBodyElement';
 import { DocumentWidgetSubTasks } from '../widgets/sub-tasks/DocumentWidgetSubTasks';
@@ -59,14 +59,13 @@ const deleteItem = (list: IDocumentBodyElement[], index: number) => {
 
 export const DocumentBody: FC<IProps> = ({ document }) => {
   const { loading, changeDocument } = useChangeDocument();
-  const [localData, setLocalData] = useState(document.data);
+  const [documentState, setDocumentState] = useReducer((_: any, value: Partial<Document>) => {
+    const updatedDocument = { ...document, ...value };
+    changeDocument(document.id, updatedDocument);
+    return updatedDocument;
+  }, document);
   const [draggingId, setDraggingId] = useState<string | undefined>(undefined);
   const [dragging, setDragging] = useState(false);
-
-  function setElements(data: IDocumentBodyElement[]) {
-    setLocalData(data);
-    changeDocument(document.id, { data });
-  }
 
   function onDragStart(initial: DragStart) {
     setDragging(true);
@@ -78,9 +77,11 @@ export const DocumentBody: FC<IProps> = ({ document }) => {
 
   const onDeleteElement = useCallback(
     (index: number) => {
-      setElements(deleteItem(localData, index));
+      setDocumentState({
+        data: deleteItem(documentState.data, index),
+      });
     },
-    [localData],
+    [documentState.data],
   );
 
   const onDragEnd = useCallback(
@@ -99,14 +100,18 @@ export const DocumentBody: FC<IProps> = ({ document }) => {
       }
 
       if (source.droppableId === destination.droppableId) {
-        setElements(reorderItems(localData, source.index, destination.index));
+        setDocumentState({
+          data: reorderItems(documentState.data, source.index, destination.index),
+        });
       }
 
       if (source.droppableId === WIDGETS_DROPPABLE_ID) {
-        setElements(newItem(localData, source.index, destination.index));
+        setDocumentState({
+          data: newItem(documentState.data, source.index, destination.index),
+        });
       }
     },
-    [localData],
+    [documentState.data],
   );
 
   function renderWidget(type: EDocumentBodyWidget, data: any) {
@@ -133,7 +138,7 @@ export const DocumentBody: FC<IProps> = ({ document }) => {
           <Droppable droppableId={BODY_DROPPABLE_ID}>
             {provided => (
               <div ref={provided.innerRef} {...provided.droppableProps}>
-                {localData.map((element, index) => (
+                {documentState.data.map((element, index) => (
                   <DocumentBodyElement
                     key={element.id}
                     id={element.id}

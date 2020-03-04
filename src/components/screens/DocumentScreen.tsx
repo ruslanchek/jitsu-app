@@ -17,7 +17,6 @@ export const DocumentScreen: FC<IProps> = ({ projectId, id }) => {
   if (loading) {
     return <div>Loading...</div>;
   }
-  console.log(document)
   if (document) {
     return (
       <ScreenWrapper>

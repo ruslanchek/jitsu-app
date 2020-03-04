@@ -3,33 +3,41 @@ import { css } from '@emotion/core';
 import { FiBookOpen, FiMessageSquare, FiRss, FiXSquare, FiUsers } from 'react-icons/fi';
 import { COLORS } from '../../../../common/colors';
 import { BORDER_RADIUS, DOCUMENT_SIDE_TOOLS } from '../../../../common/ui';
-import {EOLocale} from 'eo-locale';
+import { EOLocale } from 'eo-locale';
 import { EPhrase } from '../../../../locales/EPhrase';
+import { Link } from '@reach/router';
+import { PATHS } from '../../../../common/paths';
 
-interface IProps {}
+interface IProps {
+  projectId: string;
+  documentId: string;
+}
 
-export const DocumentSideNav: FC<IProps> = () => {
+export const DocumentSideNav: FC<IProps> = ({ projectId, documentId }) => {
+  function injectParams(path: string) {
+    return path.replace(':projectId', projectId).replace(':documentId', documentId);
+  }
   return (
     <div css={styles.root}>
-      <a css={styles.item} className='active' href='/'>
+      <Link to={injectParams(PATHS.DOCUMENT_TASK)} css={styles.item}>
         <FiBookOpen css={styles.itemIcon} />
-        <EOLocale.Text id={EPhrase.Document_section_Storyboard}/>
-      </a>
-      <a css={styles.item} href='/'>
+        <EOLocale.Text id={EPhrase.Document_section_Storyboard} />
+      </Link>
+      <Link to={injectParams(PATHS.DOCUMENT_TASK_CONVERSATION)} css={styles.item}>
         <FiMessageSquare css={styles.itemIcon} />
-        <EOLocale.Text id={EPhrase.Document_section_Conversation}/>
-      </a>
+        <EOLocale.Text id={EPhrase.Document_section_Conversation} />
+      </Link>
       <a css={styles.item} href='/'>
         <FiRss css={styles.itemIcon} />
-        <EOLocale.Text id={EPhrase.Document_section_Timeline}/>
+        <EOLocale.Text id={EPhrase.Document_section_Timeline} />
       </a>
       <a css={styles.item} href='/'>
         <FiUsers css={styles.itemIcon} />
-        <EOLocale.Text id={EPhrase.Document_section_Members}/>
+        <EOLocale.Text id={EPhrase.Document_section_Members} />
       </a>
       <a css={styles.item} className='danger' href='/'>
         <FiXSquare css={styles.itemIcon} />
-        <EOLocale.Text id={EPhrase.Document_section_Delete}/>
+        <EOLocale.Text id={EPhrase.Document_section_Delete} />
       </a>
     </div>
   );
@@ -61,7 +69,7 @@ const styles = {
       color: ${COLORS.SMOKE};
     }
 
-    &.active {
+    &[aria-current] {
       background-color: ${COLORS.DIRTY_SNOW};
       color: ${COLORS.HIGH_SMOKE};
     }

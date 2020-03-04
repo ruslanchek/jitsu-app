@@ -8,7 +8,7 @@ import { gql } from 'apollo-boost';
 import { PATHS } from '../../common/paths';
 
 interface IProps extends RouteComponentProps {
-  id?: string;
+  projectId?: string;
 }
 
 const DOCUMENT_CREATED_SUBSCRIPTION = gql`
@@ -23,8 +23,8 @@ const DOCUMENT_CREATED_SUBSCRIPTION = gql`
   }
 `;
 
-export const ProjectScreen: FC<IProps> = ({ id }) => {
-  const { loading, project } = useProject(id);
+export const ProjectScreen: FC<IProps> = ({ projectId }) => {
+  const { loading, project } = useProject(projectId);
   const { data } = useSubscription(DOCUMENT_CREATED_SUBSCRIPTION);
   if (loading) {
     return <div>Loading...</div>;
@@ -38,7 +38,10 @@ export const ProjectScreen: FC<IProps> = ({ id }) => {
           <h2>Documents</h2>
           <div>
             {project?.documents?.map(document => {
-              const documentPath = PATHS.TASK.replace(':projectId', project.id).replace(':id', document.id);
+              const documentPath = PATHS.DOCUMENT_TASK.replace(':projectId', project.id).replace(
+                ':documentId',
+                document.id,
+              );
               return (
                 <div key={document.id}>
                   <Link to={documentPath}>{document.id}</Link>

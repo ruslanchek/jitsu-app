@@ -2,13 +2,13 @@ import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { Link, RouteComponentProps } from '@reach/router';
 import { ScreenWrapper } from '../common/ScreenWrapper';
-import { useMyProjects } from '../../hooks/useMyProjects';
+import { useProjects } from '../../hooks/useProjects';
 import { PATHS } from '../../common/paths';
 
 interface IProps extends RouteComponentProps {}
 
 export const ProjectsScreen: FC<IProps> = () => {
-  const { loading, projects } = useMyProjects();
+  const { loading, projects } = useProjects();
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -19,7 +19,7 @@ export const ProjectsScreen: FC<IProps> = () => {
         <div css={styles.main}>
           {projects.map(project => (
             <div key={project.id}>
-              <Link to={PATHS.PROJECT.replace(':id', project.id)}>{project.id}</Link>
+              <Link to={PATHS.PROJECT.replace(':projectId', project.id)}>{project.id}</Link>
               {project.name}({project.documents?.length})
             </div>
           ))}

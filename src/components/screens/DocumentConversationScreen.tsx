@@ -2,17 +2,18 @@ import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { ScreenWrapper } from '../common/ScreenWrapper';
 import { DocumentSideNav } from '../ui/document/side-nav/DocumentSideNav';
-import { DocumentBody } from '../ui/document/body/DocumentBody';
-import { DocumentHeader } from '../ui/document/header/DocumentHeader';
 import { RouteComponentProps } from '@reach/router';
 import { useDocument } from '../../hooks/useDocument';
+import { DocumentHeaderTitle } from '../ui/document/header/DocumentHeaderTitle';
+import { DocumentHeaderContainer } from '../ui/document/header/DocumentHeaderContainer';
+import { DocumentConversation } from '../ui/document/conversation/DocumentConversation';
 
 interface IProps extends RouteComponentProps {
   projectId?: string;
   documentId?: string;
 }
 
-export const DocumentScreen: FC<IProps> = ({ projectId, documentId }) => {
+export const DocumentConversationScreen: FC<IProps> = ({ projectId, documentId }) => {
   const { document, loading } = useDocument(documentId);
   if (loading) {
     return <div>Loading...</div>;
@@ -25,8 +26,10 @@ export const DocumentScreen: FC<IProps> = ({ projectId, documentId }) => {
             <DocumentSideNav projectId={projectId} documentId={documentId} />
           </div>
           <div css={styles.main}>
-            <DocumentHeader document={document} />
-            <DocumentBody document={document} />
+            <DocumentHeaderContainer>
+              <DocumentHeaderTitle value={document.name} />
+            </DocumentHeaderContainer>
+            <DocumentConversation document={document}/>
           </div>
         </div>
       </ScreenWrapper>

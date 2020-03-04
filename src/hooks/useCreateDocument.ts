@@ -6,7 +6,7 @@ import { CT_GROUPS } from '../common/class-transformer';
 
 const CREATE_DOCUMENT = gql`
   mutation CreateDocument($projectId: ID!, $input: DocumentCreateInput!) {
-    createDocument(projectIdInput: { projectId: $projectId }, input: $input) {
+    createDocument(projectIdInput: { id: $projectId }, input: $input) {
       id
       name
       type

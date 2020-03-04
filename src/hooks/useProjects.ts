@@ -4,9 +4,9 @@ import { Project } from '../models/project';
 import { plainToClass } from 'class-transformer';
 import { CT_GROUPS } from '../common/class-transformer';
 
-const GET_MY_PROJECTS = gql`
+const GET_PROJECTS = gql`
   query {
-    getMyProjects {
+    getProjects {
       id
       name
       documents {
@@ -21,10 +21,10 @@ interface IResult {
   projects: Project[];
 }
 
-export const useMyProjects = (): IResult => {
-  const { loading, error, data } = useQuery(GET_MY_PROJECTS);
+export const useProjects = (): IResult => {
+  const { loading, error, data } = useQuery(GET_PROJECTS);
   return {
     loading,
-    projects: plainToClass<Project, Project[]>(Project, data?.getMyProjects, { groups: CT_GROUPS.QUERY }),
+    projects: plainToClass<Project, Project[]>(Project, data?.getProjects, { groups: CT_GROUPS.QUERY }),
   };
 };

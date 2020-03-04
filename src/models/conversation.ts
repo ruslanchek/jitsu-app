@@ -1,16 +1,16 @@
-import { Document } from './document';
 import { Exclude, Expose, Type } from 'class-transformer';
 import { CT_GROUPS } from '../common/class-transformer';
+import { User } from './user';
 
 @Exclude()
-export class Project {
+export class Conversation {
   @Expose({ groups: CT_GROUPS.QUERY })
   id!: string;
 
   @Expose({ groups: CT_GROUPS.ALL })
-  name!: string;
+  text!: string;
 
+  @Type(() => User)
   @Expose({ groups: CT_GROUPS.QUERY })
-  @Type(() => Document)
-  documents?: Document[];
+  user!: User;
 }

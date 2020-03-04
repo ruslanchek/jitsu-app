@@ -12,6 +12,7 @@
     "apollo-link-ws": "^1.0.19",
     "class-transformer": "^0.2.3",
     "classnames": "^2.2.6",
+    "core-js": "^3.6.4",
     "date-fns": "^2.10.0",
     "eo-css-tools": "^0.6.1",
     "eo-locale": "^7.2.3",

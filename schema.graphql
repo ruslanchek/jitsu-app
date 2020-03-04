@@ -6,7 +6,15 @@ schema {
   subscription: Subscription
 }
 
+type ConversationEntity {
+  document: DocumentEntity!
+  id: ID!
+  text: String!
+  user: UserEntity!
+}
+
 type DocumentEntity {
+  conversations: [ConversationEntity!]!
   data: JSON!
   dueDate: Date!
   id: ID!
@@ -20,6 +28,7 @@ type DocumentEntity {
 
 type Mutation {
   changeDocument(getByIdInput: DocumentGetByIdInput!, input: DocumentChangeInput!): DocumentEntity!
+  createConversation(documentIdInput: DocumentGetByIdInput!, input: ConversationCreateInput!): ConversationEntity!
   createDocument(input: DocumentCreateInput!, projectIdInput: ProjectGetByIdInput!): DocumentEntity!
   createProject(input: ProjectCreateInput!): ProjectEntity!
   register(input: UserInputRegister!): UserTokenResponse!
@@ -34,21 +43,25 @@ type ProjectEntity {
 }
 
 type Query {
+  getConversation(input: ConversationGetByIdInput!): ConversationEntity!
+  getConversations(documentIdInput: DocumentGetByIdInput!): [ConversationEntity!]!
   getDocument(input: DocumentGetByIdInput!): DocumentEntity!
   getDocuments: [DocumentEntity!]!
-  getMyProjects: [ProjectEntity!]!
   getProject(input: ProjectGetByIdInput!): ProjectEntity!
+  getProjects: [ProjectEntity!]!
   login(input: UserInputLogin!): UserTokenResponse!
   me: UserEntity!
 }
 
 type Subscription {
+  conversationCreated: ConversationEntity!
   documentChanged: DocumentEntity!
   documentCreated: DocumentEntity!
   projectCreated: ProjectEntity!
 }
 
 type UserEntity {
+  conversations: [ConversationEntity!]!
   email: String!
   id: ID!
   invitedToProjects: [ProjectEntity!]!
@@ -61,9 +74,17 @@ type UserTokenResponse {
   token: String!
 }
 
+input ConversationCreateInput {
+  text: String!
+}
+
+input ConversationGetByIdInput {
+  id: ID!
+}
+
 input DocumentChangeInput {
   data: JSON
-  dueDate: Date
+  dueDate: Date!
   name: String
   priority: DocumentPriority
   status: DocumentStatus

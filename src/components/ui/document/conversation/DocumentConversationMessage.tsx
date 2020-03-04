@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { Conversation } from '../../../../models/conversation';
-import { DateFormatter } from '../../formatters/DateFormatter';
 import { COLORS } from '../../../../common/colors';
-import { darken, rgba } from 'polished';
+import { rgba } from 'polished';
+import { DateDistance } from '../../formatters/DateDistance';
 
 interface IProps {
   conversation: Conversation;
@@ -17,7 +17,7 @@ export const DocumentConversationMessage: FC<IProps> = ({ conversation }) => {
         <div css={styles.header}>
           <div css={styles.nickname}>{conversation.user.nickname}</div>
           <div css={styles.date}>
-            <DateFormatter date={conversation.date} time />
+            <DateDistance date={conversation.date} />
           </div>
         </div>
         <div css={styles.body}>{conversation.text}</div>

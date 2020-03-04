@@ -1,6 +1,7 @@
-import { Exclude, Expose, Type } from 'class-transformer';
+import { Exclude, Expose, Type, Transform } from 'class-transformer';
 import { CT_GROUPS } from '../common/class-transformer';
 import { User } from './user';
+import { getTimestampWithZoneOffset } from '../utils/getTimestampWithZoneOffset';
 
 @Exclude()
 export class Conversation {
@@ -16,5 +17,6 @@ export class Conversation {
 
   @Type(() => Date)
   @Expose({ groups: CT_GROUPS.QUERY })
+  @Transform(value => getTimestampWithZoneOffset(value))
   date!: Date;
 }

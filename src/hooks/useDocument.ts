@@ -12,6 +12,7 @@ const GET_DOCUMENT = gql`
       status
       priority
       type
+      data
       project {
         id
         name

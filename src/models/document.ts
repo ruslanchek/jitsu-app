@@ -1,6 +1,8 @@
 import { Project } from './project';
 import { Exclude, Expose, plainToClass, Transform } from 'class-transformer';
 import { CT_GROUPS } from '../common/class-transformer';
+import { IDocumentBodyElement } from '../components/ui/document/body/DocumentBody';
+import { EDocumentBodyWidget } from '../components/ui/document/body/document-body-widgets';
 
 export enum EDocumentType {
   Task,
@@ -46,6 +48,9 @@ export class Document {
 
   @Expose({ groups: CT_GROUPS.QUERY })
   project?: Project;
+
+  @Expose({ groups: CT_GROUPS.ALL })
+  data!: IDocumentBodyElement[];
 }
 
 export const DEFAULT_DOCUMENT: Document = plainToClass(Document, {
@@ -55,4 +60,11 @@ export const DEFAULT_DOCUMENT: Document = plainToClass(Document, {
   status: EDocumentStatus.Idle,
   priority: EDocumentPriority.Default,
   dueDate: new Date(),
+  data: [
+    {
+      id: '1',
+      type: EDocumentBodyWidget.Text,
+      data: {},
+    },
+  ],
 });

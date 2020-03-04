@@ -8,39 +8,21 @@ import { DOCUMENT_BODY_WIDGETS, EDocumentBodyWidget } from './document-body-widg
 import { css } from '@emotion/core';
 import { DocumentBodyWidgetsBarItem } from './DocumentBodyWidgetsBarItem';
 import { DOCUMENT_SIDE_TOOLS } from '../../../../common/ui';
+import { Document } from '../../../../models/document';
+import { useChangeDocument } from '../../../../hooks/useChangeDocument';
 
 const BODY_DROPPABLE_ID = 'bodyDroppableId';
 const WIDGETS_DROPPABLE_ID = 'widgetsDroppableId';
 
-export interface IDocumentBodyElement {
-  id: string;
-  type: EDocumentBodyWidget;
-  data: any;
+interface IProps {
+  document: Document;
 }
 
-const initial: IDocumentBodyElement[] = [
-  {
-    id: '1',
-    type: EDocumentBodyWidget.Subtasks,
-    data: {
-      items: [
-        { id: '1', checked: true, label: 'Check connectivity' },
-        { id: '2', checked: false, label: 'Finish API' },
-        { id: '3', checked: false, label: 'Upload images to Amazon S3' },
-      ],
-    },
-  },
-  {
-    id: '2',
-    type: EDocumentBodyWidget.Text,
-    data: {},
-  },
-  {
-    id: '3',
-    type: EDocumentBodyWidget.Code,
-    data: {},
-  },
-];
+export interface IDocumentBodyElement<TData = any> {
+  id: string;
+  type: EDocumentBodyWidget;
+  data: TData;
+}
 
 const reorderItems = (list: IDocumentBodyElement[], startIndex: number, endIndex: number) => {
   const result = Array.from(list);
@@ -75,10 +57,16 @@ const deleteItem = (list: IDocumentBodyElement[], index: number) => {
   return result;
 };
 
-export const DocumentBody: FC = () => {
-  const [elements, setElements] = useState<IDocumentBodyElement[]>(initial);
+export const DocumentBody: FC<IProps> = ({ document }) => {
+  const { loading, changeDocument } = useChangeDocument();
+  const [localData, setLocalData] = useState(document.data);
   const [draggingId, setDraggingId] = useState<string | undefined>(undefined);
   const [dragging, setDragging] = useState(false);
+
+  function setElements(data: IDocumentBodyElement[]) {
+    setLocalData(data);
+    changeDocument(document.id, { data });
+  }
 
   function onDragStart(initial: DragStart) {
     setDragging(true);
@@ -90,9 +78,9 @@ export const DocumentBody: FC = () => {
 
   const onDeleteElement = useCallback(
     (index: number) => {
-      setElements(deleteItem(elements, index));
+      setElements(deleteItem(localData, index));
     },
-    [elements],
+    [localData],
   );
 
   const onDragEnd = useCallback(
@@ -111,14 +99,14 @@ export const DocumentBody: FC = () => {
       }
 
       if (source.droppableId === destination.droppableId) {
-        setElements(reorderItems(elements, source.index, destination.index));
+        setElements(reorderItems(localData, source.index, destination.index));
       }
 
       if (source.droppableId === WIDGETS_DROPPABLE_ID) {
-        setElements(newItem(elements, source.index, destination.index));
+        setElements(newItem(localData, source.index, destination.index));
       }
     },
-    [elements],
+    [localData],
   );
 
   function renderWidget(type: EDocumentBodyWidget, data: any) {
@@ -145,7 +133,7 @@ export const DocumentBody: FC = () => {
           <Droppable droppableId={BODY_DROPPABLE_ID}>
             {provided => (
               <div ref={provided.innerRef} {...provided.droppableProps}>
-                {elements.map((element, index) => (
+                {localData.map((element, index) => (
                   <DocumentBodyElement
                     key={element.id}
                     id={element.id}

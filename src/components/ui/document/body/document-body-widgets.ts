@@ -1,7 +1,7 @@
-export interface IDocumentBodyWidget {
+export interface IDocumentBodyWidget<TData = any> {
   id: string;
   type: EDocumentBodyWidget;
-  defaultData: any;
+  defaultData: TData;
 }
 
 export enum EDocumentBodyWidget {

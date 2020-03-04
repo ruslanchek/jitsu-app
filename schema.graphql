@@ -7,6 +7,7 @@ schema {
 }
 
 type DocumentEntity {
+  data: JSON!
   dueDate: Date!
   id: ID!
   name: String!
@@ -19,7 +20,7 @@ type DocumentEntity {
 
 type Mutation {
   changeDocument(getByIdInput: DocumentGetByIdInput!, input: DocumentChangeInput!): DocumentEntity!
-  createDocument(input: DocumentCreateInput!, projectIdInput: DocumentProjectIdInput!): DocumentEntity!
+  createDocument(input: DocumentCreateInput!, projectIdInput: ProjectGetByIdInput!): DocumentEntity!
   createProject(input: ProjectCreateInput!): ProjectEntity!
   register(input: UserInputRegister!): UserTokenResponse!
 }
@@ -61,7 +62,11 @@ type UserTokenResponse {
 }
 
 input DocumentChangeInput {
+  data: JSON
+  dueDate: Date
   name: String
+  priority: DocumentPriority
+  status: DocumentStatus
 }
 
 input DocumentCreateInput {
@@ -70,10 +75,6 @@ input DocumentCreateInput {
 
 input DocumentGetByIdInput {
   id: ID!
-}
-
-input DocumentProjectIdInput {
-  projectId: ID!
 }
 
 input ProjectCreateInput {
@@ -106,3 +107,6 @@ scalar DocumentPriority
 
 "DocumentStatus custom scalar type"
 scalar DocumentStatus
+
+"The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf)."
+scalar JSON

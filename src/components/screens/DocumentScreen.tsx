@@ -6,7 +6,6 @@ import { DocumentBody } from '../ui/document/body/DocumentBody';
 import { DocumentHeader } from '../ui/document/header/DocumentHeader';
 import { RouteComponentProps } from '@reach/router';
 import { useDocument } from '../../hooks/useDocument';
-import { useChangeDocument } from '../../hooks/useChangeDocument';
 
 interface IProps extends RouteComponentProps {
   projectId?: string;
@@ -18,6 +17,7 @@ export const DocumentScreen: FC<IProps> = ({ projectId, id }) => {
   if (loading) {
     return <div>Loading...</div>;
   }
+  console.log(document)
   if (document) {
     return (
       <ScreenWrapper>
@@ -27,7 +27,7 @@ export const DocumentScreen: FC<IProps> = ({ projectId, id }) => {
           </div>
           <div css={styles.main}>
             <DocumentHeader document={document} />
-            <DocumentBody />
+            <DocumentBody document={document} />
           </div>
         </div>
       </ScreenWrapper>

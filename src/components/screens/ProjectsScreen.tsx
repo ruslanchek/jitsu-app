@@ -4,6 +4,7 @@ import { Link, RouteComponentProps } from '@reach/router';
 import { ScreenWrapper } from '../common/ScreenWrapper';
 import { useProjects } from '../../hooks/useProjects';
 import { PATHS } from '../../common/paths';
+import { MAIN_PADDING } from '../../common/ui';
 
 interface IProps extends RouteComponentProps {}
 
@@ -43,6 +44,6 @@ const styles = {
   `,
 
   main: css`
-    padding: 40px 0;
+    padding: ${MAIN_PADDING.VERTICAL} 0;
   `,
 };

@@ -7,6 +7,7 @@ import { useDocument } from '../../hooks/useDocument';
 import { DocumentHeaderTitle } from '../ui/document/header/DocumentHeaderTitle';
 import { DocumentHeaderContainer } from '../ui/document/header/DocumentHeaderContainer';
 import { DocumentConversation } from '../ui/document/conversation/DocumentConversation';
+import { MAIN_PADDING } from '../../common/ui';
 
 interface IProps extends RouteComponentProps {
   projectId?: string;
@@ -26,9 +27,6 @@ export const DocumentConversationScreen: FC<IProps> = ({ projectId, documentId }
             <DocumentSideNav projectId={projectId} documentId={documentId} />
           </div>
           <div css={styles.main}>
-            <DocumentHeaderContainer>
-              <DocumentHeaderTitle value={document.name} />
-            </DocumentHeaderContainer>
             <DocumentConversation document={document}/>
           </div>
         </div>
@@ -44,12 +42,14 @@ const styles = {
     display: flex;
     justify-content: space-between;
     position: relative;
+    height: 100%;
   `,
 
   side: css`
     width: 220px;
     min-width: 220px;
     position: relative;
+    padding: ${MAIN_PADDING.VERTICAL} 0;
   `,
 
   main: css`

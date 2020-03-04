@@ -46,7 +46,7 @@ const update = (a: Conversation[], b: Conversation[]) => {
     b,
     (docOld, docNew) => docNew.id === docOld.id,
     (docOld, docNew) => docNew.date > docOld.date,
-  ).sort((a, b) => b.date.getTime() - a.date.getTime());
+  ).sort((a, b) => a.date.getTime() - b.date.getTime());
 };
 
 export const useConversations = (documentId: string): IResult => {

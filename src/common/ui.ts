@@ -12,6 +12,13 @@ export const Z_INDEX = {
   DROPDOWNS: 1200,
 };
 
+export const MAIN_PADDING = {
+  VERTICAL: '40px',
+  HORIZONTAL: '40px',
+};
+
+export const HEADER_HEIGHT = '60px';
+
 export const FONT_FAMILY = "'Rubik', sans-serif";
 export const FONT_FAMILY_MONO = "'Ubuntu Mono', monospace;";
 

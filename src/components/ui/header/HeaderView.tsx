@@ -3,13 +3,11 @@ import { css } from '@emotion/core';
 import { COLORS } from '../../../common/colors';
 import { HeaderLogo } from './HeaderLogo';
 import { HeaderCreate } from './HeaderCreate';
-import { Limiter } from '../common/Limiter';
 import { HeaderUser } from './HeaderUser';
 import { HeaderNotifications } from './HeaderNotifications';
 import { HeaderMenu } from './HeaderMenu';
-import { BOX_SHADOW, MIN_WIDTH, Z_INDEX } from '../../../common/ui';
+import { BOX_SHADOW, HEADER_HEIGHT, MAIN_PADDING, MAX_WIDTH, MIN_WIDTH, Z_INDEX } from '../../../common/ui';
 import { HeaderProject } from './HeaderProject';
-import { rgba } from 'polished';
 import { HeaderSearch } from './HedaerSearch';
 
 interface IProps {}
@@ -17,7 +15,7 @@ interface IProps {}
 export const HeaderView: FC<IProps> = () => {
   return (
     <header css={styles.root}>
-      <Limiter>
+      <div css={styles.limiter}>
         <div css={styles.inner}>
           <div css={styles.left}>
             <HeaderLogo />
@@ -31,14 +29,14 @@ export const HeaderView: FC<IProps> = () => {
             <HeaderMenu />
           </div>
         </div>
-      </Limiter>
+      </div>
     </header>
   );
 };
 
 const styles = {
   root: css`
-    height: 60px;
+    height: ${HEADER_HEIGHT};
     background-color: ${COLORS.SNOW};
     min-width: ${MIN_WIDTH};
     position: sticky;
@@ -47,8 +45,15 @@ const styles = {
     box-shadow: ${BOX_SHADOW.SMALL};
   `,
 
+  limiter: css`
+    max-width: ${MAX_WIDTH};
+    min-width: ${MIN_WIDTH};
+    margin: 0 auto;
+  `,
+
   inner: css`
-    height: 60px;
+    padding: 0 ${MAIN_PADDING.HORIZONTAL};
+    height: ${HEADER_HEIGHT};
     position: relative;
     display: flex;
     justify-content: space-between;

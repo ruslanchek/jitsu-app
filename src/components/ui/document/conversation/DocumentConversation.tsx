@@ -2,28 +2,15 @@ import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { Document } from '../../../../models/document';
 import { useConversations } from '../../../../hooks/useConversations';
-import { useForm } from 'react-hook-form';
-import { Button } from '../../buttons/Button';
-import { useCreateConversation } from '../../../../hooks/useCreateConversation';
 import { DateFormatter } from '../../formatters/DateFormatter';
+import { DocumentConversationWrite } from './DocumentConversationWrite';
 
 interface IProps {
   document: Document;
 }
 
-interface IModel {
-  text: string;
-}
-
 export const DocumentConversation: FC<IProps> = ({ document }) => {
   const { loading, conversations } = useConversations(document.id);
-  const { createConversation } = useCreateConversation();
-  const { handleSubmit, errors, register, reset } = useForm<IModel>();
-
-  function onSubmit(model: IModel) {
-    createConversation(document.id, model);
-    reset();
-  }
 
   if (loading) {
     return <div>Loading...</div>;
@@ -32,23 +19,21 @@ export const DocumentConversation: FC<IProps> = ({ document }) => {
   if (conversations) {
     return (
       <div css={styles.root}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <textarea name='text' ref={register} defaultValue='' />
-          <Button size='large' type='submit' color='default'>
-            Submit
-          </Button>
-        </form>
-
-        {conversations.map(conversation => (
-          <div key={conversation.id}>
-            <div>
-              <DateFormatter date={conversation.date} time />
-            </div>
-            <div>{conversation.text}</div>
-            <div>{conversation.user.id}</div>
-            <br />
-          </div>
-        ))}
+        <div css={styles.inner}>
+          {/*<div css={styles.stickyBottom}>*/}
+          {/*  <DocumentConversationWrite document={document} />*/}
+          {/*</div>*/}
+        </div>
+        {/*{conversations.map(conversation => (*/}
+        {/*  <div key={conversation.id}>*/}
+        {/*    <div>*/}
+        {/*      <DateFormatter date={conversation.date} time />*/}
+        {/*    </div>*/}
+        {/*    <div>{conversation.text}</div>*/}
+        {/*    <div>{conversation.user.id}</div>*/}
+        {/*    <br />*/}
+        {/*  </div>*/}
+        {/*))}*/}
       </div>
     );
   } else {
@@ -57,5 +42,18 @@ export const DocumentConversation: FC<IProps> = ({ document }) => {
 };
 
 const styles = {
-  root: css``,
+  root: css`
+    background-color: red;
+    display: flex;
+    flex-grow: 1;
+    height: 100%;
+  `,
+
+  inner: css`
+    //height: calc(100%);
+  `,
+
+  stickyBottom: css`
+    position: sticky;
+  `,
 };

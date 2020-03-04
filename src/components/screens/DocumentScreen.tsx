@@ -6,6 +6,7 @@ import { DocumentBody } from '../ui/document/body/DocumentBody';
 import { DocumentHeader } from '../ui/document/header/DocumentHeader';
 import { RouteComponentProps } from '@reach/router';
 import { useDocument } from '../../hooks/useDocument';
+import { MAIN_PADDING } from '../../common/ui';
 
 interface IProps extends RouteComponentProps {
   projectId?: string;
@@ -47,10 +48,12 @@ const styles = {
     width: 220px;
     min-width: 220px;
     position: relative;
+    padding: ${MAIN_PADDING.VERTICAL} 0;
   `,
 
   main: css`
     flex-grow: 1;
     margin-left: 60px;
+    padding: ${MAIN_PADDING.VERTICAL} 0;
   `,
 };

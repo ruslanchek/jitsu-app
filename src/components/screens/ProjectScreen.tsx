@@ -6,6 +6,7 @@ import { useProject } from '../../hooks/useProject';
 import { useSubscription } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import { PATHS } from '../../common/paths';
+import { MAIN_PADDING } from '../../common/ui';
 
 interface IProps extends RouteComponentProps {
   projectId?: string;
@@ -67,9 +68,10 @@ const styles = {
     width: 220px;
     min-width: 220px;
     position: relative;
+    padding: ${MAIN_PADDING.VERTICAL} 0;
   `,
 
   main: css`
-    padding: 40px 0;
+    padding: ${MAIN_PADDING.VERTICAL} 0;
   `,
 };

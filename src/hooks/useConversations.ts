@@ -4,7 +4,7 @@ import { plainToClass } from 'class-transformer';
 import { CT_GROUPS } from '../common/class-transformer';
 import { Conversation } from '../models/conversation';
 import { updateList } from 'update-data';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const GET_CONVERSATIONS = gql`
   query GetConversations($documentId: String!) {
@@ -14,6 +14,7 @@ const GET_CONVERSATIONS = gql`
       date
       user {
         id
+        nickname
       }
       document {
         id
@@ -30,6 +31,7 @@ const CONVERSATION_CREATED = gql`
       date
       user {
         id
+        nickname
       }
     }
   }

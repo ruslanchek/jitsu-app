@@ -67,6 +67,7 @@ type UserEntity {
   id: ID!
   invitedToProjects: [ProjectEntity!]!
   isEmailConfirmed: Boolean!
+  nickname: String!
   projects: [ProjectEntity!]!
   registeredDate: Date!
 }

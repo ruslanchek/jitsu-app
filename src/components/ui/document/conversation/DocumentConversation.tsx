@@ -4,6 +4,7 @@ import { Document } from '../../../../models/document';
 import { useConversations } from '../../../../hooks/useConversations';
 import { DateFormatter } from '../../formatters/DateFormatter';
 import { DocumentConversationWrite } from './DocumentConversationWrite';
+import { DocumentConversationMessage } from './DocumentConversationMessage';
 
 interface IProps {
   document: Document;
@@ -20,20 +21,13 @@ export const DocumentConversation: FC<IProps> = ({ document }) => {
     return (
       <div css={styles.root}>
         <div css={styles.inner}>
-          {/*<div css={styles.stickyBottom}>*/}
-          {/*  <DocumentConversationWrite document={document} />*/}
-          {/*</div>*/}
+          <div css={styles.stickyBottom}>
+            <DocumentConversationWrite document={document} />
+          </div>
         </div>
-        {/*{conversations.map(conversation => (*/}
-        {/*  <div key={conversation.id}>*/}
-        {/*    <div>*/}
-        {/*      <DateFormatter date={conversation.date} time />*/}
-        {/*    </div>*/}
-        {/*    <div>{conversation.text}</div>*/}
-        {/*    <div>{conversation.user.id}</div>*/}
-        {/*    <br />*/}
-        {/*  </div>*/}
-        {/*))}*/}
+        {conversations.map(conversation => (
+          <DocumentConversationMessage conversation={conversation} key={conversation.id} />
+        ))}
       </div>
     );
   } else {
@@ -43,15 +37,11 @@ export const DocumentConversation: FC<IProps> = ({ document }) => {
 
 const styles = {
   root: css`
-    background-color: red;
-    display: flex;
-    flex-grow: 1;
     height: 100%;
+    overflow: auto;
   `,
 
-  inner: css`
-    //height: calc(100%);
-  `,
+  inner: css``,
 
   stickyBottom: css`
     position: sticky;

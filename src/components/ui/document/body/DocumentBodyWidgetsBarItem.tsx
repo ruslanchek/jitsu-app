@@ -65,7 +65,7 @@ const styles = {
     align-items: center;
     cursor: move;
     user-select: none;
-    font-size: 20px;
+    font-size: 16px;
     transition: background-color 0.2s;
 
     &:hover {

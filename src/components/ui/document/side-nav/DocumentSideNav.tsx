@@ -1,18 +1,9 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/core';
-import {
-  FaTasks,
-  FaRegClone,
-  FaRegClock,
-  FaRegTimesCircle,
-  FaRegCommentDots,
-  FaInfo,
-  FaTextHeight,
-} from 'react-icons/all';
+import { FiBookOpen, FiMessageSquare, FiRss, FiXSquare, FiUsers } from 'react-icons/fi';
 import { COLORS } from '../../../../common/colors';
 import { BORDER_RADIUS, DOCUMENT_SIDE_TOOLS } from '../../../../common/ui';
-import { rgba } from 'polished';
-import { EOLocale } from 'eo-locale';
+import {EOLocale} from 'eo-locale';
 import { EPhrase } from '../../../../locales/EPhrase';
 
 interface IProps {}
@@ -21,20 +12,24 @@ export const DocumentSideNav: FC<IProps> = () => {
   return (
     <div css={styles.root}>
       <a css={styles.item} className='active' href='/'>
-        <FaInfo css={styles.itemIcon} />
-        Storyboard
+        <FiBookOpen css={styles.itemIcon} />
+        <EOLocale.Text id={EPhrase.Document_section_Storyboard}/>
       </a>
       <a css={styles.item} href='/'>
-        <FaRegCommentDots css={styles.itemIcon} />
-        Conversation
+        <FiMessageSquare css={styles.itemIcon} />
+        <EOLocale.Text id={EPhrase.Document_section_Conversation}/>
       </a>
       <a css={styles.item} href='/'>
-        <FaRegClock css={styles.itemIcon} />
-        Timeline
+        <FiRss css={styles.itemIcon} />
+        <EOLocale.Text id={EPhrase.Document_section_Timeline}/>
+      </a>
+      <a css={styles.item} href='/'>
+        <FiUsers css={styles.itemIcon} />
+        <EOLocale.Text id={EPhrase.Document_section_Members}/>
       </a>
       <a css={styles.item} className='danger' href='/'>
-        <FaRegTimesCircle css={styles.itemIcon} />
-        Delete
+        <FiXSquare css={styles.itemIcon} />
+        <EOLocale.Text id={EPhrase.Document_section_Delete}/>
       </a>
     </div>
   );
@@ -67,8 +62,8 @@ const styles = {
     }
 
     &.active {
-      background-color: ${rgba(COLORS.PURPLE, 0.05)};
-      color: ${COLORS.PURPLE};
+      background-color: ${COLORS.DIRTY_SNOW};
+      color: ${COLORS.HIGH_SMOKE};
     }
 
     &.danger {

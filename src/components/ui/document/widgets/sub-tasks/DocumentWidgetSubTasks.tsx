@@ -23,7 +23,7 @@ export const DocumentWidgetSubTasks: FC<IProps> = ({ items }) => {
     <div css={styles.root}>
       <DocumentWidgetHeader>
         <h3>
-          <EOLocale.Text id={EPhrase.Document_Subtasks} />
+          Subtasks
         </h3>
       </DocumentWidgetHeader>
       <section css={styles.content}>

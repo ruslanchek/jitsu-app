@@ -58,6 +58,7 @@ const styles = {
 
     &.selected {
       background-color: ${COLORS.DIRTY_SNOW};
+      color: ${COLORS.HIGH_SMOKE};
     }
   `,
 

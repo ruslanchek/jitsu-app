@@ -28,9 +28,9 @@ type DocumentEntity {
 }
 
 type Mutation {
-  changeDocument(getByIdInput: DocumentGetByIdInput!, input: DocumentChangeInput!): DocumentEntity!
-  createConversation(documentIdInput: DocumentGetByIdInput!, input: ConversationCreateInput!): ConversationEntity!
-  createDocument(input: DocumentCreateInput!, projectIdInput: ProjectGetByIdInput!): DocumentEntity!
+  changeDocument(documentId: String!, input: DocumentChangeInput!): DocumentEntity!
+  createConversation(documentId: String!, input: ConversationCreateInput!): ConversationEntity!
+  createDocument(input: DocumentCreateInput!, projectId: String!): DocumentEntity!
   createProject(input: ProjectCreateInput!): ProjectEntity!
   register(input: UserInputRegister!): UserTokenResponse!
 }
@@ -44,11 +44,11 @@ type ProjectEntity {
 }
 
 type Query {
-  getConversation(input: ConversationGetByIdInput!): ConversationEntity!
-  getConversations(documentIdInput: DocumentGetByIdInput!): [ConversationEntity!]!
-  getDocument(input: DocumentGetByIdInput!): DocumentEntity!
+  getConversation(conversationId: String!): ConversationEntity!
+  getConversations(documentId: String!): [ConversationEntity!]!
+  getDocument(documentId: String!): DocumentEntity!
   getDocuments: [DocumentEntity!]!
-  getProject(input: ProjectGetByIdInput!): ProjectEntity!
+  getProject(projectId: String!): ProjectEntity!
   getProjects: [ProjectEntity!]!
   login(input: UserInputLogin!): UserTokenResponse!
   me: UserEntity!
@@ -79,10 +79,6 @@ input ConversationCreateInput {
   text: String!
 }
 
-input ConversationGetByIdInput {
-  id: ID!
-}
-
 input DocumentChangeInput {
   data: JSON
   dueDate: Date!
@@ -95,16 +91,8 @@ input DocumentCreateInput {
   name: String!
 }
 
-input DocumentGetByIdInput {
-  id: ID!
-}
-
 input ProjectCreateInput {
   name: String!
-}
-
-input ProjectGetByIdInput {
-  id: ID!
 }
 
 input UserInputLogin {

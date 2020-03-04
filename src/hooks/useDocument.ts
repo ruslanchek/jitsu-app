@@ -4,18 +4,17 @@ import { Document } from '../models/document';
 import { plainToClass } from 'class-transformer';
 
 const GET_DOCUMENT = gql`
-  query GetDocument($id: ID!) {
-    getDocument(input: { id: $id }) {
+  query GetDocument($documentId: String!) {
+    getDocument(documentId: $documentId) {
       id
       name
-      dueDate
+      data
+      type
       status
       priority
-      type
-      data
+      dueDate
       project {
         id
-        name
       }
     }
   }
@@ -26,7 +25,7 @@ interface IResult {
   document: Document | undefined;
 }
 
-export const useDocument = (id: string | undefined): IResult => {
-  const { loading, error, data } = useQuery(GET_DOCUMENT, { variables: { id } });
+export const useDocument = (documentId: string | undefined): IResult => {
+  const { loading, error, data } = useQuery(GET_DOCUMENT, { variables: { documentId } });
   return { loading, document: plainToClass(Document, data?.getDocument, { groups: ['query'] }) };
 };

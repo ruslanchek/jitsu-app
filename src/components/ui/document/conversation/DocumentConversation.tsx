@@ -18,10 +18,11 @@ interface IModel {
 export const DocumentConversation: FC<IProps> = ({ document }) => {
   const { loading, conversations } = useConversations(document.id);
   const { createConversation } = useCreateConversation();
-  const { handleSubmit, errors, register } = useForm<IModel>();
+  const { handleSubmit, errors, register, reset } = useForm<IModel>();
 
   function onSubmit(model: IModel) {
     createConversation(document.id, model);
+    reset();
   }
 
   if (loading) {

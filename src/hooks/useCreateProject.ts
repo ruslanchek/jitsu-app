@@ -12,6 +12,14 @@ const CREATE_DOCUMENT = gql`
       documents {
         id
         name
+        data
+        type
+        status
+        priority
+        dueDate
+        project {
+          id
+        }
       }
     }
   }

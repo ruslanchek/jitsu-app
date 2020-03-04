@@ -5,11 +5,15 @@ import { CT_GROUPS } from '../common/class-transformer';
 import { Conversation } from '../models/conversation';
 
 const CREATE_CONVERSATION = gql`
-  mutation CreateConversation($documentId: ID!, $input: ConversationCreateInput!) {
-    createConversation(documentIdInput: { id: $documentId }, input: $input) {
+  mutation CreateConversation($documentId: String!, $input: ConversationCreateInput!) {
+    createConversation(documentId: $documentId, input: $input) {
       id
       text
+      date
       user {
+        id
+      }
+      document {
         id
       }
     }

@@ -11,6 +11,15 @@ const GET_PROJECTS = gql`
       name
       documents {
         id
+        name
+        data
+        type
+        status
+        priority
+        dueDate
+        project {
+          id
+        }
       }
     }
   }

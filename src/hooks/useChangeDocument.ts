@@ -5,10 +5,18 @@ import { plainToClass } from 'class-transformer';
 import { CT_GROUPS } from '../common/class-transformer';
 
 const CHANGE_DOCUMENT = gql`
-  mutation ChangeDocument($id: ID!, $input: DocumentChangeInput!) {
-    changeDocument(getByIdInput: { id: $id }, input: $input) {
+  mutation ChangeDocument($documentId: String!, $input: DocumentChangeInput!) {
+    changeDocument(documentId: $documentId, input: $input) {
       id
       name
+      data
+      type
+      status
+      priority
+      dueDate
+      project {
+        id
+      }
     }
   }
 `;
@@ -22,10 +30,10 @@ export const useChangeDocument = (): IResult => {
   const [changeDocument, { loading, error }] = useMutation(CHANGE_DOCUMENT);
   return {
     loading,
-    changeDocument: async (id: string, input: Partial<Document>): Promise<Document> => {
+    changeDocument: async (documentId: string, input: Partial<Document>): Promise<Document> => {
       const result = await changeDocument({
         variables: {
-          id,
+          documentId,
           input: plainToClass(Document, input, { groups: CT_GROUPS.MUTATION }),
         },
       });

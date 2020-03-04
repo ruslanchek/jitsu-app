@@ -7,12 +7,15 @@ import { updateList } from 'update-data';
 import { useEffect, useRef, useState } from 'react';
 
 const GET_CONVERSATIONS = gql`
-  query GetConversations($documentId: ID!) {
-    getConversations(documentIdInput: { id: $documentId }) {
+  query GetConversations($documentId: String!) {
+    getConversations(documentId: $documentId) {
       id
       text
       date
       user {
+        id
+      }
+      document {
         id
       }
     }

@@ -5,17 +5,17 @@ import { plainToClass } from 'class-transformer';
 import { CT_GROUPS } from '../common/class-transformer';
 
 const CREATE_DOCUMENT = gql`
-  mutation CreateDocument($projectId: ID!, $input: DocumentCreateInput!) {
-    createDocument(projectIdInput: { id: $projectId }, input: $input) {
+  mutation CreateDocument($projectId: String!, $input: DocumentCreateInput!) {
+    createDocument(projectId: $projectId, input: $input) {
       id
       name
+      data
       type
       status
       priority
       dueDate
       project {
         id
-        name
       }
     }
   }

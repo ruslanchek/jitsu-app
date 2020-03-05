@@ -16,6 +16,7 @@ import { MODAL_SIZE } from '../../common/ui';
 import { Controller, useForm } from 'react-hook-form';
 import { useCreateDocument } from '../../hooks/useCreateDocument';
 import { EDocumentPriority } from '../../models/document';
+import { useCurrentProject } from '../../hooks/useCurrentProject';
 
 interface IProps {
   handleClose: () => void;
@@ -28,6 +29,7 @@ interface IModel {
 
 export const CreateTaskModal: FC<IProps> = ({ handleClose }) => {
   const translator = useTranslator();
+  const { currentProject } = useCurrentProject();
   const { createDocument, loading } = useCreateDocument();
   const { handleSubmit, errors, control, register, setValue, getValues } = useForm<IModel>({
     defaultValues: {
@@ -37,9 +39,11 @@ export const CreateTaskModal: FC<IProps> = ({ handleClose }) => {
   });
   const model = getValues();
   async function onSubmit(model: IModel) {
-    const document = await createDocument('5e9339f4-1d86-48d2-9791-602591368e0e', model);
-    if (document?.id) {
-      handleClose();
+    if (currentProject) {
+      const document = await createDocument(currentProject?.id, model);
+      if (document?.id) {
+        handleClose();
+      }
     }
   }
 

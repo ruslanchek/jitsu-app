@@ -3335,12 +3335,7 @@ core-js@^2.4.0, core-js@^2.6.5:
   resolved "https://registry.npmjs.org/core-js/-/core-js-2.6.11.tgz#38831469f9922bded8ee21c9dc46985e0399308c"
   integrity sha512-5wjnpaT/3dV+XB4borEsnAYQchn00XSgTAWKDkEqv+K8KevjbzmofK6hfJ9TZIlpj2N0xQpazy7PiRQiWHqzWg==
 
-core-js@^3.5.0:
-  version "3.6.4"
-  resolved "https://registry.npmjs.org/core-js/-/core-js-3.6.4.tgz#440a83536b458114b9cb2ac1580ba377dc470647"
-  integrity sha512-4paDGScNgZP2IXXilaffL9X7968RuvwlkK3xWtZRVqgd8SYNiVKRJvkFd1aqqEuPfN7E68ZHEp9hDj6lHj4Hyw==
-
-core-js@^3.6.4:
+core-js@^3.5.0, core-js@^3.6.4:
   version "3.6.4"
   resolved "https://npmjs.eoadm.com/core-js/-/core-js-3.6.4.tgz#440a83536b458114b9cb2ac1580ba377dc470647"
   integrity sha512-4paDGScNgZP2IXXilaffL9X7968RuvwlkK3xWtZRVqgd8SYNiVKRJvkFd1aqqEuPfN7E68ZHEp9hDj6lHj4Hyw==
@@ -9051,6 +9046,11 @@ react-scripts@3.3.1:
     workbox-webpack-plugin "4.3.1"
   optionalDependencies:
     fsevents "2.1.2"
+
+react-stores@^5.0.1:
+  version "5.0.1"
+  resolved "https://npmjs.eoadm.com/react-stores/-/react-stores-5.0.1.tgz#bb7d40340da83d8868931da53c480cd5300f6352"
+  integrity sha512-KV63L76mRRthR8LXsPXInd8Q+2E719yxzjfGNMVJLVCY+MamPt+1BQPlDqjvgVl+s4cH1v0R/RQwjf85wpPT8Q==
 
 react-transition-group@^4.3.0:
   version "4.3.0"

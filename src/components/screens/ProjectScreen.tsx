@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { css } from '@emotion/core';
 import { Link, RouteComponentProps } from '@reach/router';
 import { ScreenWrapper } from '../common/ScreenWrapper';
@@ -8,6 +8,7 @@ import { gql } from 'apollo-boost';
 import { PATHS } from '../../common/paths';
 import { MAIN_PADDING } from '../../common/ui';
 import { useDocuments } from '../../hooks/useDocuments';
+import { useCurrentProject } from '../../hooks/useCurrentProject';
 
 interface IProps extends RouteComponentProps {
   projectId?: string;
@@ -26,9 +27,15 @@ const DOCUMENT_CREATED_SUBSCRIPTION = gql`
 `;
 
 export const ProjectScreen: FC<IProps> = ({ projectId }) => {
+  const { setCurrentProject } = useCurrentProject();
   const { loading, project } = useProject(projectId);
   const { data } = useSubscription(DOCUMENT_CREATED_SUBSCRIPTION);
   const { documents } = useDocuments(projectId);
+
+  useEffect(() => {
+    setCurrentProject(project);
+  }, [project]);
+
   if (loading) {
     return <div>Loading...</div>;
   }

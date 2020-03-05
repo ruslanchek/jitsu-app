@@ -14,7 +14,7 @@ export const ProjectsScreen: FC<IProps> = () => {
     return <div>Loading...</div>;
   }
   return (
-    <ScreenWrapper>
+    <ScreenWrapper showHeader>
       <div css={styles.root}>
         <div css={styles.side}></div>
         <div css={styles.main}>

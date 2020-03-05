@@ -21,7 +21,7 @@ export const DocumentConversationScreen: FC<IProps> = ({ projectId, documentId }
   }
   if (projectId && documentId && document) {
     return (
-      <ScreenWrapper>
+      <ScreenWrapper showHeader>
         <div css={styles.root}>
           <div css={styles.side}>
             <DocumentSideNav projectId={projectId} documentId={documentId} />

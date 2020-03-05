@@ -9,12 +9,14 @@ import { globalStyles } from '../common/global-styles';
 import { Global } from '@emotion/core';
 import { DocumentScreen } from './screens/DocumentScreen';
 import { DocumentConversationScreen } from './screens/DocumentConversationScreen';
+import { LoginScreen } from './screens/LoginScreen';
 
 export const App: FC = () => {
   return (
     <Providers>
       <Global styles={globalStyles} />
       <Router>
+        <LoginScreen path={PATHS.LOGIN} />
         <MainScreen path={PATHS.MAIN} />
         <ProjectsScreen path={PATHS.PROJECTS} />
         <ProjectScreen path={PATHS.PROJECT} />

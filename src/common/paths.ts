@@ -4,4 +4,6 @@ export const PATHS = {
   PROJECT: '/projects/:projectId',
   DOCUMENT_TASK: '/projects/:projectId/tasks/:documentId',
   DOCUMENT_TASK_CONVERSATION: '/projects/:projectId/tasks/:documentId/conversation',
+  LOGIN: '/auth/login',
+  REGISTER: '/auth/register',
 };

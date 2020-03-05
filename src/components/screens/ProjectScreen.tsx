@@ -31,7 +31,7 @@ export const ProjectScreen: FC<IProps> = ({ projectId }) => {
     return <div>Loading...</div>;
   }
   return (
-    <ScreenWrapper>
+    <ScreenWrapper showHeader>
       {project && (
         <div css={styles.root}>
           {project.name}

@@ -20,12 +20,7 @@ const CREATE_CONVERSATION = gql`
   }
 `;
 
-interface IResult {
-  loading: boolean;
-  createConversation: (documentId: string, input: Partial<Conversation>) => Promise<Conversation | undefined>;
-}
-
-export const useCreateConversation = (): IResult => {
+export const useCreateConversation = () => {
   const [createConversation, { loading, error }] = useMutation(CREATE_CONVERSATION);
   return {
     loading,

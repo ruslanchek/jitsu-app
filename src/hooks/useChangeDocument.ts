@@ -21,12 +21,7 @@ const CHANGE_DOCUMENT = gql`
   }
 `;
 
-interface IResult {
-  loading: boolean;
-  changeDocument: (id: string, input: Partial<Document>) => Promise<Document | undefined>;
-}
-
-export const useChangeDocument = (): IResult => {
+export const useChangeDocument = () => {
   const [changeDocument, { loading, error }] = useMutation(CHANGE_DOCUMENT);
   return {
     loading,

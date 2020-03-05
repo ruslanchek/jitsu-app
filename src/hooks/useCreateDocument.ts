@@ -21,12 +21,7 @@ const CREATE_DOCUMENT = gql`
   }
 `;
 
-interface IResult {
-  loading: boolean;
-  createDocument: (projectId: string, input: Partial<Document>) => Promise<Document | undefined>;
-}
-
-export const useCreateDocument = (): IResult => {
+export const useCreateDocument = () => {
   const [createDocument, { loading, error }] = useMutation(CREATE_DOCUMENT);
   return {
     loading,

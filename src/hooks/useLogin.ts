@@ -1,7 +1,8 @@
 import { gql } from 'apollo-boost';
-import { useQuery } from '@apollo/react-hooks';
+import { useLazyQuery } from '@apollo/react-hooks';
 import { navigate } from '@reach/router';
 import { PATHS } from '../common/paths';
+import { getGraphQlError } from '../utils/getGraphQlError';
 
 const LOGIN = gql`
   query Login($email: String!, $password: String!) {
@@ -11,18 +12,19 @@ const LOGIN = gql`
   }
 `;
 
-interface IResult {
-  loading: boolean;
-  error?: string;
-}
-
-export const useLogin = (email: string, password: string): IResult => {
-  const { loading, error, data } = useQuery(LOGIN, { variables: { email, password } });
+export const useLogin = () => {
+  const [login, { loading, data, error }] = useLazyQuery(LOGIN);
 
   if (data?.login?.token) {
     localStorage.setItem('token', data.login.token);
     navigate(PATHS.MAIN);
   }
 
-  return { loading, error: error?.message };
+  return {
+    login: async (email: string, password: string) => {
+      await login({ variables: { email, password } });
+    },
+    loading,
+    error: getGraphQlError(error),
+  };
 };

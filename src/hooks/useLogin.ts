@@ -21,7 +21,7 @@ export const useLogin = () => {
   }
 
   return {
-    login: async (email: string, password: string) => {
+    loginUser: async (email: string, password: string) => {
       await login({ variables: { email, password } });
     },
     loading,

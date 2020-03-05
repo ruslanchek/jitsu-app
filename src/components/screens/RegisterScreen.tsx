@@ -7,18 +7,19 @@ import { useLogin } from '../../hooks/useLogin';
 import { useForm } from 'react-hook-form';
 import { Button } from '../ui/buttons/Button';
 import { VALIDATION_PATTERNS } from '../../common/validation-patterns';
+import { useRegister } from '../../hooks/useRegister';
 
 interface IModel {
   email: string;
   password: string;
 }
 
-export const LoginScreen: FC<RouteComponentProps> = () => {
-  const { loginUser, loading, error } = useLogin();
+export const RegisterScreen: FC<RouteComponentProps> = () => {
+  const { registerUser, loading, error } = useRegister();
   const { handleSubmit, register } = useForm<IModel>();
 
   function onSubmit(model: IModel) {
-    loginUser(model.email, model.password);
+    registerUser(model.email, model.password);
   }
 
   return (
@@ -36,11 +37,11 @@ export const LoginScreen: FC<RouteComponentProps> = () => {
           className='regular-input'
           name='password'
           type='password'
-          autoComplete='current-password'
+          autoComplete='new-password'
           ref={register({ required: true, minLength: 6, maxLength: 64 })}
         />
         <Button type='submit' color='default' size='large' loading={loading}>
-          Login
+          Register
         </Button>
       </form>
     </ScreenWrapper>

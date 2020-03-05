@@ -10,6 +10,7 @@ import { Global } from '@emotion/core';
 import { DocumentScreen } from './screens/DocumentScreen';
 import { DocumentConversationScreen } from './screens/DocumentConversationScreen';
 import { LoginScreen } from './screens/LoginScreen';
+import { RegisterScreen } from './screens/RegisterScreen';
 
 export const App: FC = () => {
   return (
@@ -17,6 +18,7 @@ export const App: FC = () => {
       <Global styles={globalStyles} />
       <Router>
         <LoginScreen path={PATHS.LOGIN} />
+        <RegisterScreen path={PATHS.REGISTER} />
         <MainScreen path={PATHS.MAIN} />
         <ProjectsScreen path={PATHS.PROJECTS} />
         <ProjectScreen path={PATHS.PROJECT} />

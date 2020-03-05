@@ -22,6 +22,9 @@ interface IProps {
 export const DocumentHeader: FC<IProps> = ({ document }) => {
   const { loading: changeLoading, changeDocument } = useChangeDocument();
   const [documentState, setDocumentState] = useReducer((_: any, value: Partial<DocumentModel>) => {
+    if(!value.name || value.name.length < 3) {
+      return document;
+    }
     const updatedDocument = { ...document, ...value };
     changeDocument(document.id, updatedDocument);
     return updatedDocument;

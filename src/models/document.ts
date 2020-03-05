@@ -1,4 +1,4 @@
-import { plainToClass, Transform } from 'class-transformer';
+import { Exclude, Expose, plainToClass, Transform } from 'class-transformer';
 import { IDocumentBodyElement } from '../components/ui/document/body/DocumentBody';
 import { EDocumentBodyWidget } from '../components/ui/document/body/document-body-widgets';
 
@@ -32,14 +32,25 @@ export class DocumentModel {
 
   @Transform(value => new Date(value))
   dueDate!: Date;
+
   data!: IDocumentBodyElement[];
 }
 
+@Exclude()
 export class DocumentMutationModel {
+  @Expose()
   name!: string;
+
+  @Expose()
   status!: EDocumentStatus;
+
+  @Expose()
   priority!: EDocumentPriority;
+
+  @Expose()
   dueDate!: Date;
+
+  @Expose()
   data!: IDocumentBodyElement[];
 }
 

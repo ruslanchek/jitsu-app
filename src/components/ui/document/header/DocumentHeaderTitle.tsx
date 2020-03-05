@@ -57,6 +57,7 @@ const styles = {
     border-radius: ${BORDER_RADIUS.MEDIUM};
     border: 1px solid transparent;
     transition: border-color 0.2s;
+    min-height: 1.5em;
 
     &.editable {
       cursor: text;

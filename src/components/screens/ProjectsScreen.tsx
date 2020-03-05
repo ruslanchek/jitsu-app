@@ -21,7 +21,7 @@ export const ProjectsScreen: FC<IProps> = () => {
           {projects.map(project => (
             <div key={project.id}>
               <Link to={PATHS.PROJECT.replace(':projectId', project.id)}>{project.id}</Link>
-              {project.name}({project.documents?.length})
+              {project.name}
             </div>
           ))}
         </div>

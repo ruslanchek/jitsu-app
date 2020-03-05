@@ -1,22 +1,19 @@
-import { Exclude, Expose, Type, Transform } from 'class-transformer';
-import { CT_GROUPS } from '../common/class-transformer';
-import { User } from './user';
+import { Type, Transform } from 'class-transformer';
+import { UserModel } from './user';
 import { getTimestampWithZoneOffset } from '../utils/getTimestampWithZoneOffset';
 
-@Exclude()
-export class Conversation {
-  @Expose({ groups: CT_GROUPS.QUERY })
+export class ConversationModel {
   id!: string;
-
-  @Expose({ groups: CT_GROUPS.ALL })
   text!: string;
 
-  @Type(() => User)
-  @Expose({ groups: CT_GROUPS.QUERY })
-  user!: User;
+  @Type(() => UserModel)
+  user!: UserModel;
 
   @Type(() => Date)
-  @Expose({ groups: CT_GROUPS.QUERY })
   @Transform(value => getTimestampWithZoneOffset(value))
   date!: Date;
+}
+
+export class ConversationMutationModel {
+  text!: string;
 }

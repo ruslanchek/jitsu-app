@@ -1,39 +1,32 @@
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
-import { Project } from '../models/project';
+import { ProjectModel } from '../models/project';
 import { plainToClass } from 'class-transformer';
-import { CT_GROUPS } from '../common/class-transformer';
 
 const GET_PROJECTS = gql`
   query {
     getProjects {
       id
       name
-      documents {
-        id
-        name
-        data
-        type
-        status
-        priority
-        dueDate
-        project {
-          id
-        }
-      }
     }
   }
 `;
 
 interface IResult {
   loading: boolean;
-  projects: Project[];
+  projects: ProjectModel[];
 }
 
 export const useProjects = (): IResult => {
   const { loading, error, data } = useQuery(GET_PROJECTS);
+  let projects: ProjectModel[] = [];
+
+  if (data?.getProjects) {
+    projects = plainToClass<ProjectModel, ProjectModel>(ProjectModel, data.getProjects);
+  }
+
   return {
     loading,
-    projects: plainToClass<Project, Project>(Project, data?.getProjects, { groups: CT_GROUPS.QUERY }),
+    projects,
   };
 };

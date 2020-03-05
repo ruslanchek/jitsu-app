@@ -1,11 +1,12 @@
-import { Exclude, Expose } from 'class-transformer';
-import { CT_GROUPS } from '../common/class-transformer';
-
-@Exclude()
-export class User {
-  @Expose({ groups: CT_GROUPS.QUERY })
+export class UserModel {
   id!: string;
-
-  @Expose({ groups: CT_GROUPS.QUERY })
   nickname!: string;
+}
+
+export class UserMeModel {
+  id!: string;
+  nickname!: string;
+  email!: string;
+  isEmailConfirmed!: boolean;
+  registeredDate!: Date;
 }

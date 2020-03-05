@@ -1,6 +1,6 @@
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
-import { Document } from '../models/document';
+import { DocumentModel } from '../models/document';
 import { plainToClass } from 'class-transformer';
 
 const GET_DOCUMENT = gql`
@@ -13,19 +13,11 @@ const GET_DOCUMENT = gql`
       status
       priority
       dueDate
-      project {
-        id
-      }
     }
   }
 `;
 
-interface IResult {
-  loading: boolean;
-  document: Document | undefined;
-}
-
-export const useDocument = (documentId: string | undefined): IResult => {
+export const useDocument = (documentId: string | undefined) => {
   const { loading, error, data } = useQuery(GET_DOCUMENT, { variables: { documentId } });
-  return { loading, document: plainToClass(Document, data?.getDocument, { groups: ['query'] }) };
+  return { loading, document: plainToClass(DocumentModel, data?.getDocument, { groups: ['query'] }) };
 };

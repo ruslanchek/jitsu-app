@@ -8,14 +8,14 @@ import { DOCUMENT_BODY_WIDGETS, EDocumentBodyWidget } from './document-body-widg
 import { css } from '@emotion/core';
 import { DocumentBodyWidgetsBarItem } from './DocumentBodyWidgetsBarItem';
 import { DOCUMENT_SIDE_TOOLS } from '../../../../common/ui';
-import { Document } from '../../../../models/document';
+import { DocumentModel } from '../../../../models/document';
 import { useChangeDocument } from '../../../../hooks/useChangeDocument';
 
 const BODY_DROPPABLE_ID = 'bodyDroppableId';
 const WIDGETS_DROPPABLE_ID = 'widgetsDroppableId';
 
 interface IProps {
-  document: Document;
+  document: DocumentModel;
 }
 
 export interface IDocumentBodyElement<TData = any> {
@@ -59,7 +59,7 @@ const deleteItem = (list: IDocumentBodyElement[], index: number) => {
 
 export const DocumentBody: FC<IProps> = ({ document }) => {
   const { loading, changeDocument } = useChangeDocument();
-  const [documentState, setDocumentState] = useReducer((_: any, value: Partial<Document>) => {
+  const [documentState, setDocumentState] = useReducer((_: any, value: Partial<DocumentModel>) => {
     const updatedDocument = { ...document, ...value };
     changeDocument(document.id, updatedDocument);
     return updatedDocument;

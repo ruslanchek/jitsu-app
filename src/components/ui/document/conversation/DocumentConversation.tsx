@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/core';
-import { Document } from '../../../../models/document';
+import { DocumentModel } from '../../../../models/document';
 import { useConversations } from '../../../../hooks/useConversations';
 import { DateFormatter } from '../../formatters/DateFormatter';
 import { DocumentConversationWrite } from './DocumentConversationWrite';
 import { DocumentConversationMessage } from './DocumentConversationMessage';
 
 interface IProps {
-  document: Document;
+  document: DocumentModel;
 }
 
 export const DocumentConversation: FC<IProps> = ({ document }) => {

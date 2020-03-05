@@ -1,6 +1,4 @@
-import { Project } from './project';
-import { Exclude, Expose, plainToClass, Transform } from 'class-transformer';
-import { CT_GROUPS } from '../common/class-transformer';
+import { plainToClass, Transform } from 'class-transformer';
 import { IDocumentBodyElement } from '../components/ui/document/body/DocumentBody';
 import { EDocumentBodyWidget } from '../components/ui/document/body/document-body-widgets';
 
@@ -25,35 +23,27 @@ export enum EDocumentStatus {
   Archived,
 }
 
-@Exclude()
-export class Document {
-  @Expose({ groups: CT_GROUPS.QUERY })
+export class DocumentModel {
   id!: string;
-
-  @Expose({ groups: CT_GROUPS.ALL })
   name!: string;
-
-  @Expose({ groups: CT_GROUPS.QUERY })
   type!: EDocumentType;
-
-  @Expose({ groups: CT_GROUPS.ALL })
   status!: EDocumentStatus;
-
-  @Expose({ groups: CT_GROUPS.ALL })
   priority!: EDocumentPriority;
 
-  @Expose({ groups: CT_GROUPS.ALL })
   @Transform(value => new Date(value))
   dueDate!: Date;
-
-  @Expose({ groups: CT_GROUPS.QUERY })
-  project?: Project;
-
-  @Expose({ groups: CT_GROUPS.ALL })
   data!: IDocumentBodyElement[];
 }
 
-export const DEFAULT_DOCUMENT: Document = plainToClass(Document, {
+export class DocumentMutationModel {
+  name!: string;
+  status!: EDocumentStatus;
+  priority!: EDocumentPriority;
+  dueDate!: Date;
+  data!: IDocumentBodyElement[];
+}
+
+export const DEFAULT_DOCUMENT: DocumentModel = plainToClass(DocumentModel, {
   id: '',
   name: '',
   type: EDocumentType.Document,

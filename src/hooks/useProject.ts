@@ -1,6 +1,6 @@
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
-import { Project } from '../models/project';
+import { ProjectModel } from '../models/project';
 import { plainToClass } from 'class-transformer';
 
 const GET_PROJECT = gql`
@@ -8,28 +8,16 @@ const GET_PROJECT = gql`
     getProject(projectId: $projectId) {
       id
       name
-      documents {
-        id
-        name
-        data
-        type
-        status
-        priority
-        dueDate
-        project {
-          id
-        }
-      }
     }
   }
 `;
 
 interface IResult {
   loading: boolean;
-  project: Project | undefined;
+  project: ProjectModel | undefined;
 }
 
 export const useProject = (projectId: string | undefined): IResult => {
   const { loading, error, data } = useQuery(GET_PROJECT, { variables: { projectId } });
-  return { loading, project: plainToClass(Project, data?.getProject, { groups: ['query'] }) };
+  return { loading, project: plainToClass(ProjectModel, data?.getProject, { groups: ['query'] }) };
 };

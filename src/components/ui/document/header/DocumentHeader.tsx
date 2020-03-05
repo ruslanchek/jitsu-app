@@ -12,16 +12,16 @@ import { DocumentHeaderTitle } from './DocumentHeaderTitle';
 import { DocumentHeaderBarUpdatedDate } from './DocumentHeaderBarUpdatedDate';
 import { DocumentHeaderBarTags } from './DocumentHeaderBarTags';
 import { DocumentHeaderContainer } from './DocumentHeaderContainer';
-import { Document } from '../../../../models/document';
+import { DocumentModel } from '../../../../models/document';
 import { useChangeDocument } from '../../../../hooks/useChangeDocument';
 
 interface IProps {
-  document: Document;
+  document: DocumentModel;
 }
 
 export const DocumentHeader: FC<IProps> = ({ document }) => {
   const { loading: changeLoading, changeDocument } = useChangeDocument();
-  const [documentState, setDocumentState] = useReducer((_: any, value: Partial<Document>) => {
+  const [documentState, setDocumentState] = useReducer((_: any, value: Partial<DocumentModel>) => {
     const updatedDocument = { ...document, ...value };
     changeDocument(document.id, updatedDocument);
     return updatedDocument;

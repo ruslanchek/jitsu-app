@@ -8,14 +8,12 @@ schema {
 
 type ConversationEntity {
   date: Date!
-  document: DocumentEntity!
   id: ID!
   text: String!
   user: UserEntity!
 }
 
 type DocumentEntity {
-  conversations: [ConversationEntity!]!
   data: JSON!
   dueDate: Date!
   id: ID!
@@ -36,7 +34,6 @@ type Mutation {
 }
 
 type ProjectEntity {
-  documents: [DocumentEntity!]!
   id: ID!
   invitedUsers: [UserEntity!]!
   name: String!
@@ -47,7 +44,7 @@ type Query {
   getConversation(conversationId: String!): ConversationEntity!
   getConversations(documentId: String!): [ConversationEntity!]!
   getDocument(documentId: String!): DocumentEntity!
-  getDocuments: [DocumentEntity!]!
+  getDocuments(projectId: String!): [DocumentEntity!]!
   getProject(projectId: String!): ProjectEntity!
   getProjects: [ProjectEntity!]!
   login(input: UserInputLogin!): UserTokenResponse!

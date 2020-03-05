@@ -8,7 +8,6 @@ import { DocumentHeaderTitle } from '../ui/document/header/DocumentHeaderTitle';
 import { DocumentHeaderContainer } from '../ui/document/header/DocumentHeaderContainer';
 import { MODAL_SIZE } from '../../common/ui';
 import { useForm, Controller } from 'react-hook-form';
-import { useMutation } from '@apollo/react-hooks';
 import { navigate } from '@reach/router';
 import { PATHS } from '../../common/paths';
 import { useCreateProject } from '../../hooks/useCreateProject';
@@ -27,8 +26,10 @@ export const CreateProjectModal: FC<IProps> = ({ handleClose }) => {
   const { handleSubmit, errors, control } = useForm<IModel>();
   async function onSubmit(model: IModel) {
     const project = await createProject(model);
+    console.log(project)
     if (project?.id) {
-      await navigate(PATHS.PROJECT.replace(':id', project.id));
+
+      await navigate(PATHS.PROJECT.replace(':projectId', project.id));
       handleClose();
     }
   }

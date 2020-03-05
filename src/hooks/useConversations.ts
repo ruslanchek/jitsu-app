@@ -1,8 +1,7 @@
 import { gql } from 'apollo-boost';
 import { useQuery, useSubscription } from '@apollo/react-hooks';
 import { plainToClass } from 'class-transformer';
-import { CT_GROUPS } from '../common/class-transformer';
-import { Conversation } from '../models/conversation';
+import { ConversationModel } from '../models/conversation';
 import { updateList } from 'update-data';
 import { useEffect, useState } from 'react';
 
@@ -15,9 +14,6 @@ const GET_CONVERSATIONS = gql`
       user {
         id
         nickname
-      }
-      document {
-        id
       }
     }
   }
@@ -37,13 +33,8 @@ const CONVERSATION_CREATED = gql`
   }
 `;
 
-interface IResult {
-  loading: boolean;
-  conversations: Conversation[];
-}
-
-const update = (a: Conversation[], b: Conversation[]) => {
-  return updateList<Conversation>(
+const update = (a: ConversationModel[], b: ConversationModel[]) => {
+  return updateList<ConversationModel>(
     a,
     b,
     (docOld, docNew) => docNew.id === docOld.id,
@@ -51,25 +42,27 @@ const update = (a: Conversation[], b: Conversation[]) => {
   ).sort((a, b) => a.date.getTime() - b.date.getTime());
 };
 
-export const useConversations = (documentId: string): IResult => {
+export const useConversations = (documentId: string) => {
   const { loading, error, data: queryData } = useQuery(GET_CONVERSATIONS, { variables: { documentId } });
   const { data: subscriptionData } = useSubscription(CONVERSATION_CREATED);
-  const [conversations, setConversations] = useState<Conversation[]>([]);
+  const [conversations, setConversations] = useState<ConversationModel[]>([]);
 
   useEffect(() => {
     if (queryData?.getConversations) {
-      setConversations(plainToClass<Conversation, Conversation>(Conversation, queryData?.getConversations, {
-        groups: CT_GROUPS.QUERY,
-      }));
+      setConversations(
+        plainToClass<ConversationModel, ConversationModel>(ConversationModel, queryData?.getConversations),
+      );
     }
 
     if (subscriptionData?.conversationCreated) {
-      setConversations(update(
-        conversations,
-        plainToClass<Conversation, Conversation>(Conversation, [subscriptionData?.conversationCreated], {
-          groups: CT_GROUPS.QUERY,
-        }),
-      ));
+      setConversations(
+        update(
+          conversations,
+          plainToClass<ConversationModel, ConversationModel>(ConversationModel, [
+            subscriptionData?.conversationCreated,
+          ]),
+        ),
+      );
     }
   }, [subscriptionData, queryData]);
 

@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/core';
-import { Conversation } from '../../../../models/conversation';
+import { ConversationModel } from '../../../../models/conversation';
 import { COLORS } from '../../../../common/colors';
 import { rgba } from 'polished';
 import { DateDistance } from '../../formatters/DateDistance';
 
 interface IProps {
-  conversation: Conversation;
+  conversation: ConversationModel;
 }
 
 export const DocumentConversationMessage: FC<IProps> = ({ conversation }) => {

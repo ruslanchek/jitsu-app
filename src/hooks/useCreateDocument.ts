@@ -1,8 +1,7 @@
 import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
-import { Document } from '../models/document';
+import { DocumentModel, DocumentMutationModel } from '../models/document';
 import { plainToClass } from 'class-transformer';
-import { CT_GROUPS } from '../common/class-transformer';
 
 const CREATE_DOCUMENT = gql`
   mutation CreateDocument($projectId: String!, $input: DocumentCreateInput!) {
@@ -25,11 +24,11 @@ export const useCreateDocument = () => {
   const [createDocument, { loading, error }] = useMutation(CREATE_DOCUMENT);
   return {
     loading,
-    createDocument: async (projectId: string, input: Partial<Document>): Promise<Document> => {
+    createDocument: async (projectId: string, input: Partial<DocumentMutationModel>): Promise<DocumentModel> => {
       const result = await createDocument({
         variables: {
           projectId,
-          input: plainToClass(Document, input, { groups: CT_GROUPS.MUTATION }),
+          input: plainToClass(DocumentMutationModel, input),
         },
       });
 

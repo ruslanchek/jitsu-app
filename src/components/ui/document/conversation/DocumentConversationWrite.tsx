@@ -3,14 +3,14 @@ import { css } from '@emotion/core';
 import { useCreateConversation } from '../../../../hooks/useCreateConversation';
 import { useForm } from 'react-hook-form';
 import { Button } from '../../buttons/Button';
-import { Document } from '../../../../models/document';
+import { DocumentModel } from '../../../../models/document';
 
 interface IModel {
   text: string;
 }
 
 interface IProps {
-  document: Document;
+  document: DocumentModel;
 }
 
 export const DocumentConversationWrite: FC<IProps> = ({ document }) => {

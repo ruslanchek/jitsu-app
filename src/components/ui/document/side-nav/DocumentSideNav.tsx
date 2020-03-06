@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/core';
-import { FiBookOpen, FiMessageSquare, FiRss, FiXSquare, FiUsers } from 'react-icons/fi';
+import { FiBookOpen, FiMessageSquare, FiRss, FiXSquare } from 'react-icons/fi';
 import { COLORS } from '../../../../common/colors';
 import { BORDER_RADIUS, DOCUMENT_SIDE_TOOLS } from '../../../../common/ui';
 import { EOLocale } from 'eo-locale';
@@ -30,10 +30,6 @@ export const DocumentSideNav: FC<IProps> = ({ projectId, documentId }) => {
       <a css={styles.item} href='/'>
         <FiRss css={styles.itemIcon} />
         <EOLocale.Text id={EPhrase.Document_section_Timeline} />
-      </a>
-      <a css={styles.item} href='/'>
-        <FiUsers css={styles.itemIcon} />
-        <EOLocale.Text id={EPhrase.Document_section_Members} />
       </a>
       <a css={styles.item} className='danger' href='/'>
         <FiXSquare css={styles.itemIcon} />

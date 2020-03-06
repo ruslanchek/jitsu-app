@@ -21,7 +21,6 @@ export enum EPhrase {
 	Document_section_Storyboard = 'DOCUMENT_SECTION::STORYBOARD',
 	Document_section_Conversation = 'DOCUMENT_SECTION::CONVERSATION',
 	Document_section_Timeline = 'DOCUMENT_SECTION::TIMELINE',
-	Document_section_Members = 'DOCUMENT_SECTION::MEMBERS',
 	Document_section_Delete = 'DOCUMENT_SECTION::DELETE',
 	Placeholder_Search = 'PLACEHOLDER::SEARCH',
 	Create_Task = 'CREATE::TASK',

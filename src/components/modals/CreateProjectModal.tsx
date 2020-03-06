@@ -29,7 +29,7 @@ export const CreateProjectModal: FC<IProps> = ({ handleClose }) => {
     console.log(project)
     if (project?.id) {
 
-      await navigate(PATHS.PROJECT.replace(':projectId', project.id));
+      await navigate(PATHS.PROJECT_TASKS.replace(':projectId', project.id));
       handleClose();
     }
   }

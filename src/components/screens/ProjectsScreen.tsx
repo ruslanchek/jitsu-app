@@ -20,7 +20,7 @@ export const ProjectsScreen: FC<IProps> = () => {
         <div css={styles.main}>
           {projects.map(project => (
             <div key={project.id}>
-              <Link to={PATHS.PROJECT.replace(':projectId', project.id)}>{project.id}</Link>
+              <Link to={PATHS.PROJECT_TASKS.replace(':projectId', project.id)}>{project.id}</Link>
               {project.name}
             </div>
           ))}

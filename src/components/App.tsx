@@ -21,7 +21,7 @@ export const App: FC = () => {
         <RegisterScreen path={PATHS.REGISTER} />
         <MainScreen path={PATHS.MAIN} />
         <ProjectsScreen path={PATHS.PROJECTS} />
-        <ProjectScreen path={PATHS.PROJECT} />
+        <ProjectScreen path={PATHS.PROJECT_TASKS} />
         <DocumentScreen path={PATHS.DOCUMENT_TASK} />
         <DocumentConversationScreen path={PATHS.DOCUMENT_TASK_CONVERSATION} />
       </Router>

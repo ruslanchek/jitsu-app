@@ -3,20 +3,21 @@ import { commonStore } from '../../stores/common-store';
 import { useMe } from '../../hooks/useMe';
 import { useLocation, useNavigate } from '@reach/router';
 import { ANONYMOUS_ONLY_PATHS, AUTHORIZED_REDIRECT_PATH, UNAUTHORIZED_REDIRECT_PATH } from '../../common/paths';
+import { useAsyncEffect } from '../../hooks/useAsyncEffect';
 
 export const AuthProvider: FC = ({ children }) => {
   const { user, loading, error } = useMe();
   const location = useLocation();
   const navigate = useNavigate();
 
-  useEffect(() => {
+  useAsyncEffect(async () => {
     if (!loading && (user || error)) {
       const authorized = Boolean(!error && user);
 
       if (ANONYMOUS_ONLY_PATHS.indexOf(location.pathname) >= 0 && authorized) {
-        navigate(AUTHORIZED_REDIRECT_PATH);
+        await navigate(AUTHORIZED_REDIRECT_PATH);
       } else if (!authorized) {
-        navigate(UNAUTHORIZED_REDIRECT_PATH);
+        await navigate(UNAUTHORIZED_REDIRECT_PATH);
       }
 
       commonStore.setState({

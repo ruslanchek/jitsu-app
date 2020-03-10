@@ -27,10 +27,10 @@ export const DocumentSideNav: FC<IProps> = ({ projectId, documentId }) => {
         <FiMessageSquare css={styles.itemIcon} />
         <EOLocale.Text id={EPhrase.Document_section_Conversation} />
       </Link>
-      <a css={styles.item} href='/'>
+      <Link to={injectParams(PATHS.DOCUMENT_TASK_TIMELINE)} css={styles.item}>
         <FiRss css={styles.itemIcon} />
         <EOLocale.Text id={EPhrase.Document_section_Timeline} />
-      </a>
+      </Link>
       <a css={styles.item} className='danger' href='/'>
         <FiXSquare css={styles.itemIcon} />
         <EOLocale.Text id={EPhrase.Document_section_Delete} />

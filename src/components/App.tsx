@@ -11,6 +11,7 @@ import { DocumentScreen } from './screens/DocumentScreen';
 import { DocumentConversationScreen } from './screens/DocumentConversationScreen';
 import { LoginScreen } from './screens/LoginScreen';
 import { RegisterScreen } from './screens/RegisterScreen';
+import { DocumentTimelineScreen } from './screens/DocumentTimelineScreen';
 
 export const App: FC = () => {
   return (
@@ -24,6 +25,7 @@ export const App: FC = () => {
         <ProjectScreen path={PATHS.PROJECT_TASKS} />
         <DocumentScreen path={PATHS.DOCUMENT_TASK} />
         <DocumentConversationScreen path={PATHS.DOCUMENT_TASK_CONVERSATION} />
+        <DocumentTimelineScreen path={PATHS.DOCUMENT_TASK_TIMELINE}/>
       </Router>
     </Providers>
   );

@@ -1,5 +1,4 @@
-import { Type, Transform, Expose, Exclude } from 'class-transformer';
-import { UserModel } from './user';
+import { Type, Transform } from 'class-transformer';
 import { getTimestampWithZoneOffset } from '../utils/getTimestampWithZoneOffset';
 
 export class TimelineModel {

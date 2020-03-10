@@ -3,7 +3,6 @@ import { css } from '@emotion/core';
 import { ScreenWrapper } from '../common/ScreenWrapper';
 import { RouteComponentProps } from '@reach/router';
 import { MAIN_PADDING } from '../../common/ui';
-import { useLogin } from '../../hooks/useLogin';
 import { useForm } from 'react-hook-form';
 import { Button } from '../ui/buttons/Button';
 import { VALIDATION_PATTERNS } from '../../common/validation-patterns';

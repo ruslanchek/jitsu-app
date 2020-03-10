@@ -3,7 +3,6 @@ import { EOLocale } from 'eo-locale';
 import { EPhrase } from '../../../../locales/EPhrase';
 import { DocumentHeaderBarButton } from './DocumentHeaderBarButton';
 import { DocumentHeaderBarItem } from './DocumentHeaderBarItem';
-import { FiDisc } from 'react-icons/fi';
 import { DropdownView } from '../../dropdowns/DropdownView';
 import { css } from '@emotion/core';
 import { DropdownContextMenu, IDropdownContextMenuItem } from '../../dropdowns/DropdownContextMenu';

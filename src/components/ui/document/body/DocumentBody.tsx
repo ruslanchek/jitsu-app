@@ -58,7 +58,7 @@ const deleteItem = (list: IDocumentBodyElement[], index: number) => {
 };
 
 export const DocumentBody: FC<IProps> = ({ document }) => {
-  const { loading, changeDocument } = useChangeDocument();
+  const { changeDocument } = useChangeDocument();
   const [documentState, setDocumentState] = useReducer((_: any, value: Partial<DocumentModel>) => {
     const updatedDocument = { ...document, ...value };
     changeDocument(document.id, updatedDocument);

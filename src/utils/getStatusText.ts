@@ -1,4 +1,3 @@
-import { COLORS } from '../common/colors';
 import { EDocumentStatus } from '../models/document';
 import { EPhrase } from '../locales/EPhrase';
 

@@ -8,7 +8,7 @@ interface IProps {
 const UPDATE_INTERVAL = 30000;
 
 export const DateDistance: FC<IProps> = ({ date }) => {
-  const [_, setTs] = useState(0);
+  const [, setTs] = useState(0);
 
   useEffect(() => {
     const interval = window.setInterval(() => {

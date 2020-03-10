@@ -4,7 +4,6 @@ import { EOLocale } from 'eo-locale';
 import { HEADER_ELEMENT_HEIGHT } from '../../../common/ui';
 import { COLORS } from '../../../common/colors';
 import classnames from 'classnames';
-import { rgba } from 'polished';
 
 export interface IDropdownContextMenuItem {
   title: string;

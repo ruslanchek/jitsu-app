@@ -23,9 +23,10 @@ export const DocumentTimeline: FC<IProps> = ({ document }) => {
             {timelines.map(timeline => (
               <div key={timeline.id}>
                 {timeline.eventName}
-                <br/>
+                <br />
                 <DateFormatter date={timeline.date} time />
-                <br/><br/>
+                <br />
+                <br />
               </div>
             ))}
           </div>

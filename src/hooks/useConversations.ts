@@ -50,7 +50,7 @@ export const useConversations = (documentId: string) => {
   useEffect(() => {
     if (queryData?.getConversations) {
       setConversations(
-        plainToClass<ConversationModel, ConversationModel>(ConversationModel, queryData?.getConversations),
+        plainToClass<ConversationModel, ConversationModel>(ConversationModel, queryData.getConversations),
       );
     }
 
@@ -59,7 +59,7 @@ export const useConversations = (documentId: string) => {
         update(
           conversations,
           plainToClass<ConversationModel, ConversationModel>(ConversationModel, [
-            subscriptionData?.conversationCreated,
+            subscriptionData.conversationCreated,
           ]),
         ),
       );

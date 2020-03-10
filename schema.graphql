@@ -47,6 +47,8 @@ type Query {
   getDocuments(projectId: String!): [DocumentEntity!]!
   getProject(projectId: String!): ProjectEntity!
   getProjects: [ProjectEntity!]!
+  getTimeline(timelineId: String!): TimelineEntity!
+  getTimelines(documentId: String!): [TimelineEntity!]!
   login(input: UserInputLogin!): UserTokenResponse!
   me: UserEntity!
 }
@@ -56,16 +58,20 @@ type Subscription {
   documentChanged: DocumentEntity!
   documentCreated: DocumentEntity!
   projectCreated: ProjectEntity!
+  timelineCreated: TimelineEntity!
+}
+
+type TimelineEntity {
+  date: Date!
+  eventName: String!
+  id: ID!
 }
 
 type UserEntity {
-  conversations: [ConversationEntity!]!
   email: String!
   id: ID!
-  invitedToProjects: [ProjectEntity!]!
   isEmailConfirmed: Boolean!
   nickname: String!
-  projects: [ProjectEntity!]!
   registeredDate: Date!
 }
 
@@ -79,7 +85,7 @@ input ConversationCreateInput {
 
 input DocumentChangeInput {
   data: JSON
-  dueDate: Date!
+  dueDate: Date
   name: String
   priority: DocumentPriority
   status: DocumentStatus

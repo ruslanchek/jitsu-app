@@ -4,10 +4,8 @@ import { ScreenWrapper } from '../common/ScreenWrapper';
 import { DocumentSideNav } from '../ui/document/side-nav/DocumentSideNav';
 import { RouteComponentProps } from '@reach/router';
 import { useDocument } from '../../hooks/useDocument';
-import { DocumentHeaderTitle } from '../ui/document/header/DocumentHeaderTitle';
-import { DocumentHeaderContainer } from '../ui/document/header/DocumentHeaderContainer';
-import { DocumentConversation } from '../ui/document/conversation/DocumentConversation';
 import { MAIN_PADDING } from '../../common/ui';
+import { DocumentTimeline } from '../ui/document/timeline/DocumentTimeline';
 
 interface IProps extends RouteComponentProps {
   projectId?: string;
@@ -27,7 +25,7 @@ export const DocumentTimelineScreen: FC<IProps> = ({ projectId, documentId }) =>
             <DocumentSideNav projectId={projectId} documentId={documentId} />
           </div>
           <div css={styles.main}>
-            xxx
+            <DocumentTimeline document={document} />
           </div>
         </div>
       </ScreenWrapper>

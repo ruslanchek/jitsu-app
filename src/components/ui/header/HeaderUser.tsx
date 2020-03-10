@@ -5,7 +5,7 @@ import { useMe } from '../../../hooks/useMe';
 interface IProps {}
 
 export const HeaderUser: FC<IProps> = () => {
-  const { user } = useMe();
+  const { me } = useMe();
 
-  return <HeaderButton>{user?.nickname}</HeaderButton>;
+  return <HeaderButton>{me?.nickname}</HeaderButton>;
 };

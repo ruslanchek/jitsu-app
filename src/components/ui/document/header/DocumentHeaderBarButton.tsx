@@ -20,7 +20,7 @@ export const DocumentHeaderBarButton: FC<IProps> = ({
   colorMode = 'all',
   onClick = () => {},
 }) => {
-  const [hover, setHover] = useState();
+  const [hover, setHover] = useState(false);
   const contentColor = useMemo(() => (background ? (hover ? darken(0.1, color) : color) : color), [
     background,
     hover,

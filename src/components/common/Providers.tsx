@@ -4,6 +4,8 @@ import { DEFAULT_LOCALE } from '../../common/defaults';
 import { GlobalHandlersProvider } from '../providers/GlobalHandlersProvider';
 import { ApolloClientProvider } from '../providers/ApolloClientProvider';
 import { Modals } from '../ui/modals/Modals';
+import { AuthProvider } from '../providers/AuthProvider';
+import { RouterLocationProvider } from '../providers/RouterLocationProvider';
 
 const LOCALES = [
   {
@@ -14,12 +16,16 @@ const LOCALES = [
 
 export const Providers: FC = ({ children }) => {
   return (
-    <EOLocale.Provider language={DEFAULT_LOCALE} locales={LOCALES}>
-      <GlobalHandlersProvider>
-        <ApolloClientProvider>
-          <Modals>{children}</Modals>
-        </ApolloClientProvider>
-      </GlobalHandlersProvider>
-    </EOLocale.Provider>
+    <RouterLocationProvider>
+      <EOLocale.Provider language={DEFAULT_LOCALE} locales={LOCALES}>
+        <GlobalHandlersProvider>
+          <ApolloClientProvider>
+            <AuthProvider>
+              <Modals>{children}</Modals>
+            </AuthProvider>
+          </ApolloClientProvider>
+        </GlobalHandlersProvider>
+      </EOLocale.Provider>
+    </RouterLocationProvider>
   );
 };

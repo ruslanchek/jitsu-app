@@ -8,9 +8,9 @@ import { DocumentHeaderTitle } from '../ui/document/header/DocumentHeaderTitle';
 import { DocumentHeaderContainer } from '../ui/document/header/DocumentHeaderContainer';
 import { MODAL_SIZE } from '../../common/ui';
 import { useForm, Controller } from 'react-hook-form';
-import { navigate } from '@reach/router';
 import { PATHS } from '../../common/paths';
 import { useCreateProject } from '../../hooks/useCreateProject';
+import { useNavigate } from '@reach/router';
 
 interface IModel {
   name: string;
@@ -22,11 +22,11 @@ interface IProps {
 
 export const CreateProjectModal: FC<IProps> = ({ handleClose }) => {
   const translator = useTranslator();
+  const navigate = useNavigate();
   const { loading, createProject } = useCreateProject();
   const { handleSubmit, errors, control } = useForm<IModel>();
   async function onSubmit(model: IModel) {
     const project = await createProject(model);
-    console.log(project)
     if (project?.id) {
 
       await navigate(PATHS.PROJECT_TASKS.replace(':projectId', project.id));

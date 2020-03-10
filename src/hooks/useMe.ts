@@ -17,7 +17,7 @@ const ME = gql`
 
 export const useMe = () => {
   const { data, error, loading } = useQuery(ME);
-  let user: UserModel | undefined = undefined;
+  let user: UserMeModel | undefined = undefined;
 
   if (data?.me) {
     user = plainToClass(UserMeModel, data.me);
@@ -26,5 +26,6 @@ export const useMe = () => {
   return {
     user,
     loading,
+    error,
   };
 };

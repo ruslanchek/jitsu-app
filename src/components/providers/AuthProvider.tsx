@@ -23,7 +23,7 @@ export const AuthProvider: FC = ({ children }) => {
   const navigate = useNavigate();
 
   useAsyncEffect(async () => {
-    if (!loading && (me || error)) {
+    if (!loading && (me || error) && !state.appReady) {
       const authorized = Boolean(!error && me);
 
       if (ANONYMOUS_ONLY_PATHS.indexOf(location.pathname) >= 0 && authorized) {

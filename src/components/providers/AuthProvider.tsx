@@ -1,4 +1,4 @@
-import React, { FC, Fragment, createContext, useState } from 'react';
+import React, { FC, createContext, useState } from 'react';
 import { useMe } from '../../hooks/useMe';
 import { useLocation, useNavigate } from '@reach/router';
 import { ANONYMOUS_ONLY_PATHS, AUTHORIZED_REDIRECT_PATH, UNAUTHORIZED_REDIRECT_PATH } from '../../common/paths';

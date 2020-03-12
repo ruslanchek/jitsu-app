@@ -39,26 +39,29 @@ export const ProjectScreen: FC<IProps> = ({ projectId }) => {
   if (loading) {
     return <div>Loading...</div>;
   }
+
   return (
     <ScreenWrapper showHeader>
       {project && (
         <div css={styles.root}>
-          {project.name}
+          <div css={styles.main}>
+            <h1>{project.name}</h1>
 
-          <h2>Documents</h2>
-          <div>
-            {documents.map(document => {
-              const documentPath = PATHS.DOCUMENT_TASK.replace(':projectId', project.id).replace(
-                ':documentId',
-                document.id,
-              );
-              return (
-                <div key={document.id}>
-                  <Link to={documentPath}>{document.id}</Link>
-                  {document.name}
-                </div>
-              );
-            })}
+            <h2>Documents</h2>
+            <div>
+              {documents.map(document => {
+                const documentPath = PATHS.DOCUMENT_TASK.replace(':projectId', project.id).replace(
+                  ':documentId',
+                  document.id,
+                );
+                return (
+                  <div key={document.id}>
+                    <Link to={documentPath}>{document.id}</Link>
+                    {document.name}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       )}

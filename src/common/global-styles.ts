@@ -30,6 +30,7 @@ export const globalStyles = css`
   h1 {
     font-size: ${FONT_SIZE.H1};
     font-weight: 500;
+    margin-top: 0;
   }
 
   h2 {

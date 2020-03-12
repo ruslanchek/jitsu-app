@@ -55,6 +55,7 @@ export const BORDER_RADIUS = {
 };
 
 export const BOX_SHADOW = {
+  TINY: `0 1px 1px ${rgba(COLORS.NIGHT_SKY, 0.15)}`,
   SMALL: `0 1px 4px ${rgba(COLORS.HIGH_SMOKE, 0.15)}`,
   MEDIUM: `0 2px 6px ${rgba(COLORS.HIGH_SMOKE, 0.15)}`,
   LARGE: `0 4px 10px ${rgba(COLORS.HIGH_SMOKE, 0.15)}`,
@@ -63,3 +64,6 @@ export const BOX_SHADOW = {
 export const MODAL_SIZE = {
   LARGE: '720px',
 };
+
+
+export const PROJECTS_ITEM_SIZE = '140px';

@@ -3,8 +3,10 @@ import { css } from '@emotion/core';
 import { Link, RouteComponentProps } from '@reach/router';
 import { ScreenWrapper } from '../common/ScreenWrapper';
 import { useProjects } from '../../hooks/useProjects';
-import { PATHS } from '../../common/paths';
 import { MAIN_PADDING } from '../../common/ui';
+import { ProjectsItem } from '../ui/projects/ProjectsItem';
+import { COMMON_STYLES } from '../../common/common-styles';
+import { FiPlus } from 'react-icons/fi';
 
 interface IProps extends RouteComponentProps {}
 
@@ -18,12 +20,17 @@ export const ProjectsScreen: FC<IProps> = () => {
       <div css={styles.root}>
         <div css={styles.side}></div>
         <div css={styles.main}>
-          {projects.map(project => (
-            <div key={project.id}>
-              <Link to={PATHS.PROJECT_TASKS.replace(':projectId', project.id)}>{project.id}</Link>
-              {project.name}
-            </div>
-          ))}
+          <h1>All projects</h1>
+          <div css={styles.projects}>
+            <button css={COMMON_STYLES.ENTRIES_ITEM} className="accent">
+              <FiPlus className="icon"/>
+              <span className='title'>New project</span>
+            </button>
+
+            {projects.map(project => (
+              <ProjectsItem project={project} key={project.id} />
+            ))}
+          </div>
         </div>
       </div>
     </ScreenWrapper>
@@ -45,5 +52,10 @@ const styles = {
 
   main: css`
     padding: ${MAIN_PADDING.VERTICAL} 0;
+  `,
+
+  projects: css`
+    display: flex;
+    flex-wrap: wrap;
   `,
 };

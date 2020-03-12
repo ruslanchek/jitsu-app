@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { ScreenWrapper } from '../common/ScreenWrapper';
-import { RouteComponentProps } from '@reach/router';
+import { RouteComponentProps, useNavigate } from '@reach/router';
 import { useLogin } from '../../hooks/useLogin';
 import { useForm } from 'react-hook-form';
 import { Button } from '../ui/buttons/Button';

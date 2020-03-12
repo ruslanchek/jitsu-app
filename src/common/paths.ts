@@ -9,11 +9,7 @@ export const PATHS = {
   REGISTER: '/auth/register',
 };
 
-export const ANONYMOUS_ONLY_PATHS = [
-  PATHS.LOGIN,
-  PATHS.REGISTER
-];
-
+export const ANONYMOUS_ONLY_PATHS = [PATHS.LOGIN, PATHS.REGISTER];
 
 export const AUTHORIZED_REDIRECT_PATH = PATHS.MAIN;
 export const UNAUTHORIZED_REDIRECT_PATH = PATHS.LOGIN;

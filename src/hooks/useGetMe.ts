@@ -1,6 +1,6 @@
 import { gql } from 'apollo-boost';
-import { useQuery } from '@apollo/react-hooks';
-import { UserMeModel, UserModel } from '../models/user';
+import { useLazyQuery } from '@apollo/react-hooks';
+import { UserMeModel } from '../models/user';
 import { plainToClass } from 'class-transformer';
 
 const GET_ME = gql`
@@ -15,8 +15,8 @@ const GET_ME = gql`
   }
 `;
 
-export const useMe = () => {
-  const { data, error, loading } = useQuery(GET_ME);
+export const useGetMe = () => {
+  const [getMe, { data, loading, error }] = useLazyQuery(GET_ME);
   let me: UserMeModel | undefined = undefined;
 
   if (data?.me) {
@@ -24,6 +24,7 @@ export const useMe = () => {
   }
 
   return {
+    getMe,
     me,
     loading,
     error,

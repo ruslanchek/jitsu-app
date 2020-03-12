@@ -1,43 +1,39 @@
-import React, { FC, createContext, useState } from 'react';
-import { useMe } from '../../hooks/useMe';
-import { useLocation, useNavigate } from '@reach/router';
-import { ANONYMOUS_ONLY_PATHS, AUTHORIZED_REDIRECT_PATH, UNAUTHORIZED_REDIRECT_PATH } from '../../common/paths';
+import React, { FC, createContext, useState, useEffect } from 'react';
+import { useAuthorize } from '../../hooks/useAuthorize';
 import { useAsyncEffect } from '../../hooks/useAsyncEffect';
 
 interface IAuthProviderContext {
   authorized: boolean | undefined;
   appReady: boolean;
+  setAuthorized: (authorized: boolean) => void;
 }
 
 const CONTEXT_INITIAL_SATE: IAuthProviderContext = {
   authorized: undefined,
   appReady: false,
+  setAuthorized: () => {},
 };
 
-const AuthContext = createContext<IAuthProviderContext>(CONTEXT_INITIAL_SATE);
+export const AuthContext = createContext<IAuthProviderContext>(CONTEXT_INITIAL_SATE);
 
 export const AuthProvider: FC = ({ children }) => {
-  const [state, setState] = useState(CONTEXT_INITIAL_SATE);
-  const { me, loading, error } = useMe();
-  const location = useLocation();
-  const navigate = useNavigate();
+  const [authorized, setAuthorized] = useState(CONTEXT_INITIAL_SATE.authorized);
+  const [appReady, setAppReady] = useState(CONTEXT_INITIAL_SATE.appReady);
+  const authorize = useAuthorize();
 
   useAsyncEffect(async () => {
-    if (!loading && (me || error) && !state.appReady) {
-      const authorized = Boolean(!error && me);
+    await authorize();
+    setAppReady(true);
+  }, []);
 
-      if (ANONYMOUS_ONLY_PATHS.indexOf(location.pathname) >= 0 && authorized) {
-        await navigate(AUTHORIZED_REDIRECT_PATH);
-      } else if (!authorized) {
-        await navigate(UNAUTHORIZED_REDIRECT_PATH);
-      }
-
-      setState({
+  return (
+    <AuthContext.Provider
+      value={{
         authorized,
-        appReady: true,
-      });
-    }
-  }, [loading, me, error]);
-
-  return <AuthContext.Provider value={state}>{loading ? <div>Loading...</div> : children}</AuthContext.Provider>;
+        setAuthorized,
+        appReady,
+      }}>
+      {appReady ? children : <div>Loading...</div>}
+    </AuthContext.Provider>
+  );
 };

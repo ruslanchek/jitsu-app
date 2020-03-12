@@ -45,12 +45,12 @@ type Query {
   getConversations(documentId: String!): [ConversationEntity!]!
   getDocument(documentId: String!): DocumentEntity!
   getDocuments(projectId: String!): [DocumentEntity!]!
+  getMe: UserEntity!
   getProject(projectId: String!): ProjectEntity!
   getProjects: [ProjectEntity!]!
   getTimeline(timelineId: String!): TimelineEntity!
   getTimelines(documentId: String!): [TimelineEntity!]!
   login(input: UserInputLogin!): UserTokenResponse!
-  me: UserEntity!
 }
 
 type Subscription {

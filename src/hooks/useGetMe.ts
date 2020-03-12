@@ -19,8 +19,8 @@ export const useGetMe = () => {
   const [getMe, { data, loading, error }] = useLazyQuery(GET_ME);
   let me: UserMeModel | undefined = undefined;
 
-  if (data?.me) {
-    me = plainToClass(UserMeModel, data.me);
+  if (data?.getMe) {
+    me = plainToClass(UserMeModel, data.getMe);
   }
 
   return {

@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { ANONYMOUS_ONLY_PATHS, AUTHORIZED_REDIRECT_PATH, UNAUTHORIZED_REDIRECT_PATH } from '../common/paths';
 import { AuthContext } from '../components/providers/AuthProvider';
 import { useLocation, useNavigate } from '@reach/router';
+import { useAsyncEffect } from './useAsyncEffect';
 
 export const useAuthorize = () => {
   const { getMe, me, error } = useGetMe();
@@ -10,9 +11,10 @@ export const useAuthorize = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  return async () => {
-    await getMe();
+  useAsyncEffect(async () => {
     const authorized = Boolean(!error && me);
+
+    console.log(authorized, error, me)
 
     if (authorized && ANONYMOUS_ONLY_PATHS.indexOf(location.pathname) >= 0) {
       await navigate(AUTHORIZED_REDIRECT_PATH);
@@ -21,5 +23,9 @@ export const useAuthorize = () => {
     }
 
     authContext.setAuthorized(authorized);
-  }
+  }, [me, error]);
+
+  return async () => {
+    await getMe();
+  };
 };

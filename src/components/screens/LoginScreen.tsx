@@ -5,6 +5,7 @@ import { useLogin } from '../../hooks/useLogin';
 import { useForm } from 'react-hook-form';
 import { Button } from '../ui/buttons/Button';
 import { VALIDATION_PATTERNS } from '../../common/validation-patterns';
+import { useAuthorize } from '../../hooks/useAuthorize';
 
 interface IModel {
   email: string;
@@ -14,9 +15,11 @@ interface IModel {
 export const LoginScreen: FC<RouteComponentProps> = () => {
   const { loginUser, loading, error } = useLogin();
   const { handleSubmit, register } = useForm<IModel>();
+  const authorize = useAuthorize();
 
-  function onSubmit(model: IModel) {
-    loginUser(model.email, model.password);
+  async function onSubmit(model: IModel) {
+    await loginUser(model.email, model.password);
+    await authorize();
   }
 
   return (

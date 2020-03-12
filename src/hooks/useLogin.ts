@@ -3,6 +3,8 @@ import { useLazyQuery } from '@apollo/react-hooks';
 import { navigate } from '@reach/router';
 import { PATHS } from '../common/paths';
 import { getGraphQlError } from '../utils/getGraphQlError';
+import { useAsyncEffect } from './useAsyncEffect';
+import { useAuthorize } from './useAuthorize';
 
 const LOGIN = gql`
   query Login($email: String!, $password: String!) {
@@ -14,11 +16,14 @@ const LOGIN = gql`
 
 export const useLogin = () => {
   const [login, { loading, data, error }] = useLazyQuery(LOGIN);
+  const authorize = useAuthorize();
 
-  if (data?.login?.token) {
-    localStorage.setItem('token', data.login.token);
-    navigate(PATHS.MAIN);
-  }
+  useAsyncEffect(async () => {
+    if (data?.login?.token) {
+      localStorage.setItem('token', data.login.token);
+      await authorize();
+    }
+  }, [data]);
 
   return {
     loginUser: async (email: string, password: string) => {

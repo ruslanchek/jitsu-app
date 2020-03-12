@@ -3,6 +3,8 @@ import { useLazyQuery, useMutation } from '@apollo/react-hooks';
 import { navigate } from '@reach/router';
 import { PATHS } from '../common/paths';
 import { getGraphQlError } from '../utils/getGraphQlError';
+import { useAuthorize } from './useAuthorize';
+import { useAsyncEffect } from './useAsyncEffect';
 
 const REGISTER = gql`
   mutation Register($email: String!, $password: String!) {
@@ -14,11 +16,14 @@ const REGISTER = gql`
 
 export const useRegister = () => {
   const [register, { loading, data, error }] = useMutation(REGISTER);
+  const authorize = useAuthorize();
 
-  if (data?.register?.token) {
-    localStorage.setItem('token', data.register.token);
-    navigate(PATHS.MAIN);
-  }
+  useAsyncEffect(async () => {
+    if (data?.register?.token) {
+      localStorage.setItem('token', data.register.token);
+      await authorize();
+    }
+  }, [data]);
 
   return {
     registerUser: async (email: string, password: string) => {

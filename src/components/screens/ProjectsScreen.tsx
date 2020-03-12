@@ -7,11 +7,14 @@ import { MAIN_PADDING } from '../../common/ui';
 import { ProjectsItem } from '../ui/projects/ProjectsItem';
 import { COMMON_STYLES } from '../../common/common-styles';
 import { FiPlus } from 'react-icons/fi';
+import { useModal } from '../../hooks/useModal';
+import { CreateTaskModal } from '../modals/CreateTaskModal';
 
 interface IProps extends RouteComponentProps {}
 
 export const ProjectsScreen: FC<IProps> = () => {
   const { loading, projects } = useProjects();
+  const createTaskModal = useModal(props => <CreateTaskModal {...props} />);
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -22,7 +25,7 @@ export const ProjectsScreen: FC<IProps> = () => {
         <div css={styles.main}>
           <h1>All projects</h1>
           <div css={styles.projects}>
-            <button css={COMMON_STYLES.ENTRIES_ITEM} className="accent">
+            <button onClick={createTaskModal.open} css={COMMON_STYLES.ENTRIES_ITEM} className="accent">
               <FiPlus className="icon"/>
               <span className='title'>New project</span>
             </button>

@@ -4,11 +4,11 @@ import { COLORS } from '../../../common/colors';
 import { BORDER_RADIUS, BOX_SHADOW } from '../../../common/ui';
 import { FiX } from 'react-icons/fi';
 
-interface IProps {
+export interface IModalProps {
   handleClose: () => void;
 }
 
-export const Modal: FC<IProps> = ({ children, handleClose }) => {
+export const Modal: FC<IModalProps> = ({ children, handleClose }) => {
   return (
     <div css={styles.root}>
       {children}

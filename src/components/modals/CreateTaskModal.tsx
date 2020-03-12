@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/core';
-import { Modal } from '../ui/modals/Modal';
+import { IModalProps, Modal } from '../ui/modals/Modal';
 import { DocumentHeaderTitle } from '../ui/document/header/DocumentHeaderTitle';
 import { DocumentHeaderBarGroup } from '../ui/document/header/DocumentHeaderBarGroup';
 import { DocumentHeaderBar } from '../ui/document/header/DocumentHeaderBar';
@@ -18,9 +18,7 @@ import { useCreateDocument } from '../../hooks/useCreateDocument';
 import { EDocumentPriority } from '../../models/document';
 import { useCurrentProject } from '../../hooks/useCurrentProject';
 
-interface IProps {
-  handleClose: () => void;
-}
+interface IProps extends IModalProps {}
 
 interface IModel {
   name: string;

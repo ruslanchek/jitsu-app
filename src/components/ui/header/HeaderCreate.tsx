@@ -1,4 +1,4 @@
-import React, { FC, useContext, useRef, useState } from 'react';
+import React, { FC, useRef, useState } from 'react';
 import { css } from '@emotion/core';
 import { FiBookOpen, FiBox, FiCheckCircle, FiClipboard, FiLoader, FiUserPlus } from 'react-icons/fi';
 import { COLORS } from '../../../common/colors';
@@ -13,15 +13,17 @@ import { EPhrase } from '../../../locales/EPhrase';
 import { useTranslator } from 'eo-locale';
 import { darken, rgba } from 'polished';
 import { DropdownView } from '../dropdowns/DropdownView';
-import { ModalsContext } from '../modals/Modals';
 import { DropdownContextMenu, IDropdownContextMenuItem } from '../dropdowns/DropdownContextMenu';
 import { CreateTaskModal } from '../../modals/CreateTaskModal';
 import { CreateProjectModal } from '../../modals/CreateProjectModal';
+import { useModal } from '../../../hooks/useModal';
 
 interface IProps {}
 
 export const HeaderCreate: FC<IProps> = () => {
-  const modalContext = useContext(ModalsContext);
+  const createTaskModal = useModal(props => <CreateTaskModal {...props} />);
+  const createProjectModal = useModal(props => <CreateProjectModal {...props} />);
+
   const menuItems: IDropdownContextMenuItem[] = [
     {
       title: EPhrase.Create_Task,
@@ -29,12 +31,7 @@ export const HeaderCreate: FC<IProps> = () => {
       color: COLORS.SMOKE,
       onSelect: () => {
         setShowDropdown(false);
-        modalContext.openModal({
-          renderModalComponent: id => <CreateTaskModal handleClose={() => modalContext.closeModal(id)} />,
-          showOverlay: true,
-          closeByOutsideClick: true,
-          closeByEscapeKey: true,
-        });
+        createTaskModal.open();
       },
     },
     {
@@ -59,12 +56,7 @@ export const HeaderCreate: FC<IProps> = () => {
       color: COLORS.SMOKE,
       onSelect: () => {
         setShowDropdown(false);
-        modalContext.openModal({
-          renderModalComponent: id => <CreateProjectModal handleClose={() => modalContext.closeModal(id)} />,
-          showOverlay: true,
-          closeByOutsideClick: true,
-          closeByEscapeKey: true,
-        });
+        createProjectModal.open();
       },
     },
     {

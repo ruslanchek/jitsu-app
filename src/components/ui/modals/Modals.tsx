@@ -22,8 +22,7 @@ interface IModal {
   isOpened: boolean;
 }
 
-interface IModalOptions {
-  renderModalComponent: (modalId: number) => React.ReactNode | Element;
+export interface IModalSharedOptions {
   showOverlay?: boolean;
   closeByEscapeKey?: boolean;
   closeByEnterKey?: boolean;
@@ -32,6 +31,10 @@ interface IModalOptions {
   onDidOpen?: () => void;
   onWillClose?: () => void;
   onWillOpen?: (modalId: number) => void;
+}
+
+interface IModalOptions extends IModalSharedOptions {
+  renderModalComponent: (modalId: number) => React.ReactNode | Element;
 }
 
 const ANIMATION_TIME: number = 200;

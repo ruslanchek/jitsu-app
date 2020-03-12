@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { css } from '@emotion/core';
-import { Modal } from '../ui/modals/Modal';
+import { IModalProps, Modal } from '../ui/modals/Modal';
 import { EOLocale, useTranslator } from 'eo-locale';
 import { Button } from '../ui/buttons/Button';
 import { EPhrase } from '../../locales/EPhrase';
@@ -16,9 +16,7 @@ interface IModel {
   name: string;
 }
 
-interface IProps {
-  handleClose: () => void;
-}
+interface IProps extends IModalProps {}
 
 export const CreateProjectModal: FC<IProps> = ({ handleClose }) => {
   const translator = useTranslator();
@@ -28,7 +26,6 @@ export const CreateProjectModal: FC<IProps> = ({ handleClose }) => {
   async function onSubmit(model: IModel) {
     const project = await createProject(model);
     if (project?.id) {
-
       await navigate(PATHS.PROJECT_TASKS.replace(':projectId', project.id));
       handleClose();
     }

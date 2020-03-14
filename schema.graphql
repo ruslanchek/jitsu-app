@@ -25,17 +25,27 @@ type DocumentEntity {
   user: UserEntity!
 }
 
+type InviteEntity {
+  active: Boolean!
+  date: Date!
+  id: ID!
+  invitedByUser: UserEntity!
+  invitedUser: UserEntity!
+  invitedUserEmail: String!
+  project: ProjectEntity!
+}
+
 type Mutation {
   changeDocument(documentId: String!, input: DocumentChangeInput!): DocumentEntity!
   createConversation(documentId: String!, input: ConversationCreateInput!): ConversationEntity!
   createDocument(input: DocumentCreateInput!, projectId: String!): DocumentEntity!
+  createInvite(input: InviteCreateInput!, projectId: String!): InviteEntity!
   createProject(input: ProjectCreateInput!): ProjectEntity!
   register(input: UserInputRegister!): UserTokenResponse!
 }
 
 type ProjectEntity {
   id: ID!
-  invitedUsers: [UserEntity!]!
   name: String!
   user: UserEntity!
 }
@@ -93,6 +103,10 @@ input DocumentChangeInput {
 
 input DocumentCreateInput {
   name: String!
+}
+
+input InviteCreateInput {
+  invitedUserEmail: String!
 }
 
 input ProjectCreateInput {

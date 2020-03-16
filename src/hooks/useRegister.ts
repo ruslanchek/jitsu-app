@@ -1,7 +1,5 @@
 import { gql } from 'apollo-boost';
-import { useLazyQuery, useMutation } from '@apollo/react-hooks';
-import { navigate } from '@reach/router';
-import { PATHS } from '../common/paths';
+import { useMutation } from '@apollo/react-hooks';
 import { getGraphQlError } from '../utils/getGraphQlError';
 import { useAuthorize } from './useAuthorize';
 import { useAsyncEffect } from './useAsyncEffect';

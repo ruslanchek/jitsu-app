@@ -2,7 +2,7 @@ import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
 
 const ADD_IMAGE = gql`
-  mutation AddImage($input: ProjectFileInput!) {
+  mutation AddImage($input: Upload!) {
     addImage(input: $input)
   }
 `;
@@ -15,7 +15,7 @@ export const useUpload = () => {
   return {
     upload: async (file: File) => {
       console.log(file);
-      await doUpload({ variables: { input: { file } } });
+      await doUpload({ variables: { input: file } });
     },
   };
 };

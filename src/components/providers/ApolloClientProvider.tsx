@@ -4,11 +4,11 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloClient } from 'apollo-boost';
 import { split } from 'apollo-link';
 import { WebSocketLink } from 'apollo-link-ws';
-import { HttpLink } from 'apollo-link-http';
 import { getMainDefinition } from 'apollo-utilities';
-import { ApolloLink, concat } from 'apollo-link';
+import { ApolloLink,  concat } from 'apollo-link';
+import { createUploadLink } from 'apollo-upload-client';
 
-const httpLink = new HttpLink({
+const httpLink = createUploadLink({
   uri: 'http://localhost:4000/graphql',
 });
 

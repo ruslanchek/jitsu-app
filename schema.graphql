@@ -36,7 +36,7 @@ type InviteEntity {
 }
 
 type Mutation {
-  addImage(image: Upload!): String!
+  addImage(file: Upload!): String!
   changeDocument(documentId: String!, input: DocumentChangeInput!): DocumentEntity!
   changeProject(input: ProjectChangeInput!, projectId: String!): ProjectEntity!
   createConversation(documentId: String!, input: ConversationCreateInput!): ConversationEntity!
@@ -113,10 +113,6 @@ input InviteCreateInput {
   invitedUserEmail: String!
 }
 
-input ProjectChangeAvatarInput {
-  avatar: String!
-}
-
 input ProjectChangeInput {
   name: String!
 }
@@ -151,5 +147,5 @@ scalar DocumentStatus
 "The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf)."
 scalar JSON
 
-"The `Upload` scalar type represents a file upload."
+"Upload custom scalar type"
 scalar Upload

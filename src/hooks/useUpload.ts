@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/react-hooks';
 
 const ADD_IMAGE = gql`
   mutation AddImage($file: Upload!) {
-    addImage(image: $file)
+    addImage(file: $file)
   }
 `;
 

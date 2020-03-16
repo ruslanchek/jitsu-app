@@ -17,7 +17,7 @@ export const MainScreen: FC<RouteComponentProps> = () => {
         onSubmit={e => {
           e.preventDefault();
           if (file) {
-            upload(file);
+            upload(file, 'f0d0a0d7-17c5-495e-884d-92f4dca70208');
           }
         }}>
         <input

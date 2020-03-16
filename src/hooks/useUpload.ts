@@ -1,31 +1,24 @@
 import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
-import { useState } from 'react';
 
 const ADD_IMAGE = gql`
-  mutation AddImage($input: Upload!) {
-    addImage(input: $input)
+  mutation UploadProjectAvatar($file: Upload!, $projectId: String!) {
+    uploadProjectAvatar(file: $file, projectId: $projectId) {
+      url
+    }
   }
 `;
 
 export const useUpload = () => {
   const [doUpload, { loading, error, data, called, client }] = useMutation(ADD_IMAGE);
-  const [progress, setProgress] = useState(0);
+
+  console.log(data)
 
   return {
-    upload: async (file: File) => {
+    upload: async (file: File, projectId: string) => {
       console.log(file);
       await doUpload({
-        variables: { input: file },
-        context: {
-          fetchOptions: {
-            useUpload: true,
-            onProgress: (ev: ProgressEvent) => {
-              setProgress(ev.loaded / ev.total);
-            },
-            onAbortPossible: (abortHandler: () => void) => {},
-          },
-        },
+        variables: { file, projectId },
       });
     },
   };

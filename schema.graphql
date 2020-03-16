@@ -36,7 +36,6 @@ type InviteEntity {
 }
 
 type Mutation {
-  addImage(input: Upload!): String!
   changeDocument(documentId: String!, input: DocumentChangeInput!): DocumentEntity!
   changeProject(input: ProjectChangeInput!, projectId: String!): ProjectEntity!
   createConversation(documentId: String!, input: ConversationCreateInput!): ConversationEntity!
@@ -44,6 +43,11 @@ type Mutation {
   createInvite(input: InviteCreateInput!, projectId: String!): InviteEntity!
   createProject(input: ProjectCreateInput!): ProjectEntity!
   register(input: UserInputRegister!): UserTokenResponse!
+  uploadProjectAvatar(file: Upload!, projectId: String!): ProjectAvatarUploadResponse!
+}
+
+type ProjectAvatarUploadResponse {
+  url: String!
 }
 
 type ProjectEntity {

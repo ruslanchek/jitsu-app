@@ -8,6 +8,7 @@ const GET_PROJECT = gql`
     getProject(projectId: $projectId) {
       id
       name
+      avatar
     }
   }
 `;

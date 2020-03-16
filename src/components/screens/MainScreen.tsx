@@ -7,7 +7,7 @@ import { MAIN_PADDING } from '../../common/ui';
 import { useUpload } from '../../hooks/useUpload';
 
 export const MainScreen: FC<RouteComponentProps> = () => {
-  const { upload } = useUpload();
+  const upload = useUpload();
   const [file, setFile] = useState<File>();
 
   return (
@@ -17,7 +17,7 @@ export const MainScreen: FC<RouteComponentProps> = () => {
         onSubmit={e => {
           e.preventDefault();
           if (file) {
-            upload(file, 'f0d0a0d7-17c5-495e-884d-92f4dca70208');
+            upload( 'f0d0a0d7-17c5-495e-884d-92f4dca70208', file);
           }
         }}>
         <input

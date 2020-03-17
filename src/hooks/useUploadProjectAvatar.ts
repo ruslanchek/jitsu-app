@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useCallback } from 'react';
 import { ENDPOINTS } from '../common/endpoints';
 
-export const useUpload = () => {
+export const useUploadProjectAvatar = () => {
   return useCallback(async (projectId: string, file: File): Promise<string> => {
     const formData = new FormData();
     formData.append('file', file);

@@ -9,6 +9,7 @@ import { PATHS } from '../../common/paths';
 import { MAIN_PADDING } from '../../common/ui';
 import { useDocuments } from '../../hooks/useDocuments';
 import { useCurrentProject } from '../../hooks/useCurrentProject';
+import { ProjectUploadAvatar } from '../project/ProjectUploadAvatar';
 
 interface IProps extends RouteComponentProps {
   projectId?: string;
@@ -46,6 +47,8 @@ export const ProjectScreen: FC<IProps> = ({ projectId }) => {
         <div css={styles.root}>
           <div css={styles.main}>
             <h1>{project.name}</h1>
+
+            <ProjectUploadAvatar project={project} />
 
             <h2>Documents</h2>
             <div>

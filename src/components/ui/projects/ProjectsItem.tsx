@@ -14,7 +14,7 @@ export const ProjectsItem: FC<IProps> = ({ project }) => {
     <Link css={COMMON_STYLES.ENTRIES_ITEM} to={PATHS.PROJECT_TASKS.replace(':projectId', project.id)}>
       <img
         className='icon'
-        src='https://app.expertoption.com/favicons/android-chrome-192x192.png'
+        src={project.avatar}
         alt={project.name}
       />
       <span className='title'>{project.name}</span>

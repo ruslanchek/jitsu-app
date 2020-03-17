@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { css } from '@emotion/core';
-import { Link, RouteComponentProps } from '@reach/router';
+import { RouteComponentProps } from '@reach/router';
 import { ScreenWrapper } from '../common/ScreenWrapper';
 import { useProjects } from '../../hooks/useProjects';
 import { MAIN_PADDING } from '../../common/ui';

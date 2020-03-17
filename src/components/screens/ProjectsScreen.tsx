@@ -8,13 +8,13 @@ import { ProjectsItem } from '../ui/projects/ProjectsItem';
 import { COMMON_STYLES } from '../../common/common-styles';
 import { FiPlus } from 'react-icons/fi';
 import { useModal } from '../../hooks/useModal';
-import { CreateTaskModal } from '../modals/CreateTaskModal';
+import { CreateProjectModal } from '../modals/CreateProjectModal';
 
 interface IProps extends RouteComponentProps {}
 
 export const ProjectsScreen: FC<IProps> = () => {
   const { loading, projects } = useProjects();
-  const createTaskModal = useModal(props => <CreateTaskModal {...props} />);
+  const createProjectModal = useModal(props => <CreateProjectModal {...props} />);
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -25,7 +25,7 @@ export const ProjectsScreen: FC<IProps> = () => {
         <div css={styles.main}>
           <h1>All projects</h1>
           <div css={styles.projects}>
-            <button onClick={createTaskModal.open} css={COMMON_STYLES.ENTRIES_ITEM} className="accent">
+            <button onClick={createProjectModal.open} css={COMMON_STYLES.ENTRIES_ITEM} className="accent">
               <FiPlus className="icon"/>
               <span className='title'>New project</span>
             </button>
@@ -44,7 +44,6 @@ const styles = {
   root: css`
     overflow: scroll;
     height: 100vh;
-    width: 100vw;
   `,
 
   side: css`
@@ -60,5 +59,6 @@ const styles = {
   projects: css`
     display: flex;
     flex-wrap: wrap;
+    max-width: 100%;
   `,
 };

@@ -3,7 +3,6 @@ import { css } from '@emotion/core';
 import { useUploadProjectAvatar } from '../../hooks/useUploadProjectAvatar';
 import { ProjectModel } from '../../models/project';
 import Img from "react-image";
-import { Link } from '@reach/router';
 import { ImageModel } from '../../models/image';
 
 interface IProps {

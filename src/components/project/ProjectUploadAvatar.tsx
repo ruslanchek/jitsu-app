@@ -2,6 +2,9 @@ import React, { FC, useState } from 'react';
 import { css } from '@emotion/core';
 import { useUploadProjectAvatar } from '../../hooks/useUploadProjectAvatar';
 import { ProjectModel } from '../../models/project';
+import Img from "react-image";
+import { Link } from '@reach/router';
+import { ImageModel } from '../../models/image';
 
 interface IProps {
   project: ProjectModel;
@@ -10,7 +13,7 @@ interface IProps {
 export const ProjectUploadAvatar: FC<IProps> = ({ project }) => {
   const upload = useUploadProjectAvatar();
   const [file, setFile] = useState<File>();
-  const [result, setResult] = useState<string>();
+  const [result, setResult] = useState<ImageModel[]>([]);
 
   return (
     <div css={styles.root}>
@@ -30,8 +33,10 @@ export const ProjectUploadAvatar: FC<IProps> = ({ project }) => {
           }}
         />
         <button type='submit'>Upload</button>
-        {result}
-        {result && <img src={result} width={200} />}
+        <Img
+          className='icon'
+          src={result.map(a => a.url)}
+        />
       </form>
     </div>
   );

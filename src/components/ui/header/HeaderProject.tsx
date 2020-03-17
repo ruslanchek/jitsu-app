@@ -3,21 +3,25 @@ import { css } from '@emotion/core';
 import { BORDER_RADIUS, FONT_FAMILY, FONT_SIZE, HEADER_ELEMENT_HEIGHT } from '../../../common/ui';
 import { COLORS } from '../../../common/colors';
 import { FiChevronDown } from 'react-icons/all';
+import { useCurrentProject } from '../../../hooks/useCurrentProject';
+import Img from 'react-image';
 
 interface IProps {}
 
 export const HeaderProject: FC<IProps> = () => {
-  return (
-    <button css={styles.root}>
-      <img
-        css={styles.icon}
-        src='https://app.expertoption.com/favicons/android-chrome-192x192.png'
-        alt='EO Frontend API'
-      />
-      EO Frontend API
-      <FiChevronDown css={styles.chevron} />
-    </button>
-  );
+  const {currentProject} = useCurrentProject();
+
+  if(currentProject) {
+    return (
+      <button css={styles.root}>
+        <Img css={styles.icon} src={currentProject.avatar.map(a => a.url)}/>
+        {currentProject.name}
+        <FiChevronDown css={styles.chevron}/>
+      </button>
+    );
+  }
+
+  return null;
 };
 
 const styles = {
@@ -54,7 +58,7 @@ const styles = {
     height: 24px;
     object-fit: contain;
     margin-right: 1ex;
-    border-radius: 100%;
+    border-radius: 4px;
   `,
 
   chevron: css`

@@ -1,13 +1,17 @@
 import { commonStore } from '../stores/common-store';
 import { ProjectModel } from '../models/project';
+import { useStore } from 'react-stores';
 
 export const useCurrentProject = () => {
+  const state = useStore(commonStore);
   return {
-    currentProject: commonStore.state.currentProject,
+    currentProject: state.currentProject,
     setCurrentProject: (currentProject: ProjectModel | undefined) => {
-      commonStore.setState({
-        currentProject,
-      });
+      if(currentProject?.id !== state.currentProject?.id) {
+        commonStore.setState({
+          currentProject,
+        });
+      }
     },
   };
 };

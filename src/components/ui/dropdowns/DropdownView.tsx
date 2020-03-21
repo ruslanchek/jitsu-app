@@ -71,6 +71,8 @@ const styles = {
     background-color: ${COLORS.WHITE};
     box-shadow: ${BOX_SHADOW.MEDIUM};
     border-radius: ${BORDER_RADIUS.MEDIUM};
+    max-height: 300px;
+    overflow-y: auto;
 
     &:before {
       content: '';

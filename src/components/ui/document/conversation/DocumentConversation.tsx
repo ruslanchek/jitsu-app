@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import { DocumentModel } from '../../../../models/document';
 import { useConversations } from '../../../../hooks/useConversations';
-import { DateFormatter } from '../../formatters/DateFormatter';
 import { DocumentConversationWrite } from './DocumentConversationWrite';
 import { DocumentConversationMessage } from './DocumentConversationMessage';
 

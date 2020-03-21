@@ -7,7 +7,6 @@ import {
   FONT_FAMILY,
   FONT_SIZE,
   HEADER_ELEMENT_HEIGHT,
-  PORTAL_ROOT_SELECTORS,
 } from '../../../common/ui';
 import { EPhrase } from '../../../locales/EPhrase';
 import { useTranslator } from 'eo-locale';
@@ -23,7 +22,6 @@ interface IProps {}
 export const HeaderCreate: FC<IProps> = () => {
   const createTaskModal = useModal(props => <CreateTaskModal {...props} />);
   const createProjectModal = useModal(props => <CreateProjectModal {...props} />);
-
   const menuItems: IDropdownContextMenuItem[] = [
     {
       title: EPhrase.Create_Task,

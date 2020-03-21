@@ -13,7 +13,7 @@ const CREATE_DOCUMENT = gql`
 `;
 
 export const useCreateProject = () => {
-  const [createProject, { loading, error }] = useMutation(CREATE_DOCUMENT);
+  const [createProject, { loading }] = useMutation(CREATE_DOCUMENT);
   return {
     loading,
     createProject: async (input: Partial<ProjectMutationModel>): Promise<ProjectModel> => {

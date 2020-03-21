@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { css } from '@emotion/core';
 import Calendar from 'react-calendar/dist/entry.nostyle';
 import { FiChevronRight, FiChevronLeft, FiChevronsLeft, FiChevronsRight } from 'react-icons/fi';

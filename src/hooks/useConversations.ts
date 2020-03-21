@@ -43,7 +43,7 @@ const update = (a: ConversationModel[], b: ConversationModel[]) => {
 };
 
 export const useConversations = (documentId: string) => {
-  const { loading, error, data: queryData } = useQuery(GET_CONVERSATIONS, { variables: { documentId } });
+  const { loading, data: queryData } = useQuery(GET_CONVERSATIONS, { variables: { documentId } });
   const { data: subscriptionData } = useSubscription(CONVERSATION_CREATED);
   const [conversations, setConversations] = useState<ConversationModel[]>([]);
 

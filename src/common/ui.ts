@@ -52,6 +52,7 @@ export const DOCUMENT_BUTTON_HEIGHT = '25px';
 export const BORDER_RADIUS = {
   SMALL: '3px',
   MEDIUM: '6px',
+  LARGE: '12px',
 };
 
 export const BOX_SHADOW = {

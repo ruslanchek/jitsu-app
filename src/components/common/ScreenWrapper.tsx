@@ -3,6 +3,7 @@ import { css } from '@emotion/core';
 import { HeaderView } from '../ui/header/HeaderView';
 import { HEADER_HEIGHT, MAIN_PADDING, MAX_WIDTH, MIN_WIDTH } from '../../common/ui';
 import classNames from 'classnames';
+import { SideMenu } from '../side-menu/SideMenu';
 
 interface IProps {
   showHeader?: boolean;
@@ -15,6 +16,7 @@ export const ScreenWrapper: FC<IProps> = ({ children, showHeader }) => {
       <div css={styles.limiter} className={classNames({ header: showHeader })}>
         <main css={styles.main}>{children}</main>
       </div>
+      <SideMenu />
     </div>
   );
 };
@@ -23,7 +25,6 @@ const styles = {
   root: css`
     overflow: scroll;
     height: 100vh;
-    width: 100vw;
   `,
 
   limiter: css`

@@ -76,7 +76,6 @@ const styles = {
   root: css`
     overflow: scroll;
     height: 100vh;
-    width: 100vw;
   `,
 
   side: css`

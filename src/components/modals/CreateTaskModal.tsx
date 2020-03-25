@@ -38,7 +38,7 @@ export const CreateTaskModal: FC<IProps> = ({ handleClose }) => {
   const model = getValues();
   async function onSubmit(model: IModel) {
     if (currentProject) {
-      const document = await createDocument(currentProject?.id, model);
+      const document = await createDocument(currentProject.id, model);
       if (document?.id) {
         handleClose();
       }

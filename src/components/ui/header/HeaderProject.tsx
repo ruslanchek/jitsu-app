@@ -4,12 +4,12 @@ import { BORDER_RADIUS, FONT_FAMILY, FONT_SIZE, HEADER_ELEMENT_HEIGHT } from '..
 import { COLORS } from '../../../common/colors';
 import { FiChevronDown } from 'react-icons/all';
 import { useCurrentProject } from '../../../hooks/useCurrentProject';
-import Img from 'react-image';
 import { DropdownContextMenu, IDropdownContextMenuItem } from '../dropdowns/DropdownContextMenu';
 import { useProjects } from '../../../hooks/useProjects';
 import { useNavigate } from '@reach/router';
 import { PATHS } from '../../../common/paths';
 import { DropdownView } from '../dropdowns/DropdownView';
+import { ImageSet } from '../image/ImageSet';
 
 interface IProps {}
 
@@ -22,7 +22,7 @@ export const HeaderProject: FC<IProps> = () => {
   const menuItems: IDropdownContextMenuItem[] = projects.map(project => {
     return {
       title: project.name,
-      icon: <Img css={styles.icon} src={project.avatar.map(a => a.url)} />,
+      icon: <ImageSet css={styles.icon} src={project.avatar} />,
       color: COLORS.SMOKE,
       selected: currentProject && project.id === currentProject.id,
       onSelect: async () => {
@@ -37,7 +37,7 @@ export const HeaderProject: FC<IProps> = () => {
     return (
       <div ref={rootRef} css={styles.root}>
         <button css={styles.button} onClick={handleButtonClick}>
-          <Img css={styles.icon} src={currentProject.avatar.map(a => a.url)} />
+          <ImageSet css={styles.icon} src={currentProject.avatar} />
           {currentProject.name}
           <FiChevronDown css={styles.chevron} />
           <DropdownView onHide={() => setShowDropdown(false)} show={showDropdown} forwardRef={rootRef}>
@@ -85,11 +85,11 @@ const styles = {
   `,
 
   icon: css`
+    display: block;
     width: 24px;
     height: 24px;
-    display: block;
-    object-fit: contain;
     margin-right: 1ex;
+    object-fit: contain;
     border-radius: 4px;
   `,
 

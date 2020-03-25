@@ -4,8 +4,10 @@ import { ProjectModel } from './project';
 
 export class InviteModel {
   id!: string;
-  invitedByUser!: Partial<UserModel>;
+  active!: boolean;
+  date!: Date;
   project!: Partial<ProjectModel>;
+  invitedByUser!: Partial<UserModel>;
   invitedUser?: Partial<UserModel>;
 }
 

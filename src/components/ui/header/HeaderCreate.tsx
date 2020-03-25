@@ -16,12 +16,14 @@ import { DropdownContextMenu, IDropdownContextMenuItem } from '../dropdowns/Drop
 import { CreateTaskModal } from '../../modals/CreateTaskModal';
 import { CreateProjectModal } from '../../modals/CreateProjectModal';
 import { useModal } from '../../../hooks/useModal';
+import { InviteModal } from '../../modals/InviteModal';
 
 interface IProps {}
 
 export const HeaderCreate: FC<IProps> = () => {
   const createTaskModal = useModal(props => <CreateTaskModal {...props} />);
   const createProjectModal = useModal(props => <CreateProjectModal {...props} />);
+  const createInviteModal = useModal(props => <InviteModal {...props} />);
   const menuItems: IDropdownContextMenuItem[] = [
     {
       title: EPhrase.Create_Task,
@@ -63,6 +65,7 @@ export const HeaderCreate: FC<IProps> = () => {
       color: COLORS.SMOKE,
       onSelect: () => {
         setShowDropdown(false);
+        createInviteModal.open();
       },
     },
   ];

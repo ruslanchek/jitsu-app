@@ -32,4 +32,6 @@ export enum EPhrase {
 	Create_task_Title_placeholder = 'CREATE_TASK::TITLE_PLACEHOLDER',
 	Create_project_Submit = 'CREATE_PROJECT::SUBMIT',
 	Create_project_Title_placeholder = 'CREATE_PROJECT::TITLE_PLACEHOLDER',
+	Create_invite_Email_placeholder = 'CREATE_INVITE::EMAIL_PLACEHOLDER',
+	Create_invite_Submit = 'CREATE_INVITE::SUBMIT',
 }

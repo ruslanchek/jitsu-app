@@ -22,7 +22,7 @@ export const useDocuments = (projectId: string | undefined) => {
   let documents: DocumentModel[] = [];
 
   if (data?.getDocuments) {
-    documents = plainToClass<DocumentModel, DocumentModel>(DocumentModel, data.getDocuments, { groups: ['query'] });
+    documents = plainToClass<DocumentModel, DocumentModel>(DocumentModel, data.getDocuments);
   }
 
   return { loading, documents };

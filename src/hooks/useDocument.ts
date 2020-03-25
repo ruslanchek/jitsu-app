@@ -19,5 +19,5 @@ const GET_DOCUMENT = gql`
 
 export const useDocument = (documentId: string | undefined) => {
   const { loading, error, data } = useQuery(GET_DOCUMENT, { variables: { documentId } });
-  return { loading, document: plainToClass(DocumentModel, data?.getDocument, { groups: ['query'] }) };
+  return { loading, document: plainToClass(DocumentModel, data?.getDocument) };
 };

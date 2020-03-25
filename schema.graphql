@@ -57,12 +57,15 @@ type Query {
   getConversations(documentId: String!): [ConversationEntity!]!
   getDocument(documentId: String!): DocumentEntity!
   getDocuments(projectId: String!): [DocumentEntity!]!
+  getInvite(inviteCode: String!): InviteEntity!
+  getInvites(projectId: String!): [InviteEntity!]!
   getMe: UserEntity!
   getProject(projectId: String!): ProjectEntity!
   getProjects: [ProjectEntity!]!
   getTimeline(timelineId: String!): TimelineEntity!
   getTimelines(documentId: String!): [TimelineEntity!]!
   login(input: UserInputLogin!): UserTokenResponse!
+  resendInvite(inviteId: String!): InviteEntity!
 }
 
 type Subscription {

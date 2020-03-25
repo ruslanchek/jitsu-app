@@ -13,12 +13,7 @@ const GET_PROJECTS = gql`
   }
 `;
 
-interface IResult {
-  loading: boolean;
-  projects: ProjectModel[];
-}
-
-export const useProjects = (): IResult => {
+export const useProjects = () => {
   const { loading, error, data } = useQuery(GET_PROJECTS);
   let projects: ProjectModel[] = [];
 

@@ -58,9 +58,7 @@ export const useConversations = (documentId: string) => {
       setConversations(
         update(
           conversations,
-          plainToClass<ConversationModel, ConversationModel>(ConversationModel, [
-            subscriptionData.conversationCreated,
-          ]),
+          plainToClass<ConversationModel, ConversationModel>(ConversationModel, [subscriptionData.conversationCreated]),
         ),
       );
     }

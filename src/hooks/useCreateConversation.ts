@@ -20,7 +20,10 @@ export const useCreateConversation = () => {
   const [createConversation, { loading, error }] = useMutation(CREATE_CONVERSATION);
   return {
     loading,
-    createConversation: async (documentId: string, input: Partial<ConversationMutationModel>): Promise<ConversationModel> => {
+    createConversation: async (
+      documentId: string,
+      input: Partial<ConversationMutationModel>,
+    ): Promise<ConversationModel> => {
       const result = await createConversation({
         variables: {
           documentId,

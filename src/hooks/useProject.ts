@@ -13,12 +13,7 @@ const GET_PROJECT = gql`
   }
 `;
 
-interface IResult {
-  loading: boolean;
-  project: ProjectModel | undefined;
-}
-
-export const useProject = (projectId: string | undefined): IResult => {
+export const useProject = (projectId: string | undefined) => {
   const { loading, error, data } = useQuery(GET_PROJECT, { variables: { projectId } });
-  return { loading, project: plainToClass(ProjectModel, data?.getProject, { groups: ['query'] }) };
+  return { loading, project: plainToClass(ProjectModel, data?.getProject) };
 };

@@ -36,6 +36,7 @@ type InviteEntity {
 }
 
 type Mutation {
+  acceptInvite(inviteCode: String!): InviteEntity!
   changeDocument(documentId: String!, input: DocumentChangeInput!): DocumentEntity!
   changeProject(input: ProjectChangeInput!, projectId: String!): ProjectEntity!
   createConversation(documentId: String!, input: ConversationCreateInput!): ConversationEntity!

@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/jitsu-app.iml" filepath="$PROJECT_DIR$/.idea/jitsu-app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../jitsu-server/.idea/jitsu-server.iml" filepath="$PROJECT_DIR$/../jitsu-server/.idea/jitsu-server.iml" />
     </modules>
   </component>
 </project>

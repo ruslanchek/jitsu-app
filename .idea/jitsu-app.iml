@@ -8,9 +8,5 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="jitsu-server" />
-    <orderEntry type="module" module-name="jitsu-server" />
-    <orderEntry type="module" module-name="jitsu-server" />
-    <orderEntry type="module" module-name="jitsu-server" />
   </component>
 </module>

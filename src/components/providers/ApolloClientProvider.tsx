@@ -7,13 +7,14 @@ import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 import { ApolloLink,  concat } from 'apollo-link';
 import { createUploadLink } from 'apollo-upload-client';
+import { ENV } from '../../common/env';
 
 const httpLink = createUploadLink({
-  uri: 'http://localhost:4000/graphql',
+  uri: ENV.API_URL,
 });
 
 const wsLink = new WebSocketLink({
-  uri: 'ws://localhost:4000/graphql',
+  uri: ENV.WS_URL,
   options: {
     reconnect: true,
   },

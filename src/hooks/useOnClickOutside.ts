@@ -6,7 +6,7 @@ export function useOnClickOutside(
   additionalSelector?: string,
 ) {
   const listener = useCallback(
-    event => {
+    (event) => {
       let additionalSelectorElement = null;
       if (additionalSelector) {
         additionalSelectorElement = document.querySelector(additionalSelector || '');

@@ -25,7 +25,8 @@ export const InviteModal: FC<IProps> = ({ handleClose }) => {
   const { handleSubmit, errors, control } = useForm<IModel>();
   async function onSubmit(model: IModel) {
     if (currentProject) {
-      const invite = await createInvite(currentProject.id, model);
+      const result = await createInvite(currentProject.id, model);
+      console.log(result);
     }
   }
   const [invitedUserEmail, setInvitedUserEmail] = useState('');

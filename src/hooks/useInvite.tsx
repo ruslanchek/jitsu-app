@@ -3,15 +3,20 @@ import { useQuery } from '@apollo/react-hooks';
 import { plainToClass } from 'class-transformer';
 import { InviteModel } from '../models/invite';
 
-const GET_INVITE = gql`
+export const useInvite = (inviteCode: string | undefined) => {
+  const { loading, data } = useQuery(QUERY, {
+    variables: { inviteCode },
+  });
+  return {
+    loading,
+    invite: plainToClass(InviteModel, data?.getInvite),
+  };
+};
+
+const QUERY = gql`
   query GetInvite($inviteCode: String!) {
     getInvite(inviteCode: $inviteCode) {
       id
     }
   }
 `;
-
-export const useInvite = (inviteCode: string | undefined) => {
-  const { loading, error, data } = useQuery(GET_INVITE, { variables: { inviteCode } });
-  return { loading, invite: plainToClass(InviteModel, data?.getInvite) };
-};

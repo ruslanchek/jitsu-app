@@ -1,9 +1,26 @@
 import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
-import { plainToClass } from 'class-transformer';
-import { InviteModel, InviteMutationModel } from '../models/invite';
+import { InviteModel } from '../models/invite';
+import { useGraphQLResult } from './useGraphQLResult';
 
-const ACCEPT_INVITE = gql`
+export const useAcceptInvite = () => {
+  const [acceptInvite, { loading }] = useMutation(QUERY);
+  const graphQLResult = useGraphQLResult(InviteModel, 'acceptInvite');
+  return {
+    loading,
+    acceptInvite: async (inviteCode: string) => {
+      return graphQLResult(
+        acceptInvite({
+          variables: {
+            inviteCode,
+          },
+        }),
+      );
+    },
+  };
+};
+
+const QUERY = gql`
   mutation AcceptInvite($inviteCode: String!) {
     acceptInvite(inviteCode: $inviteCode) {
       id
@@ -16,19 +33,3 @@ const ACCEPT_INVITE = gql`
     }
   }
 `;
-
-export const useAcceptInvite = () => {
-  const [acceptInvite, { loading }] = useMutation(ACCEPT_INVITE);
-  return {
-    loading,
-    acceptInvite: async (inviteCode: string): Promise<InviteModel> => {
-      console.log(inviteCode)
-      const result = await acceptInvite({
-        variables: {
-          inviteCode,
-        },
-      });
-      return plainToClass(InviteModel, result.data.acceptInvite);
-    },
-  };
-};

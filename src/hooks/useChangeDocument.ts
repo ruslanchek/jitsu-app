@@ -2,8 +2,27 @@ import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
 import { DocumentModel, DocumentMutationModel } from '../models/document';
 import { plainToClass } from 'class-transformer';
+import { useGraphQLResult } from './useGraphQLResult';
 
-const CHANGE_DOCUMENT = gql`
+export const useChangeDocument = () => {
+  const [changeDocument, { loading }] = useMutation(QUERY);
+  const graphQLResult = useGraphQLResult(DocumentModel, 'changeDocument');
+  return {
+    loading,
+    changeDocument: async (documentId: string, input: Partial<DocumentMutationModel>) => {
+      return graphQLResult(
+        changeDocument({
+          variables: {
+            documentId,
+            input: plainToClass(DocumentMutationModel, input),
+          },
+        }),
+      );
+    },
+  };
+};
+
+const QUERY = gql`
   mutation ChangeDocument($documentId: String!, $input: DocumentChangeInput!) {
     changeDocument(documentId: $documentId, input: $input) {
       id
@@ -13,26 +32,6 @@ const CHANGE_DOCUMENT = gql`
       status
       priority
       dueDate
-      project {
-        id
-      }
     }
   }
 `;
-
-export const useChangeDocument = () => {
-  const [changeDocument, { loading, error }] = useMutation(CHANGE_DOCUMENT);
-  return {
-    loading,
-    changeDocument: async (documentId: string, input: Partial<DocumentMutationModel>): Promise<DocumentModel> => {
-      const result = await changeDocument({
-        variables: {
-          documentId,
-          input: plainToClass(DocumentMutationModel, input),
-        },
-      });
-
-      return result.data.changeDocument;
-    },
-  };
-};

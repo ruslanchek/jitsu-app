@@ -3,20 +3,8 @@ import { useQuery } from '@apollo/react-hooks';
 import { UserMeModel } from '../models/user';
 import { plainToClass } from 'class-transformer';
 
-const GET_ME = gql`
-  query Me {
-    getMe {
-      id
-      email
-      nickname
-      isEmailConfirmed
-      registeredDate
-    }
-  }
-`;
-
 export const useMe = () => {
-  const { data, error, loading } = useQuery(GET_ME);
+  const { data, error, loading } = useQuery(QUERY);
   let me: UserMeModel | undefined = undefined;
 
   if (data?.getMe) {
@@ -29,3 +17,15 @@ export const useMe = () => {
     error,
   };
 };
+
+const QUERY = gql`
+  query Me {
+    getMe {
+      id
+      email
+      nickname
+      isEmailConfirmed
+      registeredDate
+    }
+  }
+`;

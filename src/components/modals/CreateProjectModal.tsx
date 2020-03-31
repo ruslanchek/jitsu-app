@@ -29,7 +29,6 @@ export const CreateProjectModal: FC<IProps> = ({ handleClose }) => {
       await navigate(PATHS.PROJECT_TASKS.replace(':projectId', result.data.id));
       handleClose();
     }
-    console.log(result)
   }
   const [title, setTitle] = useState('');
   return (

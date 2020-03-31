@@ -15,31 +15,26 @@ import { EPhrase } from '../../locales/EPhrase';
 import { MODAL_SIZE } from '../../common/ui';
 import { Controller, useForm } from 'react-hook-form';
 import { useCreateDocument } from '../../hooks/useCreateDocument';
-import { EDocumentPriority } from '../../models/document';
+import { DocumentMutationModel, EDocumentPriority } from '../../models/document';
 import { useCurrentProject } from '../../hooks/useCurrentProject';
 
 interface IProps extends IModalProps {}
-
-interface IModel {
-  name: string;
-  dueDate: Date;
-}
 
 export const CreateTaskModal: FC<IProps> = ({ handleClose }) => {
   const translator = useTranslator();
   const { currentProject } = useCurrentProject();
   const { createDocument, loading } = useCreateDocument();
-  const { handleSubmit, errors, control, register, setValue, getValues } = useForm<IModel>({
+  const { handleSubmit, control, setValue, getValues } = useForm<DocumentMutationModel>({
     defaultValues: {
       name: '',
       dueDate: new Date(),
     },
   });
   const model = getValues();
-  async function onSubmit(model: IModel) {
+  async function onSubmit(model: DocumentMutationModel) {
     if (currentProject) {
-      const document = await createDocument(currentProject.id, model);
-      if (document?.id) {
+      const result = await createDocument(currentProject.id, model);
+      if (result.data?.id) {
         handleClose();
       }
     }
@@ -54,7 +49,7 @@ export const CreateTaskModal: FC<IProps> = ({ handleClose }) => {
               <DocumentHeaderTitle
                 editable
                 value={model.name}
-                onChange={value => setValue('name', value)}
+                onChange={(value) => setValue('name', value)}
                 placeholder={translator.translate(EPhrase.Create_task_Title_placeholder)}
               />
             }

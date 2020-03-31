@@ -8,10 +8,7 @@ const DEFAULT_OPTIONS: IModalSharedOptions = {
   closeByEscapeKey: true,
 };
 
-export const useModal = (
-  renderModalComponent: (props: IModalProps) => ReactNode,
-  options = DEFAULT_OPTIONS,
-) => {
+export const useModal = (renderModalComponent: (props: IModalProps) => ReactNode, options = DEFAULT_OPTIONS) => {
   const modalContext = useContext(ModalsContext);
   const closeHandler = useRef(() => {});
 
@@ -23,7 +20,7 @@ export const useModal = (
 
   const open = useCallback(() => {
     modalContext.openModal({
-      renderModalComponent: id => {
+      renderModalComponent: (id) => {
         closeHandler.current = () => modalContext.closeModal(id);
         return renderModalComponent({
           handleClose: closeHandler.current,

@@ -7,7 +7,7 @@ export const useCurrentProject = () => {
   return {
     currentProject: state.currentProject,
     setCurrentProject: (currentProject: ProjectModel | undefined) => {
-      if(currentProject?.id !== state.currentProject?.id) {
+      if (currentProject?.id !== state.currentProject?.id) {
         commonStore.setState({
           currentProject,
         });

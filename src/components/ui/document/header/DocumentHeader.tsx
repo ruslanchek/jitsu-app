@@ -20,13 +20,19 @@ interface IProps {
 }
 
 export const DocumentHeader: FC<IProps> = ({ document }) => {
-  const { loading: changeLoading, changeDocument } = useChangeDocument();
+  const { changeDocument } = useChangeDocument();
+  const updateDocument = async (updatedDocument: DocumentModel) => {
+    await changeDocument(document.id, updatedDocument);
+  };
   const [documentState, setDocumentState] = useReducer((_: any, value: Partial<DocumentModel>) => {
-    if(!value.name || value.name.length < 3) {
+    if(!value.name) {
+      value.name = document.name;
+    }
+    if(value.name.length < 3) {
       return document;
     }
     const updatedDocument = { ...document, ...value };
-    changeDocument(document.id, updatedDocument);
+    updateDocument(updatedDocument);
     return updatedDocument;
   }, document);
 

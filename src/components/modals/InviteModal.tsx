@@ -11,10 +11,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { useCreateInvite } from '../../hooks/useCreateInvite';
 import { useCurrentProject } from '../../hooks/useCurrentProject';
 import { VALIDATION_PATTERNS } from '../../common/validation-patterns';
-
-interface IModel {
-  invitedUserEmail: string;
-}
+import { InviteMutationModel } from '../../models/invite';
 
 interface IProps extends IModalProps {}
 
@@ -22,13 +19,14 @@ export const InviteModal: FC<IProps> = ({ handleClose }) => {
   const translator = useTranslator();
   const { currentProject } = useCurrentProject();
   const { loading, createInvite } = useCreateInvite();
-  const { handleSubmit, errors, control } = useForm<IModel>();
-  async function onSubmit(model: IModel) {
+  const { handleSubmit, errors, control } = useForm<InviteMutationModel>();
+  const onSubmit = async (model: InviteMutationModel) => {
+    console.log(currentProject)
     if (currentProject) {
       const result = await createInvite(currentProject.id, model);
       console.log(result);
     }
-  }
+  };
   const [invitedUserEmail, setInvitedUserEmail] = useState('');
   return (
     <Modal handleClose={handleClose}>
@@ -39,7 +37,7 @@ export const InviteModal: FC<IProps> = ({ handleClose }) => {
               <DocumentHeaderTitle
                 editable
                 value={invitedUserEmail}
-                onChange={value => setInvitedUserEmail(value)}
+                onChange={(value) => setInvitedUserEmail(value)}
                 placeholder={translator.translate(EPhrase.Create_invite_Email_placeholder)}
               />
             }

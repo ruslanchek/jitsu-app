@@ -26,7 +26,23 @@ const QUERY = gql`
   mutation CreateInvite($projectId: String!, $input: InviteCreateInput!) {
     createInvite(projectId: $projectId, input: $input) {
       id
+      active
       date
+      project {
+        id
+        name
+        avatar
+      }
+      invitedByUser {
+        id
+        nickname
+        email
+      }
+      invitedUser {
+        id
+        nickname
+        email
+      }
     }
   }
 `;

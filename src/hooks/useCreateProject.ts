@@ -2,8 +2,26 @@ import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
 import { ProjectModel, ProjectMutationModel } from '../models/project';
 import { plainToClass } from 'class-transformer';
+import { useGraphQLResult } from './useGraphQLResult';
 
-const CREATE_DOCUMENT = gql`
+export const useCreateProject = () => {
+  const [createProject, { loading }] = useMutation(QUERY);
+  const graphQLResult = useGraphQLResult(ProjectModel, 'createProject');
+  return {
+    loading,
+    createProject: async (input: Partial<ProjectMutationModel>) => {
+      return await graphQLResult(
+        createProject({
+          variables: {
+            input: plainToClass(ProjectMutationModel, input),
+          },
+        }),
+      );
+    },
+  };
+};
+
+const QUERY = gql`
   mutation CreateDocument($input: ProjectCreateInput!) {
     createProject(input: $input) {
       id
@@ -11,19 +29,3 @@ const CREATE_DOCUMENT = gql`
     }
   }
 `;
-
-export const useCreateProject = () => {
-  const [createProject, { loading }] = useMutation(CREATE_DOCUMENT);
-  return {
-    loading,
-    createProject: async (input: Partial<ProjectMutationModel>): Promise<ProjectModel> => {
-      const result = await createProject({
-        variables: {
-          input: plainToClass(ProjectMutationModel, input),
-        },
-      });
-
-      return plainToClass(ProjectModel, result.data.createProject);
-    },
-  };
-};

@@ -3,18 +3,8 @@ import { useQuery } from '@apollo/react-hooks';
 import { ProjectModel } from '../models/project';
 import { plainToClass } from 'class-transformer';
 
-const GET_PROJECTS = gql`
-  query {
-    getProjects {
-      id
-      name
-      avatar
-    }
-  }
-`;
-
 export const useProjects = () => {
-  const { loading, error, data } = useQuery(GET_PROJECTS);
+  const { loading, data } = useQuery(QUERY);
   let projects: ProjectModel[] = [];
 
   if (data?.getProjects) {
@@ -26,3 +16,13 @@ export const useProjects = () => {
     projects,
   };
 };
+
+const QUERY = gql`
+  query {
+    getProjects {
+      id
+      name
+      avatar
+    }
+  }
+`;

@@ -21,14 +21,15 @@ interface IProps extends IModalProps {}
 export const CreateProjectModal: FC<IProps> = ({ handleClose }) => {
   const translator = useTranslator();
   const navigate = useNavigate();
-  const { loading, createProject } = useCreateProject();
+  const { createProject, loading } = useCreateProject();
   const { handleSubmit, errors, control } = useForm<IModel>();
   async function onSubmit(model: IModel) {
-    const project = await createProject(model);
-    if (project?.id) {
-      await navigate(PATHS.PROJECT_TASKS.replace(':projectId', project.id));
+    const result = await createProject(model);
+    if (result.data?.id) {
+      await navigate(PATHS.PROJECT_TASKS.replace(':projectId', result.data.id));
       handleClose();
     }
+    console.log(result)
   }
   const [title, setTitle] = useState('');
   return (

@@ -1,33 +1,28 @@
 import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
-import { getGraphQlError } from '../utils/getGraphQlError';
-import { useAuthorize } from './useAuthorize';
-import { useAsyncEffect } from './useAsyncEffect';
+import { useGraphQLResult } from './useGraphQLResult';
+import { AuthModel, RegisterMutationModel } from '../models/auth';
+import { plainToClass } from 'class-transformer';
 
-const REGISTER = gql`
+export const useRegister = () => {
+  const [register, { loading }] = useMutation(QUERY);
+  const graphQLResult = useGraphQLResult(AuthModel, 'register');
+  return {
+    loading,
+    authRegister: async (model: RegisterMutationModel) => {
+      return await graphQLResult(
+        register({
+          variables: plainToClass(RegisterMutationModel, model),
+        }),
+      );
+    },
+  };
+};
+
+const QUERY = gql`
   mutation Register($email: String!, $password: String!) {
     register(input: { email: $email, password: $password }) {
       token
     }
   }
 `;
-
-export const useRegister = () => {
-  const [register, { loading, data, error }] = useMutation(REGISTER);
-  const authorize = useAuthorize();
-
-  useAsyncEffect(async () => {
-    if (data?.register?.token) {
-      localStorage.setItem('token', data.register.token);
-      await authorize();
-    }
-  }, [data]);
-
-  return {
-    registerUser: async (email: string, password: string) => {
-      await register({ variables: { email, password } });
-    },
-    loading,
-    error: getGraphQlError(error),
-  };
-};

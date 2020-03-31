@@ -5,7 +5,7 @@ import { ApolloClient } from 'apollo-boost';
 import { split } from 'apollo-link';
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
-import { ApolloLink,  concat } from 'apollo-link';
+import { ApolloLink, concat } from 'apollo-link';
 import { createUploadLink } from 'apollo-upload-client';
 import { ENV } from '../../common/env';
 
@@ -31,7 +31,6 @@ const link = split(
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   const token = localStorage.getItem('token');
-
   operation.setContext({
     headers: {
       authorization: token ? `Bearer ${token}` : null,

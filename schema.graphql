@@ -19,7 +19,6 @@ type DocumentEntity {
   id: ID!
   name: String!
   priority: DocumentPriority!
-  project: ProjectEntity!
   status: DocumentStatus!
   type: DocumentType!
   user: UserEntity!
@@ -43,6 +42,7 @@ type Mutation {
   createDocument(input: DocumentCreateInput!, projectId: String!): DocumentEntity!
   createInvite(input: InviteCreateInput!, projectId: String!): InviteEntity!
   createProject(input: ProjectCreateInput!): ProjectEntity!
+  login(input: UserInputLogin!): UserTokenResponse!
   register(input: UserInputRegister!): UserTokenResponse!
 }
 
@@ -65,7 +65,6 @@ type Query {
   getProjects: [ProjectEntity!]!
   getTimeline(timelineId: String!): TimelineEntity!
   getTimelines(documentId: String!): [TimelineEntity!]!
-  login(input: UserInputLogin!): UserTokenResponse!
   resendInvite(inviteId: String!): InviteEntity!
 }
 

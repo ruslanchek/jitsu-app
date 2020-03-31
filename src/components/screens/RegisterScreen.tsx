@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { ScreenWrapper } from '../common/ScreenWrapper';
 import { RouteComponentProps } from '@reach/router';
 import { useForm } from 'react-hook-form';
@@ -6,25 +6,26 @@ import { Button } from '../ui/buttons/Button';
 import { VALIDATION_PATTERNS } from '../../common/validation-patterns';
 import { useRegister } from '../../hooks/useRegister';
 import { useAuthorize } from '../../hooks/useAuthorize';
-
-interface IModel {
-  email: string;
-  password: string;
-}
+import { RegisterMutationModel } from '../../models/auth';
 
 export const RegisterScreen: FC<RouteComponentProps> = () => {
-  const { registerUser, loading, error } = useRegister();
-  const { handleSubmit, register } = useForm<IModel>();
   const authorize = useAuthorize();
+  const { handleSubmit, register } = useForm<RegisterMutationModel>();
+  const { authRegister, loading } = useRegister();
+  const [error, setError] = useState('');
 
-  async function onSubmit(model: IModel) {
-    await registerUser(model.email, model.password);
-    await authorize();
+  async function onSubmit(model: RegisterMutationModel) {
+    const result = await authRegister(model);
+    if (result.data?.token) {
+      localStorage.setItem('token', result.data.token);
+      await authorize();
+    }
+    setError(result.error?.message || '');
   }
 
   return (
     <ScreenWrapper>
-      {error?.message}
+      {error}
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           className='regular-input'
@@ -47,4 +48,3 @@ export const RegisterScreen: FC<RouteComponentProps> = () => {
     </ScreenWrapper>
   );
 };
-

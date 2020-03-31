@@ -10,11 +10,11 @@ import { createUploadLink } from 'apollo-upload-client';
 import { ENV } from '../../common/env';
 
 const httpLink = createUploadLink({
-  uri: ENV.API_URL,
+  uri: ENV.GRAPH_API_URL,
 });
 
 const wsLink = new WebSocketLink({
-  uri: ENV.WS_URL,
+  uri: ENV.GRAPH_API_WS_URL,
   options: {
     reconnect: true,
   },

@@ -1,4 +1,5 @@
 export const ENV = {
-  API_URL: String(process.env.REACT_APP_API_URL),
-  WS_URL: String(process.env.REACT_APP_WS_URL),
+  HTTP_API_URL: String(process.env.REACT_APP_HTTP_API_URL),
+  GRAPH_API_URL: String(process.env.REACT_APP_GRAPH_QL_URL),
+  GRAPH_API_WS_URL: String(process.env.REACT_APP_GRAPH_QL_WS_URL),
 };

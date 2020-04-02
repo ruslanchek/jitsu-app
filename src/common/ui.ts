@@ -19,7 +19,8 @@ export const MAIN_PADDING = {
 
 export const HEADER_HEIGHT = '60px';
 
-export const FONT_FAMILY = "'Rubik', sans-serif";
+export const FONT_FAMILY =
+  '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";';
 export const FONT_FAMILY_MONO = "'Ubuntu Mono', monospace;";
 
 export const FONT_SIZE = {
@@ -65,6 +66,5 @@ export const BOX_SHADOW = {
 export const MODAL_SIZE = {
   LARGE: '720px',
 };
-
 
 export const PROJECTS_ITEM_SIZE = '140px';

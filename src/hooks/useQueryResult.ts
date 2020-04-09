@@ -4,7 +4,7 @@ import { ClassType } from 'class-transformer/ClassTransformer';
 import { IResult } from '../common/graph-ql';
 
 export function useQueryResult<T>(transformClass: ClassType<T> | undefined = undefined, container: string = '') {
-  return (result: QueryResult<any>): IResult<T> => {
+  return function <O = T>(result: QueryResult<any>): IResult<O> {
     if (result.loading) {
       return {
         data: undefined,

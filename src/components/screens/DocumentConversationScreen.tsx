@@ -13,11 +13,11 @@ interface IProps extends RouteComponentProps {
 }
 
 export const DocumentConversationScreen: FC<IProps> = ({ projectId, documentId }) => {
-  const { document, loading } = useDocument(documentId);
+  const { data, loading, error } = useDocument(documentId);
   if (loading) {
     return <div>Loading...</div>;
   }
-  if (projectId && documentId && document) {
+  if (projectId && documentId && data) {
     return (
       <ScreenWrapper showHeader>
         <div css={styles.root}>
@@ -25,7 +25,7 @@ export const DocumentConversationScreen: FC<IProps> = ({ projectId, documentId }
             <DocumentSideNav projectId={projectId} documentId={documentId} />
           </div>
           <div css={styles.main}>
-            <DocumentConversation document={document}/>
+            <DocumentConversation document={data} />
           </div>
         </div>
       </ScreenWrapper>

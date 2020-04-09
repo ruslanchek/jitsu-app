@@ -1,22 +1,13 @@
 import { ApolloError, ExecutionResult } from 'apollo-boost';
 import { plainToClass } from 'class-transformer';
 import { ClassType } from 'class-transformer/ClassTransformer';
+import { IResult } from '../common/graph-ql';
 
-interface IGraphQlError {
-  fields: string[];
-  message: string;
-}
-
-interface IResult<T> {
-  data: T | undefined;
-  error: IGraphQlError | undefined;
-}
-
-export function useGraphQLResult<T>(transformClass: ClassType<T> | undefined = undefined, container: string = '') {
-  return async (query: Promise<ExecutionResult> | ApolloError | undefined): Promise<IResult<T>> => {
+export function useMutationResult<T>(transformClass: ClassType<T> | undefined = undefined, container: string = '') {
+  return async (mutation: Promise<ExecutionResult> | ApolloError | undefined): Promise<IResult<T>> => {
     let result: any;
     try {
-      result = await query;
+      result = await mutation;
     } catch (e) {
       result = e;
     }
@@ -24,6 +15,7 @@ export function useGraphQLResult<T>(transformClass: ClassType<T> | undefined = u
       return {
         data: transformClass ? plainToClass(transformClass, result?.data[container]) : result?.data[container],
         error: undefined,
+        loading: false,
       };
     } else if (result?.graphQLErrors) {
       return {
@@ -32,11 +24,13 @@ export function useGraphQLResult<T>(transformClass: ClassType<T> | undefined = u
           fields: (result.graphQLErrors[0] as any).fields,
           message: (result.graphQLErrors[0] as any).message,
         },
+        loading: false,
       };
     } else {
       return {
         data: undefined,
         error: undefined,
+        loading: false,
       };
     }
   };

@@ -12,7 +12,7 @@ export const useAuthorize = () => {
   const location = useLocation();
 
   useAsyncEffect(async () => {
-    if(!loading && (error || me)) {
+    if (!loading && (error || me)) {
       const authorized = Boolean(!error && me);
 
       if (authorized && ANONYMOUS_ONLY_PATHS.indexOf(location.pathname) >= 0) {

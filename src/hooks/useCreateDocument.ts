@@ -2,16 +2,16 @@ import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
 import { DocumentModel, DocumentMutationModel } from '../models/document';
 import { plainToClass } from 'class-transformer';
-import { useGraphQLResult } from './useGraphQLResult';
+import { useMutationResult } from './useMutationResult';
 import { InviteModel } from '../models/invite';
 
 export const useCreateDocument = () => {
   const [createDocument, { loading }] = useMutation(QUERY);
-  const graphQLResult = useGraphQLResult(DocumentModel, 'createDocument');
+  const mutationResult = useMutationResult(DocumentModel, 'createDocument');
   return {
     loading,
     createDocument: async (projectId: string, input: Partial<DocumentMutationModel>) => {
-      return await graphQLResult(
+      return await mutationResult(
         createDocument({
           variables: {
             projectId,

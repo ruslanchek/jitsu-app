@@ -16,7 +16,7 @@ export const ScreenWrapper: FC<IProps> = ({ children, showHeader }) => {
       <div css={styles.limiter} className={classNames({ header: showHeader })}>
         <main css={styles.main}>{children}</main>
       </div>
-      <SideMenu />
+      {/* <SideMenu /> */}
     </div>
   );
 };

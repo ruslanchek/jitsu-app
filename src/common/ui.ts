@@ -57,10 +57,10 @@ export const BORDER_RADIUS = {
 };
 
 export const BOX_SHADOW = {
-  TINY: `0 1px 1px ${rgba(COLORS.NIGHT_SKY, 0.15)}`,
-  SMALL: `0 1px 4px ${rgba(COLORS.HIGH_SMOKE, 0.15)}`,
-  MEDIUM: `0 2px 6px ${rgba(COLORS.HIGH_SMOKE, 0.15)}`,
-  LARGE: `0 4px 10px ${rgba(COLORS.HIGH_SMOKE, 0.15)}`,
+  TINY: `0 1px 3px rgba(0,0,0,.05)`,
+  SMALL: `0 2px 5px rgba(0,0,0,.05)`,
+  MEDIUM: `0 3px 7px rgba(0,0,0,.05)`,
+  LARGE: `0 4px 10px rgba(0,0,0,.05)`,
 };
 
 export const MODAL_SIZE = {

@@ -2,15 +2,15 @@ import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
 import { plainToClass } from 'class-transformer';
 import { ConversationModel, ConversationMutationModel } from '../models/conversation';
-import { useGraphQLResult } from './useGraphQLResult';
+import { useMutationResult } from './useMutationResult';
 
 export const useCreateConversation = () => {
   const [createConversation, { loading }] = useMutation(QUERY);
-  const graphQLResult = useGraphQLResult(ConversationModel, 'createConversation');
+  const mutationResult = useMutationResult(ConversationModel, 'createConversation');
   return {
     loading,
     createConversation: async (documentId: string, input: Partial<ConversationMutationModel>) => {
-      return await graphQLResult(
+      return await mutationResult(
         createConversation({
           variables: {
             documentId,

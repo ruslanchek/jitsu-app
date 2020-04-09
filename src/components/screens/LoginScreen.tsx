@@ -7,6 +7,7 @@ import { Button } from '../ui/buttons/Button';
 import { VALIDATION_PATTERNS } from '../../common/validation-patterns';
 import { useAuthorize } from '../../hooks/useAuthorize';
 import { LoginMutationModel } from '../../models/auth';
+import { EStorageNames } from '../../common/storage-names';
 
 export const LoginScreen: FC<RouteComponentProps> = () => {
   const authorize = useAuthorize();
@@ -17,7 +18,7 @@ export const LoginScreen: FC<RouteComponentProps> = () => {
   async function onSubmit(model: LoginMutationModel) {
     const result = await authLogin(model);
     if (result.data?.token) {
-      localStorage.setItem('token', result.data.token);
+      localStorage.setItem(EStorageNames.Token, result.data.token);
       await authorize();
     }
     setError(result.error?.message || '');

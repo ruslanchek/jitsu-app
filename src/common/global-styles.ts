@@ -5,7 +5,7 @@ import { darken, lighten } from 'polished';
 
 export const globalStyles = css`
   body {
-    background: ${COLORS.WHITE};
+    background: ${COLORS.SNOW};
     margin: 0;
     line-height: 1.5;
     font-family: ${FONT_FAMILY};

@@ -8,6 +8,7 @@ import { getMainDefinition } from 'apollo-utilities';
 import { ApolloLink, concat } from 'apollo-link';
 import { createUploadLink } from 'apollo-upload-client';
 import { ENV } from '../../common/env';
+import { EStorageNames } from '../../common/storage-names';
 
 const httpLink = createUploadLink({
   uri: ENV.GRAPH_API_URL,
@@ -30,7 +31,7 @@ const link = split(
 );
 
 const authMiddleware = new ApolloLink((operation, forward) => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem(EStorageNames.Token);
   operation.setContext({
     headers: {
       authorization: token ? `Bearer ${token}` : null,

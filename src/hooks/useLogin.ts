@@ -1,16 +1,16 @@
 import { gql } from 'apollo-boost';
 import { useMutation } from '@apollo/react-hooks';
-import { useGraphQLResult } from './useGraphQLResult';
+import { useMutationResult } from './useMutationResult';
 import { AuthModel, LoginMutationModel } from '../models/auth';
 import { plainToClass } from 'class-transformer';
 
 export const useLogin = () => {
   const [login, { loading }] = useMutation(QUERY);
-  const graphQLResult = useGraphQLResult(AuthModel, 'login');
+  const mutationResult = useMutationResult(AuthModel, 'login');
   return {
     loading,
     authLogin: async (model: LoginMutationModel) => {
-      return await graphQLResult(
+      return await mutationResult(
         login({
           variables: plainToClass(LoginMutationModel, model),
         }),

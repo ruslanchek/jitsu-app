@@ -10,11 +10,13 @@ interface IProps extends RouteComponentProps {
 }
 
 export const InviteScreen: FC<IProps> = ({ code }) => {
-  const { invite, loading } = useInvite(code);
+  const { data, loading, error } = useInvite(code);
   const { acceptInvite } = useAcceptInvite();
   return (
     <ScreenWrapper>
-      {invite && invite.id}
+      {loading && 'Loading...'}
+      {data?.id}
+      {error?.message}
       <Button
         onClick={async () => {
           if (code) {

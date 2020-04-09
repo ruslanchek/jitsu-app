@@ -37,7 +37,7 @@ export const HeaderView: FC<IProps> = () => {
 const styles = {
   root: css`
     height: ${HEADER_HEIGHT};
-    background-color: ${COLORS.SNOW};
+    background-color: ${COLORS.WHITE};
     min-width: ${MIN_WIDTH};
     position: sticky;
     top: 0;

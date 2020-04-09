@@ -7,6 +7,7 @@ import { VALIDATION_PATTERNS } from '../../common/validation-patterns';
 import { useRegister } from '../../hooks/useRegister';
 import { useAuthorize } from '../../hooks/useAuthorize';
 import { RegisterMutationModel } from '../../models/auth';
+import { EStorageNames } from '../../common/storage-names';
 
 export const RegisterScreen: FC<RouteComponentProps> = () => {
   const authorize = useAuthorize();
@@ -17,7 +18,7 @@ export const RegisterScreen: FC<RouteComponentProps> = () => {
   async function onSubmit(model: RegisterMutationModel) {
     const result = await authRegister(model);
     if (result.data?.token) {
-      localStorage.setItem('token', result.data.token);
+      localStorage.setItem(EStorageNames.Token, result.data.token);
       await authorize();
     }
     setError(result.error?.message || '');

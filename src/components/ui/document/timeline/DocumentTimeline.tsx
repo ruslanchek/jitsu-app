@@ -9,18 +9,18 @@ interface IProps {
 }
 
 export const DocumentTimeline: FC<IProps> = ({ document }) => {
-  const { loading, timelines } = useTimelines(document.id);
+  const { data, loading } = useTimelines(document.id);
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  if (timelines) {
+  if (data) {
     return (
       <div css={styles.root}>
         <div css={styles.inner}>
           <div css={styles.stickyBottom}>
-            {timelines.map(timeline => (
+            {data.map((timeline) => (
               <div key={timeline.id}>
                 {timeline.eventName}
                 <br />

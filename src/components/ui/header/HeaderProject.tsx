@@ -16,10 +16,10 @@ interface IProps {}
 export const HeaderProject: FC<IProps> = () => {
   const { currentProject } = useCurrentProject();
   const navigate = useNavigate();
-  const { projects } = useProjects();
+  const { data } = useProjects();
   const [showDropdown, setShowDropdown] = useState(false);
   const rootRef = useRef(null);
-  const menuItems: IDropdownContextMenuItem[] = projects.map(project => {
+  const menuItems: IDropdownContextMenuItem[] = (data || []).map((project) => {
     return {
       title: project.name,
       icon: <ImageSet css={styles.icon} src={project.avatar} />,

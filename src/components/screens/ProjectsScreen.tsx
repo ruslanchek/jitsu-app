@@ -13,8 +13,8 @@ import { CreateProjectModal } from '../modals/CreateProjectModal';
 interface IProps extends RouteComponentProps {}
 
 export const ProjectsScreen: FC<IProps> = () => {
-  const { loading, projects } = useProjects();
-  const createProjectModal = useModal(props => <CreateProjectModal {...props} />);
+  const { data, loading } = useProjects();
+  const createProjectModal = useModal((props) => <CreateProjectModal {...props} />);
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -25,14 +25,12 @@ export const ProjectsScreen: FC<IProps> = () => {
         <div css={styles.main}>
           <h1>All projects</h1>
           <div css={styles.projects}>
-            <button onClick={createProjectModal.open} css={COMMON_STYLES.ENTRIES_ITEM} className="accent">
-              <FiPlus className="icon"/>
+            <button onClick={createProjectModal.open} css={COMMON_STYLES.ENTRIES_ITEM} className='accent'>
+              <FiPlus className='icon' />
               <span className='title'>New project</span>
             </button>
 
-            {projects.map(project => (
-              <ProjectsItem project={project} key={project.id} />
-            ))}
+            {data && data.map((project) => <ProjectsItem project={project} key={project.id} />)}
           </div>
         </div>
       </div>

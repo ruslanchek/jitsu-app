@@ -1,16 +1,14 @@
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
+import { useQueryResult } from './useQueryResult';
 import { ProjectModel } from '../models/project';
-import { plainToClass } from 'class-transformer';
 
 export const useProject = (projectId: string | undefined) => {
-  const { loading, data } = useQuery(QUERY, {
+  const query = useQuery(QUERY, {
     variables: { projectId },
   });
-  return {
-    loading,
-    project: plainToClass(ProjectModel, data?.getProject),
-  };
+  const queryResult = useQueryResult(ProjectModel, 'getProject');
+  return queryResult(query);
 };
 
 const QUERY = gql`

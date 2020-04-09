@@ -8,6 +8,8 @@ export const useDocuments = (projectId: string | undefined) => {
     variables: { projectId },
   });
   const queryResult = useQueryResult(DocumentModel, 'getDocuments');
+  console.log(query.loading, query.data);
+
   return queryResult<DocumentModel[]>(query);
 };
 

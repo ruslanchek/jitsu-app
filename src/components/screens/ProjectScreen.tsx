@@ -15,8 +15,8 @@ interface IProps extends RouteComponentProps {
 
 export const ProjectScreen: FC<IProps> = ({ projectId }) => {
   const { setCurrentProject } = useCurrentProject();
-  const { loading, project } = useProject(projectId);
-  const { data } = useDocuments(projectId);
+  const { loading, data: project } = useProject(projectId);
+  const { data: documents } = useDocuments(projectId);
 
   useEffect(() => {
     setCurrentProject(project);
@@ -37,8 +37,8 @@ export const ProjectScreen: FC<IProps> = ({ projectId }) => {
 
             <h2>Documents</h2>
             <div>
-              {data &&
-                data.map((document) => {
+              {documents &&
+                documents.map((document) => {
                   const documentPath = PATHS.DOCUMENT_TASK.replace(':projectId', project.id).replace(
                     ':documentId',
                     document.id,

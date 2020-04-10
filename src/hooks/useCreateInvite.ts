@@ -38,11 +38,6 @@ const QUERY = gql`
         nickname
         email
       }
-      invitedUser {
-        id
-        nickname
-        email
-      }
     }
   }
 `;

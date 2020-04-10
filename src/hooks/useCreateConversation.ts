@@ -23,7 +23,7 @@ export const useCreateConversation = () => {
 };
 
 const QUERY = gql`
-  mutation CreateConversation($documentId: String!, $input: ConversationCreateInput!) {
+  mutation($documentId: String!, $input: ConversationCreateInput!) {
     createConversation(documentId: $documentId, input: $input) {
       id
       text

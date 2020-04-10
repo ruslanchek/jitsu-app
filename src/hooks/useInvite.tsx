@@ -1,6 +1,5 @@
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
-import { plainToClass } from 'class-transformer';
 import { InviteModel } from '../models/invite';
 import { useQueryResult } from './useQueryResult';
 
@@ -13,7 +12,7 @@ export const useInvite = (inviteCode: string | undefined) => {
 };
 
 const QUERY = gql`
-  query GetInvite($inviteCode: String!) {
+  query($inviteCode: String!) {
     getInvite(inviteCode: $inviteCode) {
       id
     }

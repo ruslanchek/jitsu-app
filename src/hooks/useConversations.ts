@@ -6,7 +6,7 @@ import { updateList } from 'update-data';
 import { useEffect, useState } from 'react';
 
 const GET_CONVERSATIONS = gql`
-  query GetConversations($documentId: String!) {
+  query($documentId: String!) {
     getConversations(documentId: $documentId) {
       id
       text
@@ -20,7 +20,7 @@ const GET_CONVERSATIONS = gql`
 `;
 
 const CONVERSATION_CREATED = gql`
-  subscription ConversationCreated {
+  subscription {
     conversationCreated {
       id
       text

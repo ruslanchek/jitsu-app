@@ -3,7 +3,6 @@ import { useMutation } from '@apollo/react-hooks';
 import { DocumentModel, DocumentMutationModel } from '../models/document';
 import { plainToClass } from 'class-transformer';
 import { useMutationResult } from './useMutationResult';
-import { InviteModel } from '../models/invite';
 
 export const useCreateDocument = () => {
   const [createDocument, { loading }] = useMutation(QUERY);
@@ -24,7 +23,7 @@ export const useCreateDocument = () => {
 };
 
 const QUERY = gql`
-  mutation CreateDocument($projectId: String!, $input: DocumentCreateInput!) {
+  mutation($projectId: String!, $input: DocumentCreateInput!) {
     createDocument(projectId: $projectId, input: $input) {
       id
       name

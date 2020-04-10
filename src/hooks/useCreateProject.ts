@@ -22,7 +22,7 @@ export const useCreateProject = () => {
 };
 
 const QUERY = gql`
-  mutation CreateDocument($input: ProjectCreateInput!) {
+  mutation($input: ProjectCreateInput!) {
     createProject(input: $input) {
       id
       name

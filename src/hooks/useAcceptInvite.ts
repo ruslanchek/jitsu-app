@@ -35,7 +35,7 @@ export const useAcceptInvite = () => {
 };
 
 const QUERY = gql`
-  mutation AcceptInvite($inviteCode: String!) {
+  mutation($inviteCode: String!) {
     acceptInvite(inviteCode: $inviteCode) {
       id
       active

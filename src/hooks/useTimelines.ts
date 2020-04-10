@@ -12,7 +12,7 @@ export const useTimelines = (documentId: string) => {
 };
 
 const QUERY = gql`
-  query GetTimelines($documentId: String!) {
+  query($documentId: String!) {
     getTimelines(documentId: $documentId) {
       id
       date

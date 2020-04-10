@@ -20,7 +20,7 @@ export const useRegister = () => {
 };
 
 const QUERY = gql`
-  mutation Register($email: String!, $password: String!) {
+  mutation($email: String!, $password: String!) {
     register(input: { email: $email, password: $password }) {
       token
     }

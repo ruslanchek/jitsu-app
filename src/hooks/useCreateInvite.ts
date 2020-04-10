@@ -23,7 +23,7 @@ export const useCreateInvite = () => {
 };
 
 const QUERY = gql`
-  mutation CreateInvite($projectId: String!, $input: InviteCreateInput!) {
+  mutation($projectId: String!, $input: InviteCreateInput!) {
     createInvite(projectId: $projectId, input: $input) {
       id
       active

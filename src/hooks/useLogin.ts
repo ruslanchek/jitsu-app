@@ -20,7 +20,7 @@ export const useLogin = () => {
 };
 
 const QUERY = gql`
-  mutation Login($email: String!, $password: String!) {
+  mutation($email: String!, $password: String!) {
     login(input: { email: $email, password: $password }) {
       token
     }

@@ -20,7 +20,7 @@ export const useGetMe = () => {
 };
 
 const QUERY = gql`
-  query Me {
+  query {
     getMe {
       id
       email

@@ -23,7 +23,7 @@ export const useCreateDocument = () => {
 };
 
 const QUERY = gql`
-  mutation($projectId: String!, $input: DocumentCreateInput!) {
+  mutation CreateDocument($projectId: String!, $input: DocumentCreateInput!) {
     createDocument(projectId: $projectId, input: $input) {
       id
       name

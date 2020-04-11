@@ -2,9 +2,10 @@ import { QueryResult } from '@apollo/react-common';
 import { plainToClass } from 'class-transformer';
 import { ClassType } from 'class-transformer/ClassTransformer';
 import { IResult } from '../common/graph-ql';
+import { ApolloError } from 'apollo-boost';
 
 export function useQueryResult<T>(transformClass: ClassType<T> | undefined = undefined, container: string = '') {
-  return function <O = T>(result: QueryResult<any>): IResult<O> {
+  return function <O = T>(result: QueryResult): IResult<O> {
     if (result.loading) {
       return {
         data: undefined,

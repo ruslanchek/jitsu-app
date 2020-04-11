@@ -10,7 +10,7 @@ export const useProjects = () => {
 };
 
 const QUERY = gql`
-  query {
+  query GetProjects {
     getProjects {
       id
       name

@@ -14,7 +14,7 @@ export const useDocuments = (projectId: string | undefined) => {
 };
 
 const QUERY = gql`
-  query($projectId: String!) {
+  query GetDocuments($projectId: String!) {
     getDocuments(projectId: $projectId) {
       id
       name

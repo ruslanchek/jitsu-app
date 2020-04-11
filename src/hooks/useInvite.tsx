@@ -12,7 +12,7 @@ export const useInvite = (inviteCode: string | undefined) => {
 };
 
 const QUERY = gql`
-  query($inviteCode: String!) {
+  query GetInvite($inviteCode: String!) {
     getInvite(inviteCode: $inviteCode) {
       id
     }

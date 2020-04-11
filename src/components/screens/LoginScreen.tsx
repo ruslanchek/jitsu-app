@@ -19,7 +19,6 @@ export const LoginScreen: FC<RouteComponentProps> = () => {
     const result = await authLogin(model);
     if (result.data?.token) {
       localStorage.setItem(EStorageNames.Token, result.data.token);
-      await authorize();
     }
     setError(result.error?.message || '');
   }

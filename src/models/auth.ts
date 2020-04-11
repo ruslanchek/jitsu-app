@@ -6,6 +6,10 @@ export class AuthModel {
   token!: string;
 }
 
+export class CheckAuthModel {
+  result!: boolean;
+}
+
 @Exclude()
 export class LoginMutationModel {
   @Expose()

@@ -23,7 +23,7 @@ export const useChangeDocument = () => {
 };
 
 const QUERY = gql`
-  mutation($documentId: String!, $input: DocumentChangeInput!) {
+  mutation ChangeDocument($documentId: String!, $input: DocumentChangeInput!) {
     changeDocument(documentId: $documentId, input: $input) {
       id
       name

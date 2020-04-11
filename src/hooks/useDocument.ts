@@ -12,7 +12,7 @@ export const useDocument = (documentId: string | undefined) => {
 };
 
 const QUERY = gql`
-  query($documentId: String!) {
+  query GetDocument($documentId: String!) {
     getDocument(documentId: $documentId) {
       id
       name

@@ -12,7 +12,7 @@ export const useProject = (projectId: string | undefined) => {
 };
 
 const QUERY = gql`
-  query($projectId: String!) {
+  query GetProject($projectId: String!) {
     getProject(projectId: $projectId) {
       id
       name

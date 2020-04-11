@@ -5,8 +5,8 @@ import { ConversationModel } from '../models/conversation';
 import { updateList } from 'update-data';
 import { useEffect, useState } from 'react';
 
-const GET_CONVERSATIONS = gql`
-  query($documentId: String!) {
+const QUERY = gql`
+  query GetConversations($documentId: String!) {
     getConversations(documentId: $documentId) {
       id
       text
@@ -19,8 +19,8 @@ const GET_CONVERSATIONS = gql`
   }
 `;
 
-const CONVERSATION_CREATED = gql`
-  subscription {
+const SUBSCRIPTION = gql`
+  subscription ConversationCreated {
     conversationCreated {
       id
       text
@@ -43,8 +43,8 @@ const update = (a: ConversationModel[], b: ConversationModel[]) => {
 };
 
 export const useConversations = (documentId: string) => {
-  const { loading, data: queryData } = useQuery(GET_CONVERSATIONS, { variables: { documentId } });
-  const { data: subscriptionData } = useSubscription(CONVERSATION_CREATED);
+  const { loading, data: queryData } = useQuery(QUERY, { variables: { documentId } });
+  const { data: subscriptionData } = useSubscription(SUBSCRIPTION);
   const [conversations, setConversations] = useState<ConversationModel[]>([]);
 
   useEffect(() => {

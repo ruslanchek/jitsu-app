@@ -1,25 +1,16 @@
 import { gql } from 'apollo-boost';
 import { useQuery } from '@apollo/react-hooks';
 import { UserMeModel } from '../models/user';
-import { plainToClass } from 'class-transformer';
+import { useQueryResult } from './useQueryResult';
 
 export const useMe = () => {
-  const { data, error, loading } = useQuery(QUERY);
-  let me: UserMeModel | undefined = undefined;
-
-  if (data?.getMe) {
-    me = plainToClass(UserMeModel, data.getMe);
-  }
-
-  return {
-    me,
-    loading,
-    error,
-  };
+  const query = useQuery(QUERY);
+  const queryResult = useQueryResult(UserMeModel, 'getMe');
+  return queryResult(query);
 };
 
 const QUERY = gql`
-  query {
+  query GetMe {
     getMe {
       id
       email

@@ -22,6 +22,7 @@
     "tsr-detect-unsafe-regexp": false,
     "no-empty-interface": false,
     "tsr-detect-non-literal-regexp": false,
-    "variable-name": false
+    "variable-name": false,
+    "prefer-conditional-expression": false
   }
 }

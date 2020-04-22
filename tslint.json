@@ -1,0 +1,27 @@
+{
+  "extends": ["tslint:latest", "tslint-config-prettier", "tslint-config-security"],
+  "rules": {
+    "array-type": false,
+    "radix": false,
+    "no-bitwise": false,
+    "indent": [true, "spaces", 2],
+    "no-submodule-imports": false,
+    "no-implicit-dependencies": false,
+    "no-var-requires": false,
+    "no-object-literal-type-assertion": false,
+    "no-empty": false,
+    "tsr-detect-possible-timing-attacks": false,
+    "tsr-detect-non-literal-require": false,
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "no-string-literal": false,
+    "no-unsafe-any": false,
+    "no-any": false,
+    "no-console": false,
+    "max-classes-per-file": false,
+    "tsr-detect-unsafe-regexp": false,
+    "no-empty-interface": false,
+    "tsr-detect-non-literal-regexp": false,
+    "variable-name": false
+  }
+}

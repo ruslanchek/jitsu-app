@@ -1,0 +1,21 @@
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-system);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  height: 100%;
+}
+
+:global #root {
+  display: flex;
+  height: 100%;
+
+  & > div {
+    flex: 1 0 auto;
+    height: 100%;
+  }
+}

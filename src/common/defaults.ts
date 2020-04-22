@@ -6,4 +6,13 @@ export const DEFAULTS = {
     path: '/',
     expires: new Date(new Date().setFullYear(new Date().getFullYear() + 10)),
   },
+
+  PORTAL_ROOT_SELECTORS: {
+    MODALS: '#modals-root',
+    DROPDOWNS: '#dropdowns-root',
+  },
+
+  Z_INDEX: {
+    MODALS: 1000,
+  },
 };

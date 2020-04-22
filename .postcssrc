@@ -1,9 +1,0 @@
-{
-  "modules": true,
-  "plugins": {
-    "postcss-nesting": {},
-    "autoprefixer": {
-      "grid": true
-    }
-  }
-}

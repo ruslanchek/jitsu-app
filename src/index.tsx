@@ -5,6 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from './components/App';
 
+import './styles/tailwind.pcss';
 import './styles/global.pcss';
 import './styles/vars.pcss';
 

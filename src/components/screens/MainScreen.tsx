@@ -19,6 +19,12 @@ export const MainScreen: FC<IProps> = () => {
               <img src={require('../../img/cive.svg')} className='h-14' />
             </div>
             <H2>Sign in to your account</H2>
+            <p className='flex justify-center mt-1 text-sm'>
+              Or start your&nbsp;
+              <a className='text-indigo-600 hover:text-indigo-500' href='#'>
+                14-day free trial
+              </a>
+            </p>
           </div>
           <div className='rounded-lg overflow-hidden shadow px-10 py-8 bg-white'>
             <form action=''>

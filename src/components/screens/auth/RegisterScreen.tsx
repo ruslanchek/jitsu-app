@@ -1,4 +1,4 @@
-import React, { FC, Fragment } from 'react';
+import React, { FC, Fragment, useState } from 'react';
 import { RouteComponentProps } from '@reach/router';
 import { ScreenLayout } from '../../global/ScreenLayout';
 import { Auth } from './Auth';
@@ -12,6 +12,8 @@ import { FormRow } from '../../ui/form/FormRow';
 interface IProps extends RouteComponentProps {}
 
 export const RegisterScreen: FC<IProps> = () => {
+  const [wide, setWide] = useState(false);
+
   return (
     <ScreenLayout>
       <Auth
@@ -21,7 +23,11 @@ export const RegisterScreen: FC<IProps> = () => {
             Or sign in&nbsp;<Anchor to={PATHS.AUTH_LOGIN}>to your account</Anchor>
           </Fragment>
         }>
-        <form action=''>
+        <form
+          action=''
+          onClick={e => {
+            e.preventDefault();
+          }}>
           <FormRow>
             <FormLabel attrs={{ htmlFor: 'email' }}>Email</FormLabel>
             <Input attrs={{ id: 'email', autoComplete: 'email', autoFocus: true }} />
@@ -34,6 +40,7 @@ export const RegisterScreen: FC<IProps> = () => {
             <Button
               attrs={{
                 type: 'submit',
+                onClick: () => {},
               }}>
               Sign up
             </Button>

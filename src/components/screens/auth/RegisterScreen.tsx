@@ -24,11 +24,11 @@ export const RegisterScreen: FC<IProps> = () => {
         <form action=''>
           <FormRow>
             <FormLabel attrs={{ htmlFor: 'email' }}>Email</FormLabel>
-            <Input attrs={{ id: 'email', autoComplete: 'email' }} />
+            <Input attrs={{ id: 'email', autoComplete: 'email', autoFocus: true }} />
           </FormRow>
           <FormRow>
             <FormLabel attrs={{ htmlFor: 'password' }}>Password</FormLabel>
-            <Input attrs={{ id: 'password', type: 'password', autoComplete: 'current-password' }} />
+            <Input attrs={{ id: 'password', type: 'password', autoComplete: 'new-password' }} />
           </FormRow>
           <FormRow type='button'>
             <Button

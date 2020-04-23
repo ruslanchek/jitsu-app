@@ -25,7 +25,7 @@ export const LoginScreen: FC<IProps> = () => {
         <form action=''>
           <FormRow>
             <FormLabel attrs={{ htmlFor: 'email' }}>Email</FormLabel>
-            <Input attrs={{ id: 'email', autoComplete: 'email' }} />
+            <Input attrs={{ id: 'email', autoComplete: 'email', autoFocus: true }} />
           </FormRow>
           <FormRow>
             <FormLabel attrs={{ htmlFor: 'password' }}>Password</FormLabel>

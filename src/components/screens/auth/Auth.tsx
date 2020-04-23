@@ -13,7 +13,7 @@ export const Auth: FC<IProps> = ({ title, subtitle, children }) => {
     <div className='min-h-screen flex items-center justify-center bg-gray-100'>
       <div className='max-w-md'>
         <div className='flex justify-center mb-6'>
-          <img src={require('../../../img/cive-symbol.svg')} className='h-20' alt='Cive' />
+          <img src={require('../../../img/cive-symbol.svg')} className='h-16' alt='Cive' />
         </div>
         <Card>
           <div className='mb-8'>

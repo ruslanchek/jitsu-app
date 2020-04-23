@@ -11,11 +11,11 @@ import { FormRow } from '../../ui/form/FormRow';
 
 interface IProps extends RouteComponentProps {}
 
-export const RegisterScreen: FC<IProps> = () => {
+export const RememberPasswordScreen: FC<IProps> = () => {
   return (
     <ScreenLayout>
       <Auth
-        title='Sign up'
+        title='Remember password'
         subtitle={
           <Fragment>
             Or sign in&nbsp;<Anchor to={PATHS.AUTH_LOGIN}>to your account</Anchor>
@@ -26,21 +26,15 @@ export const RegisterScreen: FC<IProps> = () => {
             <FormLabel attrs={{ htmlFor: 'email' }}>Email</FormLabel>
             <Input attrs={{ id: 'email', autoComplete: 'email' }} />
           </FormRow>
-          <FormRow>
-            <FormLabel attrs={{ htmlFor: 'password' }}>Password</FormLabel>
-            <Input attrs={{ id: 'password', type: 'password', autoComplete: 'current-password' }} />
-          </FormRow>
           <FormRow type='button'>
             <Button
               attrs={{
                 type: 'submit',
               }}>
-              Sign up
+              Send instructions
             </Button>
           </FormRow>
-          <FormRow type='text'>
-            By signing up, I agree to <Anchor to='#'>Terms of Service</Anchor>
-          </FormRow>
+          <FormRow type='text'>Settle your email and we will send you instructions on how to change password</FormRow>
         </form>
       </Auth>
     </ScreenLayout>

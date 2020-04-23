@@ -1,13 +1,14 @@
 import React, { FC, LinkHTMLAttributes } from 'react';
+import { Link } from '@reach/router';
 
 interface IProps {
-  attrs: LinkHTMLAttributes<HTMLAnchorElement>;
+  to: string;
 }
 
-export const Anchor: FC<IProps> = ({ attrs, children }) => {
+export const Anchor: FC<IProps> = ({ to, children }) => {
   return (
-    <a {...attrs} className='text-indigo-600 hover:text-indigo-500'>
+    <Link to={to} className='text-indigo-600 hover:text-indigo-500'>
       {children}
-    </a>
+    </Link>
   );
 };

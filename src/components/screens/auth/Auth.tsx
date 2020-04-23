@@ -1,10 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import { Card } from '../../ui/card/Card';
 import { H2 } from '../../ui/typography/H2';
-import { Anchor } from '../../ui/misc/Anchor';
-import { FormLabel } from '../../ui/label/FormLabel';
-import { Input } from '../../ui/form/Input';
-import { Button } from '../../ui/button/Button';
 import { Disclaimer } from '../../ui/typography/Disclaimer';
 
 interface IProps {
@@ -17,7 +13,7 @@ export const Auth: FC<IProps> = ({ title, subtitle, children }) => {
     <div className='min-h-screen flex items-center justify-center bg-gray-100'>
       <div className='max-w-md'>
         <div className='flex justify-center mb-6'>
-          <img src={require('../../../img/cive-symbol.svg')} className='h-14' />
+          <img src={require('../../../img/cive-symbol.svg')} className='h-14' alt='Cive' />
         </div>
         <Card>
           <div className='mb-8'>

@@ -5,7 +5,7 @@ import { Button } from '../button/Button';
 
 export const Plan: FC = () => {
   return (
-    <div className='bg-white mt-6 text-gray-800'>
+    <div className='bg-white text-gray-800'>
       <header className='border-b border-gray-200 px-5 py-3 text-white bg-indigo-600 rounded-tl-lg rounded-tr-lg'>
         <h3 className='font-bold text-xl'>Agile Mornings</h3>
         <p className='text-sm mt-1 text-indigo-300'>Workplace One</p>

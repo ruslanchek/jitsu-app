@@ -3,7 +3,7 @@ import { Link } from '@reach/router';
 import { PATHS } from '../../../common/paths';
 import { Search } from './Search';
 import { UserAvatar } from '../../ui/avatar/UserAvatar';
-import { RiMenuLine, RiAddLine } from 'react-icons/ri';
+import { RiMenuLine, RiAddLine, RiNotification3Line } from 'react-icons/ri';
 
 export const Header: FC = () => {
   return (
@@ -18,17 +18,25 @@ export const Header: FC = () => {
           <div className='flex-0 mr-4'>
             <a
               href='#'
-              className='flex w-10 h-10 items-center justify-center bg-gray-200 hover:bg-gray-300 ml-2 rounded-lg transition-colors duration-200 text-indigo-700 text-xl'>
+              className='flex w-10 h-10 items-center justify-center bg-gray-200 hover:bg-gray-300 ml-2 rounded-full transition-colors duration-200 text-gray-600 text-xl'>
               <RiAddLine />
             </a>
           </div>
           <Search />
+          <a
+            href='#'
+            className='flex ml-4 w-10 h-10 items-center justify-center hover:bg-gray-200 ml-2 rounded-lg transition-colors duration-200 text-gray-800'>
+            <RiNotification3Line className='w-6 h-6' />
+          </a>
           <div className='ml-4'>
-            <UserAvatar size='medium' />
+            <div className='flex h-10 p-1 pr-2 font-medium items-center justify-center bg-gray-200 rounded-full hover:bg-gray-300 cursor-pointer text-gray-600'>
+              <UserAvatar size='medium' />
+              <div className='whitespace-no-wrap px-3'>Ruslan</div>
+            </div>
           </div>
           <a
             href='#'
-            className='flex w-10 h-10 items-center justify-center hover:bg-gray-200 ml-2 rounded-lg transition-colors duration-200 text-gray-800'>
+            className='flex w-10 h-10 items-center justify-center hover:bg-gray-200 ml-4 rounded-lg transition-colors duration-200 text-gray-800'>
             <RiMenuLine className='w-6 h-6' />
           </a>
         </div>

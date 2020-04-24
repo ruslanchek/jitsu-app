@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import { Header } from '../complex/header/Header';
 import { SectionLabel } from '../ui/label/SectionLabel';
-import { RiReactjsLine } from 'react-icons/ri';
+import { RiReactjsLine, RiRocket2Line, RiCoinsLine, RiArtboardLine } from 'react-icons/ri';
 import { Plan } from '../ui/card/Plan';
 
 interface IProps {
@@ -21,15 +21,26 @@ export const ScreenLayout: FC<IProps> = ({ children, minimalUi }) => {
               <div className='px-8 py-6'>
                 <SectionLabel>Projects</SectionLabel>
                 <nav className='mt-2'>
-                  <div className='px-4 py-3 flex items-center mb-2 bg-purple-100 text-purple-600 rounded-lg'>
+                  <div className='px-3 py-2 text-gray-700 flex items-center mb-1 hover:bg-gray-100 rounded-lg cursor-pointer transition-colors duration-200'>
+                    <RiRocket2Line className='mr-4 text-xl' />
+                    API Development
+                  </div>
+                  <div className='px-3 py-2 flex items-center mb-1 bg-purple-100 text-purple-600 rounded-lg cursor-pointer transition-colors duration-200'>
                     <RiReactjsLine className='mr-4 text-xl' />
                     EO Web App
                   </div>
-                  <div className='bg-gray-100 px-4 py-3 text-gray-700 flex items-center hover:bg-gray-200 rounded-lg'>
-                    <RiReactjsLine className='mr-4 text-xl' />
-                    EO Web App
+                  <div className='px-3 py-2 text-gray-700 flex items-center mb-1 hover:bg-gray-100 rounded-lg cursor-pointer transition-colors duration-200'>
+                    <RiCoinsLine className='mr-4 text-xl' />
+                    Management
+                  </div>
+                  <div className='px-3 py-2 text-gray-700 flex items-center mb-1 hover:bg-gray-100 rounded-lg cursor-pointer transition-colors duration-200'>
+                    <RiArtboardLine className='mr-4 text-xl' />
+                    Kanban
                   </div>
                 </nav>
+                <div className='mt-6 mb-2'>
+                  <SectionLabel>Agenda</SectionLabel>
+                </div>
                 <Plan />
               </div>
             </div>

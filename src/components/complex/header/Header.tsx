@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 import { Link } from '@reach/router';
 import { PATHS } from '../../../common/paths';
-import { RiSearch2Line } from 'react-icons/ri';
+import { Search } from './Search';
+import { UserAvatar } from '../../ui/avatar/UserAvatar';
 
 export const Header: FC = () => {
   return (
@@ -13,13 +14,8 @@ export const Header: FC = () => {
           </Link>
         </div>
         <div className='h-16 flex items-center w-full justify-end px-8'>
-          <div className='relative'>
-            <input className='bg-gray-200 text-gray-800 outline-none h-10 px-10 rounded-lg focus:bg-gray-300 transition-colors duration-200' />
-            <div className='absolute text-gray-500 flex top-0 h-10 items-center px-4 pointer-events-none'>
-              <RiSearch2Line className='mr-2 text-gray-600' />
-              Search
-            </div>
-          </div>
+          <Search />
+          <UserAvatar />
         </div>
       </div>
     </header>

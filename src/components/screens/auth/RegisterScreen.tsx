@@ -1,4 +1,4 @@
-import React, { FC, Fragment, useState } from 'react';
+import React, { FC, Fragment } from 'react';
 import { RouteComponentProps } from '@reach/router';
 import { ScreenLayout } from '../../global/ScreenLayout';
 import { Auth } from './Auth';
@@ -12,10 +12,8 @@ import { FormRow } from '../../ui/form/FormRow';
 interface IProps extends RouteComponentProps {}
 
 export const RegisterScreen: FC<IProps> = () => {
-  const [wide, setWide] = useState(false);
-
   return (
-    <ScreenLayout>
+    <ScreenLayout minimalUi>
       <Auth
         title='Sign up'
         subtitle={

@@ -36,7 +36,7 @@ export const Alert: FC<IProps> = ({ type, title, details, children }) => {
   return (
     <div
       className={classnames(
-        'cursor-pointer rounded-lg absolute top-0 flex justify-between px-6 py-4 w-1/2 transition-colors duration-200',
+        'cursor-pointer rounded-lg flex justify-between px-6 py-4 w-1/2 transition-colors duration-200',
         {
           'bg-blue-100 text-blue-600 hover:bg-blue-200 hover:text-blue-700': type === EAlertType.Info,
           'bg-red-100 text-red-600 hover:bg-red-200 hover:text-red-700': type === EAlertType.Error,
@@ -45,7 +45,7 @@ export const Alert: FC<IProps> = ({ type, title, details, children }) => {
       )}>
       <div className='flex-col'>
         {title && (
-          <strong className='mb-1 flex items-center'>
+          <strong className='flex items-center'>
             {icon} {title}
           </strong>
         )}

@@ -13,7 +13,7 @@ interface IProps extends RouteComponentProps {}
 
 export const LoginScreen: FC<IProps> = () => {
   return (
-    <ScreenLayout>
+    <ScreenLayout minimalUi>
       <Auth
         title='Sign in to your account'
         subtitle={

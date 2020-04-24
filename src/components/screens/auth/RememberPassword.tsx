@@ -13,7 +13,7 @@ interface IProps extends RouteComponentProps {}
 
 export const RememberPasswordScreen: FC<IProps> = () => {
   return (
-    <ScreenLayout>
+    <ScreenLayout minimalUi>
       <Auth
         title='Remember password'
         subtitle={

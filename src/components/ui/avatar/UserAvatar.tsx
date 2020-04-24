@@ -8,7 +8,7 @@ interface IProps {
 export const UserAvatar: FC<IProps> = ({ size }) => {
   return (
     <div
-      className={classnames('rounded-full overflow-hidden relative bg-gray-300', {
+      className={classnames('rounded-full overflow-hidden relative bg-gray-100', {
         'w-6 h-6': size === 'small',
         'w-8 h-8': size === 'medium',
         'w-14 h-14': size === 'large',

@@ -42,6 +42,12 @@ export const ScreenLayout: FC<IProps> = ({ children, minimalUi }) => {
                   <SectionLabel>Agenda</SectionLabel>
                 </div>
                 <Plan />
+                <div className='mt-6 mb-2'>
+                  <SectionLabel>Favorites</SectionLabel>
+                </div>
+                <div className='mt-6 mb-2'>
+                  <SectionLabel>Team</SectionLabel>
+                </div>
               </div>
             </div>
             <div className='flex-1 py-6 pr-8 pl-4'>{children}</div>

@@ -3,6 +3,7 @@ import { Link } from '@reach/router';
 import { PATHS } from '../../../common/paths';
 import { Search } from './Search';
 import { UserAvatar } from '../../ui/avatar/UserAvatar';
+import { RiMenuLine } from 'react-icons/ri';
 
 export const Header: FC = () => {
   return (
@@ -15,7 +16,14 @@ export const Header: FC = () => {
         </div>
         <div className='h-16 flex items-center w-full justify-end px-8'>
           <Search />
-          <UserAvatar />
+          <div className='ml-4'>
+            <UserAvatar size='medium' />
+          </div>
+          <a
+            href='#'
+            className='flex w-10 h-10 items-center justify-center hover:bg-gray-200 ml-2 rounded-lg transition-colors duration-200'>
+            <RiMenuLine className='w-6 h-6' />
+          </a>
         </div>
       </div>
     </header>

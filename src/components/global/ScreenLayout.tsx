@@ -3,7 +3,6 @@ import { Header } from '../complex/header/Header';
 import { SectionLabel } from '../ui/label/SectionLabel';
 import { RiReactjsLine } from 'react-icons/ri';
 import { Plan } from '../ui/card/Plan';
-import { Alert, EAlertType } from '../ui/alert/Alert';
 
 interface IProps {
   minimalUi?: boolean;
@@ -19,7 +18,7 @@ export const ScreenLayout: FC<IProps> = ({ children, minimalUi }) => {
           <Header />
           <div className='flex bg-white'>
             <div className='flex-none w-full md:max-w-xs'>
-              <div className='px-8 py-4'>
+              <div className='px-8 py-6'>
                 <SectionLabel>Projects</SectionLabel>
                 <nav className='mt-2'>
                   <div className='px-4 py-3 flex items-center mb-2 bg-purple-100 text-purple-600 rounded-lg'>
@@ -34,12 +33,7 @@ export const ScreenLayout: FC<IProps> = ({ children, minimalUi }) => {
                 <Plan />
               </div>
             </div>
-            <div className='flex-1'>
-              {children}
-              <Alert type={EAlertType.Info} title='Info' details='Details' onClick={() => {}}>
-                An update is available
-              </Alert>
-            </div>
+            <div className='flex-1 py-6 pr-8 pl-4'>{children}</div>
           </div>
         </div>
       )}

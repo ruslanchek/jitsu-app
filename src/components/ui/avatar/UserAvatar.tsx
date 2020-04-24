@@ -13,7 +13,7 @@ export const UserAvatar: FC<IProps> = ({ size }) => {
         'w-10 h-10': size === 'medium',
         'w-14 h-14': size === 'large',
       })}>
-      <img src='https://i.pravatar.cc/300' />
+      <img src={`https://i.pravatar.cc/300?a=${Math.random()}`} />
     </div>
   );
 };

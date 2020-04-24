@@ -16,7 +16,7 @@ export const Auth: FC<IProps> = ({ title, subtitle, children }) => {
           <img src={require('../../../img/cive-symbol.svg')} className='h-16' alt='Cive' />
         </div>
         <Card>
-          <div className='mb-8'>
+          <div className='mb-8 text-center'>
             <H2>{title}</H2>
             <p className='flex justify-center mt-1 text-sm text-gray-600'>{subtitle}</p>
           </div>

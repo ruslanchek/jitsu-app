@@ -29,7 +29,7 @@ export const Header: FC = () => {
             <RiNotification3Line className='w-6 h-6' />
           </a>
           <div className='ml-4'>
-            <div className='flex h-10 p-1 pr-2 font-medium items-center justify-center bg-gray-200 rounded-full hover:bg-gray-300 transition-colors duration-200 cursor-pointer'>
+            <div className='flex h-10 p-1 pr-2 items-center justify-center bg-gray-200 rounded-full hover:bg-gray-300 transition-colors duration-200 cursor-pointer'>
               <UserAvatar size='medium' />
               <div className='whitespace-no-wrap px-3'>Ruslan</div>
             </div>

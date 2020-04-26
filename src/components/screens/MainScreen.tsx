@@ -1,11 +1,10 @@
 import React, { FC } from 'react';
 import { RouteComponentProps } from '@reach/router';
 import { ScreenLayout } from '../global/ScreenLayout';
-import { Alert, EAlertType } from '../ui/alert/Alert';
 import { H2 } from '../ui/typography/H2';
 import { UserAvatar } from '../ui/avatar/UserAvatar';
 import { Plan } from '../ui/card/Plan';
-import { RiTimeLine, RiTeamLine, RiFlag2Line, RiCalendarEventLine } from 'react-icons/ri';
+import { RiTimeLine, RiTeamLine, RiCalendarEventLine } from 'react-icons/ri';
 
 interface IProps extends RouteComponentProps {}
 
@@ -23,15 +22,15 @@ export const MainScreen: FC<IProps> = () => {
         <div className='w-1/4 mr-8'>
           <div className='bg-gray-200 rounded-lg px-4 py-3'>
             <h3 className='font-bold'>Weekly Scrum Meeting</h3>
-            <div className='text-sm mt-6 flex items-center h-1'>
+            <div className='text-sm mt-5 flex items-center h-1'>
               <RiTimeLine className='text-base mr-3' />
               12:40pm to 1:30pm &bull; 50 min
             </div>
-            <div className='text-sm mt-6 flex items-center h-1'>
+            <div className='text-sm mt-5 flex items-center h-1'>
               <RiTeamLine className='text-base mr-3' />
               Frontend team
             </div>
-            <div className='text-sm mt-6 flex items-center h-1'>
+            <div className='text-sm mt-5 flex items-center h-1'>
               <RiCalendarEventLine className='text-base mr-3' />
               26 December, 2019
             </div>

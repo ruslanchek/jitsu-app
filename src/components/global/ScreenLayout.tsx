@@ -27,7 +27,7 @@ export const ScreenLayout: FC<IProps> = ({ children, minimalUi }) => {
       {minimalUi ? (
         children
       ) : (
-        <div className='min-h-screen text-gray-700'>
+        <div className='min-h-screen text-gray-800'>
           <Header />
           <div className='flex bg-white'>
             <div className='flex-none w-full md:max-w-xs'>

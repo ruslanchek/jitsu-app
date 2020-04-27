@@ -10,10 +10,10 @@ interface IProps {
 
 export const Auth: FC<IProps> = ({ title, subtitle, children }) => {
   return (
-    <div className='min-h-screen flex items-center justify-center bg-gray-100 text-gray-700'>
+    <div className='min-h-screen flex items-center justify-center bg-gray-100 text-gray-800'>
       <div className='max-w-md'>
         <div className='flex justify-center mb-6'>
-          <img src={require('../../../assets/img/logo.svg')} className='h-16' alt='Cive' />
+          <img src={require('../../../assets/img/logo.svg')} className='h-16' alt='Worx' />
         </div>
         <Card>
           <div className='mb-8 text-center'>

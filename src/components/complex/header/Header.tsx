@@ -11,7 +11,7 @@ export const Header: FC = () => {
       <div className='flex'>
         <div className='flex-none w-full md:max-w-xs'>
           <Link to={PATHS.MAIN} className='px-8 py-4 w-full h-full flex items-center'>
-            <img src={require('../../../assets/img/logo.svg')} alt='Cive' className='h-8 block' />
+            <img src={require('../../../assets/img/logo.svg')} alt='Worx' className='h-8 block' />
           </Link>
         </div>
         <div className='h-16 flex items-center w-full justify-end px-8'>

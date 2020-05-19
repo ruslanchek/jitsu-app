@@ -15,7 +15,6 @@ import {
   RiPlugLine,
   RiListSettingsLine,
 } from 'react-icons/ri';
-import { Plan } from '../ui/card/Plan';
 
 interface IProps {
   minimalUi?: boolean;
